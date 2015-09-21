@@ -12,6 +12,7 @@ var express = require('express'),
 // Configure authentication.
 require('./config/passport_config.js');
 
+
 var app = express();
 
 // configure Express
