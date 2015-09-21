@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+	div(class="fill-parent", id="main")
+		!= reactOutput
+
+	script.
+		window.user = !{JSON.stringify(user)};
+
+	script(src="assets/scripts/bundle.js")

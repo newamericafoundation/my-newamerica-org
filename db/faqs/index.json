@@ -1,0 +1,44 @@
+[
+  {
+    "id":1,
+    "question":"When do we move into the new space?",
+    "answer":"We will be moving into our new space on the morning of Monday, November 2nd.",
+    "section":"Key Information"
+  },
+  {
+    "id":2,
+    "question":"When do we leave our old space?",
+    "answer":"New America IT systems (PCs, phones, printers, and wireless internet) will officially shut down on Wednesday, October 28th, at noon. After that, most staff will need to work remotely.",
+    "section":"Key Information"
+  },
+  {
+    "id":3,
+    "question":"Where are we going?",
+    "answer":"740 15th Street, NW, Suite 900, Washington, DC 20005",
+    "section":"Key Information"
+  },
+  {
+    "id":4,
+    "question":"Will I keep my phone number?",
+    "answer":"Yes.",
+    "section":"Telephones"
+  },
+  {
+    "id":5,
+    "question":"When do I no longer have access to my New America phone at 1899 L St?",
+    "answer":"Wednesday, October 28th, at noon, is the last time you will be available to use your New America phone prior to the move.",
+    "section":"Telephones"
+  },
+  {
+    "id":6,
+    "question":"When will printers be disconnected?",
+    "answer":"Since most IT infrastructure will be shut down on Wednesday, October 28th, that is the last date you will be able to use printers. Printers will be disconnected.",
+    "section":"Printers"
+  },
+  {
+    "id":7,
+    "question":"Am I responsible for sending change of address notifications?",
+    "answer":"Yes.",
+    "section":"Mail"
+  }
+]

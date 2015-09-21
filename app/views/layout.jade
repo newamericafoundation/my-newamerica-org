@@ -1,0 +1,32 @@
+doctype html
+html
+	head
+		title My New America
+		meta(name='description', content="Intranet for the New America Foundation")
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width')
+		meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no')
+		meta(name="fragment", content="!")
+		link(rel="shortcut icon", type="image/x-icon", href='/assets/images/favicon.ico')
+		link(rel="stylesheet", type="text/css", href="/assets/styles/app.css")
+
+	body
+
+		block content
+
+		//- != reactOutput
+
+		//- - if (user != null && reactComponentName != null) {
+
+		//- 	script(src="assets/scripts/bundle.js")
+
+		//- 	script.
+		//- 		var userClient = !{JSON.stringify(user)},
+		//- 			compName = !{JSON.stringify(reactComponentName)},
+		//- 			C = Comp[compName];
+		//- 		(function() {
+		//- 			var component = React.createElement(C, { user: userClient });
+		//- 			React.render(component, document.body);
+		//- 		}());
+
+		//- - }
