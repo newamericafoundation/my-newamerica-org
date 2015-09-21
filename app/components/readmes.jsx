@@ -22,9 +22,9 @@ class Readmes extends React.Component {
 					</div>
 					<h1 className="title">Read-me!</h1>
 					<select onChange={this.setActiveEdition.bind(this)}>
-						{ this.renderWinOptions() }
+						{ this.renderReadmeOptions() }
 					</select>
-					{ this.renderWins() }
+					{ this.renderReadmes() }
 				</div>
 			</div>
 		);
@@ -33,31 +33,32 @@ class Readmes extends React.Component {
 	componentDidMount() {
 		new Collection().getClientFetchPromise().then((coll) => {
 			this.setState({
-				weeklyWins: coll,
-				activeEdition: coll.models[0].get('edition')
+				readmes: coll,
+				activeEdition: parseInt(coll.models[coll.models.length - 1].get('edition'), 10)
 			});
 		});
 	}
 
 	setActiveEdition(e) {
-		this.setState({ activeEdition: e.nativeEvent.target.value });
+		this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) });
 	}
 
-	renderWins() {
-		if (this.state.weeklyWins == null) { return (<Loader />); }
-		return this.state.weeklyWins.map((win) => {
+	renderReadmes() {
+		if (this.state.readmes == null) { return (<Loader />); }
+		return this.state.readmes.map((readme) => {
 			return (
-				<Readme win={win} activeEdition={this.state.activeEdition} />
+				<Readme readme={readme} activeEdition={this.state.activeEdition} />
 			);
 		});
 	}
 
-	renderWinOptions() {
-		if (this.state.weeklyWins == null) { return; }
-		return this.state.weeklyWins.map((win) => {
-			var val = `Edition ${win.get('edition')}: ${win.get('title')}`;
+	renderReadmeOptions() {
+		if (this.state.readmes == null) { return; }
+		return this.state.readmes.map((readme) => {
+			var val = `Edition ${readme.get('edition')}: ${readme.get('title')}`,
+				isSelected = readme.get('edition') === this.state.activeEdition;
 			return (
-				<option value={win.get('edition')}>{ val }</option>
+				<option value={readme.get('edition')} selected={isSelected}>{ val }</option>
 			);
 		});
 	}
@@ -72,23 +73,23 @@ Readmes.contextTypes = {
 class Readme extends React.Component {
 
 	render() {
-		var win = this.props.win;
+		var readme = this.props.readme;
 		if (!this.shouldDisplay()) { return <div/>; }
 		return (
 			<div>
 				<h2 className='page__section-title'>{ this.getTitle() }</h2>
-				<div className='static-content' dangerouslySetInnerHTML={{ __html: win.get('html') }}></div>
+				<div className='static-content' dangerouslySetInnerHTML={{ __html: readme.get('html') }}></div>
 			</div>
 		);
 	}
 
 	shouldDisplay() {
-		return (this.props.activeEdition === this.props.win.get('edition'));
+		return (this.props.activeEdition === this.props.readme.get('edition'));
 	}
 
 	getTitle() {
-		var win = this.props.win;
-		return `Edition ${win.get('edition')}: ${win.get('title')}`;
+		var readme = this.props.readme;
+		return `Edition ${readme.get('edition')}: ${readme.get('title')}`;
 	}
 
 }

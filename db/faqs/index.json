@@ -1,44 +1,206 @@
 [
-  {
-    "id":1,
-    "question":"When do we move into the new space?",
-    "answer":"We will be moving into our new space on the morning of Monday, November 2nd.",
-    "section":"Key Information"
-  },
-  {
-    "id":2,
-    "question":"When do we leave our old space?",
-    "answer":"New America IT systems (PCs, phones, printers, and wireless internet) will officially shut down on Wednesday, October 28th, at noon. After that, most staff will need to work remotely.",
-    "section":"Key Information"
-  },
-  {
-    "id":3,
-    "question":"Where are we going?",
-    "answer":"740 15th Street, NW, Suite 900, Washington, DC 20005",
-    "section":"Key Information"
-  },
-  {
-    "id":4,
-    "question":"Will I keep my phone number?",
-    "answer":"Yes.",
-    "section":"Telephones"
-  },
-  {
-    "id":5,
-    "question":"When do I no longer have access to my New America phone at 1899 L St?",
-    "answer":"Wednesday, October 28th, at noon, is the last time you will be available to use your New America phone prior to the move.",
-    "section":"Telephones"
-  },
-  {
-    "id":6,
-    "question":"When will printers be disconnected?",
-    "answer":"Since most IT infrastructure will be shut down on Wednesday, October 28th, that is the last date you will be able to use printers. Printers will be disconnected.",
-    "section":"Printers"
-  },
-  {
-    "id":7,
-    "question":"Am I responsible for sending change of address notifications?",
-    "answer":"Yes.",
-    "section":"Mail"
-  }
+    {
+        "id": 1,
+        "question": "Where are we going?",
+        "answer": "740 15th Street, NW\nSuite 900 Washington, DC \n20005\n\n[This is our new building](https://www.google.com/maps/place/740+15th+Street,+NW/@38.8997796,-77.0336495,3a,75y,271.55h,114.31t/data=!3m7!1e1!3m4!1s7an67xc7-QDiw8JH3q1o7g!2e0!7i13312!8i6656!4b1!4m2!3m1!1s0x0:0x35a334a8e0df3e77!6m1!1e1)",
+        "section": "Key Information"
+    },
+    {
+        "id": 2,
+        "question": "When do we move into the new space?",
+        "answer": "Our first day open for business in our new space is **Monday, November 2**. The movers will be picking up from 1899 L St and delivering to 740 15th St on **Friday, October 30 - Saturday, October 31**.\n\nNew America IT systems (“local” PCs, phones, printers, and wireless internet) will officially shut down on **Wednesday, October 28th**, at noon. Remote capacity and connection will be maintained for everyone on their devices. ",
+        "section": "Key Information"
+    },
+    {
+        "id": 3,
+        "question": "What Should I Be Doing To Prepare?",
+        "answer": "**We are moving no New America furniture and no file cabinets to 740. This means that staff must be doing the following starting now to prepare for the move:**\n\n1) Purging file cabinets, desks and bookcases of their contents. Decide what you’ll be moving to the new office - only what you actually use (movers will provide crates), what you want to take home (see Mark Hairston for boxes), and what will be recycled/trashed/shredded.\n\n2) Notify all your personal contacts of our new address and effective date. Communications will be working departments and programs to develop a comprehensive New America mailing list and official notifications.",
+        "section": "Key Information"
+    },
+    {
+        "id": 4,
+        "question": "Key Dates Timeline",
+        "answer": "| Sunday                                                 | Monday                                       | Tuesday                                | Wednesday                                                                                                                                                                                       | Thursday                                        | Friday                                                                                                                                                                                                                     | Saturday                                 |\n|--------------------------------------------------------|----------------------------------------------|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|\n| 4                                                      | 5                                            | 6                                      | 7                                                                                                                                                                                               | 8                                               | 9                                                                                                                                                                                                                          | 10                                       |\n| 11                                                     | 12                                           | 13                                     | 14                                                                                                                                                                                              | 15                                              | 16                                                                                                                                                                                                                         | 17                                       |\n| 18                                                     | 19 Movers will deliver packing crates.       | 20 All-staff move orientation meeting. | 21                                                                                                                                                                                              | 22                                              | 23 Demolition of the connecting 4th/5th floor staircase at 1899 will begin for incoming sublet tenants. Staff will be able to continue to work at 1899 L St the following Monday, using the building stairs and elevators. | 24                                       |\n| 25                                                     | 26                                           | 27                                     | 28 IT shuts down all systems (PCs, phones, printers, wireless internet) at 1899 while remote capacity is maintained for everyone on all devices. All laptops should be taken home on this date. | 29 Phones are moved to the new building and setup        | 30 Movers start, all PCs at 1899 L St are disconnected and moved.                                                                                                                                                          | 31 Movers finish at our new 740 15th St. |\n| 1 All PCs and Printers are reconnected at 740 15th St. | 2 We start work at our new space at 740 15th St. | 3                                      | 4                                                                                                                                                                                               | 5 Movers pick up packing crates at 740 15th St. | 6                                                                                                                                                                                                                          | 7                                        |",
+        "section": "Key Information"
+    },
+    {
+        "id": 5,
+        "question": "When do I no longer have access to my New America PC, internet, etc. at 1899 L St?",
+        "answer": "Wednesday, October 28th, at noon, is the last time you will be able to use your New America PC, printer, or phone prior to the move. If you own a laptop, take it home on Wednesday, October 28th, so that you can use it for New America work the remainder of the week.",
+        "section": "Computers"
+    },
+    {
+        "id": 6,
+        "question": "I need assistance with remote access to files, assets, or applications between October 28 and November 2. How can I set that up?",
+        "answer": "Our [IT team](techsupport@newamerica.org) can help with your remote setup. Please contact them ahead of time.",
+        "section": "Computers"
+    },
+    {
+        "id": 7,
+        "question": "Will I keep my phone number and physical phone?",
+        "answer": "Yes to both.",
+        "section": "Telephones"
+    },
+    {
+        "id": 8,
+        "question": "When do I no longer have access to my New America phone at 1899 L St?",
+        "answer": "Wednesday, October 28th, at noon, is the last time you will be able to use your New America phone prior to the move.",
+        "section": "Telephones"
+    },
+    {
+        "id": 9,
+        "question": "When will printers be disconnected?",
+        "answer": "Since our local IT infrastructure will be shut down at noon Wednesday, October 28th, that is the last date you will be able to use printers. After that, printers will be disconnected.",
+        "section": "Printers"
+    },
+    {
+        "id": 11,
+        "question": "When will I know where to print in the new location?",
+        "answer": "IT will be providing a document for all staff with these details.",
+        "section": "Printers"
+    },
+    {
+        "id": 12,
+        "question": "When will our new address be receiving mail?",
+        "answer": "Effective October 1, we will have mailboxes at 740.",
+        "section": "Mail"
+    },
+    {
+        "id": 13,
+        "question": "Will someone be returning to 1899 L St over the next few months to retrieve any mail that has not been forwarded?",
+        "answer": "Yes.",
+        "section": "Mail"
+    },
+    {
+        "id": 14,
+        "question": "Can I bring white/bulletin boards to the new space? If so, who is responsible?",
+        "answer": "Yes. You should take them off the wall if they are hanging and the movers will move them. More detailed instructions many be forthcoming, if necessary.",
+        "section": "Moving My Stuff"
+    },
+    {
+        "id": 15,
+        "question": "Will extra trash bins and shredders be available?",
+        "answer": "Yes. They are available right now on both the 4th and 5th floors.",
+        "section": "Moving My Stuff"
+    },
+    {
+        "id": 16,
+        "question": "If we have a lot of paper files, will we have the same amount of filing cabinet space in the new office? If not, is there an option other than purging all paper files?",
+        "answer": "No, there is not the same amount of filing cabinet space nor is there much storage space. Each office has a small under-the desk file  storage piece. There are two file rooms intended primarily for legal, financial and TDM files we need to keep in hard copy for whatever reasons.\n\nPlease limit files moved to **what you currently use**. Otherwise, if you need to keep some, take them home or discard.",
+        "section": "Moving My Stuff"
+    },
+    {
+        "id": 17,
+        "question": "Who is responsible for clearing out communal spaces, like printer cabinets, closets, the kitchen, etc?",
+        "answer": "Mark Hairston will coordinate and/or do some of these himself.",
+        "section": "Moving My Stuff"
+    },
+    {
+        "id": 18,
+        "question": "How big are the boxes? What should we do with things like wallcharts that may be too large for the boxes?",
+        "answer": "We will get instructions from the movers.",
+        "section": "Moving My Stuff"
+    },
+    {
+        "id": 19,
+        "question": "I am out of town during the move. Can someone else help me to move?",
+        "answer": "No, each of us responsible for packing up our own office and “checking out” - by close of business Thursday, October 29. If you are out of town at that time, prepare everything per instructions and check out with the front desk **prior to your departure**. ",
+        "section": "Moving My Stuff"
+    },
+    {
+        "id": 20,
+        "question": "Does each conference room have audio/visual capability and phones?",
+        "answer": "Yes, and IT will be providing instructions in each conference room.  Also IT support will be provided for each of the rooms.",
+        "section": "Scheduling Events and Booking Conference Rooms"
+    },
+    {
+        "id": 21,
+        "question": "Will there be a period during which I cannot schedule New America events?",
+        "answer": "Yes. There will be no events at 1899 in the month of October.\n\nEvents not dependent on AV support (e.g. meetings in conference rooms) may be scheduled beginning **November 2**. Events using AV support may be scheduled after **November 9**.",
+        "section": "Scheduling Events and Booking Conference Rooms"
+    },
+    {
+        "id": 22,
+        "question": "What rooms are available to book in the new space?",
+        "answer": "See the Intranet Floor Plans page.",
+        "section": "Scheduling Events and Booking Conference Rooms"
+    },
+    {
+        "id": 23,
+        "question": "How do I schedule events in the new space? When will I be able to do this? ",
+        "answer": "The Google Calendar has been updated to include conference rooms at 740 15th Street once names for each room have been confirmed. The new Intranet includes a map of the office space. Booking venues can be done either in My New America or on Google Calendar.\n\nRooms currently follow the format: **Floor-Size-Location**. For instance, **11-Medium-Southeast** refers to the medium-sized conference room on the southeast corner of the 11th floor.",
+        "section": "Scheduling Events and Booking Conference Rooms"
+    },
+    {
+        "id": 24,
+        "question": "How do I find out about conference room capacity in the new space?",
+        "answer": "Conference rooms on the Google Calendar will also be marked with a maximum capacity in parentheses.",
+        "section": "Scheduling Events and Booking Conference Rooms"
+    },
+    {
+        "id": 25,
+        "question": "How do I know where I’ll be seated in the new space?",
+        "answer": "Workspace assignments are in the process of being made. As soon as they are you will be notified.",
+        "section": "New Office Facilities, Supplies, and Access"
+    },
+    {
+        "id": 26,
+        "question": "How do I get access to the new building?",
+        "answer": "You will receive a fob providing access to the building and our office space. More detailed information about building access and security is forthcoming.",
+        "section": "New Office Facilities, Supplies, and Access"
+    },
+    {
+        "id": 27,
+        "question": "Does each floor have a fridge/kitchen?",
+        "answer": "Yes.",
+        "section": "New Office Facilities, Supplies, and Access"
+    },
+    {
+        "id": 28,
+        "question": "Is there a gym, where is it, and how will I be able to get access?",
+        "answer": "Yes, there will be. The gym, as well as a bike room, is currently under construction. More information will be provided as it becomes available from building management.",
+        "section": "New Office Facilities, Supplies, and Access"
+    },
+    {
+        "id": 29,
+        "question": "What are quiet rooms, and who can use them?",
+        "answer": "These are “quiet” comfortable places open to anyone who wants to concentrate, write, get out their workspace - whatever they want to do that’s quiet.",
+        "section": "New Office Facilities, Supplies, and Access"
+    },
+    {
+        "id": 30,
+        "question": "Will we be getting new business cards, letterhead, and other office supplies with the new address? Do we need to do anything to make that happen?",
+        "answer": "Yes. You don’t need to do anything to make it happen unless we notify you.",
+        "section": "New Office Facilities, Supplies, and Access"
+    },
+    {
+        "id": 31,
+        "question": "How do I get to our new offices via metro?",
+        "answer": "Orange, blue, and silver line commuters could use **McPherson Square Metro** (0.2 mile or 3 minute walk). \n\nRed line commuters could use the 13th Street exit from **Metro Center** (0.4 mile or 8 minute walk) or the K Street exit from **Farragut North** (0.5 mile or 10 minute walk).\n\nYellow and green line commuters traveling southwards could transfer to the red line at **Gallery Place**, or exit at Gallery Place (0.6 mile or 13 minute walk).\n\nYellow and green line commuters traveling northwards could transfer to the orange, blue, or silver line at **L’Enfant Plaza**, and then exit at **McPherson Square**.",
+        "section": "Transport"
+    },
+    {
+        "id": 32,
+        "question": "How do I get to our new offices via bus?",
+        "answer": "Numerous bus routes stop within a few blocks of our building, including the 30, 32, 33, 36, 37, 39, 42, 43, 52, 54, A9, G8, D1, D3, D4, D6, P17, P19, S2, S4, S9, W13, X2, 7Y, 11Y, and 13Y buses. Consult a metro map to plan your best route to work.",
+        "section": "Transport"
+    },
+    {
+        "id": 33,
+        "question": "Where can I park my bike?",
+        "answer": "Bike racks are available outside the building and a bike room is currently under construction. More information will be provided as it becomes available from building management.",
+        "section": "Transport"
+    },
+    {
+        "id": 34,
+        "question": "Is there a Capital Bikeshare near to our new office?",
+        "answer": "Yes. The nearest bikeshare is on the corner of New York Avenue and 15th Street, about a hundred yards from the entrance to our new building.",
+        "section": "Transport"
+    },
+    {
+        "id": 35,
+        "question": "Where can I park my car?",
+        "answer": "There is no parking in our building.  However, a number of garages are located near our new offices. More information on nearby parking is forthcoming.",
+        "section": "Transport"
+    }
 ]

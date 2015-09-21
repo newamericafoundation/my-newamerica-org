@@ -18,10 +18,10 @@ gulp.task('staff-img-download', () => {
 		.pipe(gulp.dest('img'))
 });
 
-gulp.task('staff-img-resize', () => {
+gulp.task('staff-img-resize', ['staff-img-download'], () => {
 	return gulp.src('./img/**/*')
 		.pipe(imgResize({ width: 200, height: 200 }))
 		.pipe(gulp.dest('./public/assets/images/staff_members/users'))
 });
 
-gulp.task('staff-img', [ 'staff-img-download', 'staff-img-resize' ]);
+gulp.task('staff-img', [ 'staff-img-download' ]);

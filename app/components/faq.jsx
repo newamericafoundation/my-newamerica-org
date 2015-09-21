@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import Icons from './mixins/icons.jsx';
 import Loader from './mixins/loader.jsx';
+import marked from 'marked';
 import { Model, Collection } from './../models/faq.js';
 
 class Faq extends React.Component {
@@ -81,11 +82,11 @@ class FaqItem extends React.Component {
 	render() {
 		if (!this.shouldDisplay()) { return (<div/>); }
 		var faq = this.props.faq,
-			style = { margin: '20px 0' };
+			html = marked(faq.get('answer'));
 		return (
 			<div className='faq'>
 				<p className='faq__question'>{ faq.get('question') }</p>
-				<p className='faq__answer'>{ faq.get('answer') }</p>
+				<p className='faq__answer static-content' dangerouslySetInnerHTML={{ __html: html }} />
 			</div>
 		);
 	}

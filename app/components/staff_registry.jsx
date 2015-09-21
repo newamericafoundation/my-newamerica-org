@@ -216,6 +216,7 @@ class StaffMember extends React.Component {
 	getImageSource() {
 		var fullSource = this.props.staffMember.get('image');
 		// strip off https://static.newamerica.org
+		if (!fullSource || !fullSource.slice) { return; }
 		var partialSource = fullSource.slice(29);
 		return '/assets/images/staff_members' + partialSource;
 	}

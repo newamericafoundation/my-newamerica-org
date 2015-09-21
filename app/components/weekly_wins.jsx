@@ -34,13 +34,13 @@ class WeeklyWins extends React.Component {
 		new Collection().getClientFetchPromise().then((coll) => {
 			this.setState({
 				weeklyWins: coll,
-				activeEdition: coll.models[0].get('edition')
+				activeEdition: parseInt(coll.models[coll.models.length - 1].get('edition'), 10)
 			});
 		});
 	}
 
 	setActiveEdition(e) {
-		this.setState({ activeEdition: e.nativeEvent.target.value });
+		this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) });
 	}
 
 	renderWins() {
@@ -55,9 +55,10 @@ class WeeklyWins extends React.Component {
 	renderWinOptions() {
 		if (this.state.weeklyWins == null) { return; }
 		return this.state.weeklyWins.map((win) => {
-			var val = `Edition ${win.get('edition')}: ${win.get('title')}`;
+			var val = `Edition ${win.get('edition')}: ${win.get('title')}`,
+				isSelected = win.get('edition') === this.state.activeEdition;
 			return (
-				<option value={win.get('edition')}>{ val }</option>
+				<option value={win.get('edition')} selected={isSelected}>{ val }</option>
 			);
 		});
 	}
