@@ -9,17 +9,17 @@ var quickLinks = [
 	{
 		name: 'My Timecard',
 		icon: Adp,
-		url: 'http://workforcenow.adp.com'
+		url: 'https://workforcenow.adp.com/portal/theme'
 	},
 	{
 		name: 'Job Applications',
 		icon: Jazz,
-		url: 'http://jazz.com'
+		url: 'https://app.jazz.co/home/signin'
 	},
 	{
 		name: 'Salesforce',
 		icon: Salesforce,
-		url: 'http://salesforce.com'
+		url: 'https://login.salesforce.com'
 	}
 ];
 

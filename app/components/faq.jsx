@@ -48,10 +48,17 @@ class Faq extends React.Component {
 
 		var grps = this.state.faqs.group();
 
-		return Object.keys(grps).map((grpKey) => {
+		return Object.keys(grps).map((grpKey, i) => {
 			var grp = grps[grpKey];
 			if (!grp.containsSearchTermMatch(this.state.searchTerm)) { return; }
-			return <FaqGroup searchTerm={this.state.searchTerm} section={grpKey} faqs={grp} />
+			return (
+				<FaqGroup 
+					searchTerm={this.state.searchTerm} 
+					section={grpKey} 
+					faqs={grp}
+					key={i}
+				/>
+			);
 		});
 		
 	}
@@ -70,8 +77,8 @@ class FaqGroup extends React.Component {
 	}
 
 	renderFaqs() {
-		return this.props.faqs.map((faq) => {
-			return (<FaqItem searchTerm={this.props.searchTerm} faq={faq} />);
+		return this.props.faqs.map((faq, i) => {
+			return (<FaqItem searchTerm={this.props.searchTerm} faq={faq} key={i} />);
 		});
 	}
 
@@ -82,11 +89,13 @@ class FaqItem extends React.Component {
 	render() {
 		if (!this.shouldDisplay()) { return (<div/>); }
 		var faq = this.props.faq,
-			html = marked(faq.get('answer'));
+			html = marked(faq.get('answer'), { sanitize: true });
 		return (
 			<div className='faq'>
 				<p className='faq__question'>{ faq.get('question') }</p>
-				<p className='faq__answer static-content' dangerouslySetInnerHTML={{ __html: html }} />
+				<p className='faq__answer static-content'>
+					<p dangerouslySetInnerHTML={{ __html: html }}></p>
+				</p>
 			</div>
 		);
 	}

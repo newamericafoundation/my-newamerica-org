@@ -45,20 +45,20 @@ class WeeklyWins extends React.Component {
 
 	renderWins() {
 		if (this.state.weeklyWins == null) { return (<Loader />); }
-		return this.state.weeklyWins.map((win) => {
+		return this.state.weeklyWins.map((win, i) => {
 			return (
-				<Win win={win} activeEdition={this.state.activeEdition} />
+				<Win win={win} activeEdition={this.state.activeEdition} key={i} />
 			);
 		});
 	}
 
 	renderWinOptions() {
 		if (this.state.weeklyWins == null) { return; }
-		return this.state.weeklyWins.map((win) => {
+		return this.state.weeklyWins.map((win, i) => {
 			var val = `Edition ${win.get('edition')}: ${win.get('title')}`,
 				isSelected = win.get('edition') === this.state.activeEdition;
 			return (
-				<option value={win.get('edition')} selected={isSelected}>{ val }</option>
+				<option value={win.get('edition')} selected={isSelected} key={i}>{ val }</option>
 			);
 		});
 	}

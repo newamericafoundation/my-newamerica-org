@@ -56,8 +56,9 @@ class StaffDirectory extends React.Component {
 
 	renderMembers() {
 		if (this.state.staffMembers == null) { return (<Loader />); }
-		return this.state.staffMembers.map((staffMember) => {
+		return this.state.staffMembers.map((staffMember, i) => {
 			return <StaffMember 
+				key={i}
 				staffMember={staffMember} 
 				searchTerm={this.state.searchTerm}
 				activeStaffMember={this.state.activeStaffMember}
@@ -164,9 +165,9 @@ class StaffMemberSummary extends React.Component {
 
 		var sameOfficeFloors = floor.getMatchingSiblingsByField('office');
 
-		var paths = sameOfficeFloors.map((sameOfficeFloor) => {
+		var paths = sameOfficeFloors.map((sameOfficeFloor, i) => {
 			var cls='page__svg-path' + ( (sameOfficeFloor === floor) ? ' page__svg-path--active' : '' );
-			return (<polygon className={ cls } points={ sameOfficeFloor.get('3d_schematic_svg_points') }></polygon>);
+			return (<polygon key={i} className={ cls } points={ sameOfficeFloor.get('3d_schematic_svg_points') }></polygon>);
 		});
 
 		return (

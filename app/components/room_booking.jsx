@@ -57,7 +57,7 @@ class RoomBooking extends React.Component {
 	}
 
 	handleRoomMouseLeave(room) {
-		console.log(room);
+		// console.log(room);
 	}
 
 	renderFloorForm() {
@@ -77,7 +77,7 @@ class RoomBooking extends React.Component {
 	renderFloorOptions() {
 		return floors.map((floor, i) => {
 			return (
-				<option value={ floor.get('id') }>{ floor.get('name') }</option>
+				<option key={i} value={ floor.get('id') }>{ floor.get('name') }</option>
 			);
 		});
 	}

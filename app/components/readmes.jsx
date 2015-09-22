@@ -45,20 +45,20 @@ class Readmes extends React.Component {
 
 	renderReadmes() {
 		if (this.state.readmes == null) { return (<Loader />); }
-		return this.state.readmes.map((readme) => {
+		return this.state.readmes.map((readme, i) => {
 			return (
-				<Readme readme={readme} activeEdition={this.state.activeEdition} />
+				<Readme key={i} readme={readme} activeEdition={this.state.activeEdition} />
 			);
 		});
 	}
 
 	renderReadmeOptions() {
 		if (this.state.readmes == null) { return; }
-		return this.state.readmes.map((readme) => {
+		return this.state.readmes.map((readme, i) => {
 			var val = `Edition ${readme.get('edition')}: ${readme.get('title')}`,
 				isSelected = readme.get('edition') === this.state.activeEdition;
 			return (
-				<option value={readme.get('edition')} selected={isSelected}>{ val }</option>
+				<option key={i} value={readme.get('edition')} selected={isSelected}>{ val }</option>
 			);
 		});
 	}

@@ -4313,6 +4313,8 @@ td, th {
     fill: #323232; }
     .page__svg-path--active {
       fill: #2dbbb3; }
+  .page--resources td {
+    width: 14.3%; }
   .page__title {
     text-align: center; }
   .page__section-title {
@@ -4885,11 +4887,11 @@ td, th {
 .atl__project-template-filter {
   padding-top: 5px; }
   .atl__project-template-filter > * {
-    margin: 20px auto;
+    margin: 5px auto;
     display: block; }
     @media only screen and (min-width: 1000px) {
       .atl__project-template-filter > * {
-        margin: 20px 0; } }
+        margin: 0; } }
 
 .atl__project-section-filter > * {
   display: inline-block; }

@@ -48,10 +48,10 @@ class Resources extends React.Component {
 
 		var grps = this.state.resources.group();
 
-		return Object.keys(grps).map((grpKey) => {
+		return Object.keys(grps).map((grpKey, i) => {
 			var grp = grps[grpKey];
 			if (!grp.containsSearchTermMatch(this.state.searchTerm)) { return; }
-			return <ResourceGroup searchTerm={this.state.searchTerm} section={grpKey} resources={grp} />
+			return <ResourceGroup key={i} searchTerm={this.state.searchTerm} section={grpKey} resources={grp} />
 		});
 		
 	}
@@ -70,8 +70,8 @@ class ResourceGroup extends React.Component {
 	}
 
 	renderResources() {
-		return this.props.resources.map((resource) => {
-			return (<Resource searchTerm={this.props.searchTerm} resource={resource} />);
+		return this.props.resources.map((resource, i) => {
+			return (<Resource key={i} searchTerm={this.props.searchTerm} resource={resource} />);
 		});
 	}
 
