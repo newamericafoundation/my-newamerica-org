@@ -1327,8 +1327,8 @@
         ]
     }, {
         "name": null,
-        "number": "838",
-        "id": "838",
+        "number": "850",
+        "id": "850",
         "capacity": null,
         "coordinates": [
             [26.0931, 18.8759],
@@ -1396,6 +1396,17 @@
     "name": "9th Floor, Washington DC",
     "balcony_coordinates": null,
     "rooms": [{
+        "name": null,
+        "number": "905C",
+        "id": "905C",
+        "capacity": null,
+        "coordinates": [
+            [3.2141, 82.756],
+            [13.2048, 82.756],
+            [13.2048, 75.7691],
+            [3.2141, 75.7691]
+        ]
+    }, {
         "name": null,
         "number": "918",
         "id": "918",
@@ -1544,8 +1555,8 @@
         ]
     }, {
         "name": null,
-        "number": "910",
-        "id": "910",
+        "number": "927",
+        "id": "927",
         "capacity": null,
         "coordinates": [
             [64.9804, 19.6476],
@@ -1555,8 +1566,8 @@
         ]
     }, {
         "name": null,
-        "number": "909",
-        "id": "909",
+        "number": "926",
+        "id": "926",
         "capacity": null,
         "coordinates": [
             [54.3849, 26.7112],
@@ -1566,8 +1577,8 @@
         ]
     }, {
         "name": null,
-        "number": "908",
-        "id": "908",
+        "number": "925",
+        "id": "925",
         "capacity": null,
         "coordinates": [
             [49.2231, 26.7112],
@@ -1577,8 +1588,8 @@
         ]
     }, {
         "name": null,
-        "number": "912",
-        "id": "912",
+        "number": "922",
+        "id": "922",
         "capacity": null,
         "coordinates": [
             [63.6899, 36.2878],
@@ -1588,8 +1599,8 @@
         ]
     }, {
         "name": null,
-        "number": "914",
-        "id": "914",
+        "number": "921",
+        "id": "921",
         "capacity": null,
         "coordinates": [
             [63.6899, 41.178],
@@ -1764,8 +1775,8 @@
         ]
     }, {
         "name": null,
-        "number": "942",
-        "id": "942",
+        "number": "917",
+        "id": "917",
         "capacity": null,
         "coordinates": [
             [55.6754, 55.1015],
@@ -1775,8 +1786,8 @@
         ]
     }, {
         "name": null,
-        "number": "941",
-        "id": "941",
+        "number": "930",
+        "id": "930",
         "capacity": null,
         "coordinates": [
             [70.0064, 59.3804],
@@ -1786,8 +1797,8 @@
         ]
     }, {
         "name": null,
-        "number": "939",
-        "id": "939",
+        "number": "931",
+        "id": "931",
         "capacity": null,
         "coordinates": [
             [70.0064, 65.0413],
@@ -1830,8 +1841,8 @@
         ]
     }, {
         "name": null,
-        "number": "936",
-        "id": "936",
+        "number": "933",
+        "id": "933",
         "capacity": null,
         "coordinates": [
             [88.888, 50.9584],
@@ -1852,8 +1863,8 @@
         ]
     }, {
         "name": null,
-        "number": "933",
-        "id": "933",
+        "number": "935",
+        "id": "935",
         "capacity": null,
         "coordinates": [
             [88.888, 37.9179],
@@ -1863,8 +1874,8 @@
         ]
     }, {
         "name": null,
-        "number": "932",
-        "id": "932",
+        "number": "936",
+        "id": "936",
         "capacity": null,
         "coordinates": [
             [88.888, 31.8731],
@@ -1874,8 +1885,8 @@
         ]
     }, {
         "name": null,
-        "number": "930",
-        "id": "930",
+        "number": "937",
+        "id": "937",
         "capacity": null,
         "coordinates": [
             [88.888, 25.7603],
@@ -1885,8 +1896,8 @@
         ]
     }, {
         "name": null,
-        "number": "929",
-        "id": "929",
+        "number": "938",
+        "id": "938",
         "capacity": null,
         "coordinates": [
             [88.888, 19.8513],
@@ -1896,8 +1907,8 @@
         ]
     }, {
         "name": null,
-        "number": "927",
-        "id": "927",
+        "number": "939",
+        "id": "939",
         "capacity": null,
         "coordinates": [
             [88.888, 12.584],
@@ -1907,8 +1918,8 @@
         ]
     }, {
         "name": null,
-        "number": "926",
-        "id": "926",
+        "number": "940",
+        "id": "940",
         "capacity": null,
         "coordinates": [
             [87.5296, 10.071],
@@ -1920,8 +1931,8 @@
         ]
     }, {
         "name": null,
-        "number": "925",
-        "id": "925",
+        "number": "941",
+        "id": "941",
         "capacity": null,
         "coordinates": [
             [80.8735, 10.071],
@@ -1931,8 +1942,8 @@
         ]
     }, {
         "name": null,
-        "number": "923",
-        "id": "923",
+        "number": "942",
+        "id": "942",
         "capacity": null,
         "coordinates": [
             [72.859, 10.071],
@@ -1942,8 +1953,8 @@
         ]
     }, {
         "name": null,
-        "number": "922",
-        "id": "922",
+        "number": "943",
+        "id": "943",
         "capacity": null,
         "coordinates": [
             [64.9804, 10.071],
@@ -1953,8 +1964,8 @@
         ]
     }, {
         "name": null,
-        "number": "946",
-        "id": "946",
+        "number": "907",
+        "id": "907",
         "capacity": null,
         "coordinates": [
             [22.5987, 36.0841],
@@ -1964,8 +1975,8 @@
         ]
     }, {
         "name": null,
-        "number": "947",
-        "id": "947",
+        "number": "906",
+        "id": "906",
         "capacity": null,
         "coordinates": [
             [17.441, 41.4497],
@@ -1974,10 +1985,10 @@
             [22.5987, 41.4497]
         ]
     }, {
-        "name": null,
+        "name": "9-Main-Events",
         "number": "944",
-        "id": "944",
-        "capacity": null,
+        "id": "944--9-Main-Events--150",
+        "capacity": 150,
         "coordinates": [
             [17.441, 65.0413],
             [17.441, 45.6607],
@@ -1987,10 +1998,10 @@
             [49.8343, 65.0413]
         ]
     }, {
-        "name": null,
-        "number": "904",
-        "id": "904",
-        "capacity": null,
+        "name": "9-Events",
+        "number": "945A",
+        "id": "945A--9-Events--80",
+        "capacity": 80,
         "coordinates": [
             [37.8126, 15.9799],
             [37.8126, 3.5899],
@@ -1998,10 +2009,10 @@
             [64.9804, 15.9799]
         ]
     }, {
-        "name": null,
-        "number": "959",
-        "id": "959",
-        "capacity": null,
+        "name": "9-Medium-Southeast",
+        "number": "901",
+        "id": "901--9-Medium-Southeast--8",
+        "capacity": 8,
         "coordinates": [
             [14.72, 15.5724],
             [18.0481, 15.5724],
@@ -2034,8 +2045,8 @@
         ]
     }, {
         "name": null,
-        "number": "955",
-        "id": "955",
+        "number": "902",
+        "id": "902",
         "capacity": null,
         "coordinates": [
             [13.2048, 43.3514],
@@ -2056,8 +2067,8 @@
         ]
     }, {
         "name": null,
-        "number": "953",
-        "id": "953",
+        "number": "903",
+        "id": "903",
         "capacity": null,
         "coordinates": [
             [13.2048, 54.2185],
@@ -2069,8 +2080,8 @@
         ]
     }, {
         "name": null,
-        "number": "952",
-        "id": "952",
+        "number": "904",
+        "id": "904",
         "capacity": null,
         "coordinates": [
             [13.2048, 61.8934],
@@ -2080,8 +2091,8 @@
         ]
     }, {
         "name": null,
-        "number": "951",
-        "id": "951",
+        "number": "905A",
+        "id": "905A",
         "capacity": null,
         "coordinates": [
             [13.2048, 68.7823],
@@ -2091,8 +2102,8 @@
         ]
     }, {
         "name": null,
-        "number": "950",
-        "id": "950",
+        "number": "905B",
+        "id": "905B",
         "capacity": null,
         "coordinates": [
             [3.2141, 75.7691],

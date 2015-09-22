@@ -30,7 +30,7 @@ class RoomBooking extends React.Component {
 					<div className='page__content__logo'>
 						<Icons.Key />
 					</div>
-					<h1 className="title">Floorplans</h1>
+					<h1 className="title">Floor Plans</h1>
 
 					<p>Please select floor:</p>
 					{ this.renderFloorForm() }

@@ -52,7 +52,7 @@ class SideBar extends React.Component {
 				reactIconName: 'people'
 			},
 			{
-				title: 'Floorplans',
+				title: 'Floor Plans',
 				url: '/floorplans',
 				reactIconName: 'key'
 			},
