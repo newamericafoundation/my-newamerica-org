@@ -3,7 +3,7 @@ import base from './base.js';
 class Model extends base.Model {
 
 	isPublic() {
-		return (this.capacity != null);
+		return (this.get('capacity') != null);
 	}
 
 }

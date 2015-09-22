@@ -52,8 +52,8 @@ class SideBar extends React.Component {
 				reactIconName: 'people'
 			},
 			{
-				title: 'Room Booking',
-				url: '/room-booking',
+				title: 'Floorplans',
+				url: '/floorplans',
 				reactIconName: 'key'
 			},
 			{

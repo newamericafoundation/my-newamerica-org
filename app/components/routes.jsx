@@ -30,7 +30,7 @@ var routes = (
 		<Route path='staff-directory' handler={StaffDirectory} />
 		<Route path='weekly-wins' handler={WeeklyWins} />
 		<Route path='readmes' handler={Readmes} />
-		<Route path='room-booking' handler={RoomBooking} />
+		<Route path='floorplans' handler={RoomBooking} />
 		<Route path='resources' handler={Resources} />
 		<Route path='faq' handler={Faq} />
 		<Redirect from="*" to="dashboard" />

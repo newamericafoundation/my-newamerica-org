@@ -790,9 +790,6 @@ th {
     outline: 0;
     opacity: 1; }
 
-.feature-boxes {
-  text-align: center; }
-
 .feature-box {
   cursor: pointer;
   width: 180px;
@@ -4240,7 +4237,8 @@ td, th {
 
 .floorplans {
   background: none;
-  padding: 0; }
+  padding: 0;
+  position: relative; }
   .floorplans__floor {
     width: 100%;
     height: 400px;
@@ -4255,14 +4253,36 @@ td, th {
     z-index: 0; }
   .floorplans__room {
     stroke-width: 0.05px;
-    stroke: #2dbbb3;
-    fill: map-palette((base: #323232, text: rgba(51, 50, 50, 0.9), light: #4a4a4a, dark: #1e1e1e), base);
-    opacity: 0.2;
+    stroke: #b0b0b0;
+    fill: #b0b0b0;
+    opacity: 0.55;
     cursor: pointer; }
-    .floorplans__room:hover,
-    .floorplans__room--active {
-      opacity: 1;
-      fill: #2dbbb3; }
+    .floorplans__room:hover, .floorplans__room--active {
+      opacity: 1; }
+    .floorplans__room--public {
+      fill: #2dbbb3;
+      stroke: #2dbbb3; }
+  .floorplans__tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    top: 120px;
+    right: 10px;
+    width: 170px;
+    padding: 10px;
+    height: 170px;
+    border-radius: 100%;
+    text-align: center; }
+    .floorplans__tooltip > div {
+      margin: auto; }
+    .floorplans__tooltip h1 {
+      font-size: 24px;
+      font-size: 1.5rem;
+      margin: 5px; }
+    .floorplans__tooltip p {
+      margin: 5px;
+      font-size: 16px;
+      font-size: 1rem; }
 
 .staff .floorplans {
   display: inline-block; }

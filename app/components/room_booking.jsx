@@ -18,9 +18,9 @@ class RoomBooking extends React.Component {
 			activeRoom = activeFloor.get('rooms').models[0];
 
 		this.state = {
-			activeFloorId: activeFloor.get('id'),
-			activeRoomId: activeRoom.get('id')
+			activeRoom: activeRoom
 		};
+
 	}
 
 	render() {
@@ -30,33 +30,34 @@ class RoomBooking extends React.Component {
 					<div className='page__content__logo'>
 						<Icons.Key />
 					</div>
-					<h1 className="title">Room Booking</h1>
+					<h1 className="title">Floorplans</h1>
 
-					<p>Select Floor Here</p>
+					<p>Please select floor:</p>
 					{ this.renderFloorForm() }
 
 					<FloorPlans 
 						floors={floors} 
-						activeRoomId={this.state.activeRoomId} 
+						activeRoom={this.state.activeRoom} 
 						handleRoomClick={this.handleRoomClick.bind(this)}
 						handleRoomMouseEnter={this.handleRoomMouseEnter.bind(this)}
 						handleRoomMouseLeave={this.handleRoomMouseLeave.bind(this)}
 					/>
+
 				</div>
 			</div>
 		);
 	}
 
-	handleRoomClick(roomId) {
-		this.setState({ activeRoomId: roomId });
+	handleRoomClick(room) {
+		this.setState({ activeRoom: room });
 	}
 
-	handleRoomMouseEnter(roomId) {
-		this.setState({ activeRoomId: roomId });
+	handleRoomMouseEnter(room) {
+		this.setState({ activeRoom: room });
 	}
 
-	handleRoomMouseLeave(roomId) {
-		console.log(roomId);
+	handleRoomMouseLeave(room) {
+		console.log(room);
 	}
 
 	renderFloorForm() {
@@ -70,13 +71,13 @@ class RoomBooking extends React.Component {
 	changeActiveFloor(e) {
 		var activeFloorId = e.target.value,
 			activeFloor = floors.findWhere({ id: activeFloorId });
-		this.setState({ activeRoomId: activeFloor.get('rooms').models[0].get('id') });
+		this.setState({ activeRoom: activeFloor.get('rooms').models[0] });
 	}
 
 	renderFloorOptions() {
 		return floors.map((floor, i) => {
 			return (
-				<option value={ floor.get('id') }>{ floor.getDisplayName() }</option>
+				<option value={ floor.get('id') }>{ floor.get('name') }</option>
 			);
 		});
 	}

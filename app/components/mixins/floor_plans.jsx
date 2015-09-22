@@ -20,6 +20,7 @@ class FloorPlans extends React.Component {
 		return (
 			<div className='floorplans'>
 				{ this.renderFloors() }
+				{ this.renderActiveRoomSummary() }
 			</div>
 		);
 	}
@@ -30,6 +31,18 @@ class FloorPlans extends React.Component {
 				<Floor {...this.props} floor={floor} key={i} />
 			);
 		});
+	}
+
+	renderActiveRoomSummary() {
+		var room = this.props.activeRoom;
+		return (
+			<div className='floorplans__tooltip'>
+				<div>
+					<h1>{ room.get('name') || room.get('id') }</h1>
+					<p>{ room.isPublic() ? `Capacity: ${room.get('capacity')}.` : null }</p>
+				</div>
+			</div>
+		);
 	}
 
 }
@@ -58,9 +71,7 @@ class Floor extends React.Component {
 	}
 
 	isActive() {
-		var floor = this.props.floor,
-			floors = floor.collection;
-		return (floors.findByRoom(this.props.activeRoomId) === floor);
+		return (this.props.activeRoom && (this.props.activeRoom.parent === this.props.floor));
 	}
 
 }
@@ -73,7 +84,8 @@ class Room extends React.Component {
 		var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates')),
 			cls = classNames({
 				'floorplans__room': true,
-				'floorplans__room--active': this.isActive()
+				'floorplans__room--active': this.isActive(),
+				'floorplans__room--public': this.props.room.isPublic()
 			});
 		return (
 			<polygon 
@@ -86,26 +98,25 @@ class Room extends React.Component {
 		);
 	}
 
+	isActive() {
+		return (this.props.room === this.props.activeRoom);
+	}
 
 	// If there are event handlers passed down to the component, run those passing along the room id.
 
 	handleClick() {
 		var fn = this.props.handleRoomClick;
-		if (fn) { fn(this.props.room.get('id')); }
+		if (fn) { fn(this.props.room); }
 	}
 
 	handleMouseEnter() {
 		var fn = this.props.handleRoomMouseEnter;
-		if (fn) { fn(this.props.room.get('id')); }
+		if (fn) { fn(this.props.room); }
 	}
 
 	handleMouseLeave() {
 		var fn = this.props.handleRoomMouseLeave;
-		if (fn) { fn(this.props.room.get('id')); }
-	}
-
-	isActive() {
-		return (this.props.room.get('id') === this.props.activeRoomId);
+		if (fn) { fn(this.props.room); }
 	}
 
 }
