@@ -5,11 +5,7 @@ import classNames from 'classnames';
 import { Jazz, Salesforce, Adp } from './mixins/icons.jsx';
 
 var quickLinks = [
-	// {
-	// 	name: 'Set as homepage',
-	// 	icon: Jazz,
-	// 	clickHandlerName: 'setAsHomepage'
-	// },
+
 	{
 		name: 'My Timecard',
 		icon: Adp,

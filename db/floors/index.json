@@ -18,6 +18,8 @@
     "balcony_coordinates": null,
     "rooms": [{
         "id": "828",
+        "name": "8-Medium-",
+        "capacity": 8,
         "coordinates": [
             [30.0264, 65.3674],
             [30.0264, 58.4801],

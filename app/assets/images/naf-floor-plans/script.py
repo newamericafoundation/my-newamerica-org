@@ -21,8 +21,20 @@ def get_rooms(base_layer):
 	layer_name = base_layer + '::rooms'
 	geometry = rs.ObjectsByLayer(layer_name)
 	for item in geometry:
+		room_id = rs.ObjectName(item)
+		split_room_id = room_id.split('--')
+		number = split_room_id[0]
+		name = None
+		capacity = None
+		if (len(split_room_id) > 1):
+			name = split_room_id[1]
+		if (len(split_room_id) > 2):
+			capacity = int(split_room_id[2])
 		room = {
-			'name': rs.ObjectName(item),
+			'id': room_id,
+			'number': number,
+			'name': name,
+			'capacity': capacity,
 			'coordinates': get_closed_polyline_coordinates(item)
 		}
 		rooms.append(room)
@@ -38,6 +50,7 @@ def get_balcony_coordinates(base_layer):
 def get_outer_wall_coordinates(base_layer):
 	layer_name = base_layer + '::outer_wall'
 	outer_wall = rs.ObjectsByLayer(layer_name)[0]
+
 	return get_closed_polyline_coordinates(outer_wall)
 
 # Get a single floor.

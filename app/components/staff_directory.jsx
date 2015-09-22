@@ -9,7 +9,7 @@ import { Model, Collection } from './../models/floor.js';
 
 var floors = new Collection(floorsData);
 
-class StaffRegistry extends React.Component {
+class StaffDirectory extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -25,7 +25,7 @@ class StaffRegistry extends React.Component {
 					<div className='page__content__logo'>
 						<Icons.People />
 					</div>
-					<h1 className='title'>Staff Registry</h1>
+					<h1 className='title'>Staff Directory</h1>
 
 					<input placeholder="Search" onChange={ this.setSearchTerm.bind(this) }></input>
 
@@ -110,7 +110,7 @@ class StaffRegistry extends React.Component {
 
 }
 
-StaffRegistry.contextTypes = {
+StaffDirectory.contextTypes = {
 	router: React.PropTypes.func
 };
 
@@ -255,4 +255,4 @@ class StaffMember extends React.Component {
 
 }
 
-module.exports = StaffRegistry;
+export default StaffDirectory;

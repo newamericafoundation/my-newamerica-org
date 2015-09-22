@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 var toSvgPointsDef = function(coordinates) {
 	var points = coordinates.map((point) => {
@@ -69,10 +70,14 @@ class Floor extends React.Component {
 class Room extends React.Component {
 
 	render() {
-		var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates'));
+		var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates')),
+			cls = classNames({
+				'floorplans__room': true,
+				'floorplans__room--active': this.isActive()
+			});
 		return (
 			<polygon 
-				className={ 'floorplans__room ' + this.getModifierClass() } 
+				className={ cls } 
 				points={ polygonPoints } 
 				onClick={ this.handleClick.bind(this) } 
 				onMouseEnter={ this.handleMouseEnter.bind(this) }
@@ -80,6 +85,9 @@ class Room extends React.Component {
 			/>
 		);
 	}
+
+
+	// If there are event handlers passed down to the component, run those passing along the room id.
 
 	handleClick() {
 		var fn = this.props.handleRoomClick;
@@ -94,11 +102,6 @@ class Room extends React.Component {
 	handleMouseLeave() {
 		var fn = this.props.handleRoomMouseLeave;
 		if (fn) { fn(this.props.room.get('id')); }
-	}
-
-	getModifierClass() {
-		if (this.isActive()) { return 'floorplans__room--active'; }
-		return '';
 	}
 
 	isActive() {

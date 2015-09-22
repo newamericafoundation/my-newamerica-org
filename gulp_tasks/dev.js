@@ -13,7 +13,7 @@ gulp.task('dev', function() {
     nodemon({
         script: './app.js',
         env: env,
-        ext: 'css jsx js jade',
+        ext: 'css js jade',
         tasks: []
     })
     .on('restart', function() { 

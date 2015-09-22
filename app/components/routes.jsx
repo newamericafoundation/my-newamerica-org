@@ -6,7 +6,7 @@ import Header from './mixins/header.jsx';
 
 import Dashboard from './dashboard.jsx';
 import RoomBooking from './room_booking.jsx';
-import StaffRegistry from './staff_registry.jsx';
+import StaffDirectory from './staff_directory.jsx';
 import WeeklyWins from './weekly_wins.jsx';
 import Resources from './resources.jsx';
 import Faq from './faq.jsx';
@@ -27,7 +27,7 @@ var routes = (
 	<Route handler={App}>
 		<Route name='root' path='' handler={Dashboard} />
 		<Route name='dashboard' path='dashboard' handler={Dashboard} />
-		<Route path='staff' handler={StaffRegistry} />
+		<Route path='staff-directory' handler={StaffDirectory} />
 		<Route path='weekly-wins' handler={WeeklyWins} />
 		<Route path='readmes' handler={Readmes} />
 		<Route path='room-booking' handler={RoomBooking} />

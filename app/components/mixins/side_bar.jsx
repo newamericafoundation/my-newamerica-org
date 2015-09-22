@@ -47,8 +47,8 @@ class SideBar extends React.Component {
 				reactIconName: 'readme'
 			},
 			{
-				title: 'Staff',
-				url: '/staff',
+				title: 'Staff Directory',
+				url: '/staff-directory',
 				reactIconName: 'people'
 			},
 			{
