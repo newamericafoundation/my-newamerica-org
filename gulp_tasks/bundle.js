@@ -31,7 +31,7 @@ var writeBundle = (instance) => {
         .pipe(gulp.dest('./public/assets/scripts'));
 };
 
-gulp.task('bundle-once', () => {
+gulp.task('bundle', () => {
     var w = getBrowserifyBundler();
     return writeBundle(w);
 });

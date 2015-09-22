@@ -8,4 +8,8 @@ block content
 	script.
 		window.user = !{JSON.stringify(user)};
 
-	script(src="assets/scripts/bundle.js")
+	- if(process.env.NODE_ENV === 'development') {
+		script(src="assets/scripts/bundle.js")
+	- } else if (process.env.NODE_ENV === 'production') {
+		script(src="assets/scripts/bundle.min.js")
+	- }

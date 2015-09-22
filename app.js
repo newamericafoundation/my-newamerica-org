@@ -19,10 +19,11 @@ var app = express();
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'jade');
 
-// Log query urls.
-// app.use(require('./app/middleware/log.js'));
+// GZip serving middleware must be declared before static folder declaration. 
+app.get([ '*.js' ], require('./app/middleware/serve_gzip.js'));
 
 app.use(express.static('./public'));
+
 app.use(cookieParser());
 app.use(methodOverride());
 app.use(session({ 

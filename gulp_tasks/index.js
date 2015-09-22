@@ -6,5 +6,4 @@ require('./spec.js');
 require('./dev.js');
 require('./deploy.js');
 require('./image_min.js');
-
-gulp.task('default', [ ]);
+require('./default.js');

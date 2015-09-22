@@ -59,14 +59,14 @@ class Dashboard extends React.Component {
 	renderQuickLinks() {
 		return quickLinks.map((item) => {
 			return (
-				<div className='icon-button' onClick={ this.handleQuickLinkClick.bind(this, item) }>
+				<a className='icon-button' href={item.url} target="_blank" >
 					<div className='icon-button__icon'>
 						{ React.createElement(item.icon) }
 					</div>
 					<p className='icon-button__text'>
 						{ item.name }
 					</p>
-				</div>
+				</a>
 			);
 		});
 	}
@@ -84,20 +84,6 @@ class Dashboard extends React.Component {
 
 	getGreeting() {
 		return `Good ${this.getTimeOfDay()}, ${this.getDisplayName()}!`;
-	}
-
-	handleQuickLinkClick(item) {
-		console.log('clicked');
-		if (this[item.clickHandlerName]) {
-			this[item.clickHandlerName]();
-		}
-	}
-
-	setAsHomepage() {
-		if (document.body.setHomePage) {
-			document.body.style.behavior='url(#default#homepage)';
-	   		document.body.setHomePage('http://my.newamerica.org');
-	   	}
 	}
 
 	setImageLoadedState() {
