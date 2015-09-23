@@ -1,8 +1,8 @@
 import React from 'react';
-import Loader from './mixins/loader.jsx';
-import Icons from './mixins/icons.jsx';
+import Loader from './../general/loader.jsx';
+import Icons from './../general/icons.jsx';
 import moment from 'moment';
-import { Model, Collection } from './../models/readme.js';
+import { Model, Collection } from './../../models/readme.js';
 
 class Readmes extends React.Component {
 	

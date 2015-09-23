@@ -1,10 +1,13 @@
 import React from 'react';
-import Icons from './mixins/icons.jsx';
-import FloorPlans from './mixins/floor_plans.jsx';
 import moment from 'moment';
-import floorsData from './../../db/floors/index.json';
-import Loader from './mixins/loader.jsx';
-import { Model, Collection } from './../models/floor.js';
+
+import floorsData from './../../../db/floors/index.json';
+import { Model, Collection } from './../../models/floor.js';
+
+import Loader from './../general/loader.jsx';
+import Icons from './../general/icons.jsx';
+import FloorPlans from './../general/floor_plans.jsx';
+
 
 var floors = new Collection(floorsData);
 

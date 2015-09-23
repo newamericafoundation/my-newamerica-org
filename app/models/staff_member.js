@@ -8,9 +8,12 @@ class Model extends base.Model {
 }
 
 class Collection extends base.Collection {
+
 	get model() { return Model; }
-	get url() { return 'api/v1/staff-members'; }
-	get dataFilePath() { return __dirname + '/../../db/staff_members/index.json'; }
+	get apiUrl() { return '/api/v1/staff-members'; }
+	get dbCollection() { return 'staff_members'; }
+	get dataFilePath() { return __dirname + '/../../db/seeds/staff_members/index.json'; }
+
 }
 
 export default {

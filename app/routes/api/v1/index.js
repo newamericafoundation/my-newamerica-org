@@ -9,7 +9,8 @@ var resources = [ 'floor', 'staff-member', 'resource', 'weekly-win', 'faq', 'rea
 var currentAuthMiddleware = (process.env.NODE_ENV === 'development') ? authMiddleware.ensureNothing : authMiddleware.ensureAuthenticated;
 
 resources.forEach((name) => {
-	var path = './../../../models/' + name.replace(/-/g, '_') + '.js';
+	var fileName = name.replace(/-/g, '_');
+	var path = './../../../models/' + fileName + '.js';
 	var Collection = require(path).Collection;
 
 	router.get('/' + Inflector.pluralize(name), currentAuthMiddleware, (req, res) => {

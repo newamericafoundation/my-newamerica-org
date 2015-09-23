@@ -19,8 +19,9 @@ class Model extends base.Model {
 
 class Collection extends base.Collection {
 	get model() { return Model; }
-	get url() { return 'api/v1/faqs'; }
-	get dataFilePath() { return __dirname + '/../../db/faqs/index.json'; }
+	get apiUrl() { return '/api/v1/faqs'; }
+	get dbCollection() { return 'faqs'; }
+	get dataFilePath() { return __dirname + '/../../db/seeds/faqs/index.json'; }
 }
 
 export default {

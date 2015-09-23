@@ -20,8 +20,9 @@ class Model extends base.Model {
 
 class Collection extends base.Collection {
 	get model() { return Model; }
-	get url() { return 'api/v1/resources'; }
-	get dataFilePath() { return __dirname + '/../../db/resources/index.json'; }
+	get apiUrl() { return '/api/v1/resources'; }
+	get dbCollection() { return 'resources'; }
+	get dataFilePath() { return __dirname + '/../../db/seeds/resources/index.json'; }
 }
 
 export default {

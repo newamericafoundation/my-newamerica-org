@@ -12,7 +12,6 @@ var express = require('express'),
 // Configure authentication.
 require('./config/passport_config.js');
 
-
 var app = express();
 
 // configure Express
@@ -31,6 +30,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session({
     resave: false,

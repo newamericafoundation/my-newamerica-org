@@ -1,8 +1,9 @@
 import React from 'react';
-import Loader from './mixins/loader.jsx';
-import Icons from './mixins/icons.jsx';
 import moment from 'moment';
-import { Model, Collection } from './../models/weekly_win.js';
+
+import Loader from './../general/loader.jsx';
+import Icons from './../general/icons.jsx';
+import { Model, Collection } from './../../models/weekly_win.js';
 
 class WeeklyWins extends React.Component {
 	

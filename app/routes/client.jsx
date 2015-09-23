@@ -2,15 +2,15 @@ import React from 'react';
 import { Router, Route, RouteHandler, Redirect } from 'react-router';
 import { history } from 'react-router/lib/History';
 
-import Header from './mixins/header.jsx';
+import Header from './../components/general/header.jsx';
 
-import Dashboard from './dashboard.jsx';
-import RoomBooking from './room_booking.jsx';
-import StaffDirectory from './staff_directory.jsx';
-import WeeklyWins from './weekly_wins.jsx';
-import Resources from './resources.jsx';
-import Faq from './faq.jsx';
-import Readmes from './readmes.jsx';
+import Dashboard from './../components/route_handlers/dashboard.jsx';
+import RoomBooking from './../components/route_handlers/room_booking.jsx';
+import StaffDirectory from './../components/route_handlers/staff_directory.jsx';
+import WeeklyWins from './../components/route_handlers/weekly_wins.jsx';
+import Resources from './../components/route_handlers/resources.jsx';
+import Faq from './../components/route_handlers/faq.jsx';
+import Readmes from './../components/route_handlers/readmes.jsx';
 
 class App extends React.Component {
 	render() {

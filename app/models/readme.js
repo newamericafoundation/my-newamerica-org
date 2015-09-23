@@ -1,12 +1,18 @@
 import base from './base.js';
 
 class Model extends base.Model {
+
+	get apiUrlRoot() { return '/api/v1/readmes'; }
+
 }
 
 class Collection extends base.Collection {
+
 	get model() { return Model; }
-	get url() { return 'api/v1/readmes'; }
-	get dataFilePath() { return __dirname + '/../../db/readmes/index.json'; }
+	get apiUrl() { return '/api/v1/readmes'; }
+	get dbCollection() { return 'readmes'; }
+	get dataFilePath() { return __dirname + '/../../db/seeds/readmes/index.json'; }
+
 }
 
 export default {

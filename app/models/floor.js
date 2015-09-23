@@ -23,9 +23,9 @@ class Collection extends base.Collection {
 
 	get model() { return Model; }
 
-	get dataFilePath() { return __dirname + '/../../db/floors/index.json'; }
+	get dataFilePath() { return __dirname + '/../../db/seeds/floors/index.json'; }
 
-	get url() { return 'api/v1/floors'; }
+	get url() { return '/api/v1/floors'; }
 
 	findByRoom(roomId) {
 		var matchingModels = [];

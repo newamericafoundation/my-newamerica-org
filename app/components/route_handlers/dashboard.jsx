@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import Loader from './mixins/loader.jsx';
+import Loader from './../general/loader.jsx';
 import classNames from 'classnames';
-import { Jazz, Salesforce, Adp } from './mixins/icons.jsx';
+import { Jazz, Salesforce, Adp } from './../general/icons.jsx';
 
 var quickLinks = [
 

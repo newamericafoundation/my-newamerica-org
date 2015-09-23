@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import Icons from './mixins/icons.jsx';
-import Loader from './mixins/loader.jsx';
-import { Model, Collection } from './../models/resource.js';
+import Icons from './../general/icons.jsx';
+import Loader from './../general/loader.jsx';
+import { Model, Collection } from './../../models/resource.js';
 
 class Resources extends React.Component {
 	

@@ -2,6 +2,39 @@ import React from 'react';
 import Icons from './icons.jsx';
 import { Link } from 'react-router';
 
+var buttons = [
+	{
+		title: 'Wins',
+		url: '/weekly-wins',
+		reactIconName: 'trophy'
+	},
+	{
+		title: 'Read-Me',
+		url: '/readmes',
+		reactIconName: 'readme'
+	},
+	{
+		title: 'Staff Directory',
+		url: '/staff-directory',
+		reactIconName: 'people'
+	},
+	{
+		title: 'Floor Plans',
+		url: '/floorplans',
+		reactIconName: 'key'
+	},
+	{
+		title: 'Resources',
+		url: '/resources',
+		reactIconName: 'page'
+	},
+	{
+		title: 'Moving FAQ',
+		url: '/faq',
+		reactIconName: 'building'
+	}
+];
+
 class SideBar extends React.Component {
 
 	constructor() {
@@ -25,48 +58,19 @@ class SideBar extends React.Component {
 	}
 
 	renderButtons() {
-		return this.getButtons().map((button, i) => {
-			return <SideBarButton button={button} changeTitle={this.changeTitle.bind(this)} key={i} />;;
+		return buttons.map((button, i) => {
+			return (
+				<SideBarButton 
+					button={button} 
+					changeTitle={this.changeTitle.bind(this)} 
+					key={i} 
+				/>
+			);
 		});
 	}
 
 	changeTitle(title) {
 		this.setState({ title: title });
-	}
-
-	getButtons() {
-		return [
-			{
-				title: 'Wins',
-				url: '/weekly-wins',
-				reactIconName: 'trophy'
-			},
-			{
-				title: 'Read-Me',
-				url: '/readmes',
-				reactIconName: 'readme'
-			},
-			{
-				title: 'Staff Directory',
-				url: '/staff-directory',
-				reactIconName: 'people'
-			},
-			{
-				title: 'Floor Plans',
-				url: '/floorplans',
-				reactIconName: 'key'
-			},
-			{
-				title: 'Resources',
-				url: '/resources',
-				reactIconName: 'page'
-			},
-			{
-				title: 'Moving FAQ',
-				url: '/faq',
-				reactIconName: 'building'
-			}
-		];
 	}
 
 }

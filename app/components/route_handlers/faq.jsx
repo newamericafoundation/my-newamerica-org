@@ -1,9 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import Icons from './mixins/icons.jsx';
-import Loader from './mixins/loader.jsx';
 import marked from 'marked';
-import { Model, Collection } from './../models/faq.js';
+
+import Icons from './../general/icons.jsx';
+import Loader from './../general/loader.jsx';
+
+import { Model, Collection } from './../../models/faq.js';
 
 class Faq extends React.Component {
 	
