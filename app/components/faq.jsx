@@ -93,9 +93,10 @@ class FaqItem extends React.Component {
 		return (
 			<div className='faq'>
 				<p className='faq__question'>{ faq.get('question') }</p>
-				<p className='faq__answer static-content'>
-					<p dangerouslySetInnerHTML={{ __html: html }}></p>
-				</p>
+				<div 
+					className='faq__answer static-content'
+					dangerouslySetInnerHTML={{ __html: html }}
+				/>
 			</div>
 		);
 	}

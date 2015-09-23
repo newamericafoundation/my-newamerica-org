@@ -1,3 +1,5 @@
+# Utility script transforming floorplans drawn and annotated in Rhinoceros 3d into the JSON format used by React to render interactive floor plans in the browser.
+
 import math
 import string
 import json
@@ -55,8 +57,10 @@ def get_outer_wall_coordinates(base_layer):
 
 # Get a single floor.
 def get_floor(base_layer):
+	split_base_layer = base_layer.split('--')
 	return {
-		"name": base_layer,
+		"id": split_base_layer[0],
+		"name": split_base_layer[1],
 		"outer_wall_coordinates": get_outer_wall_coordinates(base_layer),
 		"balcony_coordinates": get_balcony_coordinates(base_layer),
 		"rooms": get_rooms(base_layer)
@@ -80,6 +84,13 @@ def write_file(file_name, content):
 	f.close()
 
 def Main():
-	write_file('exp.json', json.dumps(get_floors([ 'dc_08', 'dc_09', 'dc_10', 'dc_11' ])))
+	# Layer names are built up by concatenating floor id and floor name using -- as a separator.
+	floors = [
+		'dc_08--8th Floor, Washington, DC', 
+		'dc_09--9th Floor, Washington, DC', 
+		'dc_10--10th Floor, Washington, DC', 
+		'dc_11--11th Floor, Washington, DC'
+	]
+	write_file('exp.json', json.dumps(get_floors(floors)))
 
 Main()
