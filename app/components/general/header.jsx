@@ -3,6 +3,7 @@ import SideBar from './side_bar.jsx';
 import { Link } from 'react-router';
 import { Naf } from './icons.jsx';
 
+
 class Header extends React.Component {
 
 	render() {

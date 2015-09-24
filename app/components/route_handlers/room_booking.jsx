@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import floorsData from './../../../db/floors/index.json';
+import floorsData from './../../../db/seeds/floors/index.json';
 import { Model, Collection } from './../../models/floor.js';
 
 import Loader from './../general/loader.jsx';

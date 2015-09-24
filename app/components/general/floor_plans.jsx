@@ -8,7 +8,6 @@ var toSvgPointsDef = function(coordinates) {
 	return points.join(',');
 };
 
-
 // Floor plans component.
 class FloorPlans extends React.Component {
 

@@ -3,7 +3,7 @@
 var React = require('react');
 var Router = require('react-router');
 
-var routes = require('./router/client.jsx');
+var routes = require('./routes/client.jsx');
 
 console.log('Hi, Mom!');
 
