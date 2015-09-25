@@ -17,7 +17,7 @@ var browserifyArgs = {
 var getBrowserifyBundler = () => {
     var args = _.extend(browserifyArgs, watchify.args, { debug: true });
     var b = browserify(args);
-    return b.transform(babelify);
+    return b.transform(babelify.configure({ optional: [ 'runtime' ] }));
 };
 
 var getWatchifyBundler = () => {
