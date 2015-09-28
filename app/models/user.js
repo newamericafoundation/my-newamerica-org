@@ -2,7 +2,6 @@
 
 import _ from 'underscore';
 import Backbone from 'backbone';
-import bcrypt from 'bcrypt';
 import dbConnector from './../../db/connector.js';
 
 class Model extends Backbone.Model {
@@ -21,16 +20,6 @@ class Model extends Backbone.Model {
 			delete raw._id;
 		}
 		return raw;
-	}
-
-	setEncryptedFieldSync(key, value) {
-		var salt = bcrypt.genSaltSync(10);
-		var hash = bcrypt.hashSync(value, salt);
-		this.set('encrypted_' + key, hash);
-	}
-
-	compareEncryptedFieldSync(key, value) {
-		return bcrypt.compareSync(value, this.get('encrypted_' + key));
 	}
 
 	toMongoJSON() {
@@ -61,7 +50,7 @@ class Model extends Backbone.Model {
 
 			return dbConnector.then((db) => {
 
-				var collection = db.collection('users');
+				var collection = db.collection('intranet_users');
 
 				collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
 
@@ -83,7 +72,7 @@ class Model extends Backbone.Model {
 
 			return dbConnector.then((db) => {
 
-				var collection = db.collection('users'),
+				var collection = db.collection('intranet_users'),
 					cursor = collection.find({ _id: this.get('id') });
 
 				cursor.toArray((err, json) => {

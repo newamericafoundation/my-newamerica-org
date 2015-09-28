@@ -4,8 +4,9 @@ import liveReload from 'gulp-livereload';
 import * as env from './../../secrets/intranet.json';
 import path from 'path';
 import './bundle.js';
+import util from 'gulp-util';
 
-env.NODE_ENV = 'development';
+env.NODE_ENV = util.env.production ? 'production' : 'development';
 
 gulp.task('dev', function() {
     liveReload.listen();

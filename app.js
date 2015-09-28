@@ -4,15 +4,20 @@ require("babel/register");
 var express = require('express'),
     passport = require('passport'),
     cookieParser = require('cookie-parser'),
+    connectMongo = require('connect-mongo'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     session = require('express-session'),
+    dbConnector = require('./db/connector.js'),
     router = require('./app/routes/index.js');
 
 // Configure authentication.
 require('./config/passport_config.js');
 
-var app = express();
+var env = process.env.NODE_ENV,
+    app = express(),
+    MongoStore = connectMongo(session),
+    port = process.env.PORT || 3000;
 
 // configure Express
 app.set('views', __dirname + '/app/views');
@@ -23,28 +28,38 @@ app.get([ '*.js' ], require('./app/middleware/serve_gzip.js'));
 
 app.use(express.static('./public'));
 
-app.use(cookieParser());
 app.use(methodOverride());
-app.use(session({ 
-    secret: 'Big_Secret',
-    resave: false,
-    saveUninitialized: false
-}));
+app.use(cookieParser());
 
-app.use(passport.initialize());
-app.use(passport.session({
-    resave: false,
-    saveUninitialized: false
-}));
+dbConnector.then(function(db) {
 
-// Require to compile icons into React components.
-// require('./util/icon_parser.js');
+    // Initialize session with database storage.
+    app.use(session({
+        secret: 'Super_Duper_Big_Secret',
+        saveUninitialized: false,
+        resave: true,
+        store: new MongoStore({ 
+            db: db,
+            collection: 'intranet_sessions',
+            stringify: false
+        }),
+        cookie: { maxAge: 1 * 3600 * 1000 }
+    }));
 
-// Use main router.
-app.use(router);
+    app.use(passport.initialize());
+    app.use(passport.session({
+        resave: true,
+        saveUninitialized: false
+    }));
 
-var port = process.env.PORT || 3000;
+    // Require to compile icons into React components.
+    // require('./util/icon_parser.js');
 
-app.listen(port, function() {
-    console.log('Listening on port ' + port + '.')
+    // Use main router.
+    app.use(router);
+
+    app.listen(port, function() {
+        console.log('Listening on port ' + port + '.')
+    });
+
 });

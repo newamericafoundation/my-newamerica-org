@@ -27,7 +27,6 @@ var getWatchifyBundler = () => {
 var writeBundle = (instance) => {
     return instance.bundle()
         .pipe(source('bundle.js'))
-        .pipe(!!util.env.production ? uglify() : util.noop())
         .pipe(gulp.dest('./public/assets/scripts'));
 };
 
