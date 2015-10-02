@@ -14,10 +14,12 @@ var express = require('express'),
 // Configure authentication.
 require('./config/passport_config.js');
 
+var appConfig = require('./config/app/environments.json');
+
 var env = process.env.NODE_ENV,
     app = express(),
     MongoStore = connectMongo(session),
-    port = process.env.PORT || 3000;
+    port = process.env.PORT || appConfig.development.port;
 
 // configure Express
 app.set('views', __dirname + '/app/views');
@@ -35,12 +37,12 @@ dbConnector.then(function(db) {
 
     // Initialize session with database storage.
     app.use(session({
-        secret: 'Super_Duper_Big_Secret',
+        secret: 'Super_Big_Secret',
         saveUninitialized: false,
         resave: true,
         store: new MongoStore({ 
             db: db,
-            collection: 'intranet_sessions',
+            collection: 'sessions',
             stringify: false
         }),
         cookie: { maxAge: 1 * 3600 * 1000 }
@@ -52,8 +54,10 @@ dbConnector.then(function(db) {
         saveUninitialized: false
     }));
 
-    // Require to compile icons into React components.
-    // require('./util/icon_parser.js');
+    app.use(function(req, res, next) {
+        req.db = db;
+        next();
+    });
 
     // Use main router.
     app.use(router);
