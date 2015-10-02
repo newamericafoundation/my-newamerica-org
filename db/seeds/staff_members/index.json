@@ -105,6 +105,17 @@
         "room_id": 1007
     },
     {
+        "name": "Maria Elkin",
+        "title": "Communications Associate",
+        "dept": "Communications"
+    },
+    {
+        "name": "Michelle Furman",
+        "title": "Senior Graphics Designer",
+        "dept": "Communications",
+        "phone": "202-596-2364"
+    },
+    {
         "image": "https://static.newamerica.org/users/91-john-williams.jpg",
         "url": "http://www.newamerica.org/experts/john-t-williams/",
         "name": "John Williams",
@@ -164,6 +175,12 @@
         "room_id": 930
     },
     {
+        "name": "Denise Devenny",
+        "title": "Cheif Financial Administrative Officer",
+        "dept": "Finance & Administration",
+        "phone": "202-596-3482"
+    },
+    {
         "name": "Rick Garza",
         "title": "CFO Interim",
         "dept": "Finance & Administration",
@@ -177,13 +194,6 @@
         "dept": "Finance & Administration",
         "phone": "202-596-3393",
         "room_id": 926
-    },
-    {
-        "name": "Keijon Waters",
-        "title": "Senior Accountant",
-        "dept": "Finance & Administration",
-        "phone": "202-596-3604",
-        "room_id": 1007
     },
     {
         "name": "Steve Simmons",
@@ -276,6 +286,12 @@
         "room_id": 1007
     },
     {
+        "name": "Enkibe Nova-Martinez",
+        "title": "HR Assistant",
+        "dept": "Talent Development & Management",
+        "phone": "202-596-"
+    },
+    {
         "image": "https://static.newamerica.org/users/239-reid-cramer.jpg",
         "url": "http://www.newamerica.org/experts/reid-cramer/",
         "name": "Reid Cramer",
@@ -314,7 +330,7 @@
     {
         "image": "https://static.newamerica.org/users/196-liza-mundy.jpg",
         "url": "http://www.newamerica.org/experts/liza-mundy/",
-        "name": "Liza Mundy",
+        "name": "Brigid Schulte",
         "title": "Director",
         "dept": "Breadwinning & Caregiving Program",
         "phone": "202-596-2817",
@@ -419,7 +435,7 @@
     },
     {
         "name": "Benjamin Barrett",
-        "title": "Administrative Assistant",
+        "title": "Research Assistant",
         "dept": "Education Policy Program",
         "phone": "202-596-3390",
         "room_id": 1007
@@ -459,6 +475,11 @@
         "dept": "Education Policy Program",
         "phone": "202-596-3373",
         "room_id": 1007
+    },
+    {
+        "name": "Janie Carnock",
+        "title": "Program Associate",
+        "dept": "Education Policy Program"
     },
     {
         "image": "https://static.newamerica.org/users/191-jason-delisle.jpg",

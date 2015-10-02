@@ -24,8 +24,6 @@ router.get('/logout', (req, res) => {
 // Data api routes.
 router.use('/api/v1', require('./api/v1/index.js'));
 
-router.use('/api/v2', require('./api/v2/index.js'));
-
 var currentAuthMiddleware = (process.env.NODE_ENV === 'development') ? authMiddleware.ensureNothing : authMiddleware.ensureAuthenticated;
 
 // For all other routes, render client-side application JavaScript.

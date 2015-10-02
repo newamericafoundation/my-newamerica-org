@@ -3,6 +3,8 @@ import room from './room.js';
 
 class Model extends base.Model {
 
+	get resourceName() { return 'floor'; }
+
 	initialize() {
 		if (this.get('rooms') != null) {
 			let roomCollection = new room.Collection(this.get('rooms'));
@@ -22,10 +24,6 @@ class Model extends base.Model {
 class Collection extends base.Collection {
 
 	get model() { return Model; }
-
-	get dataFilePath() { return __dirname + '/../../db/seeds/floors/index.json'; }
-
-	get url() { return '/api/v1/floors'; }
 
 	findByRoom(roomId) {
 		var matchingModels = [];

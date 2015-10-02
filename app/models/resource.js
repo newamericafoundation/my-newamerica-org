@@ -2,6 +2,8 @@ import base from './base.js';
 
 class Model extends base.Model {
 
+	get resourceName() { return 'resource'; }
+
 	get searchableFields() { return [ 'name', 'url', 'icon' ]; }
 
 	matchesSearchTerm(searchTerm) {
@@ -20,9 +22,6 @@ class Model extends base.Model {
 
 class Collection extends base.Collection {
 	get model() { return Model; }
-	get apiUrl() { return '/api/v1/resources'; }
-	get dbCollection() { return 'resources'; }
-	get dataFilePath() { return __dirname + '/../../db/seeds/resources/index.json'; }
 }
 
 export default {

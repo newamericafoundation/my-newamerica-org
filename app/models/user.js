@@ -10,6 +10,8 @@ class Model extends Backbone.Model {
 		super(options);
 	}
 
+	get resourceName() { return 'user'; }
+
 	isDomainAuthorized() {
 		return ([ 'newamerica.org', 'opentechinstitute.org', 'wiredcraft.com' ].indexOf(this.get('domain')) > -1);
 	}

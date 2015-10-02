@@ -63,6 +63,42 @@
         "icon": "shipping"
     },
     {
+        "name": "Diversity Plan",
+        "section": "General Policies",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiROVdDTTdlZktDSUk/view?usp=sharing",
+        "icon": "naf"
+    },
+    {
+        "name": "Subscriptions",
+        "section": "General Policies",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiReVJ3WV9mZWo2aGc/view?usp=sharing",
+        "icon": "pages"
+    },
+    {
+        "name": "Election Guidelines and Cautions",
+        "section": "General Policies",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiRbVZDUlJLR1RmUms/view?usp=sharing",
+        "icon": "naf"
+    },
+    {
+        "name": "Quincy Hotel Reservations",
+        "section": "General Policies",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiRNzZ2SXpudlR1b3c/view?usp=sharing",
+        "icon": "building"
+    },
+    {
+        "name": "2015 Holiday Schedule",
+        "section": "General Policies",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiRX0owOHdoT3lsR0k/view?usp=sharing",
+        "icon": "calendar"
+    },
+    {
+        "name": "2016 Holiday Schedule",
+        "section": "General Policies",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiRYldIMTA2N2tyY1k/view?usp=sharing",
+        "icon": "calendar"
+    },
+    {
         "name": "Foundation funding requests and submissions",
         "updated_at": "2015-03-01T05:00:00.000Z",
         "section": "Development",
@@ -125,6 +161,12 @@
         "updated_at": "2015-03-02T05:00:00.000Z",
         "section": "Finance",
         "url": "https://www.dropbox.com/s/drrpu47c93lvt9q/Template%20-%20Credit%20Card%20Reconciliation%20Form.xlsx",
+        "icon": "credit-card"
+    },
+    {
+        "name": "Federal Fund/OTI Credit Card Addendum",
+        "section": "Finance",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiRX3RPcGdSTXgwT3c/view?usp=sharing",
         "icon": "credit-card"
     },
     {
@@ -246,6 +288,12 @@
         "section": "Payroll & Taxes",
         "url": "https://drive.google.com/a/newamerica.org/file/d/0B_jkCcaIJvoXdE5fVGVRaFJPOTA/view",
         "icon": "calendar"
+    },
+    {
+        "name": "Direct Deposit Form",
+        "section": "Payroll & Taxes",
+        "url": "https://drive.google.com/a/newamerica.net/file/d/0BwIhQQGoWiiRX1VZT0Vwb0IyZTA/view?usp=sharing",
+        "icon": "page"
     },
     {
         "name": "Articles of Incorporation",

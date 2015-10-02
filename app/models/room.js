@@ -2,6 +2,8 @@ import base from './base.js';
 
 class Model extends base.Model {
 
+	get resourceName() { return 'room'; }
+
 	isPublic() {
 		return (this.get('capacity') != null);
 	}
