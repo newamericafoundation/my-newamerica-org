@@ -10,8 +10,6 @@ function getDbUrl() {
 
 export default new Promise((resolve, reject) => {
 
-	console.log(getDbUrl());
-
 	MongoClient.connect(getDbUrl(), (err, database) => {
 		if (err) {
 			console.log('Unable to connect to the database.');
