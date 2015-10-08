@@ -10,74 +10,10 @@ export default {
 		};
 	},
 
-	unsetFilters: function(prj) {
-
-		return {
-			$unset: { 'data.filters': '' }
-		};
-
-	},
-
-	unsetInfoBoxVariables: function(prj) {
-
-		return {
-			$unset: { 'data.infobox_variables': '' }
-		};
-
-	},
-
-	// Convert foreign key ids to strings.
-	fixForeignKeyType: function(prj) {
+	addMailTo: function(res) {
 		return {
 			$set: {
-				project_section_id:  String(prj.project_section_id),
-				project_template_id: String(prj.project_template_id)
-			}
-		};
-	},
-
-	// Turn a foreign key id into an array of foreign key ids.
-	populateProjectSectionIdsArray: function(prj) {
-		return {
-			$set: {
-				project_section_ids: [ prj.project_section_id ]
-			}
-		};
-	},
-
-	// Remove field.
-	removeProjectSectionIds: function(prj) {
-		return {
-			$unset: {
-				project_section_id: ""
-			}
-		};
-	},
-
-	stringifyIds: function(prj) {
-		return {
-			$set: {
-				id: String(prj.id)
-			}
-		};
-	},
-
-	setLive: function(prj) {
-		return {
-			$set: {
-				is_live: "Yes"
-			}
-		};
-	},
-
-	fixShutterstockCredits: function(img) {
-		var credit = img.credit;
-		if (credit.replace) {
-			credit = credit.replace('(Shutterstock)', '[Shutterstock]');
-		}
-		return {
-			$set: {
-				credit: credit
+				'url': 'mailto:' + res.url
 			}
 		}
 	}

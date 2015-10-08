@@ -55,7 +55,9 @@ var batchUpdate = function(url, collectionName, updateFunction) {
 };
 
 batchUpdate(
-	'localhost', 
-	'projects', 
-	updateFunctions.unsetInfoBoxVariables
+	'ec2-user@52.89.228.67',
+	//'ec2-user@ec2-52-89-228-67.us-west-2.compute.amazonaws.com', 
+	//'localhost',
+	'resources', 
+	updateFunctions.addMailTo
 );

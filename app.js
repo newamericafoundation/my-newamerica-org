@@ -15,12 +15,12 @@ var express = require('express'),
     dbConnector = require('./db/connector.js'),
 	router = require('./app/routes/index.js');
 
-var appConfig = require('./config/app/environments.json');
+var configVars = require('./config/config_variables.json');
 
 var env = process.env.NODE_ENV,
 	app = express(),
 	MongoStore = connectMongo(session),
-	port = process.env.PORT || appConfig.development.port;
+	port = process.env.PORT || configVars.development.port;
 
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'jade');
@@ -41,7 +41,7 @@ app.use(methodOverride());
 app.use(cookieParser());
 
 // Load custom configuration.
-require('./config/app/custom.js')(app);
+require('./config/app_config.js')(app);
 
 dbConnector.then(function(db) {
 	
