@@ -12,10 +12,15 @@ class Model extends baseCrud.Model {
 	get resourceName() { return 'resource'; }
 
 
+	/*
+	 *
+	 *
+	 */
 	get apiUrlRoot() {
 		var name = this.resourceName;
 		return `/api/v1/${name}s`; 
 	}
+
 
 	/*
 	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
@@ -36,6 +41,11 @@ class Model extends baseCrud.Model {
 		return `/${name}s/${this.get('id')}/edit`;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getMatchingSiblingsByField(fieldKey) {
 		var query = {};
 		query[fieldKey] = this.get(fieldKey);
@@ -43,6 +53,11 @@ class Model extends baseCrud.Model {
 		return this.collection.where(query);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getGroupName() {
 		return (this.get('name') || 'Generic Group');
 	}

@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 import express from 'express';
 
-var env = 'production';//process.env.NODE_ENV;
+var env = process.env.NODE_ENV;
 
 function getDbUrl() {
 	var dbUrlBase = (env === 'development') ? 'localhost' : process.env['PRODUCTION_DB_URL'];

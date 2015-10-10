@@ -33,9 +33,11 @@ class WeeklyWins extends React.Component {
 
 	componentDidMount() {
 		new Collection().getClientFetchPromise().then((coll) => {
+			var lastModel = coll.models[coll.models.length - 1],
+				activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined;
 			this.setState({
 				weeklyWins: coll,
-				activeEdition: parseInt(coll.models[coll.models.length - 1].get('edition'), 10)
+				activeEdition: activeEdition
 			});
 		});
 	}
