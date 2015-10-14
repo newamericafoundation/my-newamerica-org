@@ -27,7 +27,7 @@ class Model extends base.Model {
 				}
 			},
 			{
-				formComponentName: 'CKEditor',
+				formComponentName: 'TextArea',
 				formComponentProps: {
 					id: 'html',
 					labelText: 'Body',

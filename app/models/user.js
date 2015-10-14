@@ -12,10 +12,39 @@ class Model extends Backbone.Model {
 
 	get resourceName() { return 'user'; }
 
+
+	/*
+	 *
+	 *
+	 */
 	isDomainAuthorized() {
 		return ([ 'newamerica.org', 'opentechinstitute.org', 'wiredcraft.com' ].indexOf(this.get('domain')) > -1);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
+	isAdmin() {
+		return [
+			"communications",
+			"vanderlinde",
+			"elkin",
+			"fuzz",
+			"zalatoris",
+			"murphy",
+			"hairston",
+			"lawson",
+			"richardett"
+		];
+	}
+
+
+	/*
+	 *
+	 *
+	 */
 	parse(raw) {
 		if (raw._id) {
 			raw.id = raw._id;
@@ -24,6 +53,11 @@ class Model extends Backbone.Model {
 		return raw;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	toMongoJSON() {
 		var json = this.toJSON();
 		json._id = json.id;
@@ -31,6 +65,11 @@ class Model extends Backbone.Model {
 		return json;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	toSessionJSON() {
 		return {
 			id: this.get('id'),
@@ -38,6 +77,11 @@ class Model extends Backbone.Model {
 		};
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	toClientJSON() {
 		return {
 			displayName: this.get('displayName'),
@@ -46,6 +90,11 @@ class Model extends Backbone.Model {
 		};
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getSavePromise() {
 
 		return new Promise((resolve, reject) => {
@@ -68,6 +117,11 @@ class Model extends Backbone.Model {
 		
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getRetrievePromise() {
 
 		return new Promise((resolve, reject) => {

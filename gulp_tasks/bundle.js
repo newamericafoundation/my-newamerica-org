@@ -9,7 +9,7 @@ import util from 'gulp-util';
 import uglify from 'gulp-uglify';
 
 var browserifyArgs = {
-    entries: [ './app/bundle.js' ],
+    entries: [ './app/assets/scripts/bundle.js' ],
     insertGlobals: true,
     ignore: [ 'fs', 'jquery' ]
 };

@@ -1,7 +1,12 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class Loader extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className='loader'>

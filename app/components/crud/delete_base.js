@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Static from './../general/static.jsx';
 import Form from './../form/root.jsx';
-import Loading from './../general/loading.jsx';
+import Loader from './../general/loader.jsx';
 import _ from 'underscore';
 
 import Base from './base.js';
@@ -121,7 +121,7 @@ class DeleteBase extends Base {
 	}
 
 	renderPageContent() {
-		var bulk = this.state.model ? this.renderSummary() : <Loading />
+		var bulk = this.state.model ? this.renderSummary() : <Loader />
 		return (
 			<div className="static-content">
 				{ bulk }

@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import shell from 'gulp-shell';
-import * as env from './../../secrets/intranet.json';
+import * as env from './../../secrets/atlas.json';
 import moment from 'moment';
 
 // Pem key path, assuming there is a secrets folder outside of the project folder.

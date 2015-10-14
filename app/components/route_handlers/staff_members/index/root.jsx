@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import classNames from 'classnames';
 
 import Icons from './../../../general/icons.jsx';
 import Loader from './../../../general/loader.jsx';
@@ -12,8 +13,8 @@ import { Model, Collection } from './../../../../models/floor.js';
 
 var floors = new Collection(floorsData);
  
- 
-class StaffDirectory extends React.Component {
+
+class StaffMembersIndex extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -22,6 +23,11 @@ class StaffDirectory extends React.Component {
 		};
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className='page page--staff-registry' onScroll={this.logScroll.bind(this)}>
@@ -33,11 +39,9 @@ class StaffDirectory extends React.Component {
 
 					<input placeholder="Search" onChange={ this.setSearchTerm.bind(this) }></input>
 
-					{ /*<div className='page__content__1-2'>*/ }
-						<ul>
-							{ this.renderMembers() }
-						</ul>
-					{ /* </div> */ }
+					<ul>
+						{ this.renderMembers() }
+					</ul>
 
 					{ false ? this.renderLocator() : null }
 
@@ -46,18 +50,11 @@ class StaffDirectory extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-		new staffMember.Collection().getClientFetchPromise().then((coll) => {
-			this.setState({ staffMembers: coll });
-		});
-	}
 
-	logScroll(e) {
-		this.setState({
-			scrollTop: e.target.scrollTop
-		});
-	}
-
+	/*
+	 *
+	 *
+	 */
 	renderMembers() {
 		if (this.state.staffMembers == null) { return (<Loader />); }
 		return this.state.staffMembers.map((staffMember, i) => {
@@ -71,6 +68,11 @@ class StaffDirectory extends React.Component {
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderLocator() {
 		if (this.state.staffMembers == null) { return; }
 		var cls = 'page__content__2-2';
@@ -84,21 +86,63 @@ class StaffDirectory extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
+	componentDidMount() {
+		new staffMember.Collection().getClientFetchPromise().then((coll) => {
+			this.setState({ staffMembers: coll });
+		}).catch((err) => { console.log(err.stack); });
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	logScroll(e) {
+		this.setState({
+			scrollTop: e.target.scrollTop
+		});
+	}
+
+
+	/*
+	 *
+	 *
+	 */
 	getHighlightedStaffMember() {
 		if (this.state.hoveredStaffMember != null) { return this.state.hoveredStaffMember; }
 		return this.state.activeStaffMember;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getHighlightedRoomId() {
 		var highlightedStaffMember = this.getHighlightedStaffMember();
 		if (highlightedStaffMember == null) { return null; }
 		return String(highlightedStaffMember.get('room_id'));
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	setSearchTerm(e) {
 		this.setState({ searchTerm: e.target.value });
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	setHoveredStaffMember(staffMember) {
 		var stateChanges = {
 			hoveredStaffMember: staffMember
@@ -109,16 +153,16 @@ class StaffDirectory extends React.Component {
 		this.setState(stateChanges);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	activateStaffMember(staffMember) {
 		this.setState({ activeStaffMember: staffMember });
 	}
 
 }
-
-StaffDirectory.contextTypes = {
-	router: React.PropTypes.func
-};
-
 
 
 class StaffMemberSummary extends React.Component {
@@ -127,6 +171,11 @@ class StaffMemberSummary extends React.Component {
 		super(props);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	render() {
 		if (this.props.staffMember == null) { return <div className='page__summary' />; }
 		this.getFloorSummary();
@@ -144,19 +193,11 @@ class StaffMemberSummary extends React.Component {
 		);
 	}
 
-	getFloor() {
-		var roomId = String(this.props.staffMember.get('room_id')),
-			floors = this.props.floors,
-			floor = floors.findByRoom(roomId);
-		return floor;
-	}
 
-	getFloorSummary() {
-		var floor = this.getFloor();
-		if(floor == null) { return; }
-		return floor.getDisplayName();
-	}
-
+	/*
+	 *
+	 *
+	 */
 	renderFloor3dSvg() {
 
 		var roomId = String(this.props.staffMember.get('room_id')),
@@ -182,6 +223,29 @@ class StaffMemberSummary extends React.Component {
 
 	}
 
+
+	/*
+	 *
+	 *
+	 */
+	getFloor() {
+		var roomId = String(this.props.staffMember.get('room_id')),
+			floors = this.props.floors,
+			floor = floors.findByRoom(roomId);
+		return floor;
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	getFloorSummary() {
+		var floor = this.getFloor();
+		if(floor == null) { return; }
+		return floor.getDisplayName();
+	}
+
 }
 
 
@@ -191,19 +255,25 @@ class StaffMember extends React.Component {
 		super(props);
 	}
 
-	setImageLoadedState() {
-		
-	}
 
+	/*
+	 *
+	 *
+	 */
 	render() {
+		var cls = classNames({
+			'feature-box': true,
+			'hidden': !this.isVisible(),
+			'feature-box--active': this.isActive()
+		});
 		return (
-			<li className={ 'feature-box' + this.getModifierClasses() } 
+			<li className={ cls } 
 				onMouseEnter={this.setHoveredStaffMember.bind(this)} 
 				onMouseLeave={this.unsetHoveredStaffMember.bind(this)}
 				onClick={this.toggleActiveStaffMember.bind(this)}>
 
 				<div className="feature-box__image">
-					<img src={ this.getImageSource() } onLoad={this.setImageLoadedState.bind(this)} />
+					<img src={ this.getImageSource() } />
 				</div>
 
 				<div className="feature-box__bottom-content">
@@ -218,6 +288,11 @@ class StaffMember extends React.Component {
 
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getImageSource() {
 		var fullSource = this.props.staffMember.get('image');
 		// strip off https://static.newamerica.org
@@ -226,30 +301,48 @@ class StaffMember extends React.Component {
 		return '/assets/images/staff_members' + partialSource;
 	}
 
-	getModifierClasses() {
-		var cls = '';
-		if (!this.isVisible()) { cls += ' hidden'; }
-		if (this.isActive()) { cls += ' feature-box--active'; }
-		return cls;
-	}
 
+	/*
+	 *
+	 *
+	 */
 	isActive() {
 		return (this.props.staffMember === this.props.activeStaffMember);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	setHoveredStaffMember() {
 		this.props.setHoveredStaffMember(this.props.staffMember);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	unsetHoveredStaffMember() {
 		this.props.setHoveredStaffMember(null);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	toggleActiveStaffMember() {
 		var newActiveStaffMember = this.isActive() ? null : this.props.staffMember;
 		this.props.activateStaffMember(newActiveStaffMember);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	isVisible() {
 		var name, 
 			searchTerm = this.props.searchTerm;
@@ -260,4 +353,4 @@ class StaffMember extends React.Component {
 
 }
 
-export default StaffDirectory;
+export default StaffMembersIndex;

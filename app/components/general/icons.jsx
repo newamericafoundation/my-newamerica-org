@@ -5,6 +5,7 @@ var Icons = {};
 // Get uppercase component name based on lowercase, dash-separated name.
 //   e.g. Icons.AroundTheWorld for input around-the-world
 Icons.get = (name) => {
+	if (name == null) { return Icons.Naf; }
 	var nameParts = name.split('-'),
 		compName;
 	nameParts = nameParts.map((part) => {

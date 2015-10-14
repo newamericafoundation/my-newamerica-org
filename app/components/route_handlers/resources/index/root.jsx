@@ -6,14 +6,21 @@ import { Model, Collection } from './../../../../models/resource.js';
 
 class Resources extends React.Component {
 	
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
 		super(props);
-		this.state = {
-			isImageLoaded: false,
-			searchTerm: ''
-		};
+		this.state = this.state || {};
+		this.state.searchTerm = '';
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className='page page--resources'>
@@ -32,16 +39,11 @@ class Resources extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-		new Collection().getClientFetchPromise().then((coll) => {
-			this.setState({ resources: coll });
-		});
-	}
 
-	setSearchTerm(e) {
-		this.setState({ searchTerm: e.target.value });
-	}
-
+	/*
+	 *
+	 *
+	 */
 	renderResourceGroups() {
 		
 		if (this.state.resources == null) { return (<Loader />); }
@@ -56,10 +58,40 @@ class Resources extends React.Component {
 		
 	}
 
+
+	/*
+	 *
+	 *
+	 */
+	componentDidMount() {
+		new Collection().getClientFetchPromise().then((coll) => {
+			this.setState({ resources: coll });
+		}).catch((err) => { console.log(err.stack); });
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	setSearchTerm(e) {
+		this.setState({ searchTerm: e.target.value });
+	}
+
 }
 
+
+
+/*
+ *
+ *
+ */
 class ResourceGroup extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div>
@@ -69,6 +101,11 @@ class ResourceGroup extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderResources() {
 		return this.props.resources.map((resource, i) => {
 			return (<Resource key={i} searchTerm={this.props.searchTerm} resource={resource} />);
@@ -77,8 +114,18 @@ class ResourceGroup extends React.Component {
 
 }
 
+
+
+/*
+ *
+ *
+ */
 class Resource extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		if (!this.shouldDisplay()) { return (<div/>); }
 		var resource = this.props.resource;
@@ -96,14 +143,15 @@ class Resource extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	shouldDisplay() {
 		return this.props.resource.matchesSearchTerm(this.props.searchTerm);
 	}
 
 }
-
-Resources.contextTypes = {
-	router: React.PropTypes.func
-};
 
 module.exports = Resources;

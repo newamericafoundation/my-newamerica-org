@@ -13,6 +13,7 @@ var router = express.Router();
 router.use('/auth', require('./auth.js'));
 
 router.get('/login', (req, res) => {
+	console.log(req.authInfo);
     res.render('login');
 });
 
@@ -28,7 +29,7 @@ var currentAuthMiddleware = (process.env.NODE_ENV === 'development') ? authMiddl
 
 // For all other routes, render client-side application JavaScript.
 // Further routing is handled on the client.
-router.get('*', currentAuthMiddleware/*, gcalMiddleware.queryCalendar */, function(req, res) {
+router.get('*', currentAuthMiddleware, (req, res) => {
     return res.render('app', { user: req.user });
 });
 

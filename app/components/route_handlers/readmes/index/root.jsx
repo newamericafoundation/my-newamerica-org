@@ -6,6 +6,10 @@ import { Model, Collection } from './../../../../models/readme.js';
 
 class Readmes extends React.Component {
 	
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -13,6 +17,11 @@ class Readmes extends React.Component {
 		};
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className='page page--weekly-wins'>
@@ -30,30 +39,25 @@ class Readmes extends React.Component {
 		);
 	}
 
-	componentDidMount() {
-		new Collection().getClientFetchPromise().then((coll) => {
-			var lastModel = coll.models[coll.models.length - 1],
-				activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined;
-			this.setState({
-				readmes: coll,
-				activeEdition: activeEdition
-			});
-		}, (err) => { console.log('problem'); });
-	}
 
-	setActiveEdition(e) {
-		this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) });
-	}
-
+	/*
+	 *
+	 *
+	 */
 	renderReadmes() {
 		if (this.state.readmes == null) { return (<Loader />); }
 		return this.state.readmes.map((readme, i) => {
 			return (
-				<Readme key={i} readme={readme} activeEdition={this.state.activeEdition} />
+				<Readme history={this.props.history} key={i} readme={readme} activeEdition={this.state.activeEdition} />
 			);
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderReadmeOptions() {
 		if (this.state.readmes == null) { return; }
 		return this.state.readmes.map((readme, i) => {
@@ -65,11 +69,33 @@ class Readmes extends React.Component {
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
+	componentDidMount() {
+		new Collection().getClientFetchPromise().then((coll) => {
+			var lastModel = coll.models[coll.models.length - 1],
+				activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined;
+			this.setState({
+				readmes: coll,
+				activeEdition: activeEdition
+			});
+		}, (err) => { console.log('problem'); });
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	setActiveEdition(e) {
+		this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) });
+	}
+
 }
 
-Readmes.contextTypes = {
-	router: React.PropTypes.func
-};
 
 
 class Readme extends React.Component {
@@ -78,16 +104,28 @@ class Readme extends React.Component {
 		var readme = this.props.readme;
 		if (!this.shouldDisplay()) { return <div/>; }
 		return (
-			<div>
+			<div onDoubleClick={this.navigateToEdit.bind(this)}>
 				<h2 className='page__section-title'>{ this.getTitle() }</h2>
 				<div className='static-content' dangerouslySetInnerHTML={{ __html: readme.get('html') }}></div>
 			</div>
 		);
 	}
 
+
+	/*
+	 * 
+	 *
+	 */
+	navigateToEdit() {
+		var url = this.props.readme ? this.props.readme.getEditUrl() : '/';
+		this.props.history.replaceState(null, url);
+	}
+
+
 	shouldDisplay() {
 		return (this.props.activeEdition === this.props.readme.get('edition'));
 	}
+
 
 	getTitle() {
 		var readme = this.props.readme;
