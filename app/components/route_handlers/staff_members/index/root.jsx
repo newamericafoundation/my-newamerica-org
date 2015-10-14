@@ -1,14 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 
-import Icons from './../general/icons.jsx';
-import Loader from './../general/loader.jsx';
+import Icons from './../../../general/icons.jsx';
+import Loader from './../../../general/loader.jsx';
 
-import FloorPlans from './../general/floor_plans.jsx';
-import floorsData from './../../../db/seeds/floors/index.json';
+import FloorPlans from './../../../general/floor_plans.jsx';
+import floorsData from './../../../../../db/seeds/floors/index.json';
 
-import staffMember from './../../models/staff_member.js';
-import { Model, Collection } from './../../models/floor.js';
+import staffMember from './../../../../models/staff_member.js';
+import { Model, Collection } from './../../../../models/floor.js';
 
 var floors = new Collection(floorsData);
  

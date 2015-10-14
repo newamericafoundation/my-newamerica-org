@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import Loader from './../general/loader.jsx';
 import classNames from 'classnames';
-import { Jazz, Salesforce, Adp } from './../general/icons.jsx';
+
+import Loader from './../../../general/loader.jsx';
+import { Jazz, Salesforce, Adp } from './../../../general/icons.jsx';
 
 var quickLinks = [
 
@@ -25,6 +26,10 @@ var quickLinks = [
 
 class Dashboard extends React.Component {
 	
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -32,6 +37,11 @@ class Dashboard extends React.Component {
 		};
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	render() {
 		this.getTimeOfDay();
 		var cls = classNames({
@@ -56,6 +66,11 @@ class Dashboard extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderQuickLinks() {
 		return quickLinks.map((item) => {
 			return (
@@ -71,10 +86,20 @@ class Dashboard extends React.Component {
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getTime() {
 		return moment(new Date().toISOString()).format('h:mm');
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getTimeOfDay() {
 		var H = moment(new Date().toISOString()).format('H');
 		if (H < 12) { return 'morning'; }
@@ -82,14 +107,29 @@ class Dashboard extends React.Component {
 		return 'evening';
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getGreeting() {
 		return `Good ${this.getTimeOfDay()}, ${this.getDisplayName()}!`;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	setImageLoadedState() {
 		this.setState({ isImageLoaded: true });
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getDisplayName() {
 		if (this.props.user == null) return 'Anne-Marie';
 		return this.props.user.name.givenName;

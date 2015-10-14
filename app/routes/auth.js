@@ -26,7 +26,6 @@ router.get('/google/callback',
         failureRedirect: '/'
     }),
     function(req, res) {
-        console.dir(req.user);
         req.session.accessToken = req.user.accessToken;
         res.redirect('/');
     });

@@ -47,10 +47,8 @@ passport.use(new OAuth2Strategy({
 
         var model = new user.Model(profile._json);
 
-        console.log(model.toJSON());
-
         if (!model.isDomainAuthorized()) {
-            return done(new Error('Unauthorized domain'));
+            return done('Please log into your newamerica.org as your primary account. We are working on a more robust solution to handle multiple Google logins for more convenient access to the site.');
         }
 
         model.getSavePromise().then(() => {

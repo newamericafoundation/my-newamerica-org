@@ -2,10 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import marked from 'marked';
 
-import Icons from './../general/icons.jsx';
-import Loader from './../general/loader.jsx';
+import Icons from './../../../general/icons.jsx';
+import Loader from './../../../general/loader.jsx';
 
-import { Model, Collection } from './../../models/faq.js';
+import { Model, Collection } from './../../../../models/faq.js';
 
 class Faq extends React.Component {
 	
