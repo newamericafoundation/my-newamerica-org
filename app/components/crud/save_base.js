@@ -131,10 +131,26 @@ class SaveBase extends Base {
 		return (
 			<div className="atl__title-bar__content">
 				<h1 className='title'>{ `${this.getCrudMethodName()} ${this.getResourceName()}` }</h1>
-				<ul>
-					<li>Updated: {  }</li>
-				</ul>
+				{ this.renderLinks() }
 			</div>
+		);
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	renderLinks() {
+		var model = this.state.model;
+		if (!model) { return; }
+		var name = model.resourceName,
+			deleteLink = model.get('id') ? (<li><Link className='link' to={model.getDeleteUrl()}>{ `Delete this ${name}` }</Link></li>) : null;
+		return (
+			<ul>
+				<li><Link className='link' to={model.getIndexUrl()}>{ `View all ${name}s` }</Link></li>
+				{ deleteLink }
+			</ul>
 		);
 	}
 

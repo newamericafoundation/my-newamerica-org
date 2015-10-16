@@ -6,7 +6,7 @@ import NewBase from './../../crud/new_base.js';
 import EditBase from './../../crud/edit_base.js';
 import DeleteBase from './../../crud/delete_base.js';
 
-export default function resourceRouteGenerator(Model, rootRouteName) {
+export default function(Model) {
 
 	/*
 	 *
@@ -43,12 +43,13 @@ export default function resourceRouteGenerator(Model, rootRouteName) {
 		render() { return (<div className='fill-parent'>{ this.props.children }</div>); }
 	}
 
+	var rootRouteName = `admin/${Model.prototype.resourceName}s`;
 
 	return (
 		<Route path={rootRouteName} component={Wrapper}>
-			<Route path='/new' component={New} />
-			<Route path='/:id/edit' component={Edit} />
-			<Route path='/:id/delete' component={Delete} />
+			<Route path='new' component={New} />
+			<Route path=':id/edit' component={Edit} />
+			<Route path=':id/delete' component={Delete} />
 		</Route>
 	);
 

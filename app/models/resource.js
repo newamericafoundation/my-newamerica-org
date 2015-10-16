@@ -6,6 +6,8 @@ class Model extends base.Model {
 
 	get searchableFields() { return [ 'name', 'url', 'icon' ]; }
 
+	getViewUrl() { return null; }
+
 	matchesSearchTerm(searchTerm) {
 		var matches = false;
 		if (String(this.get('name')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true; }
@@ -25,17 +27,27 @@ class Model extends base.Model {
 					id: 'name',
 					labelText: 'Resource name',
 					hint: '',
-					placeholder: 'Enter resource name.'
+					placeholder: 'Enter resource name. This appears as title in the list.'
 				}
 			},
 			{
 				formComponentName: 'Radio',
 				formComponentProps: {
 					id: 'section',
-					labelText: 'Title',
+					labelText: 'Section',
 					hint: '',
 					options: [ 'General Policies', 'Development', 'IT', 'Finance', 'TDM', 'Payroll & Taxes', 'Organization Information', 'Other' ],
-					placeholder: 'Enter readme title.'
+					placeholder: 'Enter resource section. Content is organized under these group headings.'
+				}
+			},
+			{
+				formComponentName: 'Radio',
+				formComponentProps: {
+					id: 'icon',
+					labelText: 'Display icon',
+					hint: '',
+					options: [ 'naf', 'weather', 'shipping', 'pages', 'building', 'calendar', 'envelope', 'page', 'wifi', 'credit-card', 'food', 'help', 'adp', 'calendar', 'jazz' ],
+					placeholder: 'Choose icon.'
 				}
 			},
 			{

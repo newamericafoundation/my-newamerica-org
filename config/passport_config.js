@@ -46,13 +46,16 @@ passport.use(new OAuth2Strategy({
 
         var model = new user.Model(profile._json);
 
+        var msg = 'Please log into your newamerica.org as your primary account. We are working on a more robust solution to handle multiple Google logins for more convenient access to the site.';
+
         if (!model.isDomainAuthorized()) {
-            return done(
-                null, 
-                false, 
-                { message: 'Please log into your newamerica.org as your primary account. We are working on a more robust solution to handle multiple Google logins for more convenient access to the site.' },
-                { message: 'Please log into your newamerica.org as your primary account. We are working on a more robust solution to handle multiple Google logins for more convenient access to the site.' }
-            );
+            return done(null, false, { message: msg });
+        }
+
+        if (model.isAdmin()) {
+            model.set('isAdmin', true);         
+        } else {
+            model.set('isAdmin', false);
         }
 
         model.getSavePromise().then(() => {

@@ -6,6 +6,8 @@ class Model extends base.Model {
 
 	get apiUrlRoot() { return '/api/v1/readmes'; }
 
+	getViewUrl() { return null; }
+
 	get fields() {
 		return [
 			{
@@ -32,7 +34,7 @@ class Model extends base.Model {
 					id: 'html',
 					labelText: 'Body',
 					hint: '',
-					placeholder: 'Enter readme body.'
+					placeholder: 'Enter main body text.'
 				}
 			}
 		];

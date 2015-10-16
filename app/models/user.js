@@ -4,6 +4,19 @@ import _ from 'underscore';
 import Backbone from 'backbone';
 import dbConnector from './../../db/connector.js';
 
+var adminEmails = [
+	"communications",
+	"szerzo",
+	"vanderlinde",
+	"elkin",
+	"fuzz",
+	"zalatoris",
+	"murphy",
+	"hairston",
+	"lawson",
+	"richardett"
+].map((email) => { return `${email}@newamerica.org`; })
+
 class Model extends Backbone.Model {
 
 	constructor(options) {
@@ -27,17 +40,8 @@ class Model extends Backbone.Model {
 	 *
 	 */
 	isAdmin() {
-		return [
-			"communications",
-			"vanderlinde",
-			"elkin",
-			"fuzz",
-			"zalatoris",
-			"murphy",
-			"hairston",
-			"lawson",
-			"richardett"
-		];
+		var email = this.get('emails')[0].value;
+		return (adminEmails.indexOf(email) > 0);
 	}
 
 
@@ -86,7 +90,9 @@ class Model extends Backbone.Model {
 		return {
 			displayName: this.get('displayName'),
 			name: this.get('name'),
-			image: this.get('image')
+			image: this.get('image'),
+			emails: this.get('emails'),
+			isAdmin: this.isAdmin()
 		};
 	}
 
@@ -104,7 +110,6 @@ class Model extends Backbone.Model {
 				var collection = db.collection('intranet_users');
 
 				collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
-
 					console.log('user saved successfully');
 					if (err) { return reject(err); }
 					resolve(this);
@@ -132,11 +137,9 @@ class Model extends Backbone.Model {
 					cursor = collection.find({ _id: this.get('id') });
 
 				cursor.toArray((err, json) => {
-
 					if (err) { return reject(err); }
 					this.set(this.parse(json[0]));
 					resolve(this);
-
 				});
 
 			}, (err) => { reject(err); });

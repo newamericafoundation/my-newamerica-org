@@ -13,7 +13,6 @@ var router = express.Router();
 router.use('/auth', require('./auth.js'));
 
 router.get('/login', (req, res) => {
-	console.log(req.authInfo);
     res.render('login');
 });
 

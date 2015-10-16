@@ -6,6 +6,10 @@ import { Naf } from './icons.jsx';
 
 class Header extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className={ 'header bg-c-naf-green' }>
@@ -24,21 +28,43 @@ class Header extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderAuth() {
-		if (this.props.user == null) { return; }
+		if (this.props.user == null) { 
+			return (
+				<div className="header__auth">
+					<a href='/login'>Login</a>
+				</div>
+			); 
+		}
 		return (
 			<div className="header__auth">
 				<img src={this.getUserPhotoUrl()}></img>
 				<p>{ this.getUserDisplayName() }</p>
+				<a href='/logout' className='header__auth__logout'>Log out</a>
 			</div>
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getUserDisplayName() {
 		if (this.props.user == null) { return; }
 		return this.props.user.displayName;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getUserPhotoUrl() {
 		if (this.props.user == null || this.props.user.image == null) { return; }
 		return this.props.user.image.url;

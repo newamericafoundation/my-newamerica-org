@@ -23,12 +23,22 @@ class Model extends baseCrud.Model {
 
 
 	/*
+	 *
+	 *
+	 */
+	getIndexUrl() {
+		var name = this.resourceName;
+		return `/${name}s`;
+	}
+
+
+	/*
 	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
 	 * 
 	 */
 	getViewUrl() {
 		var name = this.resourceName;
-		return `/${name}s/${this.get('id')}`;
+		return `/admin/${name}s/${this.get('id')}`;
 	}
 
 
@@ -38,7 +48,27 @@ class Model extends baseCrud.Model {
 	 */
 	getEditUrl() {
 		var name = this.resourceName;
-		return `/${name}s/${this.get('id')}/edit`;
+		return `/admin/${name}s/${this.get('id')}/edit`;
+	}
+
+
+	/*
+	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
+	 * 
+	 */
+	getDeleteUrl() {
+		var name = this.resourceName;
+		return `/admin/${name}s/${this.get('id')}/delete`;
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	getNewUrl() {
+		var name = this.resourceName;
+		return `/admin/${name}s/new`;
 	}
 
 

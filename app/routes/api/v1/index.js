@@ -11,6 +11,8 @@ var resources = [ 'staff_members', 'resources', 'weekly_wins', 'faqs', 'readmes'
 
 // Unsafe setting to test back-end while in development, skipping the auth step which is required at each server restart.
 var currentAuthMiddleware = (process.NODE_ENV === 'production') ? authMiddleware.ensureAuthenticated : authMiddleware.ensureNothing;
+var currentAdminAuthMiddleware = (process.NODE_ENV === 'production') ? authMiddleware.ensureAdminAuthenticated : authMiddleware.ensureNothing;
+
 
 var router = express.Router();
 
@@ -29,15 +31,15 @@ for (let resource of resources) {
 		res.json(req.dbResponse);
 	});
 
-	router.post(`${basePath}`, currentAuthMiddleware, newMiddleware.bind(this, { dbCollectionName: resource }), (req, res) => {
+	router.post(`${basePath}`, currentAdminAuthMiddleware, newMiddleware.bind(this, { dbCollectionName: resource }), (req, res) => {
 		res.json(req.dbResponse);
 	});
 
-	router.post(`${basePath}/:id/edit`, currentAuthMiddleware, updateMiddleware.bind(this, { dbCollectionName: resource }), (req, res) => {
+	router.post(`${basePath}/:id/edit`, currentAdminAuthMiddleware, updateMiddleware.bind(this, { dbCollectionName: resource }), (req, res) => {
 		res.json(req.dbResponse);
 	});
 
-	router.delete(`${basePath}/:id`, currentAuthMiddleware, deleteMiddleware.bind(this, { dbCollectionName: resource }), (req, res) => {
+	router.delete(`${basePath}/:id`, currentAdminAuthMiddleware, deleteMiddleware.bind(this, { dbCollectionName: resource }), (req, res) => {
 		res.json(req.dbResponse);
 	});
 

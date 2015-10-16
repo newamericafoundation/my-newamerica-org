@@ -6,6 +6,8 @@ class Model extends base.Model {
 
 	get searchableFields() { return [ 'question', 'answer' ]; }
 
+	getViewUrl() { return null; }
+
 	matchesSearchTerm(searchTerm) {
 		var matches = false;
 		if (this.get('question').toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true; }
@@ -15,6 +17,38 @@ class Model extends base.Model {
 
 	getGroupName() {
 		return this.get('section');
+	}
+
+	get fields() {
+		return [
+			{
+				formComponentName: 'Text',
+				formComponentProps: {
+					id: 'question',
+					labelText: 'Question',
+					hint: '',
+					placeholder: 'Enter question.'
+				}
+			},
+			{
+				formComponentName: 'Text',
+				formComponentProps: {
+					id: 'answer',
+					labelText: 'Answer',
+					hint: '',
+					placeholder: 'Enter answer.'
+				}
+			},
+			{
+				formComponentName: 'Radio',
+				formComponentProps: {
+					id: 'section',
+					labelText: 'Section',
+					options: [ 'Key Information', 'Computers', 'Telephones', 'Printers', 'Mail', 'Moving My Stuff', 'Scheduling Events and Booking Conference Rooms', 'New Office Facilities, Supplies, and Access', 'Transport', "My Question Wasn't Answered Here" ],
+					hint: ''
+				}
+			}
+		];
 	}
 
 }
