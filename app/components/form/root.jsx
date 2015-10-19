@@ -24,7 +24,7 @@ class Form extends React.Component {
 	render() {
 		var style = this.props.isEnabled ? {} : { opacity: 0.5 };
 		return (
-			<form 
+			<form
 				onSubmit={this.sendFormDataToParent.bind(this)}
 				style={style}
 			>

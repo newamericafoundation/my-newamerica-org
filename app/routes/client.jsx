@@ -51,6 +51,7 @@ var routes = (
 			{ resourceRouteGenerator(models.resource.Model) }
 			{ resourceRouteGenerator(models.weeklyWin.Model) }
 			{ resourceRouteGenerator(models.staffMember.Model) }
+			{ resourceRouteGenerator(models.department.Model) }
 
 		</Route>
 	</Router>

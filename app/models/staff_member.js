@@ -1,5 +1,7 @@
 import base from './base.js';
 
+import department from './department.js';
+
 class Model extends base.Model {
 
 	get resourceName() { return 'staff_member'; }
@@ -46,9 +48,19 @@ class Model extends base.Model {
 				formComponentName: 'Text',
 				formComponentProps: {
 					id: 'dept',
-					labelText: 'Department',
+					labelText: 'Department (OBSOLETE)',
 					hint: '',
 					placeholder: 'Enter Department.'
+				}
+			},
+			{
+				formComponentName: 'ForeignCollectionCheckBox',
+				
+				formComponentProps: {
+					id: 'department_ids',
+					labelText: 'Department (NEW)',
+					foreignCollectionConstructor: department.Collection,
+					hint: 'choose'
 				}
 			},
 			{
