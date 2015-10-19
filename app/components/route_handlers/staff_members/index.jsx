@@ -108,7 +108,7 @@ class StaffMembers extends Base {
 	 *
 	 */
 	navigateToAdd() {
-		this.props.history.replaceState(null, staffMember.Model.prototype.getNewUrl());
+		this.props.history.pushState(null, staffMember.Model.prototype.getNewUrl());
 	}
 
 

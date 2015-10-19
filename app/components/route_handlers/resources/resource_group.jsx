@@ -29,7 +29,14 @@ class ResourceGroup extends React.Component {
 	 */
 	renderResources() {
 		return this.props.resources.map((resource, i) => {
-			return (<Resource history={this.props.history} key={i} searchTerm={this.props.searchTerm} resource={resource} />);
+			return (
+				<Resource 
+					history={this.props.history} 
+					key={i} 
+					searchTerm={this.props.searchTerm} 
+					resource={resource} 
+				/>
+			);
 		});
 	}
 

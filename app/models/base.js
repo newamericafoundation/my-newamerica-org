@@ -6,73 +6,6 @@ import baseCrud from './base_crud.js';
 class Model extends baseCrud.Model {
 
 	/*
-	 * Lower-case name of the resource constructed by this constructor.
-	 *
-	 */
-	get resourceName() { return 'resource'; }
-
-
-	/*
-	 *
-	 *
-	 */
-	get apiUrlRoot() {
-		var name = this.resourceName;
-		return `/api/v1/${name}s`; 
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	getIndexUrl() {
-		var name = this.resourceName;
-		return `/${name}s`;
-	}
-
-
-	/*
-	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
-	 * 
-	 */
-	getViewUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/${this.get('id')}`;
-	}
-
-
-	/*
-	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
-	 * 
-	 */
-	getEditUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/${this.get('id')}/edit`;
-	}
-
-
-	/*
-	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
-	 * 
-	 */
-	getDeleteUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/${this.get('id')}/delete`;
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	getNewUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/new`;
-	}
-
-
-	/*
 	 *
 	 *
 	 */
@@ -97,16 +30,6 @@ class Model extends baseCrud.Model {
 class Collection extends baseCrud.Collection {
 
 	get model() { return Model; }
-
-	get dbCollection() { 
-		var name = this.model.prototype.resourceName;
-		return `${name}s`; 
-	}
-
-	get apiUrl() {
-		var name = this.model.prototype.resourceName;
-		return `/api/v1/${name}s`; 
-	}
 
 	parse(resp) {
 		return resp;

@@ -82,7 +82,7 @@ class WeeklyWins extends Base {
 	 *
 	 */
 	navigateToAdd() {
-		this.props.history.replaceState(null, Model.prototype.getNewUrl());
+		this.props.history.pushState(null, Model.prototype.getNewUrl());
 	}
 
 
