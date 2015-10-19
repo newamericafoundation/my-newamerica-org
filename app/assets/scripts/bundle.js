@@ -1,10 +1,10 @@
 // Do not bundle User model.
 
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 var routes = require('./../../routes/client.jsx');
 
 console.log('Hi, Mom!');
 
-React.render(routes, global.document.getElementById('main'));
+ReactDOM.render(routes, global.document.getElementById('main'));

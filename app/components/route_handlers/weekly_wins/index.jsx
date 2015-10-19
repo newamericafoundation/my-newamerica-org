@@ -32,7 +32,7 @@ class WeeklyWins extends Base {
 					</div>
 					<h1 className="title">Weekly Wins</h1>
 					{ this.renderAddButton() }
-					<select onChange={this.setActiveEdition.bind(this)}>
+					<select value={this.state.activeEdition} onChange={this.setActiveEdition.bind(this)}>
 						{ this.renderWinOptions() }
 					</select>
 					{ this.renderWins() }
@@ -68,10 +68,9 @@ class WeeklyWins extends Base {
 	renderWinOptions() {
 		if (this.state.weeklyWins == null) { return; }
 		return this.state.weeklyWins.map((win, i) => {
-			var val = `Edition ${win.get('edition')}: ${win.get('title')}`,
-				isSelected = win.get('edition') === this.state.activeEdition;
+			var val = `Edition ${win.get('edition')}: ${win.get('title')}`;
 			return (
-				<option value={win.get('edition')} selected={isSelected} key={i}>{ val }</option>
+				<option value={win.get('edition')} key={i}>{ val }</option>
 			);
 		});
 	}

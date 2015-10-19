@@ -15,7 +15,7 @@ class Model extends base.Model {
 				formComponentProps: {
 					id: 'edition',
 					labelText: 'Edition',
-					hint: '',
+					hint: 'Edition number only (e.g. 80), without hash character.',
 					placeholder: 'Enter readme edition.'
 				}
 			},
@@ -24,7 +24,7 @@ class Model extends base.Model {
 				formComponentProps: {
 					id: 'title',
 					labelText: 'Title',
-					hint: '',
+					hint: 'Same as weekly wins e-mail title.',
 					placeholder: 'Enter readme title.'
 				}
 			},
@@ -33,7 +33,7 @@ class Model extends base.Model {
 				formComponentProps: {
 					id: 'html',
 					labelText: 'Body',
-					hint: '',
+					hint: 'Enter HTML. Remove inline styling using (TBA) tool.',
 					placeholder: 'Enter readme body.'
 				}
 			}

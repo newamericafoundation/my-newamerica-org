@@ -72,9 +72,14 @@ class Dashboard extends React.Component {
 	 *
 	 */
 	renderQuickLinks() {
-		return quickLinks.map((item) => {
+		return quickLinks.map((item, i) => {
 			return (
-				<a className='icon-button' href={item.url} target="_blank" >
+				<a 
+					className='icon-button' 
+					href={item.url} 
+					target="_blank"
+					key={i}
+				>
 					<div className='icon-button__icon'>
 						{ React.createElement(item.icon) }
 					</div>

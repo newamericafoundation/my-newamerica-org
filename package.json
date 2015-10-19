@@ -32,7 +32,8 @@
     "mongodb": "^2.0.41",
     "passport": "^0.2.2",
     "passport-google-oauth": "^0.2.0",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "react-router": "^1.0.0-rc3",
     "request": "^2.61.0",
     "underscore": "^1.8.3"
