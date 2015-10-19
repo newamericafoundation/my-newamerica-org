@@ -44,8 +44,8 @@ class Resource extends React.Component {
 	 */
 	renderEditButton() {
 		var { Build } = Icons;
-		// if (!window.user) { return; }
-		// if (!window.user.isAdmin) { return; }
+		if (!window.user) { return; }
+		if (!window.user.isAdmin) { return; }
 		return (
 			<p className='page__button' onClick={this.navigateToEdit.bind(this)}><Build /></p>
 		);
