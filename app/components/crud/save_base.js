@@ -177,7 +177,8 @@ class SaveBase extends Base {
 		if (!this.state.model) { return (<Loader />); }
 		return (
 			<div className="static-content">
-				<Form 
+				<Form
+					history={ this.props.history }
 					model={ this.state.model }
 					isEnabled={ isFormEnabled }
 					submitButtonText={ this.getSubmitButtonText() }

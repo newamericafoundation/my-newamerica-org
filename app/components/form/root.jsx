@@ -49,8 +49,9 @@ class Form extends React.Component {
 				id = field.formComponentProps.id,
 				props = field.formComponentProps || {};
 			return (
-				<FormComp 
+				<FormComp
 					{...props}
+					history={this.props.history}
 					key={i}
 					isEnabled={this.props.isEnabled}
 					saveDataOnParent={this.saveDataFromChild.bind(this)}

@@ -33,17 +33,17 @@ class ForeignCollectionBase extends Base {
 
 
 	/*
-	 * If there is no option selected, initialize the first one.
+	 *
 	 *
 	 */
-	// setInitialValue() {
-	// 	if(!this.props.initialValue) {
-	// 		this.props.saveDataOnParent({
-	// 			id: this.props.id,
-	// 			value: [ this.props.foreignCollection.models[0].get('id') ]
-	// 		});
-	// 	}
-	// }
+	navigateToForeignModelEdit(foreignModel) {
+		console.log(foreignModel, foreignModel.getEditUrl());
+		if (!foreignModel || !foreignModel.getEditUrl) { return; }
+		var url = foreignModel.getEditUrl();
+		if (this.props.history) {
+			this.props.history.pushState(null, url);
+		}
+	}
 
 
 	/*

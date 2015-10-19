@@ -12,7 +12,7 @@ class Model extends base.Model {
 				formComponentName: 'Text',
 				formComponentProps: {
 					id: 'name',
-					labelText: 'Question',
+					labelText: 'Name',
 					hint: '',
 					placeholder: 'Enter question.'
 				}

@@ -46,10 +46,10 @@ class ForeignCollectionCheckBox extends ForeignCollectionBase {
 						id={this.props.id + '-opt-' + i}
 						disabled={!this.props.isEnabled}
 						checked={ isChecked }
-						onChange={this.saveDataOnParent.bind(this)} 
+						onChange={this.saveDataOnParent.bind(this)}
 						value={ option } 
 					/>
-					<p>{ foreignModel.get(field) }</p>
+					<p onDoubleClick={this.navigateToForeignModelEdit.bind(this, foreignModel)}>{ foreignModel.get(field) }</p>
 				</div>
 			);
 		});
