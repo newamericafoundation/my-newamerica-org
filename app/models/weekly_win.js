@@ -1,4 +1,5 @@
 import base from './base.js';
+import _ from 'underscore';
 
 class Model extends base.Model {
 
@@ -7,6 +8,12 @@ class Model extends base.Model {
 	getIndexUrl() { return '/weekly-wins'; }
 
 	getViewUrl() { return null; }
+
+	get defaults() {
+		return {
+			html: '<p>Content should arrive shortly.</p>'
+		};
+	}
 
 	get fields() {
 		return [
@@ -40,10 +47,21 @@ class Model extends base.Model {
 		];
 	}
 
+	beforeSave() {
+		var ed = this.get('edition');
+		if (!_.isNumber(ed)) { this.set('edition', Number(ed)); }
+	}
+
 }
 
 class Collection extends base.Collection {
+
 	get model() { return Model; }
+
+	comparator(m1, m2) {
+		return m1.get('edition') - m2.get('edition');
+	}
+
 }
 
 export default {
