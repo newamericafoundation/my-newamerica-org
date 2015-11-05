@@ -2,7 +2,6 @@ import * as express from 'express';
 import * as passport from 'passport';
 import * as React from 'react';
 import * as authMiddleware from './../middleware/auth.js';
-// import * as gcalMiddleware from './../middleware/calendar.js';
 import request from 'request';
 import gm from 'gm';
 import fs from 'fs';
