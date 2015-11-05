@@ -14,7 +14,9 @@ var adminEmails = [
 	"murphy",
 	"hairston",
 	"lawson",
-	"richardett"
+	"richardett",
+	"calabresee",
+	"novamartinez"
 ].map((email) => { return `${email}@newamerica.org`; })
 
 class Model extends Backbone.Model {
