@@ -3,15 +3,14 @@ import { OAuth2Strategy } from 'passport-google-oauth';
 import user from './../app/models/user.js';
 import express from 'express';
 
-var getCallbackUrl = function() {
-    var env = express().get('env');
-    var urlBase = (env === 'development') ? '127.0.0.1:3000' : 'my.newamerica.org';
-    return 'http://' + urlBase + '/auth/google/callback';
-};
-
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
-var { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
+var { NODE_ENV, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env
+
+var getCallbackUrl = function() {
+    var urlBase = (NODE_ENV === 'development') ? '127.0.0.1:3000' : 'my.newamerica.org';
+    return `http://${urlBase}/auth/google/callback`;
+};
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to

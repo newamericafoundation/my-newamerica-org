@@ -1,7 +1,6 @@
-import _ from 'underscore';
-import Backbone from 'backbone';
-import fs from 'fs';
-import baseCrud from './base_crud.js';
+import _ from 'underscore'
+import Backbone from 'backbone'
+import baseCrud from './base_crud.js'
 
 class Model extends baseCrud.Model {
 

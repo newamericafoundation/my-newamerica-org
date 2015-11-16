@@ -1,6 +1,7 @@
-var express = require('express'),
-    router = express.Router(),
-    passport = require('passport');
+import express from 'express'
+import passport from 'passport'
+
+var router = express.Router()
 
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -31,4 +32,4 @@ router.get('/google/callback',
         res.redirect('/');
     });
 
-module.exports = router;
+export default router

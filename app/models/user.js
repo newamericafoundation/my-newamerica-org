@@ -2,7 +2,6 @@
 
 import _ from 'underscore';
 import Backbone from 'backbone';
-import dbConnector from './../../db/connector.js';
 
 var adminEmails = [
 	"communications",
@@ -101,24 +100,19 @@ class Model extends Backbone.Model {
 
 	/*
 	 *
-	 *
+	 * @param {object} MongoDB client instance.
 	 */
-	getSavePromise() {
+	getSavePromise(db) {
 
 		return new Promise((resolve, reject) => {
 
-			return dbConnector.then((db) => {
+			var collection = db.collection('intranet_users');
 
-				var collection = db.collection('intranet_users');
-
-				collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
-					console.log('user saved successfully');
-					if (err) { return reject(err); }
-					resolve(this);
-
-				});
-
-			}, (err) => { reject(err); });
+			collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
+				console.log('user saved successfully');
+				if (err) { return reject(err); }
+				resolve(this);
+			});
 
 		});
 		

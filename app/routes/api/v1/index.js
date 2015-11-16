@@ -1,23 +1,24 @@
 import express from 'express';
 
-import authMiddleware from './../../../middleware/auth.js';
 import deleteMiddleware from './../../../middleware/crud/delete.js';
 import newMiddleware from  './../../../middleware/crud/new.js';
 import updateMiddleware from './../../../middleware/crud/update.js';
 import showMiddleware from './../../../middleware/crud/show.js';
 import indexMiddleware from './../../../middleware/crud/index.js';
 
+import { ensureAuthenticated, ensureNothing, ensureAdminAuthenticated } from './../../../middleware/auth.js'
+
 var resources = [ 'staff_members', 'resources', 'weekly_wins', 'faqs', 'readmes', 'departments' ];
 
 // Unsafe setting to test back-end while in development, skipping the auth step which is required at each server restart.
-var currentAuthMiddleware = (process.NODE_ENV === 'production') ? authMiddleware.ensureAuthenticated : authMiddleware.ensureNothing;
-var currentAdminAuthMiddleware = (process.NODE_ENV === 'production') ? authMiddleware.ensureAdminAuthenticated : authMiddleware.ensureNothing;
+var currentAuthMiddleware = (process.NODE_ENV === 'production') ? ensureAuthenticated : ensureNothing;
+var currentAdminAuthMiddleware = (process.NODE_ENV === 'production') ? ensureAdminAuthenticated : ensureNothing;
 
 
 var router = express.Router();
 
 // Unsafe setting to test back-end while in development, skipping the auth step which is required at each server restart.
-var currentAuthMiddleware = (process.NODE_ENV === 'production') ? authMiddleware.ensureAuthenticated : authMiddleware.ensureNothing;
+var currentAuthMiddleware = (process.NODE_ENV === 'production') ? ensureAuthenticated : ensureNothing;
 
 for (let resource of resources) {
 
@@ -45,4 +46,4 @@ for (let resource of resources) {
 
 }
 
-module.exports = router;
+export default router
