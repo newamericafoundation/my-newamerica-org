@@ -3,6 +3,8 @@
 import _ from 'underscore';
 import Backbone from 'backbone';
 
+import dbConnector from './../../db/connector.js'
+
 var adminEmails = [
 	"communications",
 	"szerzo",
@@ -18,7 +20,7 @@ var adminEmails = [
 	"novamartinez"
 ].map((email) => { return `${email}@newamerica.org`; })
 
-class Model extends Backbone.Model {
+export class Model extends Backbone.Model {
 
 	constructor(options) {
 		super(options);
@@ -102,14 +104,9 @@ class Model extends Backbone.Model {
 	 *
 	 * @param {object} MongoDB client instance.
 	 */
-	getSavePromise(db) {
+	getSavePromise() {
 
-		var { NODE_ENV, PRODUCTION_DB_URL } = process.env
-	
-		var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
-		var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
-
-		MongoClient.connect(dbUrl, (err, db) => {
+		dbConnector.then((db) => {
 
 			return new Promise((resolve, reject) => {
 
@@ -123,7 +120,7 @@ class Model extends Backbone.Model {
 
 			});
 
-		});
+		}).catch((e) => { console.log(e.stack) });
 		
 	}
 
@@ -134,12 +131,7 @@ class Model extends Backbone.Model {
 	 */
 	getRetrievePromise() {
 
-		var { NODE_ENV, PRODUCTION_DB_URL } = process.env
-	
-		var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
-		var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
-
-		MongoClient.connect(dbUrl, (err, db) => {
+		dbConnector.then((db) => {
 
 			return new Promise((resolve, reject) => {
 
@@ -158,13 +150,13 @@ class Model extends Backbone.Model {
 
 			})
 
-		})
+		}).catch((e) => { console.log(e.stack) });
 
 	}
 
 }
 
-class Collection extends Backbone.Collection {
+export class Collection extends Backbone.Collection {
 
 	constructor(options) {
 		super(options);
@@ -173,8 +165,3 @@ class Collection extends Backbone.Collection {
 	}
 
 }
-
-export default {
-	Model: Model,
-	Collection: Collection
-};

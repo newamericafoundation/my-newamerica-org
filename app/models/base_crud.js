@@ -6,7 +6,7 @@ import $ from 'jquery';
  *
  *
  */
-class Model extends Backbone.Model {
+export class Model extends Backbone.Model {
 
 	/*
 	 * Lower-case name of the resource constructed by this constructor.
@@ -187,7 +187,7 @@ class Model extends Backbone.Model {
 
 
 
-class Collection extends Backbone.Collection {
+export class Collection extends Backbone.Collection {
 	
 	get model() { return Model; }
 
@@ -301,8 +301,3 @@ class Collection extends Backbone.Collection {
 	}
 
 }
-
-export default {
-	Model: Model,
-	Collection: Collection
-};

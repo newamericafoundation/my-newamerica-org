@@ -5,4 +5,6 @@
 // Allow ES6 syntax in all required files.
 require('babel-core/register')
 
+if (process.env['NODE_ENV'] !== 'production') { require('dotenv').load() }
+
 require('./server.js')

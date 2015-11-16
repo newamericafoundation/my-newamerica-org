@@ -29,7 +29,7 @@ class Wrapper extends React.Component {
 	render() { return (<div className='fill-parent'>{ this.props.children }</div>); }
 }
 
-import * as models from './../models/index.js';
+import models from './../models/index.js'
 
 import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx';
 
@@ -55,6 +55,6 @@ var routes = (
 
 		</Route>
 	</Router>
-);
+)
 
-export default routes;
+export default routes

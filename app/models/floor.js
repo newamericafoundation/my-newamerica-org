@@ -1,7 +1,7 @@
-import base from './base.js';
-import room from './room.js';
+import * as base from './base.js';
+import * as room from './room.js';
 
-class Model extends base.Model {
+export class Model extends base.Model {
 
 	get resourceName() { return 'floor'; }
 
@@ -21,7 +21,7 @@ class Model extends base.Model {
 
 }
 
-class Collection extends base.Collection {
+export class Collection extends base.Collection {
 
 	get model() { return Model; }
 
@@ -37,8 +37,3 @@ class Collection extends base.Collection {
 	}
 
 }
-
-export default {
-	Model: Model,
-	Collection: Collection
-};

@@ -1,5 +1,5 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 
 var toSvgPointsDef = function(coordinates) {
 	var points = coordinates.map((point) => {
@@ -11,10 +11,19 @@ var toSvgPointsDef = function(coordinates) {
 // Floor plans component.
 class FloorPlans extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
 		super(props);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className='floorplans'>
@@ -24,6 +33,11 @@ class FloorPlans extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderFloors() {
 		return this.props.floors.models.map((floor, i) => {
 			return (
@@ -32,6 +46,11 @@ class FloorPlans extends React.Component {
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderActiveRoomSummary() {
 		var room = this.props.activeRoom;
 		return (
@@ -49,6 +68,10 @@ class FloorPlans extends React.Component {
 // Floor plan component.
 class Floor extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		var polygonPoints;
 		if (!this.isActive()) { return (<div />); }
@@ -63,12 +86,22 @@ class Floor extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderRooms() {
 		return this.props.floor.get('rooms').models.map((room, i) => {
 			return <Room {...this.props} room={room} key={i} />
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	isActive() {
 		return (this.props.activeRoom && (this.props.activeRoom.parent === this.props.floor));
 	}
@@ -79,6 +112,10 @@ class Floor extends React.Component {
 // Room component floor plan.
 class Room extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates')),
 			cls = classNames({
@@ -97,22 +134,41 @@ class Room extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	isActive() {
 		return (this.props.room === this.props.activeRoom);
 	}
 
 	// If there are event handlers passed down to the component, run those passing along the room id.
 
+	/*
+	 *
+	 *
+	 */
 	handleClick() {
 		var fn = this.props.handleRoomClick;
 		if (fn) { fn(this.props.room); }
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	handleMouseEnter() {
 		var fn = this.props.handleRoomMouseEnter;
 		if (fn) { fn(this.props.room); }
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	handleMouseLeave() {
 		var fn = this.props.handleRoomMouseLeave;
 		if (fn) { fn(this.props.room); }

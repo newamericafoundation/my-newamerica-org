@@ -1,8 +1,8 @@
 import _ from 'underscore'
 import Backbone from 'backbone'
-import baseCrud from './base_crud.js'
+import * as baseCrud from './base_crud.js'
 
-class Model extends baseCrud.Model {
+export class Model extends baseCrud.Model {
 
 	/*
 	 *
@@ -26,7 +26,7 @@ class Model extends baseCrud.Model {
 
 }
 
-class Collection extends baseCrud.Collection {
+export class Collection extends baseCrud.Collection {
 
 	get model() { return Model; }
 
@@ -62,8 +62,3 @@ class Collection extends baseCrud.Collection {
 	}
 
 }
-
-module.exports = {
-	Model: Model,
-	Collection: Collection
-};

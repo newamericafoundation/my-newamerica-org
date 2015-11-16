@@ -7,21 +7,22 @@ import session from 'express-session'
 import { MongoClient } from 'mongodb'
 import connectMongo from 'connect-mongo'
 
-import dotenv from 'dotenv'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
 
 import serveGzipMiddleware from './app/middleware/serve_gzip.js'
 
 import router from './app/routes/index.js'
 
-if (process.env['NODE_ENV'] !== 'production') { dotenv.load() }
+import dbConnector from './db/connector.js'
 
 // Configure passport. Must run before initializing passport on the app instance.
 require('./config/passport_config.js')
 
 var app = express(),
-	MongoStore = connectMongo(session),
-	env = process.env.NODE_ENV,
-	port = process.env.PORT;
+	MongoStore = connectMongo(session);
+
+var { NODE_ENV, PORT, PRODUCTION_DB_URL } = process.env
 
 app.set('views', __dirname + '/app/views')
 app.set('view engine', 'jade')
@@ -37,16 +38,16 @@ app.use(express.static('public'))
 
 app.use(methodOverride())
 app.use(cookieParser())
-
-var { NODE_ENV, PRODUCTION_DB_URL } = process.env
 	
 var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
 var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
 
-MongoClient.connect(dbUrl, (err, db) => {
+//MongoClient.connect(dbUrl, (err, db) => {
 
-	if (err) { return console.log('Unable to connect to the database.') }
-	
+	// if (err) { return console.log('Unable to connect to the database.') }
+
+dbConnector.then(function(db) {
+
 	// Initialize session with database storage.
 	app.use(session({
 	    secret: 'Super_Big_Secret',
@@ -76,9 +77,9 @@ MongoClient.connect(dbUrl, (err, db) => {
 	app.use(router)
 
 	// Start server.
-	app.listen(port, function(err) { 
+	app.listen(PORT, function(err) { 
 		if(err) { return console.log(err); }
-		console.log('Listening on port ' + port + '.');
+		console.log('Listening on port ' + PORT + '.');
 	})
 
 });

@@ -52,17 +52,15 @@
 
 	var _reactDom = __webpack_require__(158);
 
-	var _reactDom2 = _interopRequireDefault(_reactDom);
+	var _client = __webpack_require__(159);
+
+	var _client2 = _interopRequireDefault(_client);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Do not bundle User model.
+	console.log('Hi, Mom!'); // Do not bundle User model.
 
-	var routes = __webpack_require__(159);
-
-	console.log('Hi, Mom!');
-
-	_reactDom2.default.render(routes, global.document.getElementById('main'));
+	(0, _reactDom.render)(_client2.default, global.document.getElementById('main'));
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
@@ -19761,13 +19759,11 @@
 
 	var _index15 = __webpack_require__(334);
 
-	var models = _interopRequireWildcard(_index15);
+	var _index16 = _interopRequireDefault(_index15);
 
 	var _resource_route_generator = __webpack_require__(335);
 
 	var _resource_route_generator2 = _interopRequireDefault(_resource_route_generator);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19837,12 +19833,12 @@
 			_react2.default.createElement(_reactRouter.Route, { path: 'floorplans', component: _index4.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'resources', component: _index10.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'faq', component: _index12.default }),
-			(0, _resource_route_generator2.default)(models.readme.Model),
-			(0, _resource_route_generator2.default)(models.faq.Model),
-			(0, _resource_route_generator2.default)(models.resource.Model),
-			(0, _resource_route_generator2.default)(models.weeklyWin.Model),
-			(0, _resource_route_generator2.default)(models.staffMember.Model),
-			(0, _resource_route_generator2.default)(models.department.Model)
+			(0, _resource_route_generator2.default)(_index16.default.readme.Model),
+			(0, _resource_route_generator2.default)(_index16.default.faq.Model),
+			(0, _resource_route_generator2.default)(_index16.default.resource.Model),
+			(0, _resource_route_generator2.default)(_index16.default.weeklyWin.Model),
+			(0, _resource_route_generator2.default)(_index16.default.staffMember.Model),
+			(0, _resource_route_generator2.default)(_index16.default.department.Model)
 		)
 	);
 
@@ -36336,16 +36332,17 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
 	var _room = __webpack_require__(315);
 
-	var _room2 = _interopRequireDefault(_room);
+	var room = _interopRequireWildcard(_room);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36353,7 +36350,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -36368,7 +36365,7 @@
 				var _this2 = this;
 
 				if (this.get('rooms') != null) {
-					var roomCollection = new _room2.default.Collection(this.get('rooms'));
+					var roomCollection = new room.Collection(this.get('rooms'));
 					roomCollection.each(function (roomModel) {
 						roomModel.parent = _this2;
 					});
@@ -36388,9 +36385,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -36419,12 +36416,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 310 */
@@ -36433,6 +36425,11 @@
 	'use strict';
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.Collection = exports.Model = undefined;
 
 	var _underscore = __webpack_require__(311);
 
@@ -36444,7 +36441,9 @@
 
 	var _base_crud = __webpack_require__(314);
 
-	var _base_crud2 = _interopRequireDefault(_base_crud);
+	var baseCrud = _interopRequireWildcard(_base_crud);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36454,7 +36453,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_baseCrud$Model) {
+	var Model = exports.Model = (function (_baseCrud$Model) {
 		_inherits(Model, _baseCrud$Model);
 
 		function Model() {
@@ -36492,9 +36491,9 @@
 		}]);
 
 		return Model;
-	})(_base_crud2.default.Model);
+	})(baseCrud.Model);
 
-	var Collection = (function (_baseCrud$Collection) {
+	var Collection = exports.Collection = (function (_baseCrud$Collection) {
 		_inherits(Collection, _baseCrud$Collection);
 
 		function Collection() {
@@ -36550,12 +36549,7 @@
 		}]);
 
 		return Collection;
-	})(_base_crud2.default.Collection);
-
-	module.exports = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(baseCrud.Collection);
 
 /***/ },
 /* 311 */
@@ -41539,6 +41533,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _backbone = __webpack_require__(312);
 
@@ -41567,7 +41562,7 @@
 	 *
 	 */
 
-	var Model = (function (_Backbone$Model) {
+	var Model = exports.Model = (function (_Backbone$Model) {
 		_inherits(Model, _Backbone$Model);
 
 		function Model() {
@@ -41775,7 +41770,7 @@
 		return Model;
 	})(Backbone.Model);
 
-	var Collection = (function (_Backbone$Collection) {
+	var Collection = exports.Collection = (function (_Backbone$Collection) {
 		_inherits(Collection, _Backbone$Collection);
 
 		function Collection() {
@@ -41914,11 +41909,6 @@
 		return Collection;
 	})(Backbone.Collection);
 
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
-
 /***/ },
 /* 315 */
 /***/ function(module, exports, __webpack_require__) {
@@ -41930,12 +41920,13 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41943,7 +41934,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -41965,9 +41956,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -41984,12 +41975,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 316 */
@@ -42033,11 +42019,21 @@
 	var FloorPlans = (function (_React$Component) {
 		_inherits(FloorPlans, _React$Component);
 
+		/*
+	  *
+	  *
+	  */
+
 		function FloorPlans(props) {
 			_classCallCheck(this, FloorPlans);
 
 			return _possibleConstructorReturn(this, Object.getPrototypeOf(FloorPlans).call(this, props));
 		}
+
+		/*
+	  *
+	  *
+	  */
 
 		_createClass(FloorPlans, [{
 			key: 'render',
@@ -42049,6 +42045,12 @@
 					this.renderActiveRoomSummary()
 				);
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'renderFloors',
 			value: function renderFloors() {
@@ -42058,6 +42060,12 @@
 					return _react2.default.createElement(Floor, _extends({}, _this2.props, { floor: floor, key: i }));
 				});
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'renderActiveRoomSummary',
 			value: function renderActiveRoomSummary() {
@@ -42099,6 +42107,11 @@
 
 		_createClass(Floor, [{
 			key: 'render',
+
+			/*
+	   *
+	   *
+	   */
 			value: function render() {
 				var polygonPoints;
 				if (!this.isActive()) {
@@ -42116,6 +42129,12 @@
 					_react2.default.createElement('polygon', { className: 'floorplans__outer-wall', points: polygonPoints })
 				);
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'renderRooms',
 			value: function renderRooms() {
@@ -42125,6 +42144,12 @@
 					return _react2.default.createElement(Room, _extends({}, _this4.props, { room: room, key: i }));
 				});
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'isActive',
 			value: function isActive() {
@@ -42148,6 +42173,11 @@
 
 		_createClass(Room, [{
 			key: 'render',
+
+			/*
+	   *
+	   *
+	   */
 			value: function render() {
 				var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates')),
 				    cls = (0, _classnames2.default)({
@@ -42163,6 +42193,12 @@
 					onMouseLeave: this.handleMouseLeave.bind(this)
 				});
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'isActive',
 			value: function isActive() {
@@ -42170,6 +42206,11 @@
 			}
 
 			// If there are event handlers passed down to the component, run those passing along the room id.
+
+			/*
+	   *
+	   *
+	   */
 
 		}, {
 			key: 'handleClick',
@@ -42179,6 +42220,12 @@
 					fn(this.props.room);
 				}
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'handleMouseEnter',
 			value: function handleMouseEnter() {
@@ -42187,6 +42234,12 @@
 					fn(this.props.room);
 				}
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'handleMouseLeave',
 			value: function handleMouseLeave() {
@@ -42248,13 +42301,15 @@
 
 	var _staff_member3 = __webpack_require__(319);
 
-	var _staff_member4 = _interopRequireDefault(_staff_member3);
+	var staffMember = _interopRequireWildcard(_staff_member3);
 
 	var _floor = __webpack_require__(309);
 
 	var _index3 = __webpack_require__(321);
 
 	var _index4 = _interopRequireDefault(_index3);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42373,7 +42428,7 @@
 			value: function componentDidMount() {
 				var _this3 = this;
 
-				new _staff_member4.default.Collection().getClientFetchPromise().then(function (coll) {
+				new staffMember.Collection().getClientFetchPromise().then(function (coll) {
 					_this3.setState({ staffMembers: coll });
 				}).catch(function (err) {
 					console.log(err.stack);
@@ -42388,7 +42443,7 @@
 		}, {
 			key: 'navigateToAdd',
 			value: function navigateToAdd() {
-				this.props.history.pushState(null, _staff_member4.default.Model.prototype.getNewUrl());
+				this.props.history.pushState(null, staffMember.Model.prototype.getNewUrl());
 			}
 
 			/*
@@ -42797,10 +42852,11 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
 	var _department = __webpack_require__(320);
 
@@ -42808,13 +42864,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -42909,9 +42967,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -42928,12 +42986,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 320 */
@@ -42946,12 +42999,13 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42959,7 +43013,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -42994,9 +43048,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -43013,12 +43067,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 321 */
@@ -43290,10 +43339,11 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
 	var _underscore = __webpack_require__(311);
 
@@ -43301,13 +43351,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -43378,9 +43430,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -43402,12 +43454,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 324 */
@@ -43702,12 +43749,13 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43715,7 +43763,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -43798,9 +43846,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -43817,12 +43865,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 327 */
@@ -45532,12 +45575,13 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -45545,7 +45589,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -45618,9 +45662,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -45637,12 +45681,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 332 */
@@ -45897,10 +45936,11 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.Collection = exports.Model = undefined;
 
 	var _base = __webpack_require__(310);
 
-	var _base2 = _interopRequireDefault(_base);
+	var base = _interopRequireWildcard(_base);
 
 	var _underscore = __webpack_require__(311);
 
@@ -45908,13 +45948,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Model = (function (_base$Model) {
+	var Model = exports.Model = (function (_base$Model) {
 		_inherits(Model, _base$Model);
 
 		function Model() {
@@ -45990,9 +46032,9 @@
 		}]);
 
 		return Model;
-	})(_base2.default.Model);
+	})(base.Model);
 
-	var Collection = (function (_base$Collection) {
+	var Collection = exports.Collection = (function (_base$Collection) {
 		_inherits(Collection, _base$Collection);
 
 		function Collection() {
@@ -46014,12 +46056,7 @@
 		}]);
 
 		return Collection;
-	})(_base2.default.Collection);
-
-	exports.default = {
-		Model: Model,
-		Collection: Collection
-	};
+	})(base.Collection);
 
 /***/ },
 /* 334 */
@@ -46028,62 +46065,43 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _faq = __webpack_require__(331);
 
-	Object.defineProperty(exports, 'faq', {
-	  enumerable: true,
-	  get: function get() {
-	    return _faq.default;
-	  }
-	});
+	var faq = _interopRequireWildcard(_faq);
 
 	var _readme = __webpack_require__(333);
 
-	Object.defineProperty(exports, 'readme', {
-	  enumerable: true,
-	  get: function get() {
-	    return _readme.default;
-	  }
-	});
+	var readme = _interopRequireWildcard(_readme);
 
 	var _resource = __webpack_require__(326);
 
-	Object.defineProperty(exports, 'resource', {
-	  enumerable: true,
-	  get: function get() {
-	    return _resource.default;
-	  }
-	});
+	var resource = _interopRequireWildcard(_resource);
 
 	var _staff_member = __webpack_require__(319);
 
-	Object.defineProperty(exports, 'staffMember', {
-	  enumerable: true,
-	  get: function get() {
-	    return _staff_member.default;
-	  }
-	});
+	var staffMember = _interopRequireWildcard(_staff_member);
 
 	var _weekly_win = __webpack_require__(323);
 
-	Object.defineProperty(exports, 'weeklyWin', {
-	  enumerable: true,
-	  get: function get() {
-	    return _weekly_win.default;
-	  }
-	});
+	var weeklyWin = _interopRequireWildcard(_weekly_win);
 
 	var _department = __webpack_require__(320);
 
-	Object.defineProperty(exports, 'department', {
-	  enumerable: true,
-	  get: function get() {
-	    return _department.default;
-	  }
-	});
+	var department = _interopRequireWildcard(_department);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	exports.default = {
+		faq: faq,
+		readme: readme,
+		resource: resource,
+		staffMember: staffMember,
+		weeklyWin: weeklyWin,
+		department: department
+	};
 
 /***/ },
 /* 335 */

@@ -1,6 +1,15 @@
-export { default as faq } from './faq.js';
-export { default as readme } from './readme.js';
-export { default as resource } from './resource.js';
-export { default as staffMember } from './staff_member.js';
-export { default as weeklyWin } from './weekly_win.js';
-export { default as department } from './department.js';
+import * as faq from './faq.js'
+import * as readme from './readme.js'
+import * as resource from './resource.js'
+import * as staffMember from './staff_member.js'
+import * as weeklyWin from './weekly_win.js'
+import * as department from './department.js'
+
+export default {
+	faq: faq,
+	readme: readme,
+	resource: resource,
+	staffMember: staffMember,
+	weeklyWin: weeklyWin,
+	department: department
+}
