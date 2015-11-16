@@ -104,14 +104,23 @@ class Model extends Backbone.Model {
 	 */
 	getSavePromise(db) {
 
-		return new Promise((resolve, reject) => {
+		var { NODE_ENV, PRODUCTION_DB_URL } = process.env
+	
+		var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
+		var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
 
-			var collection = db.collection('intranet_users');
+		MongoClient.connect(dbUrl, (err, db) => {
 
-			collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
-				console.log('user saved successfully');
-				if (err) { return reject(err); }
-				resolve(this);
+			return new Promise((resolve, reject) => {
+
+				var collection = db.collection('intranet_users');
+
+				collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
+					console.log('user saved successfully');
+					if (err) { return reject(err); }
+					resolve(this);
+				});
+
 			});
 
 		});
@@ -125,22 +134,31 @@ class Model extends Backbone.Model {
 	 */
 	getRetrievePromise() {
 
-		return new Promise((resolve, reject) => {
+		var { NODE_ENV, PRODUCTION_DB_URL } = process.env
+	
+		var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
+		var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
 
-			return dbConnector.then((db) => {
+		MongoClient.connect(dbUrl, (err, db) => {
 
-				var collection = db.collection('intranet_users'),
-					cursor = collection.find({ _id: this.get('id') });
+			return new Promise((resolve, reject) => {
 
-				cursor.toArray((err, json) => {
-					if (err) { return reject(err); }
-					this.set(this.parse(json[0]));
-					resolve(this);
-				});
+				return dbConnector.then((db) => {
 
-			}, (err) => { reject(err); });
+					var collection = db.collection('intranet_users'),
+						cursor = collection.find({ _id: this.get('id') });
 
-		});
+					cursor.toArray((err, json) => {
+						if (err) { return reject(err); }
+						this.set(this.parse(json[0]));
+						resolve(this);
+					})
+
+				}, (err) => { reject(err); });
+
+			})
+
+		})
 
 	}
 

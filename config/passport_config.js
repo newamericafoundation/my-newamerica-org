@@ -7,10 +7,8 @@ import express from 'express';
 // https://code.google.com/apis/console/
 var { NODE_ENV, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env
 
-var getCallbackUrl = function() {
-    var urlBase = (NODE_ENV === 'development') ? '127.0.0.1:3000' : 'my.newamerica.org';
-    return `http://${urlBase}/auth/google/callback`;
-};
+var callbackUrlBase = (NODE_ENV === 'development') ? '127.0.0.1:3000' : 'my.newamerica.org'
+var callbackUrl = `http://${callbackUrlBase}/auth/google/callback`
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -21,14 +19,14 @@ var getCallbackUrl = function() {
 //   serialized and deserialized.
 passport.serializeUser(function(user, done) {
     done(null, { id: user.id });
-});
+})
 
 passport.deserializeUser(function(obj, done) {
     var model = new user.Model({ id: obj.id });
     model.getRetrievePromise().then((model) => {
         done(null, model.toClientJSON());
     }, () => { console.log('could not deserialize'); });
-});
+})
 
 // Use the GoogleStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -37,7 +35,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new OAuth2Strategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: getCallbackUrl()
+        callbackURL: callbackUrl
     },
     function(accessToken, refreshToken, profile, done) {
 
@@ -63,4 +61,4 @@ passport.use(new OAuth2Strategy({
             .catch((err) => { return done(err); });
 
     }
-));
+))
