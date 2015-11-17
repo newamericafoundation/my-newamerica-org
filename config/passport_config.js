@@ -1,6 +1,6 @@
 import passport from 'passport'
 import { OAuth2Strategy } from 'passport-google-oauth'
-import * as user from './../app/models/user.js'
+import { Model, Collection } from './../app/models/user.js'
 import express from 'express'
 
 // API Access link for creating client ID and secret:
@@ -22,10 +22,13 @@ passport.serializeUser(function(user, done) {
 })
 
 passport.deserializeUser(function(obj, done) {
-    var model = new user.Model({ id: obj.id });
+    var model = new Model({ id: obj.id })
     model.getRetrievePromise().then((model) => {
-        done(null, model.toClientJSON());
-    }, () => { console.log('could not deserialize'); });
+        done(null, model.toClientJSON())
+    }).catch((err) => { 
+        console.log(err.stack)
+        console.log('Could not deserialize')
+    });
 })
 
 // Use the GoogleStrategy within Passport.
@@ -41,7 +44,7 @@ passport.use(new OAuth2Strategy({
 
         profile._json.accessToken = accessToken;
 
-        var model = new user.Model(profile._json);
+        var model = new Model(profile._json);
 
         var msg = 'Please log into your newamerica.org as your primary account. We are working on a more robust solution to handle multiple Google logins for more convenient access to the site.';
 

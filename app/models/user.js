@@ -1,7 +1,7 @@
 // Do not bundle!
 
-import _ from 'underscore';
-import Backbone from 'backbone';
+import _ from 'underscore'
+import Backbone from 'backbone'
 
 import dbConnector from './../../db/connector.js'
 
@@ -20,6 +20,11 @@ var adminEmails = [
 	"novamartinez"
 ].map((email) => { return `${email}@newamerica.org`; })
 
+
+/*
+ *
+ *
+ */
 export class Model extends Backbone.Model {
 
 	constructor(options) {
@@ -27,7 +32,6 @@ export class Model extends Backbone.Model {
 	}
 
 	get resourceName() { return 'user'; }
-
 
 	/*
 	 *
@@ -106,21 +110,21 @@ export class Model extends Backbone.Model {
 	 */
 	getSavePromise() {
 
-		dbConnector.then((db) => {
+		return new Promise((resolve, reject) => {
 
-			return new Promise((resolve, reject) => {
+			dbConnector.then((db) => {
 
-				var collection = db.collection('intranet_users');
+					var collection = db.collection('intranet_users');
 
-				collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
-					console.log('user saved successfully');
-					if (err) { return reject(err); }
-					resolve(this);
-				});
+					collection.update({ _id: this.get('id') }, this.toMongoJSON(), { upsert: true }, (err, json) => {
+						console.log('user saved successfully');
+						if (err) { return reject(err); }
+						resolve(this);
+					});
 
-			});
+			}).catch((err) => { reject(err.stack) });
 
-		}).catch((e) => { console.log(e.stack) });
+		});
 		
 	}
 
@@ -131,37 +135,34 @@ export class Model extends Backbone.Model {
 	 */
 	getRetrievePromise() {
 
-		dbConnector.then((db) => {
+		return new Promise((resolve, reject) => {
 
-			return new Promise((resolve, reject) => {
+			dbConnector.then((db) => {
 
-				return dbConnector.then((db) => {
+				var collection = db.collection('intranet_users'),
+					cursor = collection.find({ _id: this.get('id') });
 
-					var collection = db.collection('intranet_users'),
-						cursor = collection.find({ _id: this.get('id') });
+				cursor.toArray((err, json) => {
+					if (err) { return reject(err) }
+					this.set(this.parse(json[0]))
+					resolve(this)
+				})
 
-					cursor.toArray((err, json) => {
-						if (err) { return reject(err); }
-						this.set(this.parse(json[0]));
-						resolve(this);
-					})
+			}).catch((err) => { reject(err.stack) })
 
-				}, (err) => { reject(err); });
-
-			})
-
-		}).catch((e) => { console.log(e.stack) });
+		})
 
 	}
 
 }
 
+
+/*
+ * Not used.
+ *
+ */
 export class Collection extends Backbone.Collection {
 
-	constructor(options) {
-		super(options);
-		this.model = Model;
-		this.url = '/api/v1/floors';
-	}
+	get model() { return Model }
 
 }
