@@ -9,6 +9,7 @@ import connectMongo from 'connect-mongo'
 
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackConfig from './webpack.config.js'
 
 import serveGzipMiddleware from './app/middleware/serve_gzip.js'
 
@@ -23,6 +24,13 @@ var app = express(),
 	MongoStore = connectMongo(session);
 
 var { NODE_ENV, PORT, PRODUCTION_DB_URL } = process.env
+
+// Use webpack middleware for development.
+if (NODE_ENV !== 'production') {
+	let webpackCompiler = webpack(webpackConfig)
+	let webpackMiddleware = webpackDevMiddleware(webpackCompiler)
+	app.use(webpackMiddleware)
+}
 
 app.set('views', __dirname + '/app/views')
 app.set('view engine', 'jade')
@@ -42,10 +50,6 @@ app.use(cookieParser())
 var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
 var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
 
-//MongoClient.connect(dbUrl, (err, db) => {
-
-	// if (err) { return console.log('Unable to connect to the database.') }
-
 dbConnector.then(function(db) {
 
 	// Initialize session with database storage.
@@ -53,7 +57,7 @@ dbConnector.then(function(db) {
 	    secret: 'Super_Big_Secret',
 	    saveUninitialized: false,
 	    resave: true,
-	    store: new MongoStore({ 
+	    store: new MongoStore({
 	    	db: db,
 	    	collection: 'sessions',
 	    	stringify: false

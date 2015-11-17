@@ -5,6 +5,10 @@ import classNames from 'classnames';
 
 class StaffMember extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
 		super(props);
 	}
@@ -118,4 +122,4 @@ class StaffMember extends React.Component {
 
 }
 
-export default StaffMember;
+export default StaffMember

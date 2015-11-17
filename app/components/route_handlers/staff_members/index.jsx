@@ -5,6 +5,8 @@ import classNames from 'classnames'
 import StaffMember from './staff_member.jsx'
 import StaffMemberSummary from './staff_member_summary.jsx'
 
+import FloorPlans from './../../general/floor_plans/root.jsx'
+
 import Icons from './../../general/icons.jsx'
 import Loader from './../../general/loader.jsx'
 
@@ -13,6 +15,10 @@ import * as staffMember from './../../../models/staff_member.js'
 import Base from './../base/index.jsx'
 
 
+/*
+ *
+ *
+ */
 class StaffMembers extends Base {
 
 	/*
@@ -44,14 +50,12 @@ class StaffMembers extends Base {
 					</div>
 					<h1 className='title'>Staff Directory</h1>
 					{ this.renderAddButton() }
+					<FloorPlans />
 					<input placeholder="Search" onChange={ this.setSearchTerm }></input>
-
 					<ul>
 						{ this.renderMembers() }
 					</ul>
-
 					{ false ? this.renderLocator() : null }
-
 				</div>
 			</div>
 		)
@@ -83,15 +87,20 @@ class StaffMembers extends Base {
 	 */
 	renderLocator() {
 		if (this.state.staffMembers == null) { return }
-		var cls = 'page__content__2-2';
-		if (this.state.scrollTop > 220) { cls += ' page__content__2-2--fixed'; }
+
+		var cls = classNames({
+			'page__content__2-2': true,
+			'page__content__2-2--fixed': this.state.scrollTop > 220
+		})
 
 		return (
 			<div className={ cls }>
 				<StaffMemberSummary floors={floors} staffMember={this.getHighlightedStaffMember()} />
-				<FloorPlans floors={floors} activeRoomId={this.getHighlightedRoomId()} />
+				{
+					// <FloorPlans floors={floors} activeRoomId={this.getHighlightedRoomId()} />
+				}
 			</div>
-		);
+		)
 	}
 
 
@@ -101,8 +110,8 @@ class StaffMembers extends Base {
 	 */
 	componentDidMount() {
 		new staffMember.Collection().getClientFetchPromise().then((coll) => {
-			this.setState({ staffMembers: coll });
-		}).catch((err) => { console.log(err.stack); });
+			this.setState({ staffMembers: coll })
+		}).catch((err) => { console.log(err.stack) })
 	}
 
 
@@ -120,9 +129,7 @@ class StaffMembers extends Base {
 	 *
 	 */
 	logScroll(e) {
-		this.setState({
-			scrollTop: e.target.scrollTop
-		});
+		this.setState({ scrollTop: e.target.scrollTop })
 	}
 
 
@@ -142,9 +149,9 @@ class StaffMembers extends Base {
 	 *
 	 */
 	getHighlightedRoomId() {
-		var highlightedStaffMember = this.getHighlightedStaffMember();
-		if (highlightedStaffMember == null) { return null; }
-		return String(highlightedStaffMember.get('room_id'));
+		var highlightedStaffMember = this.getHighlightedStaffMember()
+		if (!highlightedStaffMember) { return null }
+		return String(highlightedStaffMember.get('room_id'))
 	}
 
 
@@ -153,7 +160,7 @@ class StaffMembers extends Base {
 	 *
 	 */
 	setSearchTerm(e) {
-		this.setState({ searchTerm: e.target.value });
+		this.setState({ searchTerm: e.target.value })
 	}
 
 
@@ -164,11 +171,11 @@ class StaffMembers extends Base {
 	setHoveredStaffMember(staffMember) {
 		var stateChanges = {
 			hoveredStaffMember: staffMember
-		};
-		if (staffMember) {
-			stateChanges.activeStaffMember = null;
 		}
-		this.setState(stateChanges);
+		if (staffMember) {
+			stateChanges.activeStaffMember = null
+		}
+		this.setState(stateChanges)
 	}
 
 
@@ -177,10 +184,10 @@ class StaffMembers extends Base {
 	 *
 	 */
 	activateStaffMember(staffMember) {
-		this.setState({ activeStaffMember: staffMember });
+		this.setState({ activeStaffMember: staffMember })
 	}
 
 }
 
 
-export default StaffMembers;
+export default StaffMembers

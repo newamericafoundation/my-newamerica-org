@@ -1,7 +1,7 @@
-import passport from 'passport';
-import { OAuth2Strategy } from 'passport-google-oauth';
-import user from './../app/models/user.js';
-import express from 'express';
+import passport from 'passport'
+import { OAuth2Strategy } from 'passport-google-oauth'
+import * as user from './../app/models/user.js'
+import express from 'express'
 
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
