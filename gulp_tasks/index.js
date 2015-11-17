@@ -1,10 +1,8 @@
-import gulp from 'gulp';
+import gulp from 'gulp'
 
-require('./bundle.js');
-require('./copy_shared_code.js');
-require('./spec.js');
-require('./dev.js');
-require('./devops.js');
-require('./deploy.js');
-require('./image_min.js');
-require('./default.js');
+import './spec.js'
+import './dev.js'
+import './devops.js'
+import './deploy.js'
+import './image_min.js'
+import './default.js'

@@ -12,7 +12,10 @@ module.exports = {
 
 	module: {
 		loaders: [
-		
+			{
+	            test: /\.json$/,
+	            loaders: ['json-loader']
+	        },
 			{
 				test: /(\.js)|(\.jsx)$/,
 				loader: 'babel-loader',
@@ -20,7 +23,6 @@ module.exports = {
 					presets: [ 'es2015', 'react' ]
 				}
 			},
-
 			{
 				test: /\.scss$/,
 				loaders: [ 'style', 'css', 'sass' ]

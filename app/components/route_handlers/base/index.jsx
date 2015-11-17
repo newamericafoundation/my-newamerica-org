@@ -1,5 +1,5 @@
-import React from 'react';
-import Icons from './../../general/icons.jsx';
+import React from 'react'
+import Icons from './../../general/icons.jsx'
 
 
 class Base extends React.Component {
@@ -24,4 +24,4 @@ class Base extends React.Component {
 
 }
 
-export default Base;
+export default Base

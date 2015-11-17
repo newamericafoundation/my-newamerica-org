@@ -7,7 +7,6 @@ import Header from './../components/general/header.jsx';
 
 import Dashboard from './../components/route_handlers/dashboard/index.jsx';
 
-import RoomBooking from './../components/route_handlers/floors/index.jsx';
 import StaffMembers from './../components/route_handlers/staff_members/index.jsx';
 import WeeklyWins from './../components/route_handlers/weekly_wins/index.jsx';
 import Resources from './../components/route_handlers/resources/index.jsx';
@@ -31,6 +30,8 @@ class Wrapper extends React.Component {
 
 import models from './../models/index.js'
 
+console.log(models)
+
 import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx';
 
 var routes = (
@@ -42,7 +43,6 @@ var routes = (
 			<Route path='staff-directory' component={StaffMembers} />
 			<Route path='weekly-wins' component={WeeklyWins} />
 			<Route path='readmes' component={Readmes} />
-			<Route path='floorplans' component={RoomBooking} />
 			<Route path='resources' component={Resources} />
 			<Route path='faq' component={Faq} />
 

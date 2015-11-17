@@ -1,6 +1,6 @@
 import * as base from './base.js';
 
-import department from './department.js';
+import * as department from './department.js';
 
 export class Model extends base.Model {
 

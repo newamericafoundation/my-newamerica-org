@@ -1,6 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
 
+/*
+ * Transforms coordinate array to svg point coordinates definition.
+ *
+ */
 var toSvgPointsDef = function(coordinates) {
 	var points = coordinates.map((point) => {
 		return `${point[0]},${100 - point[1]}`;
@@ -8,7 +12,11 @@ var toSvgPointsDef = function(coordinates) {
 	return points.join(',');
 };
 
-// Floor plans component.
+
+/* 
+ * Floor plans component.
+ *
+ */
 class FloorPlans extends React.Component {
 
 	/*
@@ -16,7 +24,7 @@ class FloorPlans extends React.Component {
 	 *
 	 */
 	constructor(props) {
-		super(props);
+		super(props)
 	}
 
 
@@ -39,6 +47,8 @@ class FloorPlans extends React.Component {
 	 *
 	 */
 	renderFloors() {
+		var { floors } = this.props
+		if (!floors) { return }
 		return this.props.floors.models.map((floor, i) => {
 			return (
 				<Floor {...this.props} floor={floor} key={i} />
@@ -52,12 +62,13 @@ class FloorPlans extends React.Component {
 	 *
 	 */
 	renderActiveRoomSummary() {
-		var room = this.props.activeRoom;
+		var { activeRoom } = this.props
+		if (!activeRoom) { return }
 		return (
 			<div className='floorplans__tooltip'>
 				<div>
-					<h1>{ room.get('name') || room.get('id') }</h1>
-					<p>{ room.isPublic() ? `Capacity: ${room.get('capacity')}.` : null }</p>
+					<h1>{ activeRoom.get('name') || activeRoom.get('id') }</h1>
+					<p>{ activeRoom.isPublic() ? `Capacity: ${room.get('capacity')}.` : null }</p>
 				</div>
 			</div>
 		);
@@ -92,7 +103,8 @@ class Floor extends React.Component {
 	 *
 	 */
 	renderRooms() {
-		return this.props.floor.get('rooms').models.map((room, i) => {
+		var { floor } = this.props
+		return floor.get('rooms').models.map((room, i) => {
 			return <Room {...this.props} room={room} key={i} />
 		});
 	}
@@ -103,7 +115,8 @@ class Floor extends React.Component {
 	 *
 	 */
 	isActive() {
-		return (this.props.activeRoom && (this.props.activeRoom.parent === this.props.floor));
+		var { activeRoom, floor } = this.props
+		return (activeRoom && (activeRoom.parent === floor));
 	}
 
 }

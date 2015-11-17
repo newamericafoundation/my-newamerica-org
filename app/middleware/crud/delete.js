@@ -27,6 +27,6 @@ var deleteMiddleware = (options, req, res, next) => {
 
 	});
 
-};
+}
 
-export default deleteMiddleware;
+export default deleteMiddleware

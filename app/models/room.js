@@ -1,15 +1,15 @@
-import * as base from './base.js';
+import * as base from './base.js'
 
 export class Model extends base.Model {
 
-	get resourceName() { return 'room'; }
+	get resourceName() { return 'room' }
 
 	isPublic() {
-		return (this.get('capacity') != null);
+		return (this.get('capacity') != null)
 	}
 
 }
 
 export class Collection extends base.Collection {
-	get model() { return Model; }
+	get model() { return Model }
 }

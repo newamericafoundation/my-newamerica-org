@@ -1,2 +1,4 @@
-require('babel-core/register');
-require('./gulp_tasks/index.js');
+require('babel-core/register')
+require('dotenv').load()
+
+require('./gulp_tasks/index.js')

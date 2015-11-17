@@ -3,28 +3,31 @@ import moment from 'moment'
 import classNames from 'classnames'
 
 import StaffMember from './staff_member.jsx'
+import StaffMemberSummary from './staff_member_summary.jsx'
 
 import Icons from './../../general/icons.jsx'
 import Loader from './../../general/loader.jsx'
 
-import FloorPlans from './../../general/floor_plans.jsx'
-import floorsData from './../../../../db/seeds/floors/index.json'
-
 import * as staffMember from './../../../models/staff_member.js'
-import { Model, Collection } from './../../../models/floor.js'
 
 import Base from './../base/index.jsx'
-
-var floors = new Collection(floorsData);
 
 
 class StaffMembers extends Base {
 
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
-		super(props);
-		this.state = {
+		super(props)
+		this.state = {}
 
-		};
+		// Pre-bind event handlers to instance.
+		this.logScroll = this.logScroll.bind(this)
+		this.setSearchTerm = this.setSearchTerm.bind(this)
+		this.setHoveredStaffMember = this.setHoveredStaffMember.bind(this)
+		this.activateStaffMember = this.activateStaffMember.bind(this)
 	}
 
 
@@ -34,14 +37,14 @@ class StaffMembers extends Base {
 	 */
 	render() {
 		return (
-			<div className='page page--staff-registry' onScroll={this.logScroll.bind(this)}>
+			<div className='page page--staff-registry' onScroll={this.logScroll}>
 				<div className='page__content'>
 					<div className='page__content__logo'>
 						<Icons.People />
 					</div>
 					<h1 className='title'>Staff Directory</h1>
 					{ this.renderAddButton() }
-					<input placeholder="Search" onChange={ this.setSearchTerm.bind(this) }></input>
+					<input placeholder="Search" onChange={ this.setSearchTerm }></input>
 
 					<ul>
 						{ this.renderMembers() }
@@ -51,7 +54,7 @@ class StaffMembers extends Base {
 
 				</div>
 			</div>
-		);
+		)
 	}
 
 
@@ -60,7 +63,7 @@ class StaffMembers extends Base {
 	 *
 	 */
 	renderMembers() {
-		if (this.state.staffMembers == null) { return (<Loader />); }
+		if (this.state.staffMembers == null) { return <Loader /> }
 		return this.state.staffMembers.map((staffMember, i) => {
 			return <StaffMember
 				history={this.props.history}
@@ -68,9 +71,9 @@ class StaffMembers extends Base {
 				staffMember={staffMember} 
 				searchTerm={this.state.searchTerm}
 				activeStaffMember={this.state.activeStaffMember}
-				setHoveredStaffMember={this.setHoveredStaffMember.bind(this)} 
-				activateStaffMember={this.activateStaffMember.bind(this)} />;
-		});
+				setHoveredStaffMember={this.setHoveredStaffMember} 
+				activateStaffMember={this.activateStaffMember} />;
+		})
 	}
 
 
@@ -79,7 +82,7 @@ class StaffMembers extends Base {
 	 *
 	 */
 	renderLocator() {
-		if (this.state.staffMembers == null) { return; }
+		if (this.state.staffMembers == null) { return }
 		var cls = 'page__content__2-2';
 		if (this.state.scrollTop > 220) { cls += ' page__content__2-2--fixed'; }
 
@@ -124,12 +127,13 @@ class StaffMembers extends Base {
 
 
 	/*
-	 *
+	 * Resolves hovered and active staff members to get the highlighted staff member.
 	 *
 	 */
 	getHighlightedStaffMember() {
-		if (this.state.hoveredStaffMember != null) { return this.state.hoveredStaffMember; }
-		return this.state.activeStaffMember;
+		var { hoveredStaffMember, activeStaffMember } = this.state
+		if (!hoveredStaffMember) { return hoveredStaffMember }
+		return activeStaffMember
 	}
 
 
@@ -174,90 +178,6 @@ class StaffMembers extends Base {
 	 */
 	activateStaffMember(staffMember) {
 		this.setState({ activeStaffMember: staffMember });
-	}
-
-}
-
-
-class StaffMemberSummary extends React.Component {
-
-	constructor(props) {
-		super(props);
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	render() {
-		if (this.props.staffMember == null) { return <div className='page__summary' />; }
-		this.getFloorSummary();
-		return (
-			<div className='page__summary'>
-				<div className='page__summary__logo'>
-					{ this.renderFloor3dSvg() }
-				</div>
-				<div className='page__summary__content'>
-					<p>{ this.props.staffMember.get('name') + "'s office" }</p>
-					<p>{ this.getFloorSummary() }</p>
-					<p>{ 'Phone: ' + this.props.staffMember.get('phone') }</p>
-				</div>
-			</div>
-		);
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	renderFloor3dSvg() {
-
-		var roomId = String(this.props.staffMember.get('room_id')),
-			floors = this.props.floors,
-			floor = this.getFloor(), room;
-
-		if(floor == null) { return; }
-
-		room = floor.get('rooms').findWhere({ id: roomId });
-
-		var sameOfficeFloors = floor.getMatchingSiblingsByField('office');
-
-		var paths = sameOfficeFloors.map((sameOfficeFloor, i) => {
-			var cls='page__svg-path' + ( (sameOfficeFloor === floor) ? ' page__svg-path--active' : '' );
-			return (<polygon key={i} className={ cls } points={ sameOfficeFloor.get('3d_schematic_svg_points') }></polygon>);
-		});
-
-		return (
-			<svg viewBox="0 0 100 100">
-				{ paths }
-			</svg>
-		);
-
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	getFloor() {
-		var roomId = String(this.props.staffMember.get('room_id')),
-			floors = this.props.floors,
-			floor = floors.findByRoom(roomId);
-		return floor;
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	getFloorSummary() {
-		var floor = this.getFloor();
-		if(floor == null) { return; }
-		return floor.getDisplayName();
 	}
 
 }

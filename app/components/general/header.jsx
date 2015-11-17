@@ -72,8 +72,4 @@ class Header extends React.Component {
 
 }
 
-Header.contextTypes = {
-	router: React.PropTypes.func
-};
-
 module.exports = Header;

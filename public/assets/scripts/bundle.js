@@ -19733,33 +19733,29 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _index3 = __webpack_require__(307);
+	var _index3 = __webpack_require__(316);
 
 	var _index4 = _interopRequireDefault(_index3);
 
-	var _index5 = __webpack_require__(317);
+	var _index5 = __webpack_require__(322);
 
 	var _index6 = _interopRequireDefault(_index5);
 
-	var _index7 = __webpack_require__(322);
+	var _index7 = __webpack_require__(325);
 
 	var _index8 = _interopRequireDefault(_index7);
 
-	var _index9 = __webpack_require__(325);
+	var _index9 = __webpack_require__(329);
 
 	var _index10 = _interopRequireDefault(_index9);
 
-	var _index11 = __webpack_require__(329);
+	var _index11 = __webpack_require__(332);
 
 	var _index12 = _interopRequireDefault(_index11);
 
-	var _index13 = __webpack_require__(332);
+	var _index13 = __webpack_require__(334);
 
 	var _index14 = _interopRequireDefault(_index13);
-
-	var _index15 = __webpack_require__(334);
-
-	var _index16 = _interopRequireDefault(_index15);
 
 	var _resource_route_generator = __webpack_require__(335);
 
@@ -19820,6 +19816,8 @@
 		return Wrapper;
 	})(_react2.default.Component);
 
+	console.log(_index14.default);
+
 	var routes = _react2.default.createElement(
 		_reactRouter.Router,
 		{ history: (0, _createBrowserHistory2.default)() },
@@ -19827,18 +19825,17 @@
 			_reactRouter.Route,
 			{ path: '/', component: App },
 			_react2.default.createElement(_reactRouter.IndexRoute, { component: _index2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'staff-directory', component: _index6.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'weekly-wins', component: _index8.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'readmes', component: _index14.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'floorplans', component: _index4.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'resources', component: _index10.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: 'faq', component: _index12.default }),
-			(0, _resource_route_generator2.default)(_index16.default.readme.Model),
-			(0, _resource_route_generator2.default)(_index16.default.faq.Model),
-			(0, _resource_route_generator2.default)(_index16.default.resource.Model),
-			(0, _resource_route_generator2.default)(_index16.default.weeklyWin.Model),
-			(0, _resource_route_generator2.default)(_index16.default.staffMember.Model),
-			(0, _resource_route_generator2.default)(_index16.default.department.Model)
+			_react2.default.createElement(_reactRouter.Route, { path: 'staff-directory', component: _index4.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: 'weekly-wins', component: _index6.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: 'readmes', component: _index12.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: 'resources', component: _index8.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: 'faq', component: _index10.default }),
+			(0, _resource_route_generator2.default)(_index14.default.readme.Model),
+			(0, _resource_route_generator2.default)(_index14.default.faq.Model),
+			(0, _resource_route_generator2.default)(_index14.default.resource.Model),
+			(0, _resource_route_generator2.default)(_index14.default.weeklyWin.Model),
+			(0, _resource_route_generator2.default)(_index14.default.staffMember.Model),
+			(0, _resource_route_generator2.default)(_index14.default.department.Model)
 		)
 	);
 
@@ -25239,10 +25236,6 @@
 		return Header;
 	})(_react2.default.Component);
 
-	Header.contextTypes = {
-		router: _react2.default.PropTypes.func
-	};
-
 	module.exports = Header;
 
 /***/ },
@@ -25283,10 +25276,6 @@
 		title: 'Staff Directory',
 		url: '/staff-directory',
 		reactIconName: 'people'
-	}, {
-		title: 'Floor Plans',
-		url: '/floorplans',
-		reactIconName: 'key'
 	}, {
 		title: 'Resources',
 		url: '/resources',
@@ -36164,164 +36153,8 @@
 	exports.default = Loader;
 
 /***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _moment = __webpack_require__(216);
-
-	var _moment2 = _interopRequireDefault(_moment);
-
-	var _index = __webpack_require__(308);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _floor = __webpack_require__(309);
-
-	var _loader = __webpack_require__(306);
-
-	var _loader2 = _interopRequireDefault(_loader);
-
-	var _icons = __webpack_require__(214);
-
-	var _icons2 = _interopRequireDefault(_icons);
-
-	var _floor_plans = __webpack_require__(316);
-
-	var _floor_plans2 = _interopRequireDefault(_floor_plans);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var floors = new _floor.Collection(_index2.default);
-
-	var RoomBooking = (function (_React$Component) {
-		_inherits(RoomBooking, _React$Component);
-
-		function RoomBooking(props) {
-			_classCallCheck(this, RoomBooking);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(RoomBooking).call(this, props));
-
-			var activeFloor = floors.models[0],
-			    activeRoom = activeFloor.get('rooms').models[0];
-
-			_this.state = {
-				activeRoom: activeRoom
-			};
-
-			return _this;
-		}
-
-		_createClass(RoomBooking, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'page page--room-booking' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'page__content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'page__content__logo' },
-							_react2.default.createElement(_icons2.default.Key, null)
-						),
-						_react2.default.createElement(
-							'h1',
-							{ className: 'title' },
-							'Floor Plans'
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							'Please select floor:'
-						),
-						this.renderFloorForm(),
-						_react2.default.createElement(_floor_plans2.default, {
-							floors: floors,
-							activeRoom: this.state.activeRoom,
-							handleRoomClick: this.handleRoomClick.bind(this),
-							handleRoomMouseEnter: this.handleRoomMouseEnter.bind(this),
-							handleRoomMouseLeave: this.handleRoomMouseLeave.bind(this)
-						})
-					)
-				);
-			}
-		}, {
-			key: 'handleRoomClick',
-			value: function handleRoomClick(room) {
-				this.setState({ activeRoom: room });
-			}
-		}, {
-			key: 'handleRoomMouseEnter',
-			value: function handleRoomMouseEnter(room) {
-				this.setState({ activeRoom: room });
-			}
-		}, {
-			key: 'handleRoomMouseLeave',
-			value: function handleRoomMouseLeave(room) {
-				// console.log(room);
-			}
-		}, {
-			key: 'renderFloorForm',
-			value: function renderFloorForm() {
-				return _react2.default.createElement(
-					'select',
-					{ onChange: this.changeActiveFloor.bind(this) },
-					this.renderFloorOptions()
-				);
-			}
-		}, {
-			key: 'changeActiveFloor',
-			value: function changeActiveFloor(e) {
-				var activeFloorId = e.target.value,
-				    activeFloor = floors.findWhere({ id: activeFloorId });
-				this.setState({ activeRoom: activeFloor.get('rooms').models[0] });
-			}
-		}, {
-			key: 'renderFloorOptions',
-			value: function renderFloorOptions() {
-				return floors.map(function (floor, i) {
-					return _react2.default.createElement(
-						'option',
-						{ key: i, value: floor.get('id') },
-						floor.get('name')
-					);
-				});
-			}
-		}]);
-
-		return RoomBooking;
-	})(_react2.default.Component);
-
-	RoomBooking.contextTypes = {
-		router: _react2.default.PropTypes.func
-	};
-
-	module.exports = RoomBooking;
-
-/***/ },
-/* 308 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	[{ "outer_wall_coordinates": [[3.2141, 87.5298], [17.441, 87.5298], [17.441, 65.3674], [92.7054, 65.3674], [92.7054, 3.9936], [85.6929, 3.9936], [82.9822, 7.0557], [13.8087, 7.0557], [13.8087, 3.9936], [3.2141, 3.9936]], "name": "8th Floor, Washington, DC", "id": "dc_08", "balcony_coordinates": null, "rooms": [{ "name": null, "number": "819", "id": "819", "capacity": null, "coordinates": [[36.7894, 47.2026], [36.7894, 42.1865], [32.4371, 42.1865], [32.4371, 47.2026]] }, { "name": null, "number": "818G", "id": "818G", "capacity": null, "coordinates": [[79.6483, 51.4812], [83.3367, 51.4812], [83.3367, 47.3502], [79.6483, 47.3502]] }, { "name": null, "number": "818F", "id": "818F", "capacity": null, "coordinates": [[75.8124, 51.4812], [79.6483, 51.4812], [79.6483, 47.3502], [75.8124, 47.3502]] }, { "name": null, "number": "818E", "id": "818E", "capacity": null, "coordinates": [[68.4357, 51.4812], [68.4357, 47.3502], [72.2716, 47.3502], [72.2716, 51.4812]] }, { "name": null, "number": "823E", "id": "823E", "capacity": null, "coordinates": [[82.0827, 38.6456], [82.0827, 34.9572], [77.8041, 34.9572], [77.8041, 38.6456]] }, { "name": null, "number": "823B", "id": "823B", "capacity": null, "coordinates": [[77.8041, 38.6456], [77.8041, 42.5734], [82.0827, 42.5734], [82.0827, 38.6456]] }, { "name": null, "number": "824", "id": "824", "capacity": null, "coordinates": [[76.3051, 34.9572], [82.0827, 34.9572], [82.0827, 28.0231], [76.3051, 28.0231]] }, { "name": null, "number": "831", "id": "831", "capacity": null, "coordinates": [[78.7306, 65.3674], [78.7306, 61.3665], [82.7878, 61.3665], [82.7878, 65.3674]] }, { "name": null, "number": "830C", "id": "830C", "capacity": null, "coordinates": [[70.6912, 65.3674], [70.6912, 61.3665], [74.7484, 61.3665], [74.7484, 65.3674]] }, { "name": null, "number": "809", "id": "809", "capacity": null, "coordinates": [[12.2496, 27.2687], [12.2496, 21.3641], [18.2995, 21.3641], [18.2995, 27.2687]] }, { "name": null, "number": "813", "id": "813", "capacity": null, "coordinates": [[30.0264, 65.3674], [30.0264, 58.4801], [37.0257, 58.4801], [37.0257, 65.3674]] }, { "name": null, "number": "814", "id": "814", "capacity": null, "coordinates": [[37.0257, 65.3674], [37.0257, 58.4801], [44.0249, 58.4801], [44.0249, 65.3674]] }, { "name": null, "number": "815", "id": "815", "capacity": null, "coordinates": [[44.0249, 65.3674], [44.0249, 58.4801], [51.6954, 58.4801], [51.6954, 65.3674]] }, { "name": null, "number": "832", "id": "832", "capacity": null, "coordinates": [[86.2123, 65.3674], [86.2123, 59.7265], [92.7054, 59.7265], [92.7054, 65.3674]] }, { "name": null, "number": "833", "id": "833", "capacity": null, "coordinates": [[86.2123, 59.7265], [86.2123, 54.0696], [92.7054, 54.0696], [92.7054, 59.7265]] }, { "name": null, "number": "834", "id": "834", "capacity": null, "coordinates": [[86.2123, 54.0696], [86.2123, 48.3168], [92.7054, 48.3168], [92.7054, 54.0696]] }, { "name": "Kalamazoo", "number": "835", "id": "835--Kalamazoo--4", "capacity": 4, "coordinates": [[86.2123, 48.3168], [86.2123, 42.2763], [92.7054, 42.2763], [92.7054, 48.3168]] }, { "name": null, "number": "836", "id": "836", "capacity": null, "coordinates": [[86.2123, 42.2763], [86.2123, 35.9482], [92.7054, 35.9482], [92.7054, 42.2763]] }, { "name": null, "number": "837", "id": "837", "capacity": null, "coordinates": [[86.2123, 35.9482], [86.2123, 29.9078], [92.7054, 29.9078], [92.7054, 35.9482]] }, { "name": null, "number": "838", "id": "838", "capacity": null, "coordinates": [[86.2123, 29.9078], [86.2123, 23.6756], [92.7054, 23.6756], [92.7054, 29.9078]] }, { "name": null, "number": "839", "id": "839", "capacity": null, "coordinates": [[86.2123, 23.6756], [86.2123, 12.7452], [92.7054, 12.7452], [92.7054, 23.6756]] }, { "name": "Omaha", "number": "840", "id": "840--Omaha--6", "capacity": 6, "coordinates": [[92.7054, 12.7452], [81.61, 12.7452], [81.61, 7.0557], [82.9822, 7.0557], [85.6929, 3.9936], [92.7054, 3.9936]] }, { "name": null, "number": "844", "id": "844", "capacity": null, "coordinates": [[54.6919, 7.0557], [54.6919, 12.6966], [61.0255, 12.6966], [61.0255, 7.0557]] }, { "name": null, "number": "821", "id": "821", "capacity": null, "coordinates": [[59.9085, 42.5734], [59.9085, 37.2971], [63.3531, 37.2971], [63.3531, 42.5734]] }, { "name": null, "number": "822", "id": "822", "capacity": null, "coordinates": [[59.9085, 37.2971], [63.3531, 37.2971], [63.3531, 31.9251], [59.9085, 31.9251]] }, { "name": null, "number": "843", "id": "843", "capacity": null, "coordinates": [[61.0255, 7.0557], [61.0255, 12.6966], [67.1584, 12.6966], [67.1584, 7.0557]] }, { "name": null, "number": "842", "id": "842", "capacity": null, "coordinates": [[67.1584, 7.0557], [67.1584, 12.6966], [74.3286, 12.6966], [74.3286, 7.0557]] }, { "name": null, "number": "841", "id": "841", "capacity": null, "coordinates": [[74.3286, 7.0557], [81.61, 7.0557], [81.61, 12.7452], [74.3286, 12.6966]] }, { "name": "Duluth", "number": "804", "id": "804--Duluth--6", "capacity": 6, "coordinates": [[3.2141, 53.8708], [10.5139, 53.8708], [10.5139, 44.7885], [3.2141, 44.7885]] }, { "name": null, "number": "845", "id": "845", "capacity": null, "coordinates": [[54.6919, 12.6966], [48.3964, 12.6966], [48.3964, 7.0557], [54.6919, 7.0557]] }, { "name": null, "number": "846", "id": "846", "capacity": null, "coordinates": [[48.3964, 12.6966], [42.1822, 12.6966], [42.1822, 7.0557], [48.3964, 7.0557]] }, { "name": null, "number": "847", "id": "847", "capacity": null, "coordinates": [[42.1822, 12.6966], [36.1473, 12.6966], [36.1473, 7.0557], [42.1822, 7.0557]] }, { "name": null, "number": "848", "id": "848", "capacity": null, "coordinates": [[26.348, 7.0557], [26.348, 12.6966], [20.1936, 12.6966], [20.1936, 7.0557]] }, { "name": null, "number": "849", "id": "849", "capacity": null, "coordinates": [[13.8087, 7.0557], [20.1936, 7.0557], [20.1936, 12.6966], [13.8087, 12.6966]] }, { "name": "Wichita", "number": "801", "id": "801--Wichita--8", "capacity": 8, "coordinates": [[13.8087, 12.6966], [3.2141, 12.6966], [3.2141, 3.9936], [13.8087, 3.9936]] }, { "name": null, "number": "810", "id": "810", "capacity": null, "coordinates": [[12.2496, 21.3641], [12.2496, 15.3626], [18.2995, 15.3626], [18.2995, 21.3641]] }, { "name": null, "number": "808", "id": "808", "capacity": null, "coordinates": [[12.2496, 27.2687], [18.2995, 27.2687], [18.2995, 31.6246], [12.2496, 31.6246]] }, { "name": null, "number": "805G", "id": "805G", "capacity": null, "coordinates": [[3.2141, 80.0292], [8.315200000000001, 80.0292], [8.315200000000001, 76.1195], [3.2141, 76.1195]] }, { "name": null, "number": "805F", "id": "805F", "capacity": null, "coordinates": [[3.2141, 76.1195], [3.2141, 72.5787], [8.315200000000001, 72.5787], [8.315200000000001, 76.1195]] }, { "name": null, "number": "805E", "id": "805E", "capacity": null, "coordinates": [[8.315200000000001, 72.5787], [8.315200000000001, 68.964], [3.2141, 68.964], [3.2141, 72.5787]] }, { "name": null, "number": "805D", "id": "805D", "capacity": null, "coordinates": [[8.315200000000001, 68.964], [8.315200000000001, 65.4232], [3.2141, 65.4232], [3.2141, 68.964]] }, { "name": null, "number": "805C", "id": "805C", "capacity": null, "coordinates": [[8.315200000000001, 65.4232], [8.315200000000001, 61.4398], [3.2141, 61.4398], [3.2141, 65.4232]] }, { "name": null, "number": "805B", "id": "805B", "capacity": null, "coordinates": [[8.315200000000001, 61.4398], [8.315200000000001, 57.9727], [3.2141, 57.9727], [3.2141, 61.4398]] }, { "name": null, "number": "805A", "id": "805A", "capacity": null, "coordinates": [[8.315200000000001, 57.9727], [8.315200000000001, 53.8708], [3.2141, 53.8708], [3.2141, 57.9727]] }, { "name": null, "number": "806F", "id": "806F", "capacity": null, "coordinates": [[12.0773, 87.5298], [12.0773, 83.4962], [17.441, 83.4962], [17.441, 87.5298]] }, { "name": null, "number": "806E", "id": "806E", "capacity": null, "coordinates": [[12.0773, 83.4962], [12.0773, 80.0292], [17.441, 80.0292], [17.441, 83.4962]] }, { "name": null, "number": "806D", "id": "806D", "capacity": null, "coordinates": [[12.0773, 80.0292], [12.0773, 76.1195], [17.441, 76.1195], [17.441, 80.0292]] }, { "name": null, "number": "806C", "id": "806C", "capacity": null, "coordinates": [[12.0773, 76.1195], [12.0773, 72.5787], [17.441, 72.5787], [17.441, 76.1195]] }, { "name": null, "number": "806B", "id": "806B", "capacity": null, "coordinates": [[12.0773, 72.5787], [12.0773, 68.964], [17.441, 68.964], [17.441, 72.5787]] }, { "name": null, "number": "806A", "id": "806A", "capacity": null, "coordinates": [[12.0773, 68.964], [12.0773, 65.4232], [17.441, 65.4232], [17.441, 68.964]] }, { "name": null, "number": "811A", "id": "811A", "capacity": null, "coordinates": [[12.0773, 65.4232], [12.0773, 60.5546], [15.2493, 60.5546], [15.2493, 65.4232]] }, { "name": null, "number": "811B", "id": "811B", "capacity": null, "coordinates": [[15.2493, 60.5546], [18.9377, 60.5546], [18.9377, 65.3674], [15.2493, 65.4232]] }, { "name": null, "number": "811C", "id": "811C", "capacity": null, "coordinates": [[18.9377, 60.5546], [22.5523, 60.5546], [22.5523, 65.3674], [18.9377, 65.3674]] }, { "name": null, "number": "811D", "id": "811D", "capacity": null, "coordinates": [[22.5523, 60.5546], [26.1669, 60.5546], [26.1669, 65.3674], [22.5523, 65.3674]] }, { "name": null, "number": "811E", "id": "811E", "capacity": null, "coordinates": [[26.1669, 60.5546], [30.0264, 60.5546], [30.0264, 65.3674], [26.1669, 65.3674]] }, { "name": null, "number": "816A", "id": "816A", "capacity": null, "coordinates": [[15.2493, 54.8745], [18.9377, 54.8745], [18.9377, 50.6697], [15.2493, 50.6697]] }, { "name": null, "number": "816B", "id": "816B", "capacity": null, "coordinates": [[18.9377, 54.8745], [22.1097, 54.8745], [22.1097, 50.6697], [18.9377, 50.6697]] }, { "name": null, "number": "816C", "id": "816C", "capacity": null, "coordinates": [[22.1097, 54.8745], [25.7243, 54.8745], [25.7243, 50.6697], [22.1097, 50.6697]] }, { "name": null, "number": "816D", "id": "816D", "capacity": null, "coordinates": [[25.7243, 54.8745], [29.3389, 54.8745], [29.3389, 50.6697], [25.7243, 50.6697]] }, { "name": null, "number": "816E", "id": "816E", "capacity": null, "coordinates": [[29.3389, 54.8745], [33.1748, 54.8745], [33.1748, 50.6697], [29.3389, 50.6697]] }, { "name": null, "number": "816F", "id": "816F", "capacity": null, "coordinates": [[33.1748, 54.8745], [36.7894, 54.8745], [36.7894, 50.6697], [33.1748, 50.6697]] }, { "name": null, "number": "817A", "id": "817A", "capacity": null, "coordinates": [[40.5516, 55.6121], [44.2399, 55.6121], [44.2399, 51.4812], [40.5516, 51.4812]] }, { "name": null, "number": "817G", "id": "817G", "capacity": null, "coordinates": [[40.5516, 51.4812], [40.5516, 47.2764], [44.2399, 47.2764], [44.2399, 51.4812]] }, { "name": null, "number": "817B", "id": "817B", "capacity": null, "coordinates": [[44.2399, 55.6121], [47.9283, 55.6121], [47.9283, 51.4812], [44.2399, 51.4812]] }, { "name": null, "number": "817C", "id": "817C", "capacity": null, "coordinates": [[47.9283, 55.6121], [51.5429, 55.6121], [51.5429, 51.4812], [47.9283, 51.4812]] }, { "name": null, "number": "817D", "id": "817D", "capacity": null, "coordinates": [[51.5429, 55.6121], [55.3051, 55.6121], [55.3051, 51.4812], [51.5429, 51.4812]] }, { "name": null, "number": "817E", "id": "817E", "capacity": null, "coordinates": [[55.3051, 55.6121], [58.9934, 55.6121], [58.9934, 51.4812], [55.3051, 51.4812]] }, { "name": null, "number": "817F", "id": "817F", "capacity": null, "coordinates": [[58.9934, 55.6121], [62.608, 55.6121], [62.608, 51.4812], [58.9934, 51.4812]] }, { "name": null, "number": "817L", "id": "817L", "capacity": null, "coordinates": [[62.608, 51.4812], [62.608, 47.2764], [58.9934, 47.2764], [58.9934, 51.4812]] }, { "name": null, "number": "817K", "id": "817K", "capacity": null, "coordinates": [[55.3051, 51.4812], [55.3051, 47.2764], [58.9934, 47.2764], [58.9934, 51.4812]] }, { "name": null, "number": "817J", "id": "817J", "capacity": null, "coordinates": [[51.5429, 51.4812], [51.5429, 47.2764], [55.3051, 47.2764], [55.3051, 51.4812]] }, { "name": null, "number": "817I", "id": "817I", "capacity": null, "coordinates": [[47.9283, 51.4812], [47.9283, 47.2764], [51.5429, 47.2764], [51.5429, 51.4812]] }, { "name": null, "number": "817H", "id": "817H", "capacity": null, "coordinates": [[44.2399, 51.4812], [44.2399, 47.2764], [47.9283, 47.2764], [47.9283, 51.4812]] }, { "name": null, "number": "818A", "id": "818A", "capacity": null, "coordinates": [[68.4357, 55.6121], [68.4357, 51.4812], [72.2716, 51.4812], [72.2716, 55.6121]] }, { "name": null, "number": "818B", "id": "818B", "capacity": null, "coordinates": [[72.2716, 55.6121], [75.8124, 55.6121], [75.8124, 51.4812], [72.2716, 51.4812]] }, { "name": null, "number": "818C", "id": "818C", "capacity": null, "coordinates": [[75.8124, 55.6121], [79.6483, 55.6121], [79.6483, 51.4812], [75.8124, 51.4812]] }, { "name": null, "number": "818D", "id": "818D", "capacity": null, "coordinates": [[79.6483, 55.6121], [83.3367, 55.6121], [83.3367, 51.4812], [79.6483, 51.4812]] }, { "name": null, "number": "823A", "id": "823A", "capacity": null, "coordinates": [[68.4357, 42.5734], [72.7142, 42.5734], [72.7142, 38.6456], [68.4357, 38.6456]] }, { "name": null, "number": "823C", "id": "823C", "capacity": null, "coordinates": [[68.4357, 38.6456], [68.4357, 34.9572], [72.7142, 34.9572], [72.7142, 38.6456]] }, { "name": null, "number": "823D", "id": "823D", "capacity": null, "coordinates": [[72.7142, 38.6456], [77.8041, 38.6456], [77.8041, 34.9572], [72.7142, 34.9572]] }, { "name": null, "number": "820C", "id": "820C", "capacity": null, "coordinates": [[52.2806, 41.3012], [56.0427, 41.3012], [56.0427, 37.2971], [52.2806, 37.2971]] }, { "name": null, "number": "820D", "id": "820D", "capacity": null, "coordinates": [[56.0427, 41.3012], [59.9085, 41.3012], [59.9085, 37.2971], [56.0427, 37.2971]] }, { "name": null, "number": "820G", "id": "820G", "capacity": null, "coordinates": [[52.2806, 37.2971], [52.2806, 33.0393], [56.0945, 33.0393], [56.0427, 37.2971]] }, { "name": null, "number": "820H", "id": "820H", "capacity": null, "coordinates": [[56.0945, 33.0393], [59.9085, 33.0857], [59.9085, 37.2971], [56.0427, 37.2971]] }, { "name": null, "number": "820B", "id": "820B", "capacity": null, "coordinates": [[52.2806, 41.3012], [48.7398, 41.3012], [48.7398, 37.2971], [52.2806, 37.2971]] }, { "name": null, "number": "820F", "id": "820F", "capacity": null, "coordinates": [[48.7398, 37.2971], [48.7398, 33.0393], [52.2806, 33.0393], [52.2806, 37.2971]] }, { "name": null, "number": "820A", "id": "820A", "capacity": null, "coordinates": [[48.7398, 41.3012], [44.8301, 41.3012], [44.8301, 37.2971], [48.7398, 37.2971]] }, { "name": null, "number": "820E", "id": "820E", "capacity": null, "coordinates": [[44.8301, 37.2971], [44.8301, 33.0393], [48.7398, 33.0393], [48.7398, 37.2971]] }, { "name": null, "number": "826A", "id": "826A", "capacity": null, "coordinates": [[44.8301, 28.0231], [48.7398, 28.0231], [48.7398, 24.1134], [44.8301, 24.1134]] }, { "name": null, "number": "826C", "id": "826C", "capacity": null, "coordinates": [[44.8301, 24.1134], [44.8301, 20.3513], [48.7398, 20.3513], [48.7398, 24.1134]] }, { "name": null, "number": "826E", "id": "826E", "capacity": null, "coordinates": [[44.8301, 20.3513], [44.8301, 16.7367], [48.7398, 16.7367], [48.7398, 20.3513]] }, { "name": null, "number": "826B", "id": "826B", "capacity": null, "coordinates": [[48.7398, 28.0231], [52.2806, 28.0231], [52.2806, 24.1134], [48.7398, 24.1134]] }, { "name": null, "number": "826D", "id": "826D", "capacity": null, "coordinates": [[52.2806, 24.1134], [52.2806, 20.3513], [48.7398, 20.3513], [48.7398, 24.1134]] }, { "name": null, "number": "826F", "id": "826F", "capacity": null, "coordinates": [[52.2806, 20.3513], [52.2806, 16.7367], [48.7398, 16.7367], [48.7398, 20.3513]] }, { "name": null, "number": "827A", "id": "827A", "capacity": null, "coordinates": [[59.3623, 28.0231], [59.3623, 24.1134], [55.3788, 24.1134], [55.3788, 28.0231]] }, { "name": null, "number": "827C", "id": "827C", "capacity": null, "coordinates": [[55.3788, 24.1134], [55.3788, 20.3513], [59.3623, 20.3513], [59.3623, 24.1134]] }, { "name": null, "number": "827E", "id": "827E", "capacity": null, "coordinates": [[55.3788, 20.3513], [55.3788, 16.7367], [59.3623, 16.7367], [59.3623, 20.3513]] }, { "name": null, "number": "827B", "id": "827B", "capacity": null, "coordinates": [[59.3623, 28.0231], [63.3531, 28.0231], [63.3531, 24.1134], [59.3623, 24.1134]] }, { "name": null, "number": "827D", "id": "827D", "capacity": null, "coordinates": [[59.3623, 20.3513], [63.3531, 20.3513], [63.3531, 24.1134], [59.3623, 24.1134]] }, { "name": null, "number": "827F", "id": "827F", "capacity": null, "coordinates": [[59.3623, 20.3513], [59.3623, 16.7367], [63.3531, 16.7367], [63.3531, 20.3513]] }, { "name": null, "number": "828A", "id": "828A", "capacity": null, "coordinates": [[68.4357, 28.0231], [68.4357, 24.1134], [72.7142, 24.1134], [72.7142, 28.0231]] }, { "name": null, "number": "828D", "id": "828D", "capacity": null, "coordinates": [[68.4357, 24.1134], [68.4357, 20.3513], [72.7142, 20.3513], [72.7142, 24.1134]] }, { "name": null, "number": "828G", "id": "828G", "capacity": null, "coordinates": [[68.4357, 20.3513], [68.4357, 16.7367], [72.7142, 16.7367], [72.7142, 20.3513]] }, { "name": null, "number": "828B", "id": "828B", "capacity": null, "coordinates": [[72.7142, 28.0231], [77.8041, 28.0231], [77.8041, 24.1134], [72.7142, 24.1134]] }, { "name": null, "number": "828C", "id": "828C", "capacity": null, "coordinates": [[77.8041, 28.0231], [82.0827, 28.0231], [82.0827, 24.1134], [77.8041, 24.1134]] }, { "name": null, "number": "828F", "id": "828F", "capacity": null, "coordinates": [[77.8041, 24.1134], [82.0827, 24.1134], [82.0827, 20.3513], [77.8041, 20.3513]] }, { "name": null, "number": "828E", "id": "828E", "capacity": null, "coordinates": [[72.7142, 20.3513], [77.8041, 20.3513], [77.8041, 24.1134], [72.7142, 24.1134]] }, { "name": null, "number": "828H", "id": "828H", "capacity": null, "coordinates": [[72.7142, 16.7367], [77.8041, 16.7367], [77.8041, 20.3513], [72.7142, 20.3513]] }, { "name": null, "number": "828I", "id": "828I", "capacity": null, "coordinates": [[77.8041, 16.7367], [82.0827, 16.7367], [82.0827, 20.3513], [77.8041, 20.3513]] }, { "name": null, "number": "802G", "id": "802G", "capacity": null, "coordinates": [[3.2141, 38.0555], [8.8316, 38.0555], [8.8316, 34.5884], [3.2141, 34.5884]] }, { "name": null, "number": "802F", "id": "802F", "capacity": null, "coordinates": [[8.8316, 34.5884], [8.8316, 30.8263], [3.2141, 30.8263], [3.2141, 34.5884]] }, { "name": null, "number": "802E", "id": "802E", "capacity": null, "coordinates": [[8.8316, 30.8263], [8.8316, 27.433], [3.2141, 27.433], [3.2141, 30.8263]] }, { "name": null, "number": "802D", "id": "802D", "capacity": null, "coordinates": [[8.8316, 27.433], [8.8316, 23.5233], [3.2141, 23.5233], [3.2141, 27.433]] }, { "name": null, "number": "802C", "id": "802C", "capacity": null, "coordinates": [[8.8316, 23.5233], [8.8316, 20.2775], [3.2141, 20.2775], [3.2141, 23.5233]] }, { "name": null, "number": "802B", "id": "802B", "capacity": null, "coordinates": [[8.8316, 20.2775], [8.8316, 16.2941], [3.2141, 16.2941], [3.2141, 20.2775]] }, { "name": null, "number": "802A", "id": "802A", "capacity": null, "coordinates": [[8.8316, 16.2941], [8.8316, 12.6966], [3.2141, 12.6966], [3.2141, 16.2941]] }, { "name": null, "number": "807D", "id": "807D", "capacity": null, "coordinates": [[14.8067, 47.2026], [17.5361, 47.2026], [17.5361, 43.4405], [14.8067, 43.4405]] }, { "name": null, "number": "807C", "id": "807C", "capacity": null, "coordinates": [[14.8067, 40.7111], [17.5361, 40.7111], [17.5361, 43.4405], [14.8067, 43.4405]] }, { "name": null, "number": "807B", "id": "807B", "capacity": null, "coordinates": [[14.8067, 40.7111], [14.8067, 37.244], [17.5361, 37.244], [17.5361, 40.7111]] }, { "name": null, "number": "807A", "id": "807A", "capacity": null, "coordinates": [[14.8067, 37.244], [14.8067, 33.9245], [17.5361, 33.9245], [17.5361, 37.244]] }, { "name": null, "number": "850", "id": "850", "capacity": null, "coordinates": [[36.937, 28.5395], [36.937, 26.1789], [41.0679, 26.1789], [41.0679, 28.5395]] }, { "name": null, "number": "825", "id": "825", "capacity": null, "coordinates": [[41.0679, 20.3513], [41.0679, 15.3626], [36.937, 15.3626], [36.937, 20.3513]] }, { "name": null, "number": "850", "id": "850", "capacity": null, "coordinates": [[26.0931, 18.8759], [26.0931, 15.3626], [21.7409, 15.3626], [21.7409, 18.8759]] }, { "name": null, "number": "891", "id": "891", "capacity": null, "coordinates": [[25.2817, 47.2026], [32.4371, 47.2026], [32.4371, 33.9245], [25.2817, 33.9245]] }, { "name": null, "number": "890", "id": "890", "capacity": null, "coordinates": [[17.5361, 47.2026], [25.2817, 47.2026], [25.2817, 33.9245], [17.5361, 33.9245]] }, { "name": null, "number": "830A", "id": "830A", "capacity": null, "coordinates": [[64.3047, 65.3674], [64.3047, 61.8824], [68.3619, 61.8824], [68.3619, 65.3674]] }, { "name": null, "number": "830B", "id": "830B", "capacity": null, "coordinates": [[64.3047, 61.8824], [64.3047, 58.4801], [68.3619, 58.4801], [68.3619, 61.8824]] }] }, { "outer_wall_coordinates": [[3.2141, 87.5298], [3.2141, 3.5899], [96.387, 3.5899], [96.387, 58.4395], [94.5715, 58.4395], [94.5715, 65.0413], [17.441, 65.0413], [17.441, 87.5298]], "name": "9th Floor, Washington, DC", "id": "dc_09", "balcony_coordinates": null, "rooms": [{ "name": null, "number": "929B", "id": "929B", "capacity": null, "coordinates": [[76.6625, 20.7003], [81.0772, 20.7003], [81.0772, 16.9817], [76.6625, 16.9817]] }, { "name": null, "number": "929C", "id": "929C", "capacity": null, "coordinates": [[81.0772, 20.7003], [85.4241, 20.7003], [85.4241, 16.9817], [81.0772, 16.9817]] }, { "name": null, "number": "929E", "id": "929E", "capacity": null, "coordinates": [[76.6625, 24.4189], [81.0772, 24.4189], [81.0772, 20.7003], [76.6625, 20.7003]] }, { "name": null, "number": "929F", "id": "929F", "capacity": null, "coordinates": [[81.0772, 24.4189], [85.4241, 24.4189], [85.4241, 20.7003], [81.0772, 20.7003]] }, { "name": null, "number": "929G", "id": "929G", "capacity": null, "coordinates": [[81.0772, 28.1375], [85.4241, 28.1375], [85.4241, 24.4189], [81.0772, 24.4189]] }, { "name": null, "number": "929D", "id": "929D", "capacity": null, "coordinates": [[76.6625, 28.1375], [81.0772, 28.1375], [81.0772, 24.4189], [76.6625, 24.4189]] }, { "name": null, "number": "929A", "id": "929A", "capacity": null, "coordinates": [[76.6625, 16.9817], [81.0772, 16.9817], [81.0772, 13.2632], [76.6625, 13.2632]] }, { "name": null, "number": "928", "id": "928", "capacity": null, "coordinates": [[72.1414, 13.2632], [72.1414, 19.5246], [67.6204, 19.5246], [67.6204, 13.2632]] }, { "name": null, "number": "927", "id": "927", "capacity": null, "coordinates": [[76.6625, 13.2632], [76.6625, 19.5246], [72.1414, 19.5246], [72.1414, 13.2632]] }, { "name": null, "number": "920F", "id": "920F", "capacity": null, "coordinates": [[81.6631, 57.1391], [85.4103, 57.1391], [85.4103, 53.0639], [81.6631, 53.0639]] }, { "name": null, "number": "920D", "id": "920D", "capacity": null, "coordinates": [[81.6631, 44.4381], [85.4103, 44.4381], [85.4103, 48.6491], [81.6631, 48.6491]] }, { "name": null, "number": "920E", "id": "920E", "capacity": null, "coordinates": [[81.6631, 53.0639], [85.4103, 53.0639], [85.4103, 48.6491], [81.6631, 48.6491]] }, { "name": null, "number": "920A", "id": "920A", "capacity": null, "coordinates": [[77.9159, 44.4381], [81.6631, 44.4381], [81.6631, 48.6491], [77.9159, 48.6491]] }, { "name": null, "number": "920B", "id": "920B", "capacity": null, "coordinates": [[77.9159, 53.0639], [81.6631, 53.0639], [81.6631, 48.6491], [77.9159, 48.6491]] }, { "name": null, "number": "920C", "id": "920C", "capacity": null, "coordinates": [[77.9159, 57.1391], [81.6631, 57.1391], [81.6631, 53.0639], [77.9159, 53.0639]] }, { "name": null, "number": "919D", "id": "919D", "capacity": null, "coordinates": [[73.0744, 44.4381], [76.8217, 44.4381], [76.8217, 48.6491], [73.0744, 48.6491]] }, { "name": null, "number": "919E", "id": "919E", "capacity": null, "coordinates": [[73.0744, 53.0639], [76.8217, 53.0639], [76.8217, 48.6491], [73.0744, 48.6491]] }, { "name": null, "number": "919F", "id": "919F", "capacity": null, "coordinates": [[73.0744, 57.1391], [76.8217, 57.1391], [76.8217, 53.0639], [73.0744, 53.0639]] }, { "name": null, "number": "919C", "id": "919C", "capacity": null, "coordinates": [[69.3272, 57.1391], [73.0744, 57.1391], [73.0744, 53.0639], [69.3272, 53.0639]] }, { "name": null, "number": "919B", "id": "919B", "capacity": null, "coordinates": [[69.3272, 53.0639], [73.0744, 53.0639], [73.0744, 48.6491], [69.3272, 48.6491]] }, { "name": null, "number": "919A", "id": "919A", "capacity": null, "coordinates": [[69.3272, 44.4381], [73.0744, 44.4381], [73.0744, 48.6491], [69.3272, 48.6491]] }, { "name": null, "number": "938", "id": "938", "capacity": null, "coordinates": [[67.4255, 51.6801], [67.4255, 55.1015], [63.6899, 55.1015], [63.6899, 51.6801]] }, { "name": null, "number": "938", "id": "938", "capacity": null, "coordinates": [[67.4255, 47.9736], [67.4255, 51.6801], [63.6899, 51.6801], [63.6899, 47.9736]] }, { "name": null, "number": "938", "id": "938", "capacity": null, "coordinates": [[63.6899, 44.4381], [67.4255, 44.4381], [67.4255, 47.9736], [63.6899, 47.9736]] }, { "name": null, "number": "932A", "id": "932A", "capacity": null, "coordinates": [[85.28, 61.2142], [81.0303, 61.2142], [81.0303, 65.0413], [85.28, 65.0413]] }, { "name": null, "number": "932B", "id": "932B", "capacity": null, "coordinates": [[89.5297, 61.2142], [85.28, 61.2142], [85.28, 65.0413], [89.5297, 65.0413]] }, { "name": null, "number": "932C", "id": "932C", "capacity": null, "coordinates": [[93.7794, 61.2142], [89.5297, 61.2142], [89.5297, 65.0413], [93.7794, 65.0413]] }, { "name": null, "number": "905C", "id": "905C", "capacity": null, "coordinates": [[3.2141, 82.756], [13.2048, 82.756], [13.2048, 75.7691], [3.2141, 75.7691]] }, { "name": null, "number": "918", "id": "918", "capacity": null, "coordinates": [[67.6204, 28.1375], [67.6204, 19.5246], [70.3161, 19.5246], [70.3161, 21.8903], [76.6625, 21.8903], [76.6625, 28.1375]] }, { "name": null, "number": "923", "id": "923", "capacity": null, "coordinates": [[70.3711, 35.2038], [67.6204, 35.2038], [67.6204, 28.1375], [70.3711, 28.1375]] }, { "name": null, "number": "916", "id": "916", "capacity": null, "coordinates": [[67.6204, 41.4205], [76.6625, 41.4205], [76.6625, 34.1585], [70.3711, 34.1585], [70.3711, 37.0193], [67.6204, 37.0193]] }, { "name": null, "number": "924D", "id": "924D", "capacity": null, "coordinates": [[81.0772, 32.1447], [85.4241, 32.1447], [85.4241, 35.7445], [81.0772, 35.7445]] }, { "name": null, "number": "924A", "id": "924A", "capacity": null, "coordinates": [[76.6625, 35.7445], [76.6625, 32.1447], [81.0772, 32.1447], [81.0772, 35.7445]] }, { "name": null, "number": "924C", "id": "924C", "capacity": null, "coordinates": [[81.0772, 39.48], [85.4241, 39.48], [85.4241, 35.7445], [81.0772, 35.7445]] }, { "name": null, "number": "924B", "id": "924B", "capacity": null, "coordinates": [[76.6625, 39.48], [81.0772, 39.48], [81.0772, 35.7445], [76.6625, 35.7445]] }, { "name": null, "number": "927", "id": "927", "capacity": null, "coordinates": [[64.9804, 19.6476], [64.9804, 26.7112], [59.6827, 26.7112], [59.6827, 19.6476]] }, { "name": null, "number": "926", "id": "926", "capacity": null, "coordinates": [[54.3849, 26.7112], [59.6827, 26.7112], [59.6827, 19.6476], [54.3849, 19.6476]] }, { "name": null, "number": "925", "id": "925", "capacity": null, "coordinates": [[49.2231, 26.7112], [54.3849, 26.7112], [54.3849, 19.6476], [49.2231, 19.6476]] }, { "name": null, "number": "922", "id": "922", "capacity": null, "coordinates": [[63.6899, 36.2878], [63.6899, 31.3976], [59.8185, 31.3976], [59.8185, 36.2878]] }, { "name": null, "number": "921", "id": "921", "capacity": null, "coordinates": [[63.6899, 41.178], [63.6899, 36.2878], [59.8185, 36.2878], [59.8185, 41.178]] }, { "name": null, "number": "917", "id": "917", "capacity": null, "coordinates": [[55.6754, 55.1015], [63.6899, 55.1015], [63.6899, 44.4381], [55.6754, 44.4381]] }, { "name": null, "number": "930", "id": "930", "capacity": null, "coordinates": [[70.0064, 59.3804], [63.3503, 59.3804], [63.3503, 65.0413], [70.0064, 65.0413]] }, { "name": null, "number": "931", "id": "931", "capacity": null, "coordinates": [[70.0064, 65.0413], [70.0064, 59.3804], [76.5267, 59.3804], [76.5267, 65.0413]] }, { "name": null, "number": "933", "id": "933", "capacity": null, "coordinates": [[88.888, 50.9584], [88.888, 57.6824], [96.387, 57.6824], [96.387, 50.9584]] }, { "name": null, "number": "934", "id": "934", "capacity": null, "coordinates": [[88.888, 44.5061], [88.888, 50.9584], [96.387, 50.9584], [96.387, 44.5061]] }, { "name": "Liberty", "number": "935", "id": "935--Liberty--4", "capacity": 4, "coordinates": [[88.888, 37.9179], [88.888, 44.5061], [96.387, 44.5061], [96.387, 37.9179]] }, { "name": null, "number": "936", "id": "936", "capacity": null, "coordinates": [[88.888, 31.8731], [88.888, 37.9179], [96.387, 37.9179], [96.387, 31.8731]] }, { "name": null, "number": "937", "id": "937", "capacity": null, "coordinates": [[88.888, 25.7603], [88.888, 31.8731], [96.387, 31.8731], [96.387, 25.7603]] }, { "name": null, "number": "938", "id": "938", "capacity": null, "coordinates": [[88.888, 19.8513], [88.888, 25.7603], [96.387, 25.7603], [96.387, 19.8513]] }, { "name": null, "number": "939", "id": "939", "capacity": null, "coordinates": [[88.888, 12.584], [88.888, 19.8513], [96.387, 19.8513], [96.387, 12.584]] }, { "name": null, "number": "940", "id": "940", "capacity": null, "coordinates": [[87.5296, 10.071], [88.888, 10.071], [88.888, 12.584], [96.387, 12.584], [96.387, 3.5899], [87.5296, 3.5899]] }, { "name": null, "number": "941", "id": "941", "capacity": null, "coordinates": [[80.8735, 10.071], [87.5296, 10.071], [87.5296, 3.5899], [80.8735, 3.5899]] }, { "name": null, "number": "942", "id": "942", "capacity": null, "coordinates": [[72.859, 10.071], [80.8735, 10.071], [80.8735, 3.5899], [72.859, 3.5899]] }, { "name": null, "number": "943", "id": "943", "capacity": null, "coordinates": [[64.9804, 10.071], [72.859, 10.071], [72.859, 3.5899], [64.9804, 3.5899]] }, { "name": null, "number": "907", "id": "907", "capacity": null, "coordinates": [[22.5987, 36.0841], [27.7606, 36.0841], [27.7606, 40.7026], [22.5987, 40.7026]] }, { "name": null, "number": "990", "id": "990", "capacity": null, "coordinates": [[17.441, 41.4497], [17.441, 36.0841], [22.5987, 36.0841], [22.5987, 41.4497]] }, { "name": "Main-Events", "number": "944", "id": "944--Main-Events--150", "capacity": 150, "coordinates": [[17.441, 65.0413], [17.441, 45.6607], [52.3474, 45.6607], [52.3474, 62.8443], [49.8343, 62.8443], [49.8343, 65.0413]] }, { "name": "Independence", "number": "945", "id": "945--Independence--35", "capacity": 35, "coordinates": [[37.8126, 15.9799], [37.8126, 3.5899], [64.9804, 3.5899], [64.9804, 15.9799]] }, { "name": "Capitol", "number": "901", "id": "901--Capitol--12", "capacity": 12, "coordinates": [[14.72, 15.5724], [18.0481, 15.5724], [19.7461, 3.5899], [3.2141, 3.5899], [3.2141, 14.1461], [14.72, 14.1461]] }, { "name": null, "number": "958", "id": "958", "capacity": null, "coordinates": [[14.72, 23.6548], [14.72, 14.1461], [3.2141, 14.1461], [3.2141, 23.6548]] }, { "name": null, "number": "957", "id": "957", "capacity": null, "coordinates": [[3.2141, 32.3485], [14.72, 32.3485], [14.72, 23.6548], [3.2141, 23.6548]] }, { "name": null, "number": "902", "id": "902", "capacity": null, "coordinates": [[13.2048, 43.3514], [13.2048, 32.3485], [3.2141, 32.3485], [3.2141, 43.3514]] }, { "name": null, "number": "954", "id": "954", "capacity": null, "coordinates": [[13.2048, 48.1058], [13.2048, 43.3514], [10.1694, 43.3514], [10.1694, 48.1058]] }, { "name": null, "number": "903", "id": "903", "capacity": null, "coordinates": [[13.2048, 54.2185], [13.2048, 48.1058], [10.1694, 48.1058], [10.1694, 43.3514], [3.2141, 43.3514], [3.2141, 54.2185]] }, { "name": null, "number": "904", "id": "904", "capacity": null, "coordinates": [[13.2048, 61.8934], [13.2048, 54.2185], [3.2141, 54.2185], [3.2141, 61.8934]] }, { "name": null, "number": "905A", "id": "905A", "capacity": null, "coordinates": [[13.2048, 68.7823], [13.2048, 61.8934], [3.2141, 61.8934], [3.2141, 68.7823]] }, { "name": null, "number": "905B", "id": "905B", "capacity": null, "coordinates": [[3.2141, 75.7691], [13.2048, 75.7691], [13.2048, 68.7823], [3.2141, 68.7823]] }] }, { "outer_wall_coordinates": [[3.0974, 87.9322], [3.0974, 18.9363], [14.3735, 18.9363], [14.3735, 15.3073], [88.0353, 15.3073], [88.0353, 56.7393], [83.5422, 56.7393], [83.5422, 65.4232], [17.441, 65.4232], [17.441, 87.9322]], "name": "10th Floor, Washington, DC", "id": "dc_10", "balcony_coordinates": [[3.0974, 18.9363], [3.0974, 3.5899], [96.387, 3.5899], [96.387, 58.4395], [94.5715, 58.4395], [94.5715, 65.4232], [83.5422, 65.4232], [83.5422, 56.7393], [88.0353, 56.7393], [88.0353, 15.3073], [14.3735, 15.3073], [14.3735, 18.9363]], "rooms": [{ "name": null, "number": "1043", "id": "1043", "capacity": null, "coordinates": [[60.7914, 15.3073], [50.3345, 15.3073], [50.3345, 24.2295], [60.7914, 24.2295]] }, { "name": null, "number": "1044", "id": "1044", "capacity": null, "coordinates": [[40.3248, 28.7244], [40.3248, 42.3788], [49.247, 42.3788], [49.247, 28.7244]] }, { "name": null, "number": "1002", "id": "1002", "capacity": null, "coordinates": [[9.549, 34.7515], [9.549, 28.031], [3.0974, 28.031], [3.0974, 34.7515]] }, { "name": null, "number": "1003", "id": "1003", "capacity": null, "coordinates": [[9.549, 41.4721], [9.549, 34.7515], [3.0974, 34.7515], [3.0974, 41.4721]] }, { "name": null, "number": "1009A", "id": "1009A", "capacity": null, "coordinates": [[13.2827, 48.9926], [13.2827, 45.5257], [17.441, 45.5257], [17.441, 48.9926]] }, { "name": null, "number": "1009B", "id": "1009B", "capacity": null, "coordinates": [[13.2827, 52.4596], [13.2827, 48.9926], [17.441, 48.9926], [17.441, 52.4596]] }, { "name": null, "number": "1009C", "id": "1009C", "capacity": null, "coordinates": [[13.2827, 55.9265], [13.2827, 52.4596], [17.441, 52.4596], [17.441, 55.9265]] }, { "name": null, "number": "1033F", "id": "1033F", "capacity": null, "coordinates": [[73.5755, 47.9373], [73.5755, 43.9427], [77.8958, 43.9427], [77.8958, 47.9373]] }, { "name": null, "number": "1033G", "id": "1033G", "capacity": null, "coordinates": [[73.5755, 51.9319], [73.5755, 47.9373], [77.8958, 47.9373], [77.8958, 51.9319]] }, { "name": null, "number": "1033H", "id": "1033H", "capacity": null, "coordinates": [[73.5755, 55.9265], [73.5755, 51.9319], [77.8958, 51.9319], [77.8958, 55.9265]] }, { "name": null, "number": "1033E", "id": "1033E", "capacity": null, "coordinates": [[69.2552, 55.9265], [69.2552, 51.9319], [73.5755, 51.9319], [73.5755, 55.9265]] }, { "name": null, "number": "1033D", "id": "1033D", "capacity": null, "coordinates": [[69.2552, 51.9319], [69.2552, 47.9373], [73.5755, 47.9373], [73.5755, 51.9319]] }, { "name": null, "number": "1033C", "id": "1033C", "capacity": null, "coordinates": [[69.2552, 47.9373], [69.2552, 43.9427], [73.5755, 43.9427], [73.5755, 47.9373]] }, { "name": null, "number": "1033B", "id": "1033B", "capacity": null, "coordinates": [[62.4065, 55.9265], [62.4065, 51.9319], [66.7269, 51.9319], [66.7269, 55.9265]] }, { "name": null, "number": "1033A", "id": "1033A", "capacity": null, "coordinates": [[62.4065, 47.9373], [62.4065, 43.9427], [66.7269, 43.9427], [66.7269, 47.9373]] }, { "name": null, "number": "1035E", "id": "1035E", "capacity": null, "coordinates": [[63.6333, 31.3379], [67.1989, 31.3379], [67.1989, 35.4449], [63.6333, 35.4449]] }, { "name": null, "number": "1035A", "id": "1035A", "capacity": null, "coordinates": [[67.1989, 35.4449], [67.1989, 39.9253], [63.6333, 39.9253], [63.6333, 35.4449]] }, { "name": null, "number": "1035B", "id": "1035B", "capacity": null, "coordinates": [[70.7646, 35.4449], [70.7646, 39.9253], [67.1989, 39.9253], [67.1989, 35.4449]] }, { "name": null, "number": "1035F", "id": "1035F", "capacity": null, "coordinates": [[67.1989, 31.3379], [70.7646, 31.3379], [70.7646, 35.4449], [67.1989, 35.4449]] }, { "name": null, "number": "1035C", "id": "1035C", "capacity": null, "coordinates": [[74.3302, 35.4449], [74.3302, 39.9253], [70.7646, 39.9253], [70.7646, 35.4449]] }, { "name": null, "number": "1035G", "id": "1035G", "capacity": null, "coordinates": [[70.7646, 31.3379], [74.3302, 31.3379], [74.3302, 35.4449], [70.7646, 35.4449]] }, { "name": null, "number": "1035D", "id": "1035D", "capacity": null, "coordinates": [[77.8958, 35.4449], [77.8958, 39.9253], [74.3302, 39.9253], [74.3302, 35.4449]] }, { "name": null, "number": "1035H", "id": "1035H", "capacity": null, "coordinates": [[74.3302, 31.3379], [77.8958, 31.3379], [77.8958, 35.4449], [74.3302, 35.4449]] }, { "name": null, "number": "1030C", "id": "1030C", "capacity": null, "coordinates": [[69.5538, 65.4232], [69.5538, 61.847], [73.6608, 61.847], [73.6608, 65.4232]] }, { "name": null, "number": "1090", "id": "1090", "capacity": null, "coordinates": [[26.8837, 42.3788], [33.1776, 42.3788], [33.1776, 28.7244], [26.8837, 28.7244]] }, { "name": null, "number": "1090", "id": "1090", "capacity": null, "coordinates": [[19.2031, 37.8451], [19.2031, 28.7244], [26.8837, 28.7244], [26.8837, 37.8451]] }, { "name": null, "number": "1010A", "id": "1010A", "capacity": null, "coordinates": [[12.6426, 34.1115], [12.6426, 31.2846], [15.4695, 31.2846], [15.4695, 34.1115]] }, { "name": null, "number": "1010B", "id": "1010B", "capacity": null, "coordinates": [[12.6426, 36.565], [12.6426, 34.1115], [15.4695, 34.1115], [15.4695, 36.565]] }, { "name": null, "number": "1010C", "id": "1010C", "capacity": null, "coordinates": [[12.6426, 39.4452], [12.6426, 36.565], [15.4695, 36.565], [15.4695, 39.4452]] }, { "name": null, "number": "1010D", "id": "1010D", "capacity": null, "coordinates": [[12.6426, 42.2721], [12.6426, 39.4452], [15.4695, 39.4452], [15.4695, 42.2721]] }, { "name": "Flagstaff", "number": "1001", "id": "1001--Flagstaff--8", "capacity": 8, "coordinates": [[3.0974, 28.031], [14.3735, 28.031], [14.3735, 18.9363], [3.0974, 18.9363]] }, { "name": null, "number": "1037B", "id": "1037B", "capacity": null, "coordinates": [[68.8071, 29.0977], [72.6474, 29.0977], [72.6474, 24.8307], [68.8071, 24.8307]] }, { "name": null, "number": "1037A", "id": "1037A", "capacity": null, "coordinates": [[65.0201, 29.0977], [65.0201, 24.8307], [68.8071, 24.8307], [68.8071, 29.0977]] }, { "name": null, "number": "1027", "id": "1027", "capacity": null, "coordinates": [[59.6863, 36.3516], [59.6863, 41.4721], [63.6333, 41.4721], [63.6333, 36.3516]] }, { "name": null, "number": "1028", "id": "1028", "capacity": null, "coordinates": [[59.6863, 36.3516], [63.6333, 36.3516], [63.6333, 31.3379], [59.6863, 31.3379]] }, { "name": null, "number": "1042", "id": "1042", "capacity": null, "coordinates": [[72.8607, 21.9505], [63.42, 21.9505], [63.42, 15.3073], [72.8607, 15.3073]] }, { "name": null, "number": "1041", "id": "1041", "capacity": null, "coordinates": [[80.648, 21.9505], [72.8607, 21.9505], [72.8607, 15.3073], [80.648, 15.3073]] }, { "name": null, "number": "1040", "id": "1040", "capacity": null, "coordinates": [[80.648, 26.6442], [80.648, 15.3073], [88.0353, 15.3073], [88.0353, 26.6442]] }, { "name": null, "number": "1038", "id": "1038", "capacity": null, "coordinates": [[80.648, 33.4181], [80.648, 26.6442], [88.0353, 26.6442], [88.0353, 33.4181]] }, { "name": null, "number": "1036", "id": "1036", "capacity": null, "coordinates": [[80.648, 40.7253], [80.648, 33.4181], [88.0353, 33.4181], [88.0353, 40.7253]] }, { "name": "Albuquerque", "number": "1034", "id": "1034--Albuquerque--6", "capacity": 6, "coordinates": [[80.648, 48.886], [80.648, 40.7253], [88.0353, 40.7253], [88.0353, 48.886]] }, { "name": null, "number": "1032", "id": "1032", "capacity": null, "coordinates": [[80.648, 56.7393], [80.648, 48.886], [88.0353, 48.886], [88.0353, 56.7393]] }, { "name": null, "number": "1030B", "id": "1030B", "capacity": null, "coordinates": [[69.5538, 61.847], [69.5538, 58.7001], [65.4468, 58.7001], [65.4468, 61.847]] }, { "name": null, "number": "1030A", "id": "1030A", "capacity": null, "coordinates": [[65.4468, 65.4232], [65.4468, 61.847], [69.5538, 61.847], [69.5538, 65.4232]] }, { "name": null, "number": "1026", "id": "1026", "capacity": null, "coordinates": [[54.9926, 45.5257], [62.4065, 45.5257], [62.4065, 50.6461], [54.9926, 50.6461]] }, { "name": null, "number": "1023", "id": "1023", "capacity": null, "coordinates": [[54.9926, 55.9265], [62.4065, 55.9265], [62.4065, 50.6461], [54.9926, 50.6461]] }, { "name": null, "number": "1025", "id": "1025", "capacity": null, "coordinates": [[47.6854, 45.5257], [54.9926, 45.5257], [54.9926, 50.6461], [47.6854, 50.6461]] }, { "name": null, "number": "1022", "id": "1022", "capacity": null, "coordinates": [[47.6854, 55.9265], [54.9926, 55.9265], [54.9926, 50.6461], [47.6854, 50.6461]] }, { "name": null, "number": "1021", "id": "1021", "capacity": null, "coordinates": [[40.3248, 50.6461], [40.3248, 55.9265], [47.6854, 55.9265], [47.6854, 50.6461]] }, { "name": null, "number": "1024", "id": "1024", "capacity": null, "coordinates": [[40.3248, 45.5257], [40.3248, 50.6461], [47.6854, 50.6461], [47.6854, 45.5257]] }, { "name": null, "number": "1020", "id": "1020", "capacity": null, "coordinates": [[32.6442, 45.5257], [36.9112, 45.5257], [36.9112, 49.7927], [32.6442, 49.7927]] }, { "name": null, "number": "1019", "id": "1019", "capacity": null, "coordinates": [[25.1236, 50.6461], [32.6442, 50.6461], [32.6442, 45.5257], [25.1236, 45.5257]] }, { "name": null, "number": "1017", "id": "1017", "capacity": null, "coordinates": [[25.1236, 55.9265], [32.6442, 55.9265], [32.6442, 50.6461], [25.1236, 50.6461]] }, { "name": null, "number": "1018", "id": "1018", "capacity": null, "coordinates": [[17.441, 50.6461], [17.441, 45.5257], [25.1236, 45.5257], [25.1236, 50.6461]] }, { "name": null, "number": "1016", "id": "1016", "capacity": null, "coordinates": [[17.441, 55.9265], [25.1236, 55.9265], [25.1236, 50.6461], [17.441, 50.6461]] }, { "name": null, "number": "1015", "id": "1015", "capacity": null, "coordinates": [[38.2446, 58.7001], [44.0051, 58.7001], [44.0051, 65.4232], [38.2446, 65.4232]] }, { "name": null, "number": "1014", "id": "1014", "capacity": null, "coordinates": [[32.6442, 58.7001], [38.2446, 58.7001], [38.2446, 65.4232], [32.6442, 65.4232]] }, { "name": null, "number": "1013", "id": "1013", "capacity": null, "coordinates": [[26.9904, 58.7001], [32.6442, 58.7001], [32.6442, 65.4232], [26.9904, 65.4232]] }, { "name": null, "number": "1012", "id": "1012", "capacity": null, "coordinates": [[22.19, 58.7001], [26.9904, 58.7001], [26.9904, 65.4232], [22.19, 65.4232]] }, { "name": null, "number": "1011", "id": "1011", "capacity": null, "coordinates": [[17.441, 65.4232], [22.19, 65.4232], [22.19, 58.7001], [17.441, 58.7001]] }, { "name": null, "number": "1008A", "id": "1008A", "capacity": null, "coordinates": [[12.0559, 64.6205], [12.0559, 61.6336], [17.441, 61.6336], [17.441, 64.6205]] }, { "name": "San Antonio", "number": "1004", "id": "1004--San Antonio--6", "capacity": 6, "coordinates": [[9.549, 50.3261], [9.549, 41.4721], [3.0974, 41.4721], [3.0974, 50.3261]] }, { "name": null, "number": "1005", "id": "1005", "capacity": null, "coordinates": [[9.549, 57.4733], [9.549, 50.3261], [3.0974, 50.3261], [3.0974, 57.4733]] }, { "name": null, "number": "1006", "id": "1006", "capacity": null, "coordinates": [[9.549, 64.6205], [9.549, 57.4733], [3.0974, 57.4733], [3.0974, 64.6205]] }, { "name": null, "number": "1008B", "id": "1008B", "capacity": null, "coordinates": [[12.0559, 68.5142], [12.0559, 64.6205], [17.441, 64.6205], [17.441, 68.5142]] }, { "name": null, "number": "1008C", "id": "1008C", "capacity": null, "coordinates": [[12.0559, 72.4078], [12.0559, 68.5142], [17.441, 68.5142], [17.441, 72.4078]] }, { "name": null, "number": "1008D", "id": "1008D", "capacity": null, "coordinates": [[12.0559, 76.0348], [12.0559, 72.4078], [17.441, 72.4078], [17.441, 76.0348]] }, { "name": null, "number": "1008E", "id": "1008E", "capacity": null, "coordinates": [[12.0559, 80.0351], [12.0559, 76.0348], [17.441, 76.0348], [17.441, 80.0351]] }, { "name": null, "number": "1007A", "id": "1007A", "capacity": null, "coordinates": [[8.4823, 68.5142], [8.4823, 64.6205], [3.0974, 64.6205], [3.0974, 68.5142]] }, { "name": null, "number": "1007B", "id": "1007B", "capacity": null, "coordinates": [[8.4823, 72.4078], [8.4823, 68.5142], [3.0974, 68.5142], [3.0974, 72.4078]] }, { "name": null, "number": "1007C", "id": "1007C", "capacity": null, "coordinates": [[8.4823, 76.0348], [8.4823, 72.4078], [3.0974, 72.4078], [3.0974, 76.0348]] }, { "name": null, "number": "1007D", "id": "1007D", "capacity": null, "coordinates": [[3.0974, 80.0351], [8.4823, 80.0351], [8.4823, 76.0348], [3.0974, 76.0348]] }] }, { "outer_wall_coordinates": [[3.2141, 80.5927], [3.2141, 15.6151], [14.945, 15.6151], [14.945, 11.7048], [93.4006, 11.7048], [93.4006, 56.2989], [88.5752, 56.2989], [88.5752, 65.3674], [17.441, 65.3674], [17.441, 80.5927]], "name": "11th Floor, Washington, DC", "id": "dc_11", "balcony_coordinates": [[3.2141, 15.6151], [3.2141, 3.5899], [96.387, 3.5899], [96.387, 58.4395], [94.5715, 58.4395], [94.5719, 65.3674], [88.5752, 65.3674], [88.5752, 56.2989], [93.4006, 56.2989], [93.4006, 11.7048], [14.945, 11.7048], [14.945, 15.6151]], "rooms": [{ "name": null, "number": "1146", "id": "1146", "capacity": null, "coordinates": [[54.5112, 26.3987], [54.5112, 22.5777], [58.0484, 22.5777], [58.0484, 26.3987]] }, { "name": null, "number": "1102", "id": "1102", "capacity": null, "coordinates": [[3.2141, 32.526], [9.848800000000001, 32.526], [9.848800000000001, 25.4571], [3.2141, 25.4571]] }, { "name": null, "number": "1103", "id": "1103", "capacity": null, "coordinates": [[3.2141, 39.5949], [9.848800000000001, 39.5949], [9.848800000000001, 32.526], [3.2141, 32.526]] }, { "name": null, "number": "1120A", "id": "1120A", "capacity": null, "coordinates": [[34.5763, 55.0428], [39.4345, 55.0428], [39.4345, 48.4379], [34.5763, 48.4379]] }, { "name": null, "number": "1120", "id": "1120", "capacity": null, "coordinates": [[34.5763, 48.4379], [39.4345, 48.4379], [39.4345, 43.8526], [34.5763, 43.8526]] }, { "name": null, "number": "1119", "id": "1119", "capacity": null, "coordinates": [[26.5522, 49.5296], [26.5522, 43.8526], [34.5763, 43.8526], [34.5763, 49.5296]] }, { "name": null, "number": "1117", "id": "1117", "capacity": null, "coordinates": [[26.5522, 55.0428], [34.5763, 55.0428], [34.5763, 49.5296], [26.5522, 49.5296]] }, { "name": null, "number": "1109C", "id": "1109C", "capacity": null, "coordinates": [[13.9974, 55.0428], [13.9974, 51.3127], [18.528, 51.3127], [18.528, 55.0428]] }, { "name": null, "number": "1109A", "id": "1109A", "capacity": null, "coordinates": [[13.9974, 47.5827], [13.9974, 43.8526], [18.528, 43.8526], [18.528, 47.5827]] }, { "name": null, "number": "1109B", "id": "1109B", "capacity": null, "coordinates": [[13.9974, 51.3127], [13.9974, 47.5827], [18.528, 47.5827], [18.528, 51.3127]] }, { "name": null, "number": "1145", "id": "1145", "capacity": null, "coordinates": [[54.5112, 26.3987], [48.4412, 26.3987], [48.4412, 18.4701], [54.5112, 18.4701]] }, { "name": null, "number": "1142", "id": "1142", "capacity": null, "coordinates": [[77.6448, 18.4701], [67.601, 18.4701], [67.601, 11.7048], [77.6448, 11.7048]] }, { "name": null, "number": "1139", "id": "1139", "capacity": null, "coordinates": [[85.8873, 24.0925], [93.4006, 24.0925], [93.4006, 18.4701], [85.8873, 18.4701]] }, { "name": null, "number": "1130C", "id": "1130C", "capacity": null, "coordinates": [[73.1142, 65.3674], [73.1142, 61.7062], [77.6994, 61.7062], [77.6994, 65.3674]] }, { "name": null, "number": "1130A", "id": "1130A", "capacity": null, "coordinates": [[68.5289, 65.3674], [68.5289, 61.7062], [73.1142, 61.7062], [73.1142, 65.3674]] }, { "name": null, "number": "1130B", "id": "1130B", "capacity": null, "coordinates": [[68.5289, 61.7062], [68.5289, 58.045], [73.1142, 58.045], [73.1142, 61.7062]] }, { "name": null, "number": "1108E", "id": "1108E", "capacity": null, "coordinates": [[12.6327, 80.5927], [12.6327, 76.7864], [17.441, 76.7864], [17.441, 80.5927]] }, { "name": null, "number": "1108D", "id": "1108D", "capacity": null, "coordinates": [[12.6327, 76.7864], [12.6327, 72.9801], [17.441, 72.9801], [17.441, 76.7864]] }, { "name": null, "number": "1108C", "id": "1108C", "capacity": null, "coordinates": [[12.6327, 72.9801], [12.6327, 69.1737], [17.441, 69.1737], [17.441, 72.9801]] }, { "name": null, "number": "1108B", "id": "1108B", "capacity": null, "coordinates": [[12.6327, 69.1737], [12.6327, 65.3674], [17.441, 65.3674], [17.441, 69.1737]] }, { "name": null, "number": "1108A", "id": "1108A", "capacity": null, "coordinates": [[12.6327, 65.3674], [12.6327, 61.5611], [17.441, 61.5611], [17.441, 65.3674]] }, { "name": null, "number": "1107D", "id": "1107D", "capacity": null, "coordinates": [[3.2141, 76.2222], [8.9209, 76.2222], [8.9209, 80.5927], [3.2141, 80.5927]] }, { "name": null, "number": "1107C", "id": "1107C", "capacity": null, "coordinates": [[8.9209, 76.2222], [8.9209, 72.5104], [3.2141, 72.5104], [3.2141, 76.2222]] }, { "name": null, "number": "1107B", "id": "1107B", "capacity": null, "coordinates": [[8.9209, 72.5104], [8.9209, 68.4164], [3.2141, 68.4164], [3.2141, 72.5104]] }, { "name": null, "number": "1107A", "id": "1107A", "capacity": null, "coordinates": [[8.9209, 68.4164], [8.9209, 64.4316], [3.2141, 64.4316], [3.2141, 68.4164]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[3.2141, 64.4316], [9.848800000000001, 64.4316], [9.848800000000001, 56.8987], [3.2141, 56.8987]] }, { "name": null, "number": "1105", "id": "1105", "capacity": null, "coordinates": [[9.848800000000001, 56.8987], [9.848800000000001, 49.2021], [3.2141, 49.2021], [3.2141, 56.8987]] }, { "name": "Louisville", "number": "1104", "id": "1104--Louisville--6", "capacity": 6, "coordinates": [[9.848800000000001, 49.2021], [9.848800000000001, 39.5949], [3.2141, 39.5949], [3.2141, 49.2021]] }, { "name": "Charleston", "number": "1101", "id": "1101--Charleston--8", "capacity": 8, "coordinates": [[3.2141, 25.4571], [14.945, 25.4571], [14.945, 15.6151], [3.2141, 15.6151]] }, { "name": null, "number": "1111", "id": "1111", "capacity": null, "coordinates": [[17.441, 58.045], [22.8949, 58.045], [22.8949, 65.3674], [17.441, 65.3674]] }, { "name": null, "number": "1112", "id": "1112", "capacity": null, "coordinates": [[22.8949, 58.045], [28.5719, 58.045], [28.5719, 65.3674], [22.8949, 65.3674]] }, { "name": null, "number": "1113", "id": "1113", "capacity": null, "coordinates": [[28.5719, 58.045], [34.4126, 58.045], [34.4126, 65.3674], [28.5719, 65.3674]] }, { "name": null, "number": "1114", "id": "1114", "capacity": null, "coordinates": [[34.4126, 58.045], [40.4716, 58.045], [40.4716, 65.3674], [34.4126, 65.3674]] }, { "name": null, "number": "1115", "id": "1115", "capacity": null, "coordinates": [[40.4716, 58.045], [46.7491, 58.045], [46.7491, 65.3674], [40.4716, 65.3674]] }, { "name": null, "number": "1131", "id": "1131", "capacity": null, "coordinates": [[88.5752, 65.3674], [88.5752, 56.2989], [80.3195, 56.2989], [80.3195, 61.0473], [85.396, 61.0473], [85.396, 65.3674]] }, { "name": null, "number": "1132", "id": "1132", "capacity": null, "coordinates": [[85.8873, 56.2989], [85.8873, 47.6737], [93.4006, 47.6737], [93.4006, 56.2989]] }, { "name": "Savannah", "number": "1134", "id": "1134--Savannah--6", "capacity": 6, "coordinates": [[85.8873, 47.6737], [85.8873, 39.322], [93.4006, 39.322], [93.4006, 47.6737]] }, { "name": null, "number": "1136", "id": "1136", "capacity": null, "coordinates": [[85.8873, 39.322], [85.8873, 31.2432], [93.4006, 31.2432], [93.4006, 39.322]] }, { "name": null, "number": "1138", "id": "1138", "capacity": null, "coordinates": [[85.8873, 31.2432], [85.8873, 24.0925], [93.4006, 24.0925], [93.4006, 31.2432]] }, { "name": null, "number": "1140", "id": "1140", "capacity": null, "coordinates": [[85.8873, 18.4701], [93.4006, 18.4701], [93.4006, 11.7048], [85.8873, 11.7048]] }, { "name": null, "number": "1141", "id": "1141", "capacity": null, "coordinates": [[85.8873, 18.4701], [77.6448, 18.4701], [77.6448, 11.7048], [85.8873, 11.7048]] }, { "name": null, "number": "1143", "id": "1143", "capacity": null, "coordinates": [[67.601, 18.4701], [58.0484, 18.4701], [58.0484, 11.7048], [67.601, 11.7048]] }, { "name": null, "number": "1144", "id": "1144", "capacity": null, "coordinates": [[58.0484, 18.4701], [48.4412, 18.4701], [48.4412, 11.7048], [58.0484, 11.7048]] }, { "name": null, "number": "1116", "id": "1116", "capacity": null, "coordinates": [[18.528, 55.0428], [26.5522, 55.0428], [26.5522, 49.5296], [18.528, 49.5296]] }, { "name": null, "number": "1118", "id": "1118", "capacity": null, "coordinates": [[18.528, 49.5296], [18.528, 43.8526], [26.5522, 43.8526], [26.5522, 49.5296]] }, { "name": null, "number": "1132", "id": "1132", "capacity": null, "coordinates": [[42.7643, 55.0428], [42.7643, 49.5296], [50.5701, 49.5296], [50.5701, 55.0428]] }, { "name": null, "number": "1131", "id": "1131", "capacity": null, "coordinates": [[42.7643, 49.5296], [42.7643, 43.8526], [50.5701, 43.8526], [50.5701, 49.5296]] }, { "name": null, "number": "1130", "id": "1130", "capacity": null, "coordinates": [[50.5701, 55.0428], [58.2667, 55.0428], [58.2667, 49.5296], [50.5701, 49.5296]] }, { "name": null, "number": "1129", "id": "1129", "capacity": null, "coordinates": [[50.5701, 43.8526], [58.2667, 43.8526], [58.2667, 49.5296], [50.5701, 49.5296], [50.5701, 44.8352]] }, { "name": null, "number": "1127", "id": "1127", "capacity": null, "coordinates": [[58.2667, 55.0428], [66.2363, 55.0428], [66.2363, 49.5296], [58.2667, 49.5296]] }, { "name": null, "number": "1128", "id": "1128", "capacity": null, "coordinates": [[58.2667, 43.8526], [66.2363, 43.8526], [66.2363, 49.5296], [58.2667, 49.5296]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[66.2363, 55.0428], [70.1119, 55.0428], [70.1119, 50.403], [66.2363, 50.403]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[70.1119, 50.403], [74.0967, 50.403], [74.0967, 55.0428], [70.1119, 55.0428]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[70.1119, 50.403], [70.1119, 43.8526], [66.2363, 43.8526], [66.2363, 50.403]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[70.1119, 43.8526], [74.0967, 43.8526], [74.0967, 50.403], [70.1119, 50.403]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[77.0989, 55.0428], [81.7934, 55.0428], [81.7934, 51.4947], [77.0989, 51.4947]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[77.0989, 51.4947], [77.0989, 48.1649], [81.7934, 48.1649], [81.7934, 51.4947]] }, { "name": null, "number": "1122", "id": "1122", "capacity": null, "coordinates": [[77.0989, 48.1649], [77.0989, 43.8526], [81.7934, 43.8526], [81.7934, 48.1649]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[67.3826, 38.5032], [67.3826, 33.5359], [71.4766, 33.5359], [71.4766, 38.5032]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[71.4766, 38.5032], [75.4068, 38.5032], [75.4068, 33.5359], [71.4766, 33.5359]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[75.4068, 38.5032], [79.3916, 38.5032], [79.3916, 33.5359], [75.4068, 33.5359]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[79.3916, 38.5032], [82.1755, 38.5032], [82.1755, 33.5359], [79.3916, 33.5359]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[67.3826, 33.5359], [67.3826, 29.0598], [71.4766, 29.0598], [71.4766, 33.5359]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[71.4766, 29.0598], [75.4068, 29.0598], [75.4068, 33.5359], [71.4766, 33.5359]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[75.4068, 29.0598], [79.3916, 29.0598], [79.3916, 33.5359], [75.4068, 33.5359]] }, { "name": null, "number": "1106", "id": "1106", "capacity": null, "coordinates": [[79.3916, 29.0598], [82.1755, 29.0598], [82.1755, 33.5359], [79.3916, 33.5359]] }, { "name": null, "number": "1105", "id": "1105", "capacity": null, "coordinates": [[63.2341, 39.8679], [63.2341, 34.4092], [67.3826, 34.4092], [67.3826, 39.8679]] }, { "name": null, "number": "1104", "id": "1104", "capacity": null, "coordinates": [[63.2341, 34.4092], [63.2341, 28.4594], [67.3826, 28.4594], [67.3826, 34.4092]] }, { "name": null, "number": "1137A", "id": "1137A", "capacity": null, "coordinates": [[69.0748, 26.003], [69.0748, 21.4177], [73.2779, 21.4177], [73.2779, 26.003]] }, { "name": null, "number": "1137B", "id": "1137B", "capacity": null, "coordinates": [[73.2779, 26.003], [77.3719, 26.003], [77.3719, 21.4177], [73.2779, 21.4177]] }, { "name": null, "number": "1137C", "id": "1137C", "capacity": null, "coordinates": [[77.3719, 26.003], [82.1755, 26.003], [82.1755, 21.6907], [77.3719, 21.6907]] }, { "name": null, "number": "1110D", "id": "1110D", "capacity": null, "coordinates": [[13.2546, 40.7553], [13.2546, 37.5893], [16.2568, 37.5893], [16.2568, 40.7553]] }, { "name": null, "number": "1110C", "id": "1110C", "capacity": null, "coordinates": [[13.2546, 37.5893], [13.2546, 34.6963], [16.2568, 34.6963], [16.2568, 37.5893]] }, { "name": null, "number": "1110B", "id": "1110B", "capacity": null, "coordinates": [[13.2546, 34.6963], [13.2546, 31.694], [16.2568, 31.694], [16.2568, 34.6963]] }, { "name": null, "number": "1110A", "id": "1110A", "capacity": null, "coordinates": [[13.2546, 31.694], [13.2546, 28.7464], [16.2568, 28.7464], [16.2568, 31.694]] }, { "name": null, "number": "1190", "id": "1190", "capacity": null, "coordinates": [[20.1325, 35.9517], [20.1325, 25.4571], [28.6479, 25.4571], [28.6479, 35.9517]] }, { "name": null, "number": "1191", "id": "1191", "capacity": null, "coordinates": [[28.6479, 40.7553], [34.9253, 40.7553], [34.9253, 25.4571], [28.6479, 25.4571]] }] }];
-
-/***/ },
+/* 307 */,
+/* 308 */,
 /* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -36334,112 +36167,15 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
-
-	var base = _interopRequireWildcard(_base);
-
-	var _room = __webpack_require__(315);
-
-	var room = _interopRequireWildcard(_room);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Model = exports.Model = (function (_base$Model) {
-		_inherits(Model, _base$Model);
-
-		function Model() {
-			_classCallCheck(this, Model);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
-		}
-
-		_createClass(Model, [{
-			key: 'initialize',
-			value: function initialize() {
-				var _this2 = this;
-
-				if (this.get('rooms') != null) {
-					var roomCollection = new room.Collection(this.get('rooms'));
-					roomCollection.each(function (roomModel) {
-						roomModel.parent = _this2;
-					});
-					this.set('rooms', roomCollection);
-				}
-			}
-		}, {
-			key: 'getDisplayName',
-			value: function getDisplayName() {
-				return this.get('name') + ', ' + this.get('office');
-			}
-		}, {
-			key: 'resourceName',
-			get: function get() {
-				return 'floor';
-			}
-		}]);
-
-		return Model;
-	})(base.Model);
-
-	var Collection = exports.Collection = (function (_base$Collection) {
-		_inherits(Collection, _base$Collection);
-
-		function Collection() {
-			_classCallCheck(this, Collection);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
-		}
-
-		_createClass(Collection, [{
-			key: 'findByRoom',
-			value: function findByRoom(roomId) {
-				var matchingModels = [];
-				this.each(function (model) {
-					var rooms = model.get('rooms');
-					if (rooms.findWhere({ id: roomId })) {
-						matchingModels.push(model);
-					}
-				});
-				return matchingModels[0];
-			}
-		}, {
-			key: 'model',
-			get: function get() {
-				return Model;
-			}
-		}]);
-
-		return Collection;
-	})(base.Collection);
-
-/***/ },
-/* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Collection = exports.Model = undefined;
-
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
-	var _backbone = __webpack_require__(312);
+	var _backbone = __webpack_require__(311);
 
 	var _backbone2 = _interopRequireDefault(_backbone);
 
-	var _base_crud = __webpack_require__(314);
+	var _base_crud = __webpack_require__(313);
 
 	var baseCrud = _interopRequireWildcard(_base_crud);
 
@@ -36552,7 +36288,7 @@
 	})(baseCrud.Collection);
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -38129,7 +37865,7 @@
 	}).call(undefined);
 
 /***/ },
-/* 312 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -38150,7 +37886,7 @@
 
 	  // Set up Backbone appropriately for the environment. Start with AMD.
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(311), __webpack_require__(313), exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (_, $, exports) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(310), __webpack_require__(312), exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (_, $, exports) {
 	      // Export global even in AMD case in case this script is loaded with
 	      // others that may still expect a global Backbone.
 	      root.Backbone = factory(root, exports, _, $);
@@ -40063,7 +39799,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 313 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";function _typeof(obj){return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol?"symbol":typeof obj;} /*!
@@ -41523,7 +41259,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(217)(module)))
 
 /***/ },
-/* 314 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41535,15 +41271,15 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _backbone = __webpack_require__(312);
+	var _backbone = __webpack_require__(311);
 
 	var Backbone = _interopRequireWildcard(_backbone);
 
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _ = _interopRequireWildcard(_underscore);
 
-	var _jquery = __webpack_require__(313);
+	var _jquery = __webpack_require__(312);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -41910,353 +41646,9 @@
 	})(Backbone.Collection);
 
 /***/ },
-/* 315 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.Collection = exports.Model = undefined;
-
-	var _base = __webpack_require__(310);
-
-	var base = _interopRequireWildcard(_base);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Model = exports.Model = (function (_base$Model) {
-		_inherits(Model, _base$Model);
-
-		function Model() {
-			_classCallCheck(this, Model);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
-		}
-
-		_createClass(Model, [{
-			key: 'isPublic',
-			value: function isPublic() {
-				return this.get('capacity') != null;
-			}
-		}, {
-			key: 'resourceName',
-			get: function get() {
-				return 'room';
-			}
-		}]);
-
-		return Model;
-	})(base.Model);
-
-	var Collection = exports.Collection = (function (_base$Collection) {
-		_inherits(Collection, _base$Collection);
-
-		function Collection() {
-			_classCallCheck(this, Collection);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
-		}
-
-		_createClass(Collection, [{
-			key: 'model',
-			get: function get() {
-				return Model;
-			}
-		}]);
-
-		return Collection;
-	})(base.Collection);
-
-/***/ },
+/* 314 */,
+/* 315 */,
 /* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _classnames = __webpack_require__(304);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var toSvgPointsDef = function toSvgPointsDef(coordinates) {
-		var points = coordinates.map(function (point) {
-			return point[0] + ',' + (100 - point[1]);
-		});
-		return points.join(',');
-	};
-
-	// Floor plans component.
-
-	var FloorPlans = (function (_React$Component) {
-		_inherits(FloorPlans, _React$Component);
-
-		/*
-	  *
-	  *
-	  */
-
-		function FloorPlans(props) {
-			_classCallCheck(this, FloorPlans);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(FloorPlans).call(this, props));
-		}
-
-		/*
-	  *
-	  *
-	  */
-
-		_createClass(FloorPlans, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'floorplans' },
-					this.renderFloors(),
-					this.renderActiveRoomSummary()
-				);
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'renderFloors',
-			value: function renderFloors() {
-				var _this2 = this;
-
-				return this.props.floors.models.map(function (floor, i) {
-					return _react2.default.createElement(Floor, _extends({}, _this2.props, { floor: floor, key: i }));
-				});
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'renderActiveRoomSummary',
-			value: function renderActiveRoomSummary() {
-				var room = this.props.activeRoom;
-				return _react2.default.createElement(
-					'div',
-					{ className: 'floorplans__tooltip' },
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'h1',
-							null,
-							room.get('name') || room.get('id')
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							room.isPublic() ? 'Capacity: ' + room.get('capacity') + '.' : null
-						)
-					)
-				);
-			}
-		}]);
-
-		return FloorPlans;
-	})(_react2.default.Component);
-
-	// Floor plan component.
-
-	var Floor = (function (_React$Component2) {
-		_inherits(Floor, _React$Component2);
-
-		function Floor() {
-			_classCallCheck(this, Floor);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Floor).apply(this, arguments));
-		}
-
-		_createClass(Floor, [{
-			key: 'render',
-
-			/*
-	   *
-	   *
-	   */
-			value: function render() {
-				var polygonPoints;
-				if (!this.isActive()) {
-					return _react2.default.createElement('div', null);
-				}
-				polygonPoints = toSvgPointsDef(this.props.floor.get('outer_wall_coordinates'));
-				return _react2.default.createElement(
-					'svg',
-					{ className: 'floorplans__floor', viewBox: '0 0 100 100' },
-					_react2.default.createElement(
-						'g',
-						{ className: 'floorplans__rooms' },
-						this.renderRooms()
-					),
-					_react2.default.createElement('polygon', { className: 'floorplans__outer-wall', points: polygonPoints })
-				);
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'renderRooms',
-			value: function renderRooms() {
-				var _this4 = this;
-
-				return this.props.floor.get('rooms').models.map(function (room, i) {
-					return _react2.default.createElement(Room, _extends({}, _this4.props, { room: room, key: i }));
-				});
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'isActive',
-			value: function isActive() {
-				return this.props.activeRoom && this.props.activeRoom.parent === this.props.floor;
-			}
-		}]);
-
-		return Floor;
-	})(_react2.default.Component);
-
-	// Room component floor plan.
-
-	var Room = (function (_React$Component3) {
-		_inherits(Room, _React$Component3);
-
-		function Room() {
-			_classCallCheck(this, Room);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Room).apply(this, arguments));
-		}
-
-		_createClass(Room, [{
-			key: 'render',
-
-			/*
-	   *
-	   *
-	   */
-			value: function render() {
-				var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates')),
-				    cls = (0, _classnames2.default)({
-					'floorplans__room': true,
-					'floorplans__room--active': this.isActive(),
-					'floorplans__room--public': this.props.room.isPublic()
-				});
-				return _react2.default.createElement('polygon', {
-					className: cls,
-					points: polygonPoints,
-					onClick: this.handleClick.bind(this),
-					onMouseEnter: this.handleMouseEnter.bind(this),
-					onMouseLeave: this.handleMouseLeave.bind(this)
-				});
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'isActive',
-			value: function isActive() {
-				return this.props.room === this.props.activeRoom;
-			}
-
-			// If there are event handlers passed down to the component, run those passing along the room id.
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'handleClick',
-			value: function handleClick() {
-				var fn = this.props.handleRoomClick;
-				if (fn) {
-					fn(this.props.room);
-				}
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'handleMouseEnter',
-			value: function handleMouseEnter() {
-				var fn = this.props.handleRoomMouseEnter;
-				if (fn) {
-					fn(this.props.room);
-				}
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'handleMouseLeave',
-			value: function handleMouseLeave() {
-				var fn = this.props.handleRoomMouseLeave;
-				if (fn) {
-					fn(this.props.room);
-				}
-			}
-		}]);
-
-		return Room;
-	})(_react2.default.Component);
-
-	exports.default = FloorPlans;
-
-/***/ },
-/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42279,9 +41671,13 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _staff_member = __webpack_require__(318);
+	var _staff_member = __webpack_require__(317);
 
 	var _staff_member2 = _interopRequireDefault(_staff_member);
+
+	var _staff_member_summary = __webpack_require__(357);
+
+	var _staff_member_summary2 = _interopRequireDefault(_staff_member_summary);
 
 	var _icons = __webpack_require__(214);
 
@@ -42291,23 +41687,13 @@
 
 	var _loader2 = _interopRequireDefault(_loader);
 
-	var _floor_plans = __webpack_require__(316);
-
-	var _floor_plans2 = _interopRequireDefault(_floor_plans);
-
-	var _index = __webpack_require__(308);
-
-	var _index2 = _interopRequireDefault(_index);
-
 	var _staff_member3 = __webpack_require__(319);
 
 	var staffMember = _interopRequireWildcard(_staff_member3);
 
-	var _floor = __webpack_require__(309);
+	var _index = __webpack_require__(321);
 
-	var _index3 = __webpack_require__(321);
-
-	var _index4 = _interopRequireDefault(_index3);
+	var _index2 = _interopRequireDefault(_index);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -42319,10 +41705,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var floors = new _floor.Collection(_index2.default);
-
 	var StaffMembers = (function (_Base) {
 		_inherits(StaffMembers, _Base);
+
+		/*
+	  *
+	  *
+	  */
 
 		function StaffMembers(props) {
 			_classCallCheck(this, StaffMembers);
@@ -42330,6 +41719,12 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(StaffMembers).call(this, props));
 
 			_this.state = {};
+
+			// Pre-bind event handlers to instance.
+			_this.logScroll = _this.logScroll.bind(_this);
+			_this.setSearchTerm = _this.setSearchTerm.bind(_this);
+			_this.setHoveredStaffMember = _this.setHoveredStaffMember.bind(_this);
+			_this.activateStaffMember = _this.activateStaffMember.bind(_this);
 			return _this;
 		}
 
@@ -42343,7 +41738,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'page page--staff-registry', onScroll: this.logScroll.bind(this) },
+					{ className: 'page page--staff-registry', onScroll: this.logScroll },
 					_react2.default.createElement(
 						'div',
 						{ className: 'page__content' },
@@ -42358,7 +41753,7 @@
 							'Staff Directory'
 						),
 						this.renderAddButton(),
-						_react2.default.createElement('input', { placeholder: 'Search', onChange: this.setSearchTerm.bind(this) }),
+						_react2.default.createElement('input', { placeholder: 'Search', onChange: this.setSearchTerm }),
 						_react2.default.createElement(
 							'ul',
 							null,
@@ -42389,8 +41784,8 @@
 						staffMember: staffMember,
 						searchTerm: _this2.state.searchTerm,
 						activeStaffMember: _this2.state.activeStaffMember,
-						setHoveredStaffMember: _this2.setHoveredStaffMember.bind(_this2),
-						activateStaffMember: _this2.activateStaffMember.bind(_this2) });
+						setHoveredStaffMember: _this2.setHoveredStaffMember,
+						activateStaffMember: _this2.activateStaffMember });
 				});
 			}
 
@@ -42413,8 +41808,8 @@
 				return _react2.default.createElement(
 					'div',
 					{ className: cls },
-					_react2.default.createElement(StaffMemberSummary, { floors: floors, staffMember: this.getHighlightedStaffMember() }),
-					_react2.default.createElement(_floor_plans2.default, { floors: floors, activeRoomId: this.getHighlightedRoomId() })
+					_react2.default.createElement(_staff_member_summary2.default, { floors: floors, staffMember: this.getHighlightedStaffMember() }),
+					_react2.default.createElement(FloorPlans, { floors: floors, activeRoomId: this.getHighlightedRoomId() })
 				);
 			}
 
@@ -42460,17 +41855,21 @@
 			}
 
 			/*
-	   *
+	   * Resolves hovered and active staff members to get the highlighted staff member.
 	   *
 	   */
 
 		}, {
 			key: 'getHighlightedStaffMember',
 			value: function getHighlightedStaffMember() {
-				if (this.state.hoveredStaffMember != null) {
-					return this.state.hoveredStaffMember;
+				var _state = this.state;
+				var hoveredStaffMember = _state.hoveredStaffMember;
+				var activeStaffMember = _state.activeStaffMember;
+
+				if (!hoveredStaffMember) {
+					return hoveredStaffMember;
 				}
-				return this.state.activeStaffMember;
+				return activeStaffMember;
 			}
 
 			/*
@@ -42529,130 +41928,12 @@
 		}]);
 
 		return StaffMembers;
-	})(_index4.default);
-
-	var StaffMemberSummary = (function (_React$Component) {
-		_inherits(StaffMemberSummary, _React$Component);
-
-		function StaffMemberSummary(props) {
-			_classCallCheck(this, StaffMemberSummary);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(StaffMemberSummary).call(this, props));
-		}
-
-		/*
-	  *
-	  *
-	  */
-
-		_createClass(StaffMemberSummary, [{
-			key: 'render',
-			value: function render() {
-				if (this.props.staffMember == null) {
-					return _react2.default.createElement('div', { className: 'page__summary' });
-				}
-				this.getFloorSummary();
-				return _react2.default.createElement(
-					'div',
-					{ className: 'page__summary' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'page__summary__logo' },
-						this.renderFloor3dSvg()
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'page__summary__content' },
-						_react2.default.createElement(
-							'p',
-							null,
-							this.props.staffMember.get('name') + "'s office"
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							this.getFloorSummary()
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							'Phone: ' + this.props.staffMember.get('phone')
-						)
-					)
-				);
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'renderFloor3dSvg',
-			value: function renderFloor3dSvg() {
-
-				var roomId = String(this.props.staffMember.get('room_id')),
-				    floors = this.props.floors,
-				    floor = this.getFloor(),
-				    room;
-
-				if (floor == null) {
-					return;
-				}
-
-				room = floor.get('rooms').findWhere({ id: roomId });
-
-				var sameOfficeFloors = floor.getMatchingSiblingsByField('office');
-
-				var paths = sameOfficeFloors.map(function (sameOfficeFloor, i) {
-					var cls = 'page__svg-path' + (sameOfficeFloor === floor ? ' page__svg-path--active' : '');
-					return _react2.default.createElement('polygon', { key: i, className: cls, points: sameOfficeFloor.get('3d_schematic_svg_points') });
-				});
-
-				return _react2.default.createElement(
-					'svg',
-					{ viewBox: '0 0 100 100' },
-					paths
-				);
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'getFloor',
-			value: function getFloor() {
-				var roomId = String(this.props.staffMember.get('room_id')),
-				    floors = this.props.floors,
-				    floor = floors.findByRoom(roomId);
-				return floor;
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'getFloorSummary',
-			value: function getFloorSummary() {
-				var floor = this.getFloor();
-				if (floor == null) {
-					return;
-				}
-				return floor.getDisplayName();
-			}
-		}]);
-
-		return StaffMemberSummary;
-	})(_react2.default.Component);
+	})(_index2.default);
 
 	exports.default = StaffMembers;
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42842,6 +42123,7 @@
 	exports.default = StaffMember;
 
 /***/ },
+/* 318 */,
 /* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -42854,15 +42136,13 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
+	var _base = __webpack_require__(309);
 
 	var base = _interopRequireWildcard(_base);
 
 	var _department = __webpack_require__(320);
 
-	var _department2 = _interopRequireDefault(_department);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var department = _interopRequireWildcard(_department);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -42943,7 +42223,7 @@
 					formComponentProps: {
 						id: 'department_ids',
 						labelText: 'Department (NEW)',
-						foreignCollectionConstructor: _department2.default.Collection,
+						foreignCollectionConstructor: department.Collection,
 						hint: 'choose'
 					}
 				}, {
@@ -43001,7 +42281,7 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
+	var _base = __webpack_require__(309);
 
 	var base = _interopRequireWildcard(_base);
 
@@ -43341,11 +42621,11 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
+	var _base = __webpack_require__(309);
 
 	var base = _interopRequireWildcard(_base);
 
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
@@ -43751,7 +43031,7 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
+	var _base = __webpack_require__(309);
 
 	var base = _interopRequireWildcard(_base);
 
@@ -45577,7 +44857,7 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
+	var _base = __webpack_require__(309);
 
 	var base = _interopRequireWildcard(_base);
 
@@ -45938,11 +45218,11 @@
 	});
 	exports.Collection = exports.Model = undefined;
 
-	var _base = __webpack_require__(310);
+	var _base = __webpack_require__(309);
 
 	var base = _interopRequireWildcard(_base);
 
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
@@ -46951,7 +46231,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
@@ -48264,7 +47544,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
@@ -48911,7 +48191,7 @@
 
 	var _loader2 = _interopRequireDefault(_loader);
 
-	var _underscore = __webpack_require__(311);
+	var _underscore = __webpack_require__(310);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
@@ -49317,6 +48597,116 @@
 	};
 
 	exports.default = DeleteBase;
+
+/***/ },
+/* 357 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var StaffMemberSummary = (function (_React$Component) {
+		_inherits(StaffMemberSummary, _React$Component);
+
+		function StaffMemberSummary() {
+			_classCallCheck(this, StaffMemberSummary);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(StaffMemberSummary).apply(this, arguments));
+		}
+
+		_createClass(StaffMemberSummary, [{
+			key: 'render',
+
+			/*
+	   *
+	   *
+	   */
+			value: function render() {
+				var staffMember = this.props.staffMember;
+
+				if (!staffMember) {
+					return _react2.default.createElement('div', { className: 'page__summary' });
+				}
+				this.getFloorSummary();
+				return _react2.default.createElement(
+					'div',
+					{ className: 'page__summary' },
+					_react2.default.createElement('div', { className: 'page__summary__logo' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'page__summary__content' },
+						_react2.default.createElement(
+							'p',
+							null,
+							staffMember.get('name') + "'s office"
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							this.getFloorSummary()
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Phone: ' + staffMember.get('phone')
+						)
+					)
+				);
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'getFloor',
+			value: function getFloor() {
+				var _props = this.props;
+				var staffMember = _props.staffMember;
+				var floors = _props.floors;
+				var roomId = String(staffMember.get('room_id'));
+				var floor = floors.findByRoom(roomId);
+				return floor;
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'getFloorSummary',
+			value: function getFloorSummary() {
+				var floor = this.getFloor();
+				if (!floor) {
+					return;
+				}
+				return floor.getDisplayName();
+			}
+		}]);
+
+		return StaffMemberSummary;
+	})(_react2.default.Component);
+
+	exports.default = StaffMemberSummary;
 
 /***/ }
 /******/ ]);

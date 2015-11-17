@@ -19,11 +19,6 @@ var buttons = [
 		reactIconName: 'people'
 	},
 	{
-		title: 'Floor Plans',
-		url: '/floorplans',
-		reactIconName: 'key'
-	},
-	{
 		title: 'Resources',
 		url: '/resources',
 		reactIconName: 'page'
