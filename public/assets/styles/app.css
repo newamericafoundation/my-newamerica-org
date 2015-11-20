@@ -1087,77 +1087,77 @@ a {
 
 @font-face {
   font-family: 'MetaSerifWeb-Book';
-  src: url("../fonts/metaserifot/MetaSerifWeb-Book.eot");
-  src: url("../fonts/metaserifot/MetaSerifWeb-Book.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-Book.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-Book.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-Book.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-Book.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifWeb-BookItalic';
-  src: url("../fonts/metaserifot/MetaSerifWeb-BookItalic.eot");
-  src: url("../fonts/metaserifot/MetaSerifWeb-BookItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-BookItalic.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-BookItalic.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-BookItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-BookItalic.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifWeb-Bold';
-  src: url("../fonts/metaserifot/MetaSerifWeb-Bold.eot");
-  src: url("../fonts/metaserifot/MetaSerifWeb-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-Bold.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-Bold.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-Bold.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifWeb-BoldItalic';
-  src: url("../fonts/metaserifot/MetaSerifWeb-BoldItalic.eot");
-  src: url("../fonts/metaserifot/MetaSerifWeb-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-BoldItalic.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-BoldItalic.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifWeb-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifWeb-BoldItalic.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifScWeb-Book';
-  src: url("../fonts/metaserifot/MetaSerifScWeb-Book.eot");
-  src: url("../fonts/metaserifot/MetaSerifScWeb-Book.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-Book.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-Book.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-Book.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-Book.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifScWeb-BookItalic';
-  src: url("../fonts/metaserifot/MetaSerifScWeb-BookItalic.eot");
-  src: url("../fonts/metaserifot/MetaSerifScWeb-BookItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-BookItalic.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-BookItalic.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-BookItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-BookItalic.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifScWeb-Bold';
-  src: url("../fonts/metaserifot/MetaSerifScWeb-Bold.eot");
-  src: url("../fonts/metaserifot/MetaSerifScWeb-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-Bold.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-Bold.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-Bold.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'MetaSerifScWeb-BoldItalic';
-  src: url("../fonts/metaserifot/MetaSerifScWeb-BoldItalic.eot");
-  src: url("../fonts/metaserifot/MetaSerifScWeb-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-BoldItalic.woff") format("woff");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-BoldItalic.eot");
+  src: url("/assets/fonts/metaserifot/MetaSerifScWeb-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/metaserifot/MetaSerifScWeb-BoldItalic.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Platform Web';
-  src: url("../fonts/platform/Platform-Bold-Web.eot");
-  src: url("../fonts/platform/Platform-Bold-Web.eot?#iefix") format("embedded-opentype"), url("../fonts/platform/Platform-Bold-Web.woff") format("woff"), url("../fonts/platform/Platform-Bold-Web.ttf") format("truetype"), url("../fonts/platform/Platform-Bold-Web.svg") format("svg");
+  src: url("/assets/fonts/platform/Platform-Bold-Web.eot");
+  src: url("/assets/fonts/platform/Platform-Bold-Web.eot?#iefix") format("embedded-opentype"), url("../fonts/platform/Platform-Bold-Web.woff") format("woff"), url("../fonts/platform/Platform-Bold-Web.ttf") format("truetype"), url("../fonts/platform/Platform-Bold-Web.svg") format("svg");
   font-style: normal;
   font-stretch: normal; }
 
 @font-face {
   font-family: 'Platform Hairline';
-  src: url("../fonts/platform_hairline/Platform-Hairline.eot");
-  src: url("../fonts/platform_hairline/Platform-Hairline.eot?#iefix") format("embedded-opentype"), url("../fonts/platform_hairline/Platform-Hairline.woff") format("woff"), url("../fonts/platform_hairline/Platform-Hairline.ttf") format("truetype"), url("../fonts/platform_hairline/Platform-Hairline.svg") format("svg");
+  src: url("/assets/fonts/platform_hairline/Platform-Hairline.eot");
+  src: url("/assets/fonts/platform_hairline/Platform-Hairline.eot?#iefix") format("embedded-opentype"), url("../fonts/platform_hairline/Platform-Hairline.woff") format("woff"), url("../fonts/platform_hairline/Platform-Hairline.ttf") format("truetype"), url("../fonts/platform_hairline/Platform-Hairline.svg") format("svg");
   font-style: normal;
   font-stretch: normal; }
 
 @font-face {
   font-family: 'Platform Light';
-  src: url("../fonts/platform_light/Platform-Light.otf");
+  src: url("/assets/fonts/platform_light/Platform-Light.otf");
   font-style: normal;
   font-stretch: normal; }
 
@@ -1168,35 +1168,35 @@ a {
 
 @font-face {
   font-family: 'SimplonNorm-Regular-WebS';
-  src: url("../fonts/simplon/SimplonNorm-Regular-WebS.eot");
-  src: url("../fonts/simplon/SimplonNorm-Regular-WebS.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Regular-WebS.woff") format("woff");
+  src: url("/assets/fonts/simplon/SimplonNorm-Regular-WebS.eot");
+  src: url("/assets/fonts/simplon/SimplonNorm-Regular-WebS.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Regular-WebS.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'SimplonNorm-Regular-WebXL';
-  src: url("../fonts/simplon/SimplonNorm-Regular-WebXL.eot");
-  src: url("../fonts/simplon/SimplonNorm-Regular-WebXL.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Regular-WebXL.woff") format("woff");
+  src: url("/assets/fonts/simplon/SimplonNorm-Regular-WebXL.eot");
+  src: url("/assets/fonts/simplon/SimplonNorm-Regular-WebXL.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Regular-WebXL.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'SimplonNorm-Bold-WebS';
-  src: url("../fonts/simplon/SimplonNorm-Bold-WebS.eot");
-  src: url("../fonts/simplon/SimplonNorm-Bold-WebS.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Bold-WebS.woff") format("woff");
+  src: url("/assets/fonts/simplon/SimplonNorm-Bold-WebS.eot");
+  src: url("/assets/fonts/simplon/SimplonNorm-Bold-WebS.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Bold-WebS.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'SimplonNorm-Bold-WebXL';
-  src: url("../fonts/simplon/SimplonNorm-Bold-WebXL.eot");
-  src: url("../fonts/simplon/SimplonNorm-Bold-WebXL.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Bold-WebXL.woff") format("woff");
+  src: url("/assets/fonts/simplon/SimplonNorm-Bold-WebXL.eot");
+  src: url("/assets/fonts/simplon/SimplonNorm-Bold-WebXL.eot?#iefix") format("embedded-opentype"), url("../fonts/simplon/SimplonNorm-Bold-WebXL.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'BlackJack';
-  src: url("../fonts/black_jack/black_jack.ttf") format("truetype");
+  src: url("/assets/fonts/black_jack/black_jack.ttf") format("truetype");
   font-style: normal;
   font-stretch: normal; }
 

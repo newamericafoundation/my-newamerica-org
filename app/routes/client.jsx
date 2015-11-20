@@ -1,38 +1,31 @@
-import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import React from 'react'
+import { Router, Route, IndexRoute } from 'react-router'
 
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 
-import Header from './../components/general/header.jsx';
+import Header from './../components/general/header.jsx'
 
-import Dashboard from './../components/route_handlers/dashboard/index.jsx';
+import Dashboard from './../components/route_handlers/dashboard/index.jsx'
 
-import StaffMembers from './../components/route_handlers/staff_members/index.jsx';
-import WeeklyWins from './../components/route_handlers/weekly_wins/index.jsx';
-import Resources from './../components/route_handlers/resources/index.jsx';
-import Faq from './../components/route_handlers/faqs/index.jsx';
-import Readmes from './../components/route_handlers/readmes/index.jsx';
+import StaffMembers from './../components/route_handlers/staff_members/index.jsx'
+import WeeklyWins from './../components/route_handlers/weekly_wins/index.jsx'
+import Resources from './../components/route_handlers/resources/index.jsx'
+import Faq from './../components/route_handlers/faqs/index.jsx'
+import Readmes from './../components/route_handlers/readmes/index.jsx'
 
-class App extends React.Component {
-	render() {
-		return (
-			<div className='wrapper'>
-				<Header user={window.user} />
-				{ this.props.children }
-			</div>
-		);
-	}
-}
-
-class Wrapper extends React.Component {
-	render() { return (<div className='fill-parent'>{ this.props.children }</div>); }
+// Main app component.
+function App(props) {
+	return (
+		<div className='wrapper'>
+			<Header user={window.user} />
+			{ props.children }
+		</div>
+	)
 }
 
 import models from './../models/index.js'
 
-console.log(models)
-
-import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx';
+import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx'
 
 var routes = (
 	<Router history={createBrowserHistory()}>

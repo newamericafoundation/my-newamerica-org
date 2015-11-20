@@ -7,9 +7,9 @@ import session from 'express-session'
 import { MongoClient } from 'mongodb'
 import connectMongo from 'connect-mongo'
 
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackConfig from './webpack.config.js'
+// import webpack from 'webpack'
+// import webpackDevMiddleware from 'webpack-dev-middleware'
+// import webpackConfig from './webpack.config.js'
 
 import serveGzipMiddleware from './app/middleware/serve_gzip.js'
 
@@ -26,11 +26,11 @@ var app = express(),
 var { NODE_ENV, PORT, PRODUCTION_DB_URL } = process.env
 
 // Use webpack middleware for development.
-if (NODE_ENV !== 'production') {
-	let webpackCompiler = webpack(webpackConfig)
-	let webpackMiddleware = webpackDevMiddleware(webpackCompiler)
-	app.use(webpackMiddleware)
-}
+// if (NODE_ENV !== 'production') {
+// 	let webpackCompiler = webpack(webpackConfig)
+// 	let webpackMiddleware = webpackDevMiddleware(webpackCompiler)
+// 	app.use(webpackMiddleware)
+// }
 
 app.set('views', __dirname + '/app/views')
 app.set('view engine', 'jade')
@@ -47,9 +47,6 @@ app.use(express.static('public'))
 app.use(methodOverride())
 app.use(cookieParser())
 	
-var dbUrlBase = (NODE_ENV === 'development') ? 'localhost' : PRODUCTION_DB_URL
-var dbUrl = `mongodb://${dbUrlBase}:27017/mongoid`
-
 dbConnector.then(function(db) {
 
 	// Initialize session with database storage.

@@ -13,5 +13,5 @@ gulp.task('dev', function() {
     .on('restart', function() { 
         gulp.src('./app.js')
             .pipe(liveReload());
-    });
-});
+    })
+})
