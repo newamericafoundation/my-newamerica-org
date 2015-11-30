@@ -12,7 +12,11 @@ var toSvgPointsDef = function(coordinates) {
 	return points.join(',')
 };
 
-// Room component floor plan.
+
+/*
+ * Room component floor plan.
+ *
+ */
 class Room extends React.Component {
 
 	/*

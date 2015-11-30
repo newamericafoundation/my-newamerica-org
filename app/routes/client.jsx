@@ -12,6 +12,7 @@ import WeeklyWins from './../components/route_handlers/weekly_wins/index.jsx'
 import Resources from './../components/route_handlers/resources/index.jsx'
 import Faq from './../components/route_handlers/faqs/index.jsx'
 import Readmes from './../components/route_handlers/readmes/index.jsx'
+import FloorPlansPage from './../components/route_handlers/floor_plans/index.jsx'
 
 // Main app component.
 function App(props) {
@@ -37,6 +38,7 @@ var routes = (
 			<Route path='weekly-wins' component={WeeklyWins} />
 			<Route path='readmes' component={Readmes} />
 			<Route path='resources' component={Resources} />
+			<Route path='floor-plans' component={FloorPlansPage} />
 			<Route path='faq' component={Faq} />
 
 			{ resourceRouteGenerator(models.readme.Model) }

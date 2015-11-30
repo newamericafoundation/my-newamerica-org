@@ -6,22 +6,11 @@ import { Model, Collection } from './../../../models/floor.js'
 import Floor from './floor.jsx'
 
 
-
-
 /* 
  * Floor plans component.
  *
  */
 class FloorPlans extends React.Component {
-
-	/*
-	 *
-	 *
-	 */
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
 
 
 	/*
@@ -43,11 +32,15 @@ class FloorPlans extends React.Component {
 	 *
 	 */
 	renderFloors() {
-		var { floors } = this.state
+		var { floors, activeRoom } = this.props
 		if (!floors) { return }
 		return floors.models.map((floor, i) => {
 			return (
-				<Floor activeRoom={this.state.activeRoom} floor={floor} key={i} />
+				<Floor 
+					activeRoom={activeRoom} 
+					floor={floor} 
+					key={i} 
+				/>
 			);
 		});
 	}
@@ -58,7 +51,7 @@ class FloorPlans extends React.Component {
 	 *
 	 */
 	renderActiveRoomSummary() {
-		var { activeRoom } = this.state
+		var { activeRoom } = this.props
 		if (!activeRoom) { return }
 		return (
 			<div className='floorplans__tooltip'>
@@ -68,22 +61,6 @@ class FloorPlans extends React.Component {
 				</div>
 			</div>
 		);
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	componentWillMount() {
-		var coll = new Collection()
-		coll.getClientFetchPromise().then(() => {
-			var firstRoom = coll.models[0].get('rooms').models[0]
-			this.setState({
-				floors: coll,
-				activeRoom: firstRoom
-			})
-		}).catch((err) => { console.log(err.stack) })
 	}
 
 }

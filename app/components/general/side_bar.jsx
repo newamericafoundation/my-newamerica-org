@@ -1,6 +1,6 @@
-import React from 'react';
-import Icons from './icons.jsx';
-import { Link } from 'react-router';
+import React from 'react'
+import Icons from './icons.jsx'
+import { Link } from 'react-router'
 
 var buttons = [
 	{
@@ -19,6 +19,11 @@ var buttons = [
 		reactIconName: 'people'
 	},
 	{
+		title: 'Floor Plans',
+		url: '/floor-plans',
+		reactIconName: 'key'
+	},
+	{
 		title: 'Resources',
 		url: '/resources',
 		reactIconName: 'page'
@@ -30,12 +35,17 @@ var buttons = [
 	}
 ];
 
+
+/*
+ *
+ *
+ */
 class SideBar extends React.Component {
 
-	constructor() {
-		super();
-	}
-
+	/*
+	 *
+	 *
+	 */
 	render() {
 		return (
 			<div className="atl__side-bar atl__side-bar--naf-green" onClick={ this.toggle }>
@@ -47,11 +57,21 @@ class SideBar extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	getTitle() {
 		if (this.state == null) { this.state = { title: '' }; }
 		return this.state.title;
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	renderButtons() {
 		return buttons.map((button, i) => {
 			return (
@@ -64,18 +84,29 @@ class SideBar extends React.Component {
 		});
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	changeTitle(title) {
 		this.setState({ title: title });
 	}
 
 }
 
-SideBar.contextTypes = {
-	router: React.PropTypes.func
-};
 
+
+/*
+ *
+ *
+ */
 class SideBarButton extends React.Component {
 
+	/*
+	 *
+	 *
+	 */
 	render() {
 		var IconComp = Icons.get(this.props.button.reactIconName);
 		return (
@@ -87,18 +118,25 @@ class SideBarButton extends React.Component {
 		);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	setTitle() {
 		this.props.changeTitle(this.props.button.title);
 	}
 
+
+	/*
+	 *
+	 *
+	 */
 	clearTitle() {
 		this.props.changeTitle('');
 	}
 
 }
 
-SideBarButton.contextTypes = {
-	router: React.PropTypes.func
-};
 
-module.exports = SideBar;
+export default SideBar

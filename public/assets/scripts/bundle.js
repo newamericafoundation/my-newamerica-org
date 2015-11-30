@@ -19755,7 +19755,11 @@
 
 	var _index14 = _interopRequireDefault(_index13);
 
-	var _resource_route_generator = __webpack_require__(336);
+	var _index15 = __webpack_require__(336);
+
+	var _index16 = _interopRequireDefault(_index15);
+
+	var _resource_route_generator = __webpack_require__(337);
 
 	var _resource_route_generator2 = _interopRequireDefault(_resource_route_generator);
 
@@ -19782,13 +19786,14 @@
 			_react2.default.createElement(_reactRouter.Route, { path: 'weekly-wins', component: _index6.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'readmes', component: _index12.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'resources', component: _index8.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: 'floor-plans', component: _index14.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'faq', component: _index10.default }),
-			(0, _resource_route_generator2.default)(_index14.default.readme.Model),
-			(0, _resource_route_generator2.default)(_index14.default.faq.Model),
-			(0, _resource_route_generator2.default)(_index14.default.resource.Model),
-			(0, _resource_route_generator2.default)(_index14.default.weeklyWin.Model),
-			(0, _resource_route_generator2.default)(_index14.default.staffMember.Model),
-			(0, _resource_route_generator2.default)(_index14.default.department.Model)
+			(0, _resource_route_generator2.default)(_index16.default.readme.Model),
+			(0, _resource_route_generator2.default)(_index16.default.faq.Model),
+			(0, _resource_route_generator2.default)(_index16.default.resource.Model),
+			(0, _resource_route_generator2.default)(_index16.default.weeklyWin.Model),
+			(0, _resource_route_generator2.default)(_index16.default.staffMember.Model),
+			(0, _resource_route_generator2.default)(_index16.default.department.Model)
 		)
 	);
 
@@ -25199,6 +25204,10 @@
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -25230,6 +25239,10 @@
 		url: '/staff-directory',
 		reactIconName: 'people'
 	}, {
+		title: 'Floor Plans',
+		url: '/floor-plans',
+		reactIconName: 'key'
+	}, {
 		title: 'Resources',
 		url: '/resources',
 		reactIconName: 'page'
@@ -25239,17 +25252,27 @@
 		reactIconName: 'building'
 	}];
 
+	/*
+	 *
+	 *
+	 */
+
 	var SideBar = (function (_React$Component) {
 		_inherits(SideBar, _React$Component);
 
 		function SideBar() {
 			_classCallCheck(this, SideBar);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(SideBar).call(this));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(SideBar).apply(this, arguments));
 		}
 
 		_createClass(SideBar, [{
 			key: 'render',
+
+			/*
+	   *
+	   *
+	   */
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
@@ -25266,6 +25289,12 @@
 					)
 				);
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'getTitle',
 			value: function getTitle() {
@@ -25274,6 +25303,12 @@
 				}
 				return this.state.title;
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'renderButtons',
 			value: function renderButtons() {
@@ -25287,6 +25322,12 @@
 					});
 				});
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'changeTitle',
 			value: function changeTitle(title) {
@@ -25297,9 +25338,10 @@
 		return SideBar;
 	})(_react2.default.Component);
 
-	SideBar.contextTypes = {
-		router: _react2.default.PropTypes.func
-	};
+	/*
+	 *
+	 *
+	 */
 
 	var SideBarButton = (function (_React$Component2) {
 		_inherits(SideBarButton, _React$Component2);
@@ -25312,6 +25354,11 @@
 
 		_createClass(SideBarButton, [{
 			key: 'render',
+
+			/*
+	   *
+	   *
+	   */
 			value: function render() {
 				var IconComp = _icons2.default.get(this.props.button.reactIconName);
 				return _react2.default.createElement(
@@ -25324,11 +25371,23 @@
 					)
 				);
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'setTitle',
 			value: function setTitle() {
 				this.props.changeTitle(this.props.button.title);
 			}
+
+			/*
+	   *
+	   *
+	   */
+
 		}, {
 			key: 'clearTitle',
 			value: function clearTitle() {
@@ -25339,11 +25398,7 @@
 		return SideBarButton;
 	})(_react2.default.Component);
 
-	SideBarButton.contextTypes = {
-		router: _react2.default.PropTypes.func
-	};
-
-	module.exports = SideBar;
+	exports.default = SideBar;
 
 /***/ },
 /* 214 */
@@ -36745,27 +36800,19 @@
 	var FloorPlans = (function (_React$Component) {
 		_inherits(FloorPlans, _React$Component);
 
-		/*
-	  *
-	  *
-	  */
-
-		function FloorPlans(props) {
+		function FloorPlans() {
 			_classCallCheck(this, FloorPlans);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FloorPlans).call(this, props));
-
-			_this.state = {};
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(FloorPlans).apply(this, arguments));
 		}
-
-		/*
-	  *
-	  *
-	  */
 
 		_createClass(FloorPlans, [{
 			key: 'render',
+
+			/*
+	   *
+	   *
+	   */
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
@@ -36783,15 +36830,19 @@
 		}, {
 			key: 'renderFloors',
 			value: function renderFloors() {
-				var _this2 = this;
-
-				var floors = this.state.floors;
+				var _props = this.props;
+				var floors = _props.floors;
+				var activeRoom = _props.activeRoom;
 
 				if (!floors) {
 					return;
 				}
 				return floors.models.map(function (floor, i) {
-					return _react2.default.createElement(_floor3.default, { activeRoom: _this2.state.activeRoom, floor: floor, key: i });
+					return _react2.default.createElement(_floor3.default, {
+						activeRoom: activeRoom,
+						floor: floor,
+						key: i
+					});
 				});
 			}
 
@@ -36803,7 +36854,7 @@
 		}, {
 			key: 'renderActiveRoomSummary',
 			value: function renderActiveRoomSummary() {
-				var activeRoom = this.state.activeRoom;
+				var activeRoom = this.props.activeRoom;
 
 				if (!activeRoom) {
 					return;
@@ -36826,28 +36877,6 @@
 						)
 					)
 				);
-			}
-
-			/*
-	   *
-	   *
-	   */
-
-		}, {
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				var _this3 = this;
-
-				var coll = new _floor.Collection();
-				coll.getClientFetchPromise().then(function () {
-					var firstRoom = coll.models[0].get('rooms').models[0];
-					_this3.setState({
-						floors: coll,
-						activeRoom: firstRoom
-					});
-				}).catch(function (err) {
-					console.log(err.stack);
-				});
 			}
 		}]);
 
@@ -42103,7 +42132,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	/*
-	 *
+	 * Model
 	 *
 	 */
 
@@ -42314,6 +42343,11 @@
 
 		return Model;
 	})(Backbone.Model);
+
+	/*
+	 * Collection handling crud operations using promises.
+	 *
+	 */
 
 	var Collection = exports.Collection = (function (_Backbone$Collection) {
 		_inherits(Collection, _Backbone$Collection);
@@ -42544,6 +42578,8 @@
 
 	var _room2 = _interopRequireDefault(_room);
 
+	var _svg_helpers = __webpack_require__(359);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42553,17 +42589,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	/*
-	 * Transforms coordinate array to svg point coordinates definition.
+	 * Floor plan component.
 	 *
 	 */
-	var toSvgPointsDef = function toSvgPointsDef(coordinates) {
-		var points = coordinates.map(function (point) {
-			return point[0] + ',' + (100 - point[1]);
-		});
-		return points.join(',');
-	};
-
-	// Floor plan component.
 
 	var Floor = (function (_React$Component) {
 		_inherits(Floor, _React$Component);
@@ -42586,7 +42614,7 @@
 				if (!this.isActive()) {
 					return _react2.default.createElement('div', null);
 				}
-				polygonPoints = toSvgPointsDef(this.props.floor.get('outer_wall_coordinates'));
+				polygonPoints = (0, _svg_helpers.toSvgPointsDef)(this.props.floor.get('outer_wall_coordinates'));
 				return _react2.default.createElement(
 					'svg',
 					{ className: 'floorplans__floor', viewBox: '0 0 100 100' },
@@ -42676,7 +42704,10 @@
 		return points.join(',');
 	};
 
-	// Room component floor plan.
+	/*
+	 * Room component floor plan.
+	 *
+	 */
 
 	var Room = (function (_React$Component) {
 		_inherits(Room, _React$Component);
@@ -45992,6 +46023,251 @@
 
 	'use strict';
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _moment = __webpack_require__(216);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	var _floor = __webpack_require__(311);
+
+	var _loader = __webpack_require__(306);
+
+	var _loader2 = _interopRequireDefault(_loader);
+
+	var _icons = __webpack_require__(214);
+
+	var _icons2 = _interopRequireDefault(_icons);
+
+	var _root = __webpack_require__(310);
+
+	var _root2 = _interopRequireDefault(_root);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// TODO: convert to database entry
+	// var floors = new Collection(floorsData)
+
+	/*
+	 *
+	 *
+	 */
+
+	var FloorPlansPage = (function (_React$Component) {
+		_inherits(FloorPlansPage, _React$Component);
+
+		/*
+	  *
+	  *
+	  */
+
+		function FloorPlansPage(props) {
+			_classCallCheck(this, FloorPlansPage);
+
+			// var activeFloor = floors.models[0],
+			// 	activeRoom = activeFloor.get('rooms').models[0];
+
+			// this.state = {
+			// 	activeRoom: activeRoom
+			// };
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FloorPlansPage).call(this, props));
+
+			_this.state = {};
+
+			return _this;
+		}
+
+		/*
+	  *
+	  *
+	  */
+
+		_createClass(FloorPlansPage, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'page page--room-booking' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'page__content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'page__content__logo' },
+							_react2.default.createElement(_icons2.default.Key, null)
+						),
+						_react2.default.createElement(
+							'h1',
+							{ className: 'title' },
+							'Floor Plans'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Please select floor:'
+						),
+						this.renderFloorForm(),
+						this.renderFloors()
+					)
+				);
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'renderFloorOptions',
+			value: function renderFloorOptions() {
+				var floors = this.state.floors;
+
+				if (!floors) {
+					return;
+				}
+				return floors.map(function (floor, i) {
+					return _react2.default.createElement(
+						'option',
+						{ key: i, value: floor.get('id') },
+						floor.get('name')
+					);
+				});
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'renderFloorForm',
+			value: function renderFloorForm() {
+				return _react2.default.createElement(
+					'select',
+					{ onChange: this.changeActiveFloor.bind(this) },
+					this.renderFloorOptions()
+				);
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'renderFloors',
+			value: function renderFloors() {
+				var _state = this.state;
+				var floors = _state.floors;
+				var activeRoom = _state.activeRoom;
+
+				if (!floors) {
+					return;
+				}
+				return _react2.default.createElement(_root2.default, {
+					floors: floors,
+					activeRoom: activeRoom,
+					handleRoomClick: this.handleRoomClick.bind(this),
+					handleRoomMouseEnter: this.handleRoomMouseEnter.bind(this),
+					handleRoomMouseLeave: this.handleRoomMouseLeave.bind(this)
+				});
+			}
+
+			/*
+	   * Fetch floor data.
+	   *
+	   */
+
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				var _this2 = this;
+
+				var floors = new _floor.Collection();
+				floors.getClientFetchPromise().then(function (floors) {
+					_this2.setState({
+						floors: floors,
+						activeRoom: floors.models[0].get('rooms').models[0]
+					});
+				}).catch(function (err) {
+					console.log(err.stack);
+				});
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'handleRoomClick',
+			value: function handleRoomClick(room) {
+				console.log(room);
+				this.setState({ activeRoom: room });
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'handleRoomMouseEnter',
+			value: function handleRoomMouseEnter(room) {
+				this.setState({ activeRoom: room });
+			}
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'handleRoomMouseLeave',
+			value: function handleRoomMouseLeave(room) {}
+			// console.log(room);
+
+			/*
+	   *
+	   *
+	   */
+
+		}, {
+			key: 'changeActiveFloor',
+			value: function changeActiveFloor(e) {
+				var activeFloorId = e.target.value;
+				var floors = this.state.floors;
+				var activeFloor = floors.findWhere({ id: activeFloorId });
+				this.setState({ activeRoom: activeFloor.get('rooms').models[0] });
+			}
+		}]);
+
+		return FloorPlansPage;
+	})(_react2.default.Component);
+
+	exports.default = FloorPlansPage;
+
+/***/ },
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -46032,7 +46308,7 @@
 	};
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46162,15 +46438,15 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _new_base = __webpack_require__(337);
+	var _new_base = __webpack_require__(338);
 
 	var _new_base2 = _interopRequireDefault(_new_base);
 
-	var _edit_base = __webpack_require__(356);
+	var _edit_base = __webpack_require__(357);
 
 	var _edit_base2 = _interopRequireDefault(_edit_base);
 
-	var _delete_base = __webpack_require__(357);
+	var _delete_base = __webpack_require__(358);
 
 	var _delete_base2 = _interopRequireDefault(_delete_base);
 
@@ -46185,7 +46461,7 @@
 	;
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46206,7 +46482,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _save_base = __webpack_require__(338);
+	var _save_base = __webpack_require__(339);
 
 	var _save_base2 = _interopRequireDefault(_save_base);
 
@@ -46318,7 +46594,7 @@
 	exports.default = NewBase;
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46339,11 +46615,11 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _static = __webpack_require__(339);
+	var _static = __webpack_require__(340);
 
 	var _static2 = _interopRequireDefault(_static);
 
-	var _root = __webpack_require__(340);
+	var _root = __webpack_require__(341);
 
 	var _root2 = _interopRequireDefault(_root);
 
@@ -46351,11 +46627,11 @@
 
 	var _loader2 = _interopRequireDefault(_loader);
 
-	var _base = __webpack_require__(353);
+	var _base = __webpack_require__(354);
 
 	var _base2 = _interopRequireDefault(_base);
 
-	var _base_status_modal = __webpack_require__(354);
+	var _base_status_modal = __webpack_require__(355);
 
 	var _base_status_modal2 = _interopRequireDefault(_base_status_modal);
 
@@ -46693,7 +46969,7 @@
 	exports.default = SaveBase;
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46862,7 +47138,7 @@
 	exports.default = Static;
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46883,7 +47159,7 @@
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
-	var _index = __webpack_require__(341);
+	var _index = __webpack_require__(342);
 
 	var Subcomponents = _interopRequireWildcard(_index);
 
@@ -47013,7 +47289,7 @@
 	exports.default = Form;
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47022,7 +47298,7 @@
 	  value: true
 	});
 
-	var _text = __webpack_require__(342);
+	var _text = __webpack_require__(343);
 
 	Object.defineProperty(exports, 'Text', {
 	  enumerable: true,
@@ -47031,7 +47307,7 @@
 	  }
 	});
 
-	var _text_area = __webpack_require__(344);
+	var _text_area = __webpack_require__(345);
 
 	Object.defineProperty(exports, 'TextArea', {
 	  enumerable: true,
@@ -47040,7 +47316,7 @@
 	  }
 	});
 
-	var _radio = __webpack_require__(345);
+	var _radio = __webpack_require__(346);
 
 	Object.defineProperty(exports, 'Radio', {
 	  enumerable: true,
@@ -47049,7 +47325,7 @@
 	  }
 	});
 
-	var _selectize_text = __webpack_require__(346);
+	var _selectize_text = __webpack_require__(347);
 
 	Object.defineProperty(exports, 'SelectizeText', {
 	  enumerable: true,
@@ -47058,7 +47334,7 @@
 	  }
 	});
 
-	var _spreadsheet_file = __webpack_require__(347);
+	var _spreadsheet_file = __webpack_require__(348);
 
 	Object.defineProperty(exports, 'SpreadsheetFile', {
 	  enumerable: true,
@@ -47067,7 +47343,7 @@
 	  }
 	});
 
-	var _image_file = __webpack_require__(348);
+	var _image_file = __webpack_require__(349);
 
 	Object.defineProperty(exports, 'ImageFile', {
 	  enumerable: true,
@@ -47076,7 +47352,7 @@
 	  }
 	});
 
-	var _ckeditor = __webpack_require__(349);
+	var _ckeditor = __webpack_require__(350);
 
 	Object.defineProperty(exports, 'CKEditor', {
 	  enumerable: true,
@@ -47085,7 +47361,7 @@
 	  }
 	});
 
-	var _foreign_collection_radio = __webpack_require__(350);
+	var _foreign_collection_radio = __webpack_require__(351);
 
 	Object.defineProperty(exports, 'ForeignCollectionRadio', {
 	  enumerable: true,
@@ -47094,7 +47370,7 @@
 	  }
 	});
 
-	var _foreign_collection_check_box = __webpack_require__(352);
+	var _foreign_collection_check_box = __webpack_require__(353);
 
 	Object.defineProperty(exports, 'ForeignCollectionCheckBox', {
 	  enumerable: true,
@@ -47104,7 +47380,7 @@
 	});
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47119,7 +47395,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47183,7 +47459,7 @@
 	exports.default = Text;
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47233,7 +47509,7 @@
 	exports.default = Base;
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47248,7 +47524,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47311,7 +47587,7 @@
 	exports.default = TextArea;
 
 /***/ },
-/* 345 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47326,7 +47602,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47428,7 +47704,7 @@
 	exports.default = Radio;
 
 /***/ },
-/* 346 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47443,7 +47719,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47525,7 +47801,7 @@
 	exports.default = SelectizeText;
 
 /***/ },
-/* 347 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47540,7 +47816,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47694,7 +47970,7 @@
 	exports.default = SpreadsheetFile;
 
 /***/ },
-/* 348 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47709,7 +47985,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47797,7 +48073,7 @@
 	exports.default = ImageFile;
 
 /***/ },
-/* 349 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47812,7 +48088,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -47904,7 +48180,7 @@
 	exports.default = CKEditor;
 
 /***/ },
-/* 350 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47919,7 +48195,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _foreign_collection_base = __webpack_require__(351);
+	var _foreign_collection_base = __webpack_require__(352);
 
 	var _foreign_collection_base2 = _interopRequireDefault(_foreign_collection_base);
 
@@ -48055,7 +48331,7 @@
 	exports.default = ForeignCollectionRadio;
 
 /***/ },
-/* 351 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48070,7 +48346,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _base = __webpack_require__(343);
+	var _base = __webpack_require__(344);
 
 	var _base2 = _interopRequireDefault(_base);
 
@@ -48177,7 +48453,7 @@
 	exports.default = ForeignCollectionBase;
 
 /***/ },
-/* 352 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48196,7 +48472,7 @@
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
-	var _foreign_collection_base = __webpack_require__(351);
+	var _foreign_collection_base = __webpack_require__(352);
 
 	var _foreign_collection_base2 = _interopRequireDefault(_foreign_collection_base);
 
@@ -48336,7 +48612,7 @@
 	exports.default = ForeignCollectionCheckBox;
 
 /***/ },
-/* 353 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48351,7 +48627,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _static = __webpack_require__(339);
+	var _static = __webpack_require__(340);
 
 	var _static2 = _interopRequireDefault(_static);
 
@@ -48413,7 +48689,7 @@
 	exports.default = Base;
 
 /***/ },
-/* 354 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48428,7 +48704,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _modal = __webpack_require__(355);
+	var _modal = __webpack_require__(356);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -48593,7 +48869,7 @@
 	exports.default = BaseStatusModal;
 
 /***/ },
-/* 355 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48670,7 +48946,7 @@
 	exports.default = Modal;
 
 /***/ },
-/* 356 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48691,7 +48967,7 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	var _save_base = __webpack_require__(338);
+	var _save_base = __webpack_require__(339);
 
 	var _save_base2 = _interopRequireDefault(_save_base);
 
@@ -48808,7 +49084,7 @@
 	exports.default = EditBase;
 
 /***/ },
-/* 357 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48827,11 +49103,11 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _static = __webpack_require__(339);
+	var _static = __webpack_require__(340);
 
 	var _static2 = _interopRequireDefault(_static);
 
-	var _root = __webpack_require__(340);
+	var _root = __webpack_require__(341);
 
 	var _root2 = _interopRequireDefault(_root);
 
@@ -48843,11 +49119,11 @@
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
-	var _base = __webpack_require__(353);
+	var _base = __webpack_require__(354);
 
 	var _base2 = _interopRequireDefault(_base);
 
-	var _base_status_modal = __webpack_require__(354);
+	var _base_status_modal = __webpack_require__(355);
 
 	var _base_status_modal2 = _interopRequireDefault(_base_status_modal);
 
@@ -49245,6 +49521,27 @@
 	};
 
 	exports.default = DeleteBase;
+
+/***/ },
+/* 359 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.toSvgPointsDef = toSvgPointsDef;
+	/*
+	 * Transforms coordinate array to svg point coordinates definition.
+	 *
+	 */
+	function toSvgPointsDef(coordinates) {
+		var points = coordinates.map(function (point) {
+			return point[0] + ',' + (100 - point[1]);
+		});
+		return points.join(',');
+	};
 
 /***/ }
 /******/ ]);

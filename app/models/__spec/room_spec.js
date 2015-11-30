@@ -1,6 +1,8 @@
+import 'babel-polyfill'
+
 import assert from 'assert';
 import mocha from 'mocha';
-import { Model, Collection } from './../../app/models/room.js'; 
+import { Model, Collection } from './room.js'; 
 
 describe('Model', () => {
 

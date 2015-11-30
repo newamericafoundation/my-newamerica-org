@@ -1,18 +1,13 @@
 import React from 'react'
 import Room from './room.jsx'
 
+import { toSvgPointsDef } from './svg_helpers.js'
+
+
 /*
- * Transforms coordinate array to svg point coordinates definition.
+ * Floor plan component.
  *
  */
-var toSvgPointsDef = function(coordinates) {
-	var points = coordinates.map((point) => {
-		return `${point[0]},${100 - point[1]}`
-	})
-	return points.join(',')
-};
-
-// Floor plan component.
 class Floor extends React.Component {
 
 	/*

@@ -1,5 +1,7 @@
 var webpack = require('webpack'),
-	path = require('path');
+	path = require('path'),
+	AssetsPlugin = require('assets-webpack-plugin'),
+	CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
 
@@ -33,11 +35,12 @@ module.exports = {
 	},
 
 	plugins: [
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	mangle: {
-		// 		except: [ '$super', '$', 'exports', 'require' ]
-		// 	}
-		// })
+		new webpack.optimize.UglifyJsPlugin({
+			mangle: {
+				except: [ '$super', '$', 'exports', 'require' ]
+			}
+		}),
+		new CompressionPlugin()
 	]
 
 }

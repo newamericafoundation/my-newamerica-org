@@ -1,6 +1,8 @@
+import 'babel-polyfill'
+
 import assert from 'assert';
 import mocha from 'mocha';
-import { Model, Collection } from './../../app/models/floor.js'; 
+import { Model, Collection } from './../floor.js'; 
 
 describe('Model', () => {
 

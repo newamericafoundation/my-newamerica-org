@@ -25,13 +25,6 @@ var app = express(),
 
 var { NODE_ENV, PORT, PRODUCTION_DB_URL } = process.env
 
-// Use webpack middleware for development.
-// if (NODE_ENV !== 'production') {
-// 	let webpackCompiler = webpack(webpackConfig)
-// 	let webpackMiddleware = webpackDevMiddleware(webpackCompiler)
-// 	app.use(webpackMiddleware)
-// }
-
 app.set('views', __dirname + '/app/views')
 app.set('view engine', 'jade')
 

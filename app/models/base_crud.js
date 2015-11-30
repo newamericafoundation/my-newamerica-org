@@ -1,9 +1,9 @@
-import * as Backbone from 'backbone';
-import * as _ from 'underscore';
-import $ from 'jquery';
+import * as Backbone from 'backbone'
+import * as _ from 'underscore'
+import $ from 'jquery'
 
 /*
- *
+ * Model
  *
  */
 export class Model extends Backbone.Model {
@@ -187,6 +187,10 @@ export class Model extends Backbone.Model {
 
 
 
+/*
+ * Collection handling crud operations using promises.
+ *
+ */
 export class Collection extends Backbone.Collection {
 	
 	get model() { return Model; }
