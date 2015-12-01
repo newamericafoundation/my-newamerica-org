@@ -9,13 +9,19 @@ import { Model, Collection } from './../../../models/faq.js'
 
 import Base from './../base/index.jsx'
 
+/*
+ *
+ *
+ */
 class Faq extends Base {
 	
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
-		super(props);
-		this.state = {
-			searchTerm: ''
-		};
+		super(props)
+		this.state = { searchTerm: '' }
 	}
 
 
@@ -85,7 +91,7 @@ class Faq extends Base {
 	 *
 	 */
 	navigateToAdd() {
-		this.props.history.replaceState(null, Model.prototype.getNewUrl());
+		this.props.history.pushState(null, Model.prototype.getNewUrl());
 	}
 
 
@@ -99,6 +105,11 @@ class Faq extends Base {
 
 }
 
+
+/*
+ *
+ *
+ */
 class FaqGroup extends React.Component {
 
 	/*
@@ -134,6 +145,11 @@ class FaqGroup extends React.Component {
 
 }
 
+
+/*
+ *
+ *
+ */
 class FaqItem extends React.Component {
 
 
@@ -172,7 +188,7 @@ class FaqItem extends React.Component {
 	 */
 	navigateToEdit() {
 		var url = this.props.faq ? this.props.faq.getEditUrl() : '/';
-		return this.props.history.replaceState(null, url);
+		return this.props.history.pushState(null, url);
 	}
 
 }

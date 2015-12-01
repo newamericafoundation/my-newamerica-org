@@ -1,5 +1,9 @@
-import React from 'react';
+import React from 'react'
 
+/*
+ *
+ *
+ */
 class Modal extends React.Component {
 
 	/*
@@ -24,11 +28,9 @@ class Modal extends React.Component {
 	 *
 	 */
 	renderContent() {
-		return (
-			<p>It is not nice to leave a model empty.</p>
-		);
+		return <p>It is not nice to leave a model empty.</p>
 	}
 
 }
 
-export default Modal;
+export default Modal

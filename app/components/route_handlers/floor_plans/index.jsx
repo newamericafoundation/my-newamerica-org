@@ -1,16 +1,15 @@
 import React from 'react'
 import moment from 'moment'
 
-import { Model, Collection } from './../../../models/floor.js'
+import * as floor from './../../../models/floor.js'
+import * as staffMember from './../../../models/staff_member.js'
 
 import Loader from './../../general/loader.jsx'
 
-import Icons from './../../general/icons.jsx'
+import { Key } from './../../general/icons.jsx'
 
 import FloorPlans from './../../general/floor_plans/root.jsx'
 
-// TODO: convert to database entry
-// var floors = new Collection(floorsData)
 
 /*
  *
@@ -23,18 +22,8 @@ class FloorPlansPage extends React.Component {
 	 *
 	 */
 	constructor(props) {
-
 		super(props);
-
-		// var activeFloor = floors.models[0],
-		// 	activeRoom = activeFloor.get('rooms').models[0];
-
-		// this.state = {
-		// 	activeRoom: activeRoom
-		// };
-
 		this.state = {  }
-
 	}
 
 
@@ -47,15 +36,13 @@ class FloorPlansPage extends React.Component {
 			<div className='page page--room-booking'>
 				<div className='page__content'>
 					<div className='page__content__logo'>
-						<Icons.Key />
+						<Key />
 					</div>
 					<h1 className="title">Floor Plans</h1>
-
 					<p>Please select floor:</p>
 					{ this.renderFloorForm() }
-
 					{ this.renderFloors() }
-
+					{ this.renderActiveRoomStaffMember() }
 				</div>
 			</div>
 		);
@@ -114,13 +101,20 @@ class FloorPlansPage extends React.Component {
 	 *
 	 */
 	componentWillMount() {
-		var floors = new Collection()
+
+		var floors = new floor.Collection()
 		floors.getClientFetchPromise().then((floors) => { 
 			this.setState({ 
 				floors: floors,
 				activeRoom: floors.models[0].get('rooms').models[0]
 			})
 		}).catch((err) => { console.log(err.stack) })
+
+		var staffMembers = new staffMember.Collection()
+		staffMembers.getClientFetchPromise().then((staffMembers) => {
+			this.setState({ staffMembers: staffMembers })
+		})
+
 	}
 
 
@@ -149,6 +143,27 @@ class FloorPlansPage extends React.Component {
 	 */
 	handleRoomMouseLeave(room) {
 		// console.log(room);
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	renderActiveRoomStaffMember() {
+		var { activeRoom, staffMembers } = this.state
+		if (!activeRoom || !staffMembers) { return }
+		var activeRoomId = activeRoom.get('id')
+		var activeStaffMembers = staffMembers.where({ 'room_id': Number(activeRoomId) })
+		if (activeStaffMembers.length === 0) { return }
+		var activeStaffMembersSummary = activeStaffMembers.map((staffMember, i) => {
+			return <p>{ staffMember.get('name') }</p>
+		})
+		return (
+			<div>
+				{ activeStaffMembersSummary }
+			</div>
+		)
 	}
 
 

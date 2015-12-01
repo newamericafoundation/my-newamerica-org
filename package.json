@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "spec": "NODE_ENV=test mocha --compilers js:babel-core/register **/*_spec.js",
-    "compress": "gzip < public/assets/scripts/bundle.js > public/assets/scripts/bundle.js.gz",
     "build-clean": "rm -f public/assets/scripts/*",
     "dev": "npm run build-clean && webpack --config webpack.config.development.js --watch",
+    "build": "npm run build-clean && webpack --config webpack.config.production.js",
     "server": "node app.js",
-    "deploy": "npm run compress && git add -A && git commit -m 'fresh deploy' && eb deploy"
+    "deploy": "npm run build && git add -A && git commit -m 'fresh deploy' && eb deploy"
   },
   "author": "",
   "license": "ISC",

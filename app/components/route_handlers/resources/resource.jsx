@@ -1,7 +1,7 @@
-import React from 'react';
-import moment from 'moment';
+import React from 'react'
+import moment from 'moment'
 
-import Icons from './../../general/icons.jsx';
+import * as Icons from './../../general/icons.jsx'
 
 /*
  *
@@ -43,9 +43,9 @@ class Resource extends React.Component {
 	 *
 	 */
 	renderEditButton() {
-		var { Build } = Icons;
-		if (!window.user) { return; }
-		if (!window.user.isAdmin) { return; }
+		if (!window.user) { return }
+		if (!window.user.isAdmin) { return }
+		var { Build } = Icons
 		return (
 			<p className='page__button' onClick={this.navigateToEdit.bind(this)}><Build /></p>
 		);
@@ -57,7 +57,7 @@ class Resource extends React.Component {
 	 *
 	 */
 	shouldDisplay() {
-		return this.props.resource.matchesSearchTerm(this.props.searchTerm);
+		return this.props.resource.matchesSearchTerm(this.props.searchTerm)
 	}
 
 
@@ -66,11 +66,11 @@ class Resource extends React.Component {
 	 *
 	 */
 	navigateToEdit(e) {
-		e.preventDefault();
-		var url = this.props.resource ? this.props.resource.getEditUrl() : '/';
-		this.props.history.pushState(null, url);
+		e.preventDefault()
+		var url = this.props.resource ? this.props.resource.getEditUrl() : '/'
+		this.props.history.pushState(null, url)
 	}
 
 }
 
-export default Resource;
+export default Resource

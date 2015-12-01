@@ -1,16 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-/*
- * Transforms coordinate array to svg point coordinates definition.
- *
- */
-var toSvgPointsDef = function(coordinates) {
-	var points = coordinates.map((point) => {
-		return `${point[0]},${100 - point[1]}`
-	})
-	return points.join(',')
-};
+import { toSvgPointsDef } from './svg_helpers.js'
 
 
 /*
@@ -23,20 +14,33 @@ class Room extends React.Component {
 	 *
 	 *
 	 */
+	constructor(props) {
+		super(props)
+		this.handleMouseEnter = this.handleMouseEnter.bind(this)
+		this.handleMouseLeave = this.handleMouseLeave.bind(this)
+		this.handleClick = this.handleClick.bind(this)
+	}
+
+
+	/*
+	 *
+	 *
+	 */
 	render() {
-		var polygonPoints = toSvgPointsDef(this.props.room.get('coordinates')),
+		var { room } = this.props
+		var polygonPoints = toSvgPointsDef(room.get('coordinates')),
 			cls = classNames({
 				'floorplans__room': true,
 				'floorplans__room--active': this.isActive(),
-				'floorplans__room--public': this.props.room.isPublic()
+				'floorplans__room--public': room.isPublic()
 			});
 		return (
 			<polygon 
 				className={ cls } 
 				points={ polygonPoints } 
-				onClick={ this.handleClick.bind(this) } 
-				onMouseEnter={ this.handleMouseEnter.bind(this) }
-				onMouseLeave={ this.handleMouseLeave.bind(this) }
+				onClick={ this.handleClick } 
+				onMouseEnter={ this.handleMouseEnter }
+				onMouseLeave={ this.handleMouseLeave }
 			/>
 		);
 	}
@@ -50,6 +54,7 @@ class Room extends React.Component {
 		return (this.props.room === this.props.activeRoom);
 	}
 
+	
 	// If there are event handlers passed down to the component, run those passing along the room id.
 
 	/*
@@ -57,8 +62,8 @@ class Room extends React.Component {
 	 *
 	 */
 	handleClick() {
-		var fn = this.props.handleRoomClick;
-		if (fn) { fn(this.props.room); }
+		var fn = this.props.handleRoomClick
+		if (fn) { fn(this.props.room) }
 	}
 
 
@@ -67,8 +72,8 @@ class Room extends React.Component {
 	 *
 	 */
 	handleMouseEnter() {
-		var fn = this.props.handleRoomMouseEnter;
-		if (fn) { fn(this.props.room); }
+		var fn = this.props.handleRoomMouseEnter
+		if (fn) { fn(this.props.room) }
 	}
 
 
@@ -77,8 +82,8 @@ class Room extends React.Component {
 	 *
 	 */
 	handleMouseLeave() {
-		var fn = this.props.handleRoomMouseLeave;
-		if (fn) { fn(this.props.room); }
+		var fn = this.props.handleRoomMouseLeave
+		if (fn) { fn(this.props.room) }
 	}
 
 }

@@ -32,12 +32,12 @@ class FloorPlans extends React.Component {
 	 *
 	 */
 	renderFloors() {
-		var { floors, activeRoom } = this.props
+		var { floors } = this.props
 		if (!floors) { return }
 		return floors.models.map((floor, i) => {
 			return (
-				<Floor 
-					activeRoom={activeRoom} 
+				<Floor
+					{ ...this.props }
 					floor={floor} 
 					key={i} 
 				/>
@@ -57,7 +57,7 @@ class FloorPlans extends React.Component {
 			<div className='floorplans__tooltip'>
 				<div>
 					<h1>{ activeRoom.get('name') || activeRoom.get('id') }</h1>
-					<p>{ activeRoom.isPublic() ? `Capacity: ${room.get('capacity')}.` : null }</p>
+					<p>{ activeRoom.isPublic() ? `Capacity: ${activeRoom.get('capacity')}.` : null }</p>
 				</div>
 			</div>
 		);

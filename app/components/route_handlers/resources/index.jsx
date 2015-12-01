@@ -1,14 +1,20 @@
-import React from 'react';
-import moment from 'moment';
+import React from 'react'
+import moment from 'moment'
 
-import Icons from './../../general/icons.jsx';
-import Loader from './../../general/loader.jsx';
-import { Model, Collection } from './../../../models/resource.js';
+import Icons from './../../general/icons.jsx'
+import Loader from './../../general/loader.jsx'
 
-import ResourceGroup from './resource_group.jsx';
+import { Model, Collection } from './../../../models/resource.js'
 
-import Base from './../base/index.jsx';
+import ResourceGroup from './resource_group.jsx'
 
+import Base from './../base/index.jsx'
+
+
+/*
+ *
+ *
+ */
 class Resources extends Base {
 	
 	/*
@@ -16,9 +22,11 @@ class Resources extends Base {
 	 *
 	 */
 	constructor(props) {
-		super(props);
-		this.state = this.state || {};
-		this.state.searchTerm = '';
+		super(props)
+		this.setSearchTerm = this.setSearchTerm.bind(this)
+		this.state = {
+			searchTerm: ''
+		}
 	}
 
 
@@ -35,10 +43,8 @@ class Resources extends Base {
 					</div>
 					<h1 className="title">Resources</h1>
 					{ this.renderAddButton() }
-					<input placeholder="Search" onChange={ this.setSearchTerm.bind(this) }></input>
-
+					<input placeholder="Search" onChange={ this.setSearchTerm }></input>
 					{ this.renderResourceGroups() }
-
 				</div>
 			</div>
 		);
@@ -51,9 +57,9 @@ class Resources extends Base {
 	 */
 	renderResourceGroups() {
 		
-		if (this.state.resources == null) { return (<Loader />); }
+		if (this.state.resources == null) { return <Loader /> }
 
-		var grps = this.state.resources.group();
+		var grps = this.state.resources.group()
 
 		return Object.keys(grps).map((grpKey, i) => {
 			var grp = grps[grpKey];
@@ -78,8 +84,8 @@ class Resources extends Base {
 	 */
 	componentDidMount() {
 		new Collection().getClientFetchPromise().then((coll) => {
-			this.setState({ resources: coll });
-		}).catch((err) => { console.log(err.stack); });
+			this.setState({ resources: coll })
+		}).catch((err) => { console.log(err.stack) })
 	}
 
 
@@ -88,7 +94,7 @@ class Resources extends Base {
 	 *
 	 */
 	navigateToAdd() {
-		this.props.history.pushState(null, Model.prototype.getNewUrl());
+		this.props.history.pushState(null, Model.prototype.getNewUrl())
 	}
 
 
@@ -97,10 +103,10 @@ class Resources extends Base {
 	 *
 	 */
 	setSearchTerm(e) {
-		this.setState({ searchTerm: e.target.value });
+		this.setState({ searchTerm: e.target.value })
 	}
 
 }
 
 
-export default Resources;
+export default Resources

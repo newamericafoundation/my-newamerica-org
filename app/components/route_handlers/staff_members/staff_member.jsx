@@ -1,8 +1,14 @@
-import React from 'react';
-import moment from 'moment';
-import classNames from 'classnames';
+import React from 'react'
+import moment from 'moment'
+import classNames from 'classnames'
+
+import { Build } from './../../general/icons.jsx'
 
 
+/*
+ * Displays a single staff member.
+ *
+ */
 class StaffMember extends React.Component {
 
 	/*
@@ -10,7 +16,8 @@ class StaffMember extends React.Component {
 	 *
 	 */
 	constructor(props) {
-		super(props);
+		super(props)
+		this.navigateToEdit = this.navigateToEdit.bind(this)
 	}
 
 
@@ -28,7 +35,6 @@ class StaffMember extends React.Component {
 			<li className={ cls } 
 				onMouseEnter={this.setHoveredStaffMember.bind(this)} 
 				onMouseLeave={this.unsetHoveredStaffMember.bind(this)}
-				onDoubleClick={this.navigateToEdit.bind(this)}
 				onClick={this.toggleActiveStaffMember.bind(this)}>
 
 				<div className="feature-box__image">
@@ -42,6 +48,7 @@ class StaffMember extends React.Component {
 					<p> { this.props.staffMember.get('phone') }</p>
 				</div>
 
+				{ this.renderEditButton() }
 			</li>
 		);
 
@@ -52,12 +59,25 @@ class StaffMember extends React.Component {
 	 *
 	 *
 	 */
+	renderEditButton() {
+		if (!window.user) { return }
+		if (!window.user.isAdmin) { return }
+		return (
+			<p className='page__button' onClick={this.navigateToEdit}><Build /></p>
+		);
+	}
+
+
+	/*
+	 *
+	 *
+	 */
 	getImageSource() {
-		var fullSource = this.props.staffMember.get('image');
+		var fullSource = this.props.staffMember.get('image')
 		// strip off https://static.newamerica.org
-		if (!fullSource || !fullSource.slice) { return '/assets/images/profile.png'; }
-		var partialSource = fullSource.slice(29);
-		return '/assets/images/staff_members' + partialSource;
+		if (!fullSource || !fullSource.slice) { return '/assets/images/profile.png' }
+		var partialSource = fullSource.slice(29)
+		return '/assets/images/staff_members' + partialSource
 	}
 
 
@@ -66,7 +86,7 @@ class StaffMember extends React.Component {
 	 *
 	 */
 	isActive() {
-		return (this.props.staffMember === this.props.activeStaffMember);
+		return (this.props.staffMember === this.props.activeStaffMember)
 	}
 
 
@@ -75,7 +95,7 @@ class StaffMember extends React.Component {
 	 *
 	 */
 	setHoveredStaffMember() {
-		this.props.setHoveredStaffMember(this.props.staffMember);
+		this.props.setHoveredStaffMember(this.props.staffMember)
 	}
 
 
@@ -84,7 +104,7 @@ class StaffMember extends React.Component {
 	 *
 	 */
 	unsetHoveredStaffMember() {
-		this.props.setHoveredStaffMember(null);
+		this.props.setHoveredStaffMember(null)
 	}
 
 
@@ -93,8 +113,8 @@ class StaffMember extends React.Component {
 	 *
 	 */
 	toggleActiveStaffMember() {
-		var newActiveStaffMember = this.isActive() ? null : this.props.staffMember;
-		this.props.activateStaffMember(newActiveStaffMember);
+		var newActiveStaffMember = this.isActive() ? null : this.props.staffMember
+		this.props.activateStaffMember(newActiveStaffMember)
 	}
 
 
@@ -103,11 +123,11 @@ class StaffMember extends React.Component {
 	 *
 	 */
 	isVisible() {
-		var name, 
-			searchTerm = this.props.searchTerm;
-		if (searchTerm == null) { return true; }
-		name = this.props.staffMember.get('name');
-		return (name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+		var name
+		var { searchTerm, staffMember } = this.props
+		if (!searchTerm) { return true }
+		name = staffMember.get('name')
+		return (name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
 	}
 
 
@@ -115,9 +135,11 @@ class StaffMember extends React.Component {
 	 *
 	 *
 	 */
-	navigateToEdit() {
-		var url = this.props.staffMember ? this.props.staffMember.getEditUrl() : '/';
-		this.props.history.replaceState(null, url);
+	navigateToEdit(e) {
+		e.stopPropagation()
+		var { staffMember } = this.props
+		var url = staffMember ? staffMember.getEditUrl() : '/'
+		this.props.history.pushState(null, url)
 	}
 
 }

@@ -1,13 +1,17 @@
-import * as base from './base.js';
-import _ from 'underscore';
+import * as base from './base.js'
+import _ from 'underscore'
 
+/*
+ *
+ *
+ */
 export class Model extends base.Model {
 
-	get resourceName() { return 'weekly_win'; }
+	get resourceName() { return 'weekly_win' }
 
-	getIndexUrl() { return '/weekly-wins'; }
+	getIndexUrl() { return '/weekly-wins' }
 
-	getViewUrl() { return null; }
+	getViewUrl() { return null }
 
 	get defaults() {
 		return {
@@ -47,19 +51,22 @@ export class Model extends base.Model {
 		];
 	}
 
+
+	/*
+	 * Convert edition to number before saving to database.
+	 *
+	 */
 	beforeSave() {
-		var ed = this.get('edition');
-		if (!_.isNumber(ed)) { this.set('edition', Number(ed)); }
+		var ed = this.get('edition')
+		if (!_.isNumber(ed)) { this.set('edition', Number(ed)) }
 	}
 
 }
 
 export class Collection extends base.Collection {
 
-	get model() { return Model; }
+	get model() { return Model }
 
-	comparator(m1, m2) {
-		return m1.get('edition') - m2.get('edition');
-	}
+	comparator(m1, m2) { return (m1.get('edition') - m2.get('edition')) }
 
 }

@@ -15,7 +15,7 @@ export class Model extends base.Model {
 		return resp;
 	}
 
-		get fields() {
+	get fields() {
 		return [
 			{
 				formComponentName: 'Text',
