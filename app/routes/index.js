@@ -35,7 +35,10 @@ var currentAuthMiddleware = (NODE_ENV === 'development') ? ensureNothing : ensur
 // For all other routes, render client-side application JavaScript.
 // Further routing is handled on the client.
 router.get('*', currentAuthMiddleware, (req, res) => {
-	var user = NODE_ENV === 'development' ? { isAdmin: true } : req.user
+	var user = req.user
+	if (!user && NODE_ENV === 'development') {
+		user = { isAdmin: true, name: { givenName: 'Anne-Marie' } }
+	}
     return res.render('app', { user: user });
 });
 
