@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import marked from 'marked'
+
 
 import Icons from './../../general/icons.jsx'
 import Loader from './../../general/loader.jsx'
@@ -8,6 +8,8 @@ import Loader from './../../general/loader.jsx'
 import { Model, Collection } from './../../../models/faq.js'
 
 import Base from './../base/index.jsx'
+
+import FaqGroup from './faq_group.jsx'
 
 /*
  *
@@ -82,7 +84,7 @@ class Faq extends Base {
 	componentDidMount() {
 		new Collection().getClientFetchPromise().then((coll) => {
 			this.setState({ faqs: coll });
-		});
+		}).catch((err) => { console.log(err.stack) })
 	}
 
 
@@ -100,97 +102,10 @@ class Faq extends Base {
 	 *
 	 */
 	setSearchTerm(e) {
-		this.setState({ searchTerm: e.target.value });
+		this.setState({ searchTerm: e.target.value })
 	}
 
 }
 
 
-/*
- *
- *
- */
-class FaqGroup extends React.Component {
-
-	/*
-	 *
-	 *
-	 */
-	render() {
-		return (
-			<div>
-				<h2 className="page__section-title">{this.props.section}</h2>
-				{ this.renderFaqs() }
-			</div>
-		);
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	renderFaqs() {
-		return this.props.faqs.map((faq, i) => {
-			return (
-				<FaqItem
-					history={this.props.history}
-					searchTerm={this.props.searchTerm} 
-					faq={faq} 
-					key={i} 
-				/>
-			);
-		});
-	}
-
-}
-
-
-/*
- *
- *
- */
-class FaqItem extends React.Component {
-
-
-	/*
-	 *
-	 *
-	 */
-	render() {
-		if (!this.shouldDisplay()) { return (<div/>); }
-		var faq = this.props.faq,
-			html = marked(faq.get('answer'), { sanitize: true });
-		return (
-			<div className='faq' onDoubleClick={this.navigateToEdit.bind(this)}>
-				<p className='faq__question'>{ faq.get('question') }</p>
-				<div 
-					className='faq__answer static-content'
-					dangerouslySetInnerHTML={{ __html: html }}
-				/>
-			</div>
-		);
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	shouldDisplay() {
-		return this.props.faq.matchesSearchTerm(this.props.searchTerm);
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	navigateToEdit() {
-		var url = this.props.faq ? this.props.faq.getEditUrl() : '/';
-		return this.props.history.pushState(null, url);
-	}
-
-}
-
-module.exports = Faq;
+export default Faq

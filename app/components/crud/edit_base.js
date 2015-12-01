@@ -1,9 +1,14 @@
-import React from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-router';
+import React from 'react'
+import classNames from 'classnames'
+import { Link } from 'react-router'
 
-import SaveBase from './save_base.js';
+import SaveBase from './save_base.js'
 
+
+/*
+ *
+ *
+ */
 class EditBase extends SaveBase {
 
 	/*
@@ -59,15 +64,13 @@ class EditBase extends SaveBase {
 	 */
 	saveModel() {
 		
-		var model = this.state.model;
+		var { model } = this.state
 
-		this.setState({ saveResponseStatus: 'pending' });
+		this.setState({ saveResponseStatus: 'pending' })
 
-		if (model.beforeSave) {
-			model.beforeSave();
-		}
+		if (model.beforeSave) { model.beforeSave() }
 
-		model.set('updated_at', new Date().toISOString());
+		model.set('updated_at', new Date().toISOString())
 
 		model.getClientUpdatePromise().then((res) => {
 			res = JSON.parse(res);
@@ -80,8 +83,5 @@ class EditBase extends SaveBase {
 
 }
 
-EditBase.contextTypes = {
-	router: React.PropTypes.func
-};
 
-export default EditBase;
+export default EditBase

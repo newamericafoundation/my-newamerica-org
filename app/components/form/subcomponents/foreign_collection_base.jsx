@@ -1,8 +1,17 @@
 import React from 'react';
 import Base from './base.jsx';
 
+
+/*
+ *
+ *
+ */
 class ForeignCollectionBase extends Base {
 
+	/*
+	 *
+	 *
+	 */
 	constructor(props) {
 		super(props);
 		this.state = this.state || {};

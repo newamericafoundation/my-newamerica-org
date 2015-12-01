@@ -7,10 +7,6 @@ import session from 'express-session'
 import { MongoClient } from 'mongodb'
 import connectMongo from 'connect-mongo'
 
-// import webpack from 'webpack'
-// import webpackDevMiddleware from 'webpack-dev-middleware'
-// import webpackConfig from './webpack.config.js'
-
 import serveGzipMiddleware from './app/middleware/serve_gzip.js'
 
 import router from './app/routes/index.js'

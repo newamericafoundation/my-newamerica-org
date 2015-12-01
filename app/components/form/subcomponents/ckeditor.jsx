@@ -12,7 +12,7 @@ class CKEditor extends Base {
 	render() {
 		return (
 			<div className='form__wrapper'>
-				<label for={this.props.id}>{ this.props.labelText }</label>
+				<label htmlFor={this.props.id}>{ this.props.labelText }</label>
 				<p className='form__hint'>{ this.props.hint }</p>
 				<textarea
 					name={this.props.id}
