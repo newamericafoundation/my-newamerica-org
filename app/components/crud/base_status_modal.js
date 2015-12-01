@@ -1,7 +1,7 @@
 // Base class for a modal window that pops up when a model is saved.
 
-import React from 'react';
-import Modal from './../general/modal.jsx';
+import React from 'react'
+import Modal from './../general/modal.jsx'
 
 
 class BaseStatusModal extends Modal {

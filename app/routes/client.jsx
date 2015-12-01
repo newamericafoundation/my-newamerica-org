@@ -5,14 +5,13 @@ import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 import Header from './../components/general/header.jsx'
 
-import Dashboard from './../components/route_handlers/dashboard/index.jsx'
-
-import StaffMembers from './../components/route_handlers/staff_members/index.jsx'
-import WeeklyWins from './../components/route_handlers/weekly_wins/index.jsx'
-import Resources from './../components/route_handlers/resources/index.jsx'
-import Faq from './../components/route_handlers/faqs/index.jsx'
-import Readmes from './../components/route_handlers/readmes/index.jsx'
-import FloorPlansPage from './../components/route_handlers/floor_plans/index.jsx'
+import Dashboard from './../components/route_handlers/dashboard/root.jsx'
+import StaffMembers from './../components/route_handlers/staff_members/root.jsx'
+import WeeklyWins from './../components/route_handlers/weekly_wins/root.jsx'
+import Resources from './../components/route_handlers/resources/root.jsx'
+import Faq from './../components/route_handlers/faqs/root.jsx'
+import Readmes from './../components/route_handlers/readmes/root.jsx'
+import FloorPlansPage from './../components/route_handlers/floor_plans/root.jsx'
 
 // Main app component.
 function App(props) {

@@ -4,8 +4,15 @@ import Icons from './../../general/icons.jsx';
 import moment from 'moment';
 import { Model, Collection } from './../../../models/readme.js';
 
-import Base from './../base/index.jsx';
+import Base from './../base/index.jsx'
 
+import Readme from './readme.jsx'
+
+
+/*
+ *
+ *
+ */
 class Readmes extends Base {
 	
 	/*
@@ -13,10 +20,8 @@ class Readmes extends Base {
 	 *
 	 */
 	constructor(props) {
-		super(props);
-		this.state = {
-			activeEdition: ''
-		};
+		super(props)
+		this.state = { activeEdition: '' }
 	}
 
 
@@ -109,41 +114,4 @@ class Readmes extends Base {
 }
 
 
-
-class Readme extends React.Component {
-
-	render() {
-		var readme = this.props.readme;
-		if (!this.shouldDisplay()) { return <div/>; }
-		return (
-			<div onDoubleClick={this.navigateToEdit.bind(this)}>
-				<h2 className='page__section-title'>{ this.getTitle() }</h2>
-				<div className='static-content' dangerouslySetInnerHTML={{ __html: readme.get('html') }}></div>
-			</div>
-		);
-	}
-
-
-	/*
-	 * 
-	 *
-	 */
-	navigateToEdit() {
-		var url = this.props.readme ? this.props.readme.getEditUrl() : '/';
-		this.props.history.replaceState(null, url);
-	}
-
-
-	shouldDisplay() {
-		return (this.props.activeEdition === this.props.readme.get('edition'));
-	}
-
-
-	getTitle() {
-		var readme = this.props.readme;
-		return `Edition ${readme.get('edition')}: ${readme.get('title')}`;
-	}
-
-}
-
-export default Readmes;
+export default Readmes

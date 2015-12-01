@@ -4,6 +4,10 @@ import classNames from 'classnames'
 
 import { Build } from './../../general/icons.jsx'
 
+import Modal from './../../general/modal.jsx'
+
+import FloorPlans from './../../general/floor_plans/root.jsx'
+
 
 /*
  * Displays a single staff member.
@@ -17,7 +21,9 @@ class StaffMember extends React.Component {
 	 */
 	constructor(props) {
 		super(props)
+		this.state = { isActive: false }
 		this.navigateToEdit = this.navigateToEdit.bind(this)
+		this.handleClick = this.handleClick.bind(this)
 	}
 
 
@@ -29,13 +35,11 @@ class StaffMember extends React.Component {
 		var cls = classNames({
 			'feature-box': true,
 			'hidden': !this.isVisible(),
-			'feature-box--active': this.isActive()
+			'feature-box--active': this.state.isActive
 		});
 		return (
 			<li className={ cls } 
-				onMouseEnter={this.setHoveredStaffMember.bind(this)} 
-				onMouseLeave={this.unsetHoveredStaffMember.bind(this)}
-				onClick={this.toggleActiveStaffMember.bind(this)}>
+				onClick={this.handleClick}>
 
 				<div className="feature-box__image">
 					<img src={ this.getImageSource() } />
@@ -49,6 +53,9 @@ class StaffMember extends React.Component {
 				</div>
 
 				{ this.renderEditButton() }
+
+				{ this.renderModal() }
+
 			</li>
 		);
 
@@ -85,8 +92,9 @@ class StaffMember extends React.Component {
 	 *
 	 *
 	 */
-	isActive() {
-		return (this.props.staffMember === this.props.activeStaffMember)
+	handleClick() {
+		var { staffMember } = this.props
+		this.setState({ isActive: true })
 	}
 
 
@@ -94,27 +102,14 @@ class StaffMember extends React.Component {
 	 *
 	 *
 	 */
-	setHoveredStaffMember() {
-		this.props.setHoveredStaffMember(this.props.staffMember)
-	}
+	renderModal() {
+		var { floors } = this.props
+		if (!this.state.isActive) { return }
+		return (
+			<Modal width='1000px' height='600px'>
 
-
-	/*
-	 *
-	 *
-	 */
-	unsetHoveredStaffMember() {
-		this.props.setHoveredStaffMember(null)
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	toggleActiveStaffMember() {
-		var newActiveStaffMember = this.isActive() ? null : this.props.staffMember
-		this.props.activateStaffMember(newActiveStaffMember)
+			</Modal>
+		)
 	}
 
 

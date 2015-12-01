@@ -1,9 +1,9 @@
-import React from 'react';
-import moment from 'moment';
-import classNames from 'classnames';
+import React from 'react'
+import moment from 'moment'
+import classNames from 'classnames'
 
-import Loader from './../../general/loader.jsx';
-import { Jazz, Salesforce, Adp } from './../../general/icons.jsx';
+import Loader from './../../general/loader.jsx'
+import { Jazz, Salesforce, Adp } from './../../general/icons.jsx'
 
 var quickLinks = [
 
@@ -22,7 +22,8 @@ var quickLinks = [
 		icon: Salesforce,
 		url: 'https://login.salesforce.com'
 	}
-];
+]
+
 
 class Dashboard extends React.Component {
 	
@@ -118,7 +119,7 @@ class Dashboard extends React.Component {
 	 *
 	 */
 	getGreeting() {
-		return `Good ${this.getTimeOfDay()}, ${this.getDisplayName()}!`;
+		return `Good ${this.getTimeOfDay()}, ${this.getDisplayName()}!`
 	}
 
 
@@ -142,8 +143,5 @@ class Dashboard extends React.Component {
 
 }
 
-Dashboard.contextTypes = {
-	router: React.PropTypes.func
-};
 
-module.exports = Dashboard;
+export default Dashboard

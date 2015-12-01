@@ -2,8 +2,6 @@ import * as express from 'express'
 import * as passport from 'passport'
 import * as React from 'react'
 
-import request from 'request'
-import gm from 'gm'
 import fs from 'fs'
 
 import { ensureNothing, ensureAuthenticated } from './../middleware/auth.js'
