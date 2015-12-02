@@ -15,10 +15,8 @@ class NewBase extends SaveBase {
 	 *
 	 */
 	constructor(props) {
-		super(props);
-		this.state = {
-			saveResponseStatus: undefined
-		};
+		super(props)
+		this.state = {}
 	}
 
 
@@ -27,9 +25,9 @@ class NewBase extends SaveBase {
 	 *
 	 */
 	componentWillMount() {
-		var Model = this.getResourceConstructor();
+		var Model = this.getResourceConstructor()
 		if (!this.state.model) {
-			this.setState({ model: new Model() });
+			this.setState({ model: new Model() })
 		}
 	}
 
@@ -38,9 +36,7 @@ class NewBase extends SaveBase {
 	 *
 	 *
 	 */
-	getCrudMethodName() {
-		return 'new';
-	}
+	getCrudMethodName() { return 'new' }
 
 
 	/*
@@ -48,7 +44,7 @@ class NewBase extends SaveBase {
 	 *
 	 */
 	getSubmitButtonText() {
-		return `Create ${this.getResourceName()}`;
+		return `Create ${this.getResourceName()}`
 	}
 
 
@@ -58,26 +54,24 @@ class NewBase extends SaveBase {
 	 */
 	saveModel(formData) {
 
-		var model = this.state.model;
+		var { model } = this.state
 
 		// Set status to pending.
-		this.setState({ saveResponseStatus: 'pending' });
+		this.setState({ saveResponseStatus: 'pending' })
 
 		// Call before save method on the model.
-		if (model.beforeSave) {
-			model.beforeSave();
-		}
+		if (model.beforeSave) { model.beforeSave() }
 
-		model.set('created_at', new Date().toISOString());
+		model.set('created_at', new Date().toISOString())
 
 		// While pending, save form data using the instance method on the model.
 		model.getClientSavePromise().then((res) => {
-			console.log(res);
-			res = JSON.parse(res);
-			model.set('id', res.id);
-			this.setState({ saveResponseStatus: res.status });
-		}, (err) => { this.setState({ saveResponseStatus: 'error' }); 
-		});
+			res = JSON.parse(res)
+			model.set('id', res.id)
+			this.setState({ saveResponseStatus: res.status })
+		}).catch((err) => {
+			this.setState({ saveResponseStatus: 'error' })
+		})
 
 	}
 

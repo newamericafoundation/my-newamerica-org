@@ -1,21 +1,21 @@
-import React from 'react';
-import classNames from 'classnames';
-import Static from './../general/static.jsx';
-import Form from './../form/root.jsx';
-import Loader from './../general/loader.jsx';
-import _ from 'underscore';
+import React from 'react'
+import { Link } from 'react-router'
+import classNames from 'classnames'
+import _ from 'underscore'
 
-import Base from './base.js';
-import BaseStatusModal from './base_status_modal.js';
+import Static from './../general/static.jsx'
+import Form from './../form/root.jsx'
+import Loader from './../general/loader.jsx'
 
-import { Link } from 'react-router';
+import Base from './base.js'
+import BaseStatusModal from './base_status_modal.js'
 
+
+/*
+ *
+ *
+ */
 class FormModal extends BaseStatusModal {
-
-	constructor(props) {
-		super(props);
-	}
-
 
 	/*
 	 *
@@ -28,7 +28,7 @@ class FormModal extends BaseStatusModal {
 				<p className='title'>Delete successful</p>
 				{ this.renderLinks() }
 			</div>
-		);
+		)
 	}
 
 
@@ -43,7 +43,7 @@ class FormModal extends BaseStatusModal {
 				<p className='title'>Delete failed</p>
 				{ this.renderLinks() }
 			</div>
-		);
+		)
 	}
 
 
@@ -56,7 +56,7 @@ class FormModal extends BaseStatusModal {
 			<div>
 				<p className='title'>Deleting...</p>
 			</div>
-		);
+		)
 	}
 
 
@@ -70,18 +70,21 @@ class FormModal extends BaseStatusModal {
 			<ul>
 				<li><a className='link' href={this.props.model.getIndexUrl()}>View Resources</a></li>
 			</ul>
-		);
+		)
 	}
 
 }
 
+
+/*
+ *
+ *
+ */
 class DeleteBase extends Base {
 
 	constructor(props) {
-		super(props);
-		this.state = {
-			saveResponseStatus: undefined
-		};
+		super(props)
+		this.state = { saveResponseStatus: undefined }
 	}
 
 
@@ -149,8 +152,8 @@ class DeleteBase extends Base {
 	 *
 	 */
 	getViewUrl() {
-		if (!this.state.model) { return '/'; }
-		return this.state.model.getViewUrl();
+		if (!this.state.model) { return '/' }
+		return this.state.model.getViewUrl()
 	}
 
 
@@ -212,7 +215,7 @@ class DeleteBase extends Base {
 	 *
 	 */
 	reactivateForm() {
-		this.setState({ saveResponseStatus: undefined });
+		this.setState({ saveResponseStatus: undefined })
 	}
 
 
@@ -221,9 +224,7 @@ class DeleteBase extends Base {
 	 *
 	 */
 	componentDidMount() {
-		if(!this.state.model) {
-			this.fetchModel();
-		}
+		if(!this.state.model) { this.fetchModel() }
 	}
 
 
@@ -232,13 +233,13 @@ class DeleteBase extends Base {
 	 *
 	 */
 	fetchModel() {
-		if (!this.props.params) { return; }
-		var id = this.props.params.id;
-		var Model = this.getResourceConstructor();
-		var model = new Model({ id: id });
+		if (!this.props.params) { return }
+		var { id } = this.props.params
+		var Model = this.getResourceConstructor()
+		var model = new Model({ id: id })
 		model.getClientFetchPromise({ id: id }).then((model) => {
-			this.setState({ model: model });
-		});
+			this.setState({ model: model })
+		}).catch((err) => { console.log(err) })
 	}
 
 
@@ -247,8 +248,8 @@ class DeleteBase extends Base {
 	 *
 	 */
 	handleDeleteClick(e) {
-		e.preventDefault();
-		this.deleteModel();
+		e.preventDefault()
+		this.deleteModel()
 	}
 
 
@@ -258,25 +259,22 @@ class DeleteBase extends Base {
 	 */
 	deleteModel() {
 		
-		var model = this.state.model;
+		var { model } = this.state
 
-		this.setState({ saveResponseStatus: 'pending' });
+		this.setState({ saveResponseStatus: 'pending' })
 
 		model.getClientDeletePromise().then((res) => {
 			if (!_.isObject(res)) {
 				res = JSON.parse(res);
 			}
-			this.setState({ saveResponseStatus: res.status });
+			this.setState({ saveResponseStatus: res.status })
 		}, (err) => { 
-			this.setState({ saveResponseStatus: 'error' });
-		});
+			this.setState({ saveResponseStatus: 'error' })
+		})
 
 	}
 
 }
 
-DeleteBase.contextTypes = {
-	router: React.PropTypes.func
-};
 
-export default DeleteBase;
+export default DeleteBase

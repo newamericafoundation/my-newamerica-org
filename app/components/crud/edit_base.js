@@ -27,9 +27,7 @@ class EditBase extends SaveBase {
 	 *
 	 *
 	 */
-	getCrudMethodName() {
-		return 'edit';
-	}
+	getCrudMethodName() { return 'edit' }
 
 
 	/*

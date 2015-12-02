@@ -4,14 +4,31 @@ import React from 'react'
 import Modal from './../general/modal.jsx'
 
 
-class BaseStatusModal extends Modal {
+/*
+ *
+ *
+ */
+class BaseStatusModal extends React.Component {
 
 	/*
 	 *
 	 *
 	 */
 	constructor(props) {
-		super(props);
+		super(props)
+	}
+
+
+	/*
+	 *
+	 *
+	 */
+	render() {
+		return (
+			<Modal>
+				{ this.renderContent() }
+			</Modal>
+		)
 	}
 
 
@@ -20,9 +37,9 @@ class BaseStatusModal extends Modal {
 	 *
 	 */
 	renderContent() {
-		if(this.props.status === 'success') { return this.renderSuccessContent(); }
-		if(this.props.status === 'failure') { return this.renderFailureContent(); }
-		return this.renderPendingContent();
+		if(this.props.status === 'success') { return this.renderSuccessContent() }
+		if(this.props.status === 'failure') { return this.renderFailureContent() }
+		return this.renderPendingContent()
 	}
 
 
@@ -31,7 +48,7 @@ class BaseStatusModal extends Modal {
 	 *
 	 */
 	renderSuccessContent() {
-		var resourceName = this.props.model.name;
+		var resourceName = this.props.model.name
 		return (
 			<div>
 				<p className='title'>Save successful</p>
@@ -53,15 +70,15 @@ class BaseStatusModal extends Modal {
 			{ name: 'view', url: this.props.model.getViewUrl() } 
 		];
 		return urls.map((url, i) => {
-			if (!url.url) { return; }
+			if (!url.url) { return }
 			return (
 				<li key={i}>
 					<a className='link' href={url.url}>
 						{ `${url.name} ${this.props.model.resourceName}` }
 					</a>
 				</li>
-			);
-		});
+			)
+		})
 	}
 
 
@@ -99,11 +116,11 @@ class BaseStatusModal extends Modal {
 	 *
 	 */
 	reactivateForm(e) {
-		e.preventDefault();
-		this.props.reactivateForm();
+		e.preventDefault()
+		this.props.reactivateForm()
 	}
 
 }
 
 
-export default BaseStatusModal;
+export default BaseStatusModal

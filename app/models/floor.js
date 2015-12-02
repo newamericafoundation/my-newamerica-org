@@ -35,6 +35,10 @@ export class Collection extends base.Collection {
 
 	get model() { return Model }
 
+	/*
+	 *
+	 *
+	 */
 	findByRoom(roomId) {
 		var matchingModels = []
 		this.each((model) => {
