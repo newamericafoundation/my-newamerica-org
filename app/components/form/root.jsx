@@ -1,10 +1,15 @@
 // Form component backed by a Backbone model.
 
-import React from 'react';
-import _ from 'underscore';
+import React from 'react'
+import _ from 'underscore'
 
-import * as Subcomponents from './subcomponents/index.js';
+import * as Subcomponents from './subcomponents/index.js'
 
+
+/*
+ *
+ *
+ */
 class Form extends React.Component {
 
 	/*
@@ -12,8 +17,8 @@ class Form extends React.Component {
 	 *
 	 */
 	constructor(props) {
-		super(props);
-		this.state = {};
+		super(props)
+		this.state = {}
 	}
 
 
@@ -22,7 +27,7 @@ class Form extends React.Component {
 	 *
 	 */
 	render() {
-		var style = this.props.isEnabled ? {} : { opacity: 0.5 };
+		var style = this.props.isEnabled ? {} : { opacity: 0.5 }
 		return (
 			<form
 				onSubmit={this.sendFormDataToParent.bind(this)}
@@ -57,9 +62,8 @@ class Form extends React.Component {
 					saveDataOnParent={this.saveDataFromChild.bind(this)}
 					initialValue={this.props.model.get(id)}
 				/>
-			);
-		});
-		return (<input />);
+			)
+		})
 	}
 
 
@@ -69,26 +73,26 @@ class Form extends React.Component {
 	 */
 	saveDataFromChild(childData) {
 
-		var model = this.props.model,
-			key = childData.id,
-			currentValue = this.props.model.get(key),
-			incomingValue = childData.value;
+		var { model } = this.props
+		var key = childData.id
+		var currentValue = this.props.model.get(key)
+		var incomingValue = childData.value
 
 		// If the data field is an array, add the incoming value if the array does not contain it but remove it if it does.
 		// This behavior is specific to the ForeignCollectionCheckBox subcomponent.
 		if (_.isArray(currentValue)) {
-			let index = currentValue.indexOf(incomingValue);
+			let index = currentValue.indexOf(incomingValue)
 			if (index < 0) {
-				currentValue.push(incomingValue);
+				currentValue.push(incomingValue)
 			} else {
-				currentValue.splice(index, 1);
+				currentValue.splice(index, 1)
 			}
-			model.set(key, currentValue);
+			model.set(key, currentValue)
 		} else {
-			model.set(key, incomingValue);
+			model.set(key, incomingValue)
 		}
 
-		this.forceUpdate();
+		this.forceUpdate()
 	}
 
 	
@@ -97,10 +101,10 @@ class Form extends React.Component {
 	 *
 	 */
 	sendFormDataToParent(e) {
-		e.preventDefault();
-		this.props.onSubmit(this.props.model);
+		e.preventDefault()
+		this.props.onSubmit(this.props.model)
 	}
 
 }
 
-export default Form;
+export default Form
