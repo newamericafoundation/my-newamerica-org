@@ -4,10 +4,6 @@ import * as baseCrud from './base_crud.js'
 
 export class Model extends baseCrud.Model {
 
-	/*
-	 *
-	 *
-	 */
 	getMatchingSiblingsByField(fieldKey) {
 		var query = {};
 		query[fieldKey] = this.get(fieldKey);
@@ -15,11 +11,6 @@ export class Model extends baseCrud.Model {
 		return this.collection.where(query);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	getGroupName() {
 		return (this.get('name') || 'Generic Group');
 	}

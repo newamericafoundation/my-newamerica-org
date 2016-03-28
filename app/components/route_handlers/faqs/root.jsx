@@ -1,111 +1,75 @@
-import React from 'react'
-import moment from 'moment'
+import React from 'react';
+
+import Icons from './../../general/icons.jsx';
+import Loader from './../../general/loader.jsx';
+
+import {Model, Collection} from './../../../models/faq.js';
+
+import Base from './../base/index.jsx';
+
+import FaqGroup from './faq_group.jsx';
 
 
-import Icons from './../../general/icons.jsx'
-import Loader from './../../general/loader.jsx'
+export default class Faq extends Base {
 
-import { Model, Collection } from './../../../models/faq.js'
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: ''
+    };
+  }
 
-import Base from './../base/index.jsx'
+  render() {
+    return (
+      <div className='page page--resources'>
+        <div className='page__content'>
+          <div className='page__content__logo'>
+            <Icons.Building />
+          </div>
+          <h1 className="title">Moving FAQ</h1>
+          { this.renderAddButton() }
+          <input placeholder="Search" onChange={ this.setSearchTerm.bind(this) }></input>
 
-import FaqGroup from './faq_group.jsx'
+          { this.renderFaqGroups() }
 
-/*
- *
- *
- */
-class Faq extends Base {
-	
-	/*
-	 *
-	 *
-	 */
-	constructor(props) {
-		super(props)
-		this.state = { searchTerm: '' }
-	}
+        </div>
+      </div>
+    );
+  }
 
+  renderFaqGroups() {
 
-	/*
-	 *
-	 *
-	 */
-	render() {
-		return (
-			<div className='page page--resources'>
-				<div className='page__content'>
-					<div className='page__content__logo'>
-						<Icons.Building />
-					</div>
-					<h1 className="title">Moving FAQ</h1>
-					{ this.renderAddButton() }
-					<input placeholder="Search" onChange={ this.setSearchTerm.bind(this) }></input>
+    if (this.state.faqs == null) { return (<Loader />); }
 
-					{ this.renderFaqGroups() }
+    var grps = this.state.faqs.group();
 
-				</div>
-			</div>
-		);
-	}
+    return Object.keys(grps).map((grpKey, i) => {
+      var grp = grps[grpKey];
+      if (!grp.containsSearchTermMatch(this.state.searchTerm)) { return; }
+      return (
+        <FaqGroup
+          history={this.props.history}
+          searchTerm={this.state.searchTerm}
+          section={grpKey}
+          faqs={grp}
+          key={i}
+        />
+      );
+    });
+  }
 
+  componentDidMount() {
+    new Collection().getClientFetchPromise().then((coll) => {
+      this.setState({faqs: coll});
+    }).catch((err) => { console.log(err.stack); })
+  }
 
-	/*
-	 *
-	 *
-	 */
-	renderFaqGroups() {
-		
-		if (this.state.faqs == null) { return (<Loader />); }
+  navigateToAdd() {
+    this.props.history.pushState(null, Model.prototype.getNewUrl());
+  }
 
-		var grps = this.state.faqs.group();
-
-		return Object.keys(grps).map((grpKey, i) => {
-			var grp = grps[grpKey];
-			if (!grp.containsSearchTermMatch(this.state.searchTerm)) { return; }
-			return (
-				<FaqGroup
-					history={this.props.history}
-					searchTerm={this.state.searchTerm} 
-					section={grpKey} 
-					faqs={grp}
-					key={i}
-				/>
-			);
-		});
-		
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	componentDidMount() {
-		new Collection().getClientFetchPromise().then((coll) => {
-			this.setState({ faqs: coll });
-		}).catch((err) => { console.log(err.stack) })
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	navigateToAdd() {
-		this.props.history.pushState(null, Model.prototype.getNewUrl());
-	}
-
-
-	/*
-	 *
-	 *
-	 */
-	setSearchTerm(e) {
-		this.setState({ searchTerm: e.target.value })
-	}
+  setSearchTerm(e) {
+    this.setState({searchTerm: e.target.value});
+  }
 
 }
-
-
-export default Faq

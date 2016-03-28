@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from './side_bar.jsx';
+import SideBar from './../side_bar/root.jsx';
 import {Link} from 'react-router';
 import {Naf} from './icons.jsx';
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Room from './room.jsx'
 
-import { toSvgPointsDef } from './svg_helpers.js'
+import {toSvgPointsDef} from './svg_helpers.js'
 
 
 /*

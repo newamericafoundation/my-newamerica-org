@@ -18,7 +18,7 @@ require('./config/passport_config.js');
 const app = express();
 const MongoStore = connectMongo(session);
 
-const {NODE_ENV, PORT, PRODUCTION_DB_URL} = process.env;
+const {PORT} = process.env;
 
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'jade');
@@ -60,7 +60,7 @@ dbConnector.then(function(db) {
   app.use(function(req, res, next) {
     req.db = db;
     next();
-  })
+  });
 
   // Use router (see ./app/routes directory).
   app.use(router);

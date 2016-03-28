@@ -1,7 +1,7 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from 'react';
+import classNames from 'classnames';
 
-import { toSvgPointsDef } from './svg_helpers.js'
+import {toSvgPointsDef} from './svg_helpers.js';
 
 
 /*
@@ -35,10 +35,10 @@ class Room extends React.Component {
 				'floorplans__room--public': room.isPublic()
 			});
 		return (
-			<polygon 
-				className={ cls } 
-				points={ polygonPoints } 
-				onClick={ this.handleClick } 
+			<polygon
+				className={ cls }
+				points={ polygonPoints }
+				onClick={ this.handleClick }
 				onMouseEnter={ this.handleMouseEnter }
 				onMouseLeave={ this.handleMouseLeave }
 			/>
@@ -54,7 +54,7 @@ class Room extends React.Component {
 		return (this.props.room === this.props.activeRoom);
 	}
 
-	
+
 	// If there are event handlers passed down to the component, run those passing along the room id.
 
 	/*

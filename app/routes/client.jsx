@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import {Router, Route, IndexRoute} from 'react-router';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
@@ -9,9 +9,9 @@ import Dashboard from './../components/route_handlers/dashboard/root.jsx';
 import StaffMembers from './../components/route_handlers/staff_members/root.jsx';
 import WeeklyWins from './../components/route_handlers/weekly_wins/root.jsx';
 import Resources from './../components/route_handlers/resources/root.jsx';
-import Faq from './../components/route_handlers/faqs/root.jsx';
 import Readmes from './../components/route_handlers/readmes/root.jsx';
 import FloorPlansPage from './../components/route_handlers/floor_plans/root.jsx';
+import Subscribe from './../components/route_handlers/subscribe/root.jsx';
 
 import models from './../models/index.js';
 import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx';
@@ -20,8 +20,8 @@ import resourceRouteGenerator from './../components/route_handlers/helpers/resou
 function App(props) {
   return (
     <div className='wrapper'>
-      <Header user={window.user} />
-      { props.children }
+      <Header user={window.user}/>
+      {props.children}
     </div>
   );
 }
@@ -32,12 +32,12 @@ const routes = (
 
       <IndexRoute component={Dashboard} />
 
-      <Route path='staff-directory' component={StaffMembers} />
-      <Route path='weekly-wins' component={WeeklyWins} />
-      <Route path='readmes' component={Readmes} />
-      <Route path='resources' component={Resources} />
-      <Route path='floor-plans' component={FloorPlansPage} />
-      <Route path='faq' component={Faq} />
+      <Route path='staff-directory' component={StaffMembers}/>
+      <Route path='weekly-wins' component={WeeklyWins}/>
+      <Route path='readmes' component={Readmes}/>
+      <Route path='resources' component={Resources}/>
+      <Route path='floor-plans' component={FloorPlansPage}/>
+      <Route path='subscribe' component={Subscribe}/>
 
       { resourceRouteGenerator(models.readme.Model) }
       { resourceRouteGenerator(models.faq.Model) }

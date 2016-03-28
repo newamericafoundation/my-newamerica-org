@@ -16,31 +16,16 @@ export class Model extends Backbone.Model {
     return `/${name}s`;
   }
 
-
-  /*
-   * Customize on subclass if route is non-standard or the resource has a custom plural name.
-   *
-   */
   getViewUrl() {
     const name = this.resourceName;
     return `/${name}s/${this.get('id')}`;
   }
 
-
-  /*
-   * Customize on subclass if route is non-standard or the resource has a custom plural name.
-   *
-   */
   getEditUrl() {
     const name = this.resourceName;
     return `/admin/${name}s/${this.get('id')}/edit`;
   }
 
-
-  /*
-   * Customize on subclass if route is non-standard or the resource has a custom plural name.
-   *
-   */
   getDeleteUrl() {
     const name = this.resourceName;
     return `/admin/${name}s/${this.get('id')}/delete`;
@@ -138,7 +123,6 @@ export class Model extends Backbone.Model {
     });
   }
 }
-
 
 
 /*

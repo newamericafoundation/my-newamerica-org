@@ -1,11 +1,6 @@
 import * as base from './base.js';
 import * as room from './room.js';
 
-
-/*
- *
- *
- */
 export class Model extends base.Model {
 
   get resourceName() { return 'floor'; }
@@ -27,18 +22,10 @@ export class Model extends base.Model {
 }
 
 
-/*
- *
- *
- */
 export class Collection extends base.Collection {
 
   get model() { return Model; }
 
-  /*
-   *
-   *
-   */
   findByRoom(roomId) {
     let matchingModels = [];
     this.each((model) => {

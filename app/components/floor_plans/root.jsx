@@ -1,12 +1,12 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from 'react';
+import classNames from 'classnames';
 
-import { Model, Collection } from './../../../models/floor.js'
+import {Model, Collection} from './../../models/floor.js';
 
-import Floor from './floor.jsx'
+import Floor from './floor.jsx';
 
 
-/* 
+/*
  * Floor plans component.
  *
  */
@@ -38,8 +38,8 @@ class FloorPlans extends React.Component {
 			return (
 				<Floor
 					{ ...this.props }
-					floor={floor} 
-					key={i} 
+					floor={floor}
+					key={i}
 				/>
 			);
 		});

@@ -8,7 +8,7 @@ import Loader from './../../general/loader.jsx'
 
 import { Key } from './../../general/icons.jsx'
 
-import FloorPlans from './../../general/floor_plans/root.jsx'
+import FloorPlans from './../../floor_plans/root.jsx'
 
 
 /*
@@ -16,7 +16,7 @@ import FloorPlans from './../../general/floor_plans/root.jsx'
  *
  */
 class FloorPlansPage extends React.Component {
-	
+
 	/*
 	 *
 	 *
@@ -48,7 +48,7 @@ class FloorPlansPage extends React.Component {
 		);
 	}
 
-	
+
 	/*
 	 *
 	 *
@@ -85,9 +85,9 @@ class FloorPlansPage extends React.Component {
 		var { floors, activeRoom } = this.state
 		if (!floors) { return }
 		return (
-			<FloorPlans 
-				floors={floors} 
-				activeRoom={activeRoom} 
+			<FloorPlans
+				floors={floors}
+				activeRoom={activeRoom}
 				handleRoomClick={this.handleRoomClick.bind(this)}
 				handleRoomMouseEnter={this.handleRoomMouseEnter.bind(this)}
 				handleRoomMouseLeave={this.handleRoomMouseLeave.bind(this)}
@@ -103,8 +103,8 @@ class FloorPlansPage extends React.Component {
 	componentWillMount() {
 
 		var floors = new floor.Collection()
-		floors.getClientFetchPromise().then((floors) => { 
-			this.setState({ 
+		floors.getClientFetchPromise().then((floors) => {
+			this.setState({
 				floors: floors,
 				activeRoom: floors.models[0].get('rooms').models[0]
 			})

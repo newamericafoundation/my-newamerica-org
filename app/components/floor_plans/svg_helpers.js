@@ -3,8 +3,7 @@
  *
  */
 export function toSvgPointsDef(coordinates) {
-	var points = coordinates.map((point) => {
-		return `${point[0]},${100 - point[1]}`
-	})
-	return points.join(',')
-};
+  return coordinates.map((point) => {
+    return `${point[0]},${100 - point[1]}`
+  }).join(',');
+}
