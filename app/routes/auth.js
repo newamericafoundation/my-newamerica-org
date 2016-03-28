@@ -1,7 +1,7 @@
-import express from 'express'
-import passport from 'passport'
+import express from 'express';
+import passport from 'passport';
 
-var router = express.Router()
+const router = express.Router();
 
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -9,13 +9,13 @@ var router = express.Router()
 //   redirecting the user to google.com.  After authorization, Google
 //   will redirect the user back to this application at /auth/google/callback
 router.get('/google',
-    passport.authenticate('google', {
-        scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar']
-    }),
-    function(req, res) {
+  passport.authenticate('google', {
+    scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar']
+  }),
+  (req, res) => {
         // The request will be redirected to Google for authentication, so this
         // function will not be called.
-    });
+  });
 
 // GET /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -23,13 +23,14 @@ router.get('/google',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 router.get('/google/callback',
-    passport.authenticate('google', {
-        failureRedirect: '/login',
-        failureFlash: 'Authentication failed.'
-    }),
-    function(req, res) {
-        req.session.accessToken = req.user.accessToken;
-        res.redirect('/');
-    });
+  passport.authenticate('google', {
+    failureRedirect: '/login',
+    failureFlash: 'Authentication failed.'
+  }),
+  (req, res) => {
+    req.session.accessToken = req.user.accessToken;
+    res.redirect('/');
+  }
+);
 
-export default router
+export default router;

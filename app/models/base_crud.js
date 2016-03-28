@@ -1,188 +1,142 @@
-import * as Backbone from 'backbone'
-import * as _ from 'underscore'
-import $ from 'jquery'
+import * as Backbone from 'backbone';
+import $ from 'jquery';
 
-/*
- * Model
- *
- */
+
 export class Model extends Backbone.Model {
 
-	/*
-	 * Lower-case name of the resource constructed by this constructor.
-	 *
-	 */
-	get resourceName() { return 'resource'; }
+  get resourceName() { return 'resource'; }
+
+  get apiUrlRoot() {
+    const name = this.resourceName;
+    return `/api/v1/${name}s`;
+  }
+
+  getIndexUrl() {
+    const name = this.resourceName;
+    return `/${name}s`;
+  }
 
 
-	/*
-	 *
-	 *
-	 */
-	get apiUrlRoot() {
-		var name = this.resourceName;
-		return `/api/v1/${name}s`; 
-	}
+  /*
+   * Customize on subclass if route is non-standard or the resource has a custom plural name.
+   *
+   */
+  getViewUrl() {
+    const name = this.resourceName;
+    return `/${name}s/${this.get('id')}`;
+  }
 
 
-	/*
-	 *
-	 *
-	 */
-	getIndexUrl() {
-		var name = this.resourceName;
-		return `/${name}s`;
-	}
+  /*
+   * Customize on subclass if route is non-standard or the resource has a custom plural name.
+   *
+   */
+  getEditUrl() {
+    const name = this.resourceName;
+    return `/admin/${name}s/${this.get('id')}/edit`;
+  }
 
 
-	/*
-	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
-	 * 
-	 */
-	getViewUrl() {
-		var name = this.resourceName;
-		return `/${name}s/${this.get('id')}`;
-	}
+  /*
+   * Customize on subclass if route is non-standard or the resource has a custom plural name.
+   *
+   */
+  getDeleteUrl() {
+    const name = this.resourceName;
+    return `/admin/${name}s/${this.get('id')}/delete`;
+  }
 
+  getNewUrl() {
+    const name = this.resourceName;
+    return `/admin/${name}s/new`;
+  }
 
-	/*
-	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
-	 * 
-	 */
-	getEditUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/${this.get('id')}/edit`;
-	}
+  getClientFetchPromise() {
 
+    return new Promise((resolve, reject) => {
 
-	/*
-	 * Customize on subclass if route is non-standard or the resource has a custom plural name.
-	 * 
-	 */
-	getDeleteUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/${this.get('id')}/delete`;
-	}
+      const url = this.apiUrlRoot + '/' + this.get('id');
 
+      $.ajax({
+        url: url,
+        type: 'get',
+        success: (datum) => {
+          this.set(datum);
+          resolve(this);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
 
-	/*
-	 *
-	 *
-	 */
-	getNewUrl() {
-		var name = this.resourceName;
-		return `/admin/${name}s/new`;
-	}
+    });
 
+  }
 
-	/*
-	 * Returns a fetch promise. Project ID must be set for this to work.
-	 *
-	 */
-	getClientFetchPromise() {
+  getClientSavePromise() {
 
-		return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
-			var url = this.apiUrlRoot + '/' + this.get('id');
+      const url = this.apiUrlRoot;
 
-			$.ajax({
-				url: url,
-				type: 'get',
-				success: (datum) => {
-					this.set(datum);
-					resolve(this);
-				},
-				error: (err) => {
-					reject(err);
-				}
-			});
+      $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'text',
+        data: {jsonString: JSON.stringify(this.toJSON())},
+        success: (datum) => {
+          resolve(datum);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
 
-		});
+    });
 
-	}
+  }
 
+  getClientUpdatePromise() {
 
-	/*
-	 * Returns save promise.
-	 *
-	 */
-	getClientSavePromise() {
+    return new Promise((resolve, reject) => {
 
-		return new Promise((resolve, reject) => {
+      const url = `${this.apiUrlRoot}/${this.get('id')}/edit`;
 
-			var url = this.apiUrlRoot;
+      $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'text',
+        data: {jsonString: JSON.stringify(this.toJSON())},
+        success: (datum) => {
+          resolve(datum);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
 
-			$.ajax({
-				url: url,
-				type: 'post',
-				dataType: 'text',
-				data: { jsonString: JSON.stringify(this.toJSON()) },
-				success: (datum) => {
-					resolve(datum);
-				},
-				error: (err) => {
-					reject(err);
-				}
-			});
+    });
 
-		});
+  }
 
-	}
+  getClientDeletePromise() {
 
+    return new Promise((resolve, reject) => {
 
-	/*
-	 * Returns update promise.
-	 *
-	 */
-	getClientUpdatePromise() {
+      const url = `${this.apiUrlRoot}/${this.get('id')}`;
 
-		return new Promise((resolve, reject) => {
-
-			var url = `${this.apiUrlRoot}/${this.get('id')}/edit`;
-
-			$.ajax({
-				url: url,
-				type: 'post',
-				dataType: 'text',
-				data: { jsonString: JSON.stringify(this.toJSON()) },
-				success: (datum) => {
-					resolve(datum);
-				},
-				error: (err) => {
-					reject(err);
-				}
-			});
-
-		});
-
-	}
-
-
-	/*
-	 * Returns delete promise.
-	 *
-	 */
-	getClientDeletePromise() {
-
-		return new Promise((resolve, reject) => {
-
-			var url = `${this.apiUrlRoot}/${this.get('id')}`;
-
-			$.ajax({
-				url: url,
-				type: 'delete',
-				success: (datum) => {
-					resolve(datum);
-				},
-				error: (err) => {
-					reject(err);
-				}
-			});
-
-		});
-
-	}
-
+      $.ajax({
+        url: url,
+        type: 'delete',
+        success: (datum) => {
+          resolve(datum);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
+    });
+  }
 }
 
 
@@ -192,116 +146,91 @@ export class Model extends Backbone.Model {
  *
  */
 export class Collection extends Backbone.Collection {
-	
-	get model() { return Model; }
 
+  get model() { return Model; }
 
-	/*
-	 *
-	 *
-	 */
-	get dbCollectionName() { 
-		var name = this.model.prototype.resourceName;
-		return `${name}s`; 
-	}
+  get dbCollectionName() {
+    const name = this.model.prototype.resourceName;
+    return `${name}s`;
+  }
 
+  get apiUrl() {
+    const name = this.model.prototype.resourceName;
+    return `/api/v1/${name}s`;
+  }
 
-	/*
-	 *
-	 *
-	 */
-	get apiUrl() {
-		var name = this.model.prototype.resourceName;
-		return `/api/v1/${name}s`; 
-	}
+  buildQueryString(query) {
 
+    let queryString = '';
 
-	/*
-	 *
-	 *
-	 */
-	buildQueryString(query) {
+    if (!query || Object.keys(query).length === 0) { return null; }
 
-		var queryString = '';
+    for (let key in query) {
+      let value = query[key];
+      queryString += `${key}=${value}&`;
+    }
 
-		if (query == null || Object.keys(query).length === 0) { return null; }
+    return queryString.slice(0, -1);
 
-		for (let key in query) {
-			let value = query[key];
-			queryString += `${key}=${value}&`;
-		}
+  }
 
-		return queryString.slice(0, -1);
+  buildFieldString(fields) {
 
-	}
+    let fieldString = 'fields=';
 
+    if (!fields || Object.keys(fields).length === 0) { return null; }
 
-	/*
-	 *
-	 *
-	 */
-	buildFieldString(fields) {
+    for (let key in fields) {
+      let value = fields[key];
+      fieldString += `${ value === 1 ? '' : '-' }${key},`;
+    }
 
-		var fieldString = 'fields=';
+    return fieldString.slice(0, -1);
 
-		if (fields == null || Object.keys(fields).length === 0) { return null; }
+  }
 
-		for (let key in fields) {
-			let value = fields[key];
-			fieldString += `${ value === 1 ? '' : '-' }${key},`;
-		}
+  getClientFetchPromise(query, fields) {
 
-		return fieldString.slice(0, -1);
+    const isCompleteQuery = (query && !fields);
 
-	}
+    const queryString = '?' + (this.buildQueryString(query) || '') + '&' + (this.buildFieldString(fields) || '');
 
+    return new Promise((resolve, reject) => {
 
-	/*
-	 * Fetch instances on the client.
-	 *
-	 */
-	getClientFetchPromise(query, fields) {
+      if (!isCompleteQuery) {
 
-		var isCompleteQuery = (query != null && fields == null);
+        // Small, seeded collections are resolved immediately.
+        if (this.dbSeed) {
+          this.reset(this.dbSeed);
+          return resolve(this);
+        }
 
-		var queryString = '?' + (this.buildQueryString(query) || '') + '&' + (this.buildFieldString(fields) || '');
+        // Cached collections are resolved immediately.
+        if (this.dbCache) {
+          this.reset(this.dbCache);
+          return resolve(this);
+        }
 
-		return new Promise((resolve, reject) => {
+      }
 
-			if (!isCompleteQuery) {
+      const url = this.apiUrl + queryString;
 
-				// Small, seeded collections are resolved immediately.
-				if (this.dbSeed) {
-					this.reset(this.dbSeed);
-					return resolve(this);
-				}
+      $.ajax({
+        url: url,
+        type: 'get',
+        success: (data) => {
+          // Set database cache.
+          if (!isCompleteQuery) { this.dbCache = data; }
+          this.reset(data);
+          resolve(this);
+        },
+        error: (err) => {
+          reject(err);
+        }
+      });
 
-				// Cached collections are resolved immediately.
-				if (this.dbCache) {
-					this.reset(this.dbCache);
-					return resolve(this);
-				}
+    });
 
-			}
-
-			var url = this.apiUrl + queryString;
-
-			$.ajax({
-				url: url,
-				type: 'get',
-				success: (data) => {
-					// Set database cache.
-					if (!isCompleteQuery) { this.dbCache = data; }
-					this.reset(data);
-					resolve(this);
-				},
-				error: (err) => {
-					reject(err);
-				}
-			});
-
-		});
-
-	}
+  }
 
 }

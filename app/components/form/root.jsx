@@ -34,10 +34,10 @@ class Form extends React.Component {
 				style={style}
 			>
 				{ this.renderFormComponents() }
-				<input 
+				<input
 					type='submit'
 					disabled={!this.props.isEnabled}
-					value={ this.props.submitButtonText || 'Submit Form' } 
+					value={ this.props.submitButtonText || 'Submit Form' }
 				/>
 			</form>
 		);
@@ -95,7 +95,7 @@ class Form extends React.Component {
 		this.forceUpdate()
 	}
 
-	
+
 	/*
 	 * Run method passed down from parent.
 	 *
