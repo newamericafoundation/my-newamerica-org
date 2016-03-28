@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, IndexRoute} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
@@ -27,7 +27,7 @@ function App(props) {
 }
 
 const routes = (
-  <Router history={createBrowserHistory()}>
+  <Router history={browserHistory}>
     <Route path='/' component={App}>
 
       <IndexRoute component={Dashboard} />
