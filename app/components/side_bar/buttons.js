@@ -27,6 +27,6 @@ export default [
   {
     title: 'Subscribe',
     url: '/subscribe',
-    reactIconName: 'envelope'
+    reactIconName: 'building'
   }
 ];
