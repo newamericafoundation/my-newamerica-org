@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 
-import {Envelope} from './../../general/icons.jsx';
+import {Building} from './../../general/icons.jsx';
 
-export default class Subscribe extends Component {
+export default class FrontDesk extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChecked: true
+    };
+    this.toggleChecked = this.toggleChecked.bind(this);
+  }
+
   render() {
     return (
       <div className='page'>
         <div className='page__content'>
           <div className='page__content__logo'>
-            <Envelope/>
+            <Building/>
           </div>
           <h1 className='title'>Front Desk Sign In</h1>
           <form style={{width: '100%'}} action='https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8' method='POST'>
@@ -43,15 +51,16 @@ export default class Subscribe extends Component {
             <div className='form__wrapper'>
               <label htmlFor='00NF000000DdQ0m'>Subscribe me to New America's weekly digital newsletter and events emails</label>
               <input
+                onChange={this.toggleChecked}
                 id='00NF000000DdQ0m'
                 name='00NF000000DdQ0m'
                 type='checkbox'
-                checked={true}
+                checked={this.state.isChecked}
                 value='1'
               />
             </div>
 
-            <input type='submit' name='submit'/>
+            <input style={{backgroundColor: '#2dbbb3', color: '#fffaef', borderRadius: '4px'}} type='submit' name='submit' value='Submit'/>
 
           </form>
         </div>
@@ -64,5 +73,11 @@ export default class Subscribe extends Component {
       <input type='hidden' name='debug' value='1'/>,
       <input type='hidden' name='debugEmail' value='mccarthyl@newamerica.org'/>
     ];
+  }
+
+  toggleChecked() {
+    this.setState({
+      isChecked: !this.state.isChecked
+    });
   }
 }

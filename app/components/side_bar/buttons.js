@@ -25,8 +25,8 @@ export default [
     reactIconName: 'page'
   },
   {
-    title: 'Subscribe',
-    url: '/subscribe',
+    title: 'Front Desk',
+    url: '/frontdesk',
     reactIconName: 'building'
   }
 ];

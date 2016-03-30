@@ -1,8 +1,6 @@
 import React from 'react';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-
 import Header from './../components/general/header.jsx';
 
 import Dashboard from './../components/route_handlers/dashboard/root.jsx';
@@ -11,7 +9,7 @@ import WeeklyWins from './../components/route_handlers/weekly_wins/root.jsx';
 import Resources from './../components/route_handlers/resources/root.jsx';
 import Readmes from './../components/route_handlers/readmes/root.jsx';
 import FloorPlansPage from './../components/route_handlers/floor_plans/root.jsx';
-import Subscribe from './../components/route_handlers/subscribe/root.jsx';
+import FrontDesk from './../components/route_handlers/front_desk/root.jsx';
 
 import models from './../models/index.js';
 import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx';
@@ -37,7 +35,7 @@ const routes = (
       <Route path='readmes' component={Readmes}/>
       <Route path='resources' component={Resources}/>
       <Route path='floor-plans' component={FloorPlansPage}/>
-      <Route path='subscribe' component={Subscribe}/>
+      <Route path='frontdesk' component={FrontDesk}/>
 
       { resourceRouteGenerator(models.readme.Model) }
       { resourceRouteGenerator(models.faq.Model) }
