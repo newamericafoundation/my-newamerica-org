@@ -4,12 +4,14 @@ import * as resource from './resource.js';
 import * as staffMember from './staff_member.js';
 import * as weeklyWin from './weekly_win.js';
 import * as department from './department.js';
+import * as password from './password';
 
 export default {
-  faq: faq,
-  readme: readme,
-  resource: resource,
-  staffMember: staffMember,
-  weeklyWin: weeklyWin,
-  department: department
+  faq,
+  readme,
+  resource,
+  staffMember,
+  weeklyWin,
+  department,
+  password
 };

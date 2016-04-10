@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-import Icons from './../general/icons.jsx';
+import * as Icons from './../general/icons.jsx';
 
 export default class SideBarButton extends Component {
 
@@ -12,10 +12,15 @@ export default class SideBarButton extends Component {
   }
 
   render() {
-    const IconComp = Icons.get(this.props.button.reactIconName);
+    const {button} = this.props;
+    const IconComp = Icons.get(button.reactIconName);
     return (
-      <li className='atl__side-bar__icon' onMouseEnter={this.setTitle} onMouseLeave={this.clearTitle}>
-        <Link to={ this.props.button.url }>
+      <li
+        className='atl__side-bar__icon'
+        onMouseEnter={this.setTitle}
+        onMouseLeave={this.clearTitle}
+      >
+        <Link to={button.url}>
           <IconComp/>
         </Link>
       </li>

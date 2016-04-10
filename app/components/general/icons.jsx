@@ -1,22 +1,16 @@
 import React from 'react';
 
-let Icons = {};
-
 // Get uppercase component name based on lowercase, dash-separated name.
 //   e.g. Icons.AroundTheWorld for input around-the-world
-Icons.get = (name) => {
-  if (name == null) { return Icons.Naf; }
-  var nameParts = name.split('-'),
-    compName;
-  nameParts = nameParts.map((part) => {
+export function get(name) {
+  if (!name) { return 'Naf'; }
+  const componentName = name.split('-').map((part) => {
     return part.slice(0, 1).toUpperCase() + part.slice(1);
-  });
-  compName = nameParts.join('');
-  return Icons[compName] || Icons.Naf;
-};
+  }).join('');
+  return module.exports[componentName] || module.exports.Naf;
+}
 
-
-Icons.Adp = class extends React.Component {
+export class Adp extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -38,7 +32,7 @@ Icons.Adp = class extends React.Component {
   }
 }
 
-Icons.AroundTheWorld = class extends React.Component {
+export class AroundTheWorld extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -120,7 +114,7 @@ Icons.AroundTheWorld = class extends React.Component {
   }
 }
 
-Icons.Badge = class extends React.Component {
+export class Badge extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -147,7 +141,7 @@ Icons.Badge = class extends React.Component {
   }
 }
 
-Icons.Briefcase = class extends React.Component {
+export class Briefcase extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -160,7 +154,7 @@ Icons.Briefcase = class extends React.Component {
   }
 }
 
-Icons.Build = class extends React.Component {
+export class Build extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -181,7 +175,7 @@ Icons.Build = class extends React.Component {
   }
 }
 
-Icons.Building = class extends React.Component {
+export class Building extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -198,7 +192,7 @@ Icons.Building = class extends React.Component {
   }
 }
 
-Icons.Calendar = class extends React.Component {
+export class Calendar extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -224,7 +218,7 @@ Icons.Calendar = class extends React.Component {
   }
 }
 
-Icons.Clipboard = class extends React.Component {
+export class Clipboard extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -241,7 +235,7 @@ Icons.Clipboard = class extends React.Component {
   }
 }
 
-Icons.Clock = class extends React.Component {
+export class Clock extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -265,7 +259,7 @@ Icons.Clock = class extends React.Component {
   }
 }
 
-Icons.Comment = class extends React.Component {
+export class Comment extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -284,7 +278,7 @@ Icons.Comment = class extends React.Component {
   }
 }
 
-Icons.Contacts = class extends React.Component {
+export class Contacts extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -310,7 +304,7 @@ Icons.Contacts = class extends React.Component {
   }
 }
 
-Icons.Contract = class extends React.Component {
+export class Contract extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -331,7 +325,7 @@ Icons.Contract = class extends React.Component {
   }
 }
 
-Icons.CreditCard = class extends React.Component {
+export class CreditCard extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -367,7 +361,7 @@ Icons.CreditCard = class extends React.Component {
   }
 }
 
-Icons.Dictionary = class extends React.Component {
+export class Dictionary extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -381,7 +375,7 @@ Icons.Dictionary = class extends React.Component {
   }
 }
 
-Icons.Down = class extends React.Component {
+export class Down extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -393,7 +387,7 @@ Icons.Down = class extends React.Component {
   }
 }
 
-Icons.Download = class extends React.Component {
+export class Download extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -405,7 +399,7 @@ Icons.Download = class extends React.Component {
   }
 }
 
-Icons.Drive = class extends React.Component {
+export class Drive extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -424,7 +418,7 @@ Icons.Drive = class extends React.Component {
   }
 }
 
-Icons.DropdownDown = class extends React.Component {
+export class DropdownDown extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -436,7 +430,7 @@ Icons.DropdownDown = class extends React.Component {
   }
 }
 
-Icons.DropdownUp = class extends React.Component {
+export class DropdownUp extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -448,7 +442,7 @@ Icons.DropdownUp = class extends React.Component {
   }
 }
 
-Icons.Edit = class extends React.Component {
+export class Edit extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -461,7 +455,7 @@ Icons.Edit = class extends React.Component {
   }
 }
 
-Icons.Embed = class extends React.Component {
+export class Embed extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -478,7 +472,7 @@ Icons.Embed = class extends React.Component {
   }
 }
 
-Icons.Envelope = class extends React.Component {
+export class Envelope extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -495,7 +489,7 @@ Icons.Envelope = class extends React.Component {
   }
 }
 
-Icons.Expand = class extends React.Component {
+export class Expand extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -515,7 +509,7 @@ Icons.Expand = class extends React.Component {
   }
 }
 
-Icons.Facebook = class extends React.Component {
+export class Facebook extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -526,7 +520,7 @@ Icons.Facebook = class extends React.Component {
   }
 }
 
-Icons.Filter = class extends React.Component {
+export class Filter extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -540,7 +534,7 @@ Icons.Filter = class extends React.Component {
   }
 }
 
-Icons.Food = class extends React.Component {
+export class Food extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -557,7 +551,7 @@ Icons.Food = class extends React.Component {
   }
 }
 
-Icons.Globe = class extends React.Component {
+export class Globe extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -599,7 +593,7 @@ Icons.Globe = class extends React.Component {
   }
 }
 
-Icons.Graph = class extends React.Component {
+export class Graph extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -616,7 +610,7 @@ Icons.Graph = class extends React.Component {
   }
 }
 
-Icons.Grid = class extends React.Component {
+export class Grid extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -636,7 +630,7 @@ Icons.Grid = class extends React.Component {
   }
 }
 
-Icons.Help = class extends React.Component {
+export class Help extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -650,7 +644,7 @@ Icons.Help = class extends React.Component {
   }
 }
 
-Icons.Home = class extends React.Component {
+export class Home extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -670,7 +664,7 @@ Icons.Home = class extends React.Component {
   }
 }
 
-Icons.Info = class extends React.Component {
+export class Info extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -682,7 +676,7 @@ Icons.Info = class extends React.Component {
   }
 }
 
-Icons.Jazz = class extends React.Component {
+export class Jazz extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -708,7 +702,7 @@ Icons.Jazz = class extends React.Component {
   }
 }
 
-Icons.Key = class extends React.Component {
+export class Key extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -726,7 +720,7 @@ Icons.Key = class extends React.Component {
   }
 }
 
-Icons.Laptop = class extends React.Component {
+export class Laptop extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -744,7 +738,7 @@ Icons.Laptop = class extends React.Component {
   }
 }
 
-Icons.Left = class extends React.Component {
+export class Left extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -756,7 +750,7 @@ Icons.Left = class extends React.Component {
   }
 }
 
-Icons.Like = class extends React.Component {
+export class Like extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -779,7 +773,7 @@ Icons.Like = class extends React.Component {
   }
 }
 
-Icons.Link = class extends React.Component {
+export class Link extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -800,7 +794,7 @@ Icons.Link = class extends React.Component {
   }
 }
 
-Icons.List = class extends React.Component {
+export class List extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -826,7 +820,7 @@ Icons.List = class extends React.Component {
   }
 }
 
-Icons.Map = class extends React.Component {
+export class Map extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -854,7 +848,7 @@ Icons.Map = class extends React.Component {
   }
 }
 
-Icons.Minus = class extends React.Component {
+export class Minus extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -866,7 +860,7 @@ Icons.Minus = class extends React.Component {
   }
 }
 
-Icons.More = class extends React.Component {
+export class More extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -886,7 +880,7 @@ Icons.More = class extends React.Component {
   }
 }
 
-Icons.Naf = class extends React.Component {
+export class Naf extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -901,7 +895,7 @@ Icons.Naf = class extends React.Component {
   }
 }
 
-Icons.No = class extends React.Component {
+export class No extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -914,7 +908,7 @@ Icons.No = class extends React.Component {
   }
 }
 
-Icons.Page = class extends React.Component {
+export class Page extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -929,7 +923,7 @@ Icons.Page = class extends React.Component {
   }
 }
 
-Icons.Pages = class extends React.Component {
+export class Pages extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -944,7 +938,7 @@ Icons.Pages = class extends React.Component {
   }
 }
 
-Icons.People = class extends React.Component {
+export class People extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -968,7 +962,7 @@ Icons.People = class extends React.Component {
   }
 }
 
-Icons.Phone = class extends React.Component {
+export class Phone extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -998,7 +992,7 @@ Icons.Phone = class extends React.Component {
   }
 }
 
-Icons.Plus = class extends React.Component {
+export class Plus extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1010,7 +1004,7 @@ Icons.Plus = class extends React.Component {
   }
 }
 
-Icons.Print = class extends React.Component {
+export class Print extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1024,7 +1018,7 @@ Icons.Print = class extends React.Component {
   }
 }
 
-Icons.Readme = class extends React.Component {
+export class Readme extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1038,7 +1032,7 @@ Icons.Readme = class extends React.Component {
   }
 }
 
-Icons.ReportProblem = class extends React.Component {
+export class ReportProblem extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1050,7 +1044,7 @@ Icons.ReportProblem = class extends React.Component {
   }
 }
 
-Icons.Right = class extends React.Component {
+export class Right extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1062,7 +1056,7 @@ Icons.Right = class extends React.Component {
   }
 }
 
-Icons.Salesforce = class extends React.Component {
+export class Salesforce extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1124,7 +1118,7 @@ Icons.Salesforce = class extends React.Component {
   }
 }
 
-Icons.ScatterPlot = class extends React.Component {
+export class ScatterPlot extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1138,7 +1132,7 @@ Icons.ScatterPlot = class extends React.Component {
   }
 }
 
-Icons.Search = class extends React.Component {
+export class Search extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1157,7 +1151,7 @@ Icons.Search = class extends React.Component {
   }
 }
 
-Icons.Settings = class extends React.Component {
+export class Settings extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1182,7 +1176,7 @@ Icons.Settings = class extends React.Component {
   }
 }
 
-Icons.Share = class extends React.Component {
+export class Share extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1218,7 +1212,7 @@ Icons.Share = class extends React.Component {
   }
 }
 
-Icons.Shipping = class extends React.Component {
+export class Shipping extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1235,7 +1229,7 @@ Icons.Shipping = class extends React.Component {
   }
 }
 
-Icons.Stack = class extends React.Component {
+export class Stack extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1252,7 +1246,7 @@ Icons.Stack = class extends React.Component {
   }
 }
 
-Icons.Trash = class extends React.Component {
+export class Trash extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1273,7 +1267,7 @@ Icons.Trash = class extends React.Component {
   }
 }
 
-Icons.Trophy = class extends React.Component {
+export class Trophy extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1299,7 +1293,7 @@ Icons.Trophy = class extends React.Component {
   }
 }
 
-Icons.Twitter = class extends React.Component {
+export class Twitter extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1313,7 +1307,7 @@ Icons.Twitter = class extends React.Component {
   }
 }
 
-Icons.Up = class extends React.Component {
+export class Up extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1325,7 +1319,7 @@ Icons.Up = class extends React.Component {
   }
 }
 
-Icons.UsMap = class extends React.Component {
+export class UsMap extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1427,7 +1421,7 @@ Icons.UsMap = class extends React.Component {
   }
 }
 
-Icons.Weather = class extends React.Component {
+export class Weather extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1451,7 +1445,7 @@ Icons.Weather = class extends React.Component {
   }
 }
 
-Icons.Web = class extends React.Component {
+export class Web extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1483,7 +1477,7 @@ Icons.Web = class extends React.Component {
   }
 }
 
-Icons.Wifi = class extends React.Component {
+export class Wifi extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1502,7 +1496,7 @@ Icons.Wifi = class extends React.Component {
   }
 }
 
-Icons.Yes = class extends React.Component {
+export class Yes extends React.Component {
   render() {
     return (
 <svg viewBox="0 0 100 100">
@@ -1513,7 +1507,3 @@ Icons.Yes = class extends React.Component {
     );
   }
 }
-
-
-
-module.exports = Icons;

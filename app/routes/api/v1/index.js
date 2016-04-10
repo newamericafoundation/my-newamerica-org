@@ -8,7 +8,7 @@ import indexMiddleware from './../../../middleware/crud/index.js';
 
 import {ensureAuthenticated, ensureNothing, ensureAdminAuthenticated} from './../../../middleware/auth.js';
 
-const resources = [ 'staff_members', 'resources', 'weekly_wins', 'faqs', 'readmes', 'departments', 'floors' ];
+const resources = [ 'staff_members', 'resources', 'weekly_wins', 'faqs', 'readmes', 'departments', 'floors', 'passwords' ];
 
 // Unsafe setting to test back-end while in development, skipping the auth step which is required at each server restart.
 const currentAuthMiddleware = (process.NODE_ENV === 'production') ? ensureAuthenticated : ensureNothing;

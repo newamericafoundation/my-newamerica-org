@@ -1,6 +1,6 @@
-import gulp from 'gulp'
-import shell from 'gulp-shell'
-import moment from 'moment'
+import gulp from 'gulp';
+import shell from 'gulp-shell';
+import moment from 'moment';
 
 var { LOCAL_DB_BACKUP_PATH, PEM_KEY_PATH, PRODUCTION_DB_URL_SSH } = process.env
 

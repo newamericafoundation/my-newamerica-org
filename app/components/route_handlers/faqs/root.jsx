@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icons from './../../general/icons.jsx';
+import {Building} from './../../general/icons.jsx';
 import Loader from './../../general/loader.jsx';
 
 import {Model, Collection} from './../../../models/faq.js';
@@ -24,7 +24,7 @@ export default class Faq extends Base {
       <div className='page page--resources'>
         <div className='page__content'>
           <div className='page__content__logo'>
-            <Icons.Building />
+            <Building/>
           </div>
           <h1 className="title">Moving FAQ</h1>
           { this.renderAddButton() }

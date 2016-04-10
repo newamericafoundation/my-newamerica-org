@@ -1,18 +1,9 @@
 import React from 'react';
-import moment from 'moment';
 
 import Resource from './resource.jsx';
 
-/*
- *
- *
- */
-class ResourceGroup extends React.Component {
+export default class ResourceGroup extends React.Component {
 
-	/*
-	 *
-	 *
-	 */
 	render() {
 		return (
 			<div>
@@ -22,24 +13,17 @@ class ResourceGroup extends React.Component {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderResources() {
 		return this.props.resources.map((resource, i) => {
 			return (
-				<Resource 
-					history={this.props.history} 
-					key={i} 
-					searchTerm={this.props.searchTerm} 
-					resource={resource} 
+				<Resource
+					history={this.props.history}
+					key={i}
+					searchTerm={this.props.searchTerm}
+					resource={resource}
 				/>
 			);
 		});
 	}
 
 }
-
-export default ResourceGroup;

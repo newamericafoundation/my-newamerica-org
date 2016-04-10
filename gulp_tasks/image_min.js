@@ -1,6 +1,6 @@
-import gulp from 'gulp'
-import imgResize from 'gulp-image-resize'
-import download from 'gulp-download'
+import gulp from 'gulp';
+import imgResize from 'gulp-image-resize';
+import download from 'gulp-download';
 
 import * as staffMembers from './../db/seeds/staff_members/index.json'
 

@@ -5,7 +5,6 @@ import SideBarButton from './side_bar_button.jsx';
 
 import buttons from './buttons.js';
 
-
 export default class SideBar extends Component {
 
   constructor(props) {

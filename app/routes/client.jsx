@@ -10,6 +10,7 @@ import Resources from './../components/route_handlers/resources/root.jsx';
 import Readmes from './../components/route_handlers/readmes/root.jsx';
 import FloorPlansPage from './../components/route_handlers/floor_plans/root.jsx';
 import FrontDesk from './../components/route_handlers/front_desk/root.jsx';
+import Passwords from './../components/route_handlers/passwords/root.jsx';
 
 import models from './../models/index.js';
 import resourceRouteGenerator from './../components/route_handlers/helpers/resource_route_generator.jsx';
@@ -36,6 +37,7 @@ const routes = (
       <Route path='resources' component={Resources}/>
       <Route path='floor-plans' component={FloorPlansPage}/>
       <Route path='frontdesk' component={FrontDesk}/>
+      <Route path='passwords' component={Passwords}/>
 
       { resourceRouteGenerator(models.readme.Model) }
       { resourceRouteGenerator(models.faq.Model) }
@@ -43,6 +45,7 @@ const routes = (
       { resourceRouteGenerator(models.weeklyWin.Model) }
       { resourceRouteGenerator(models.staffMember.Model) }
       { resourceRouteGenerator(models.department.Model) }
+      { resourceRouteGenerator(models.password.Model) }
 
     </Route>
   </Router>
