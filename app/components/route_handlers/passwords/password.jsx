@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {findDOMNode} from 'react-dom';
-import Clipboard from 'clipboard';
 
-const clipboardHandlerRefKey = 'clipboard-handler';
-const passwordFieldId = 'pass';
+import style from './style.js';
 
 export default class Password extends Component {
 
@@ -15,22 +12,10 @@ export default class Password extends Component {
   render() {
     const {password} = this.props;
     return (
-      <div onDoubleClick={this.navigateToEdit}>
-        <h2 className='page__section-title'>{password.get('name')}</h2>
-        <a className='link' href={password.get('url')}>Login page</a>
+      <div style={style.base} onDoubleClick={this.navigateToEdit}>
+        <a style={style.title} href={password.get('url')}>{password.get('name')}</a>
         <p>{`User name: ${password.get('user')}`}</p>
-        <input
-          type='password'
-          value={password.get('password')}
-          id={passwordFieldId}
-          readOnly={true}
-        />
-        <div
-          className='button'
-          data-clipboard-target={`#${passwordFieldId}`}
-          onClick={this.copyToClipboard}
-          ref={clipboardHandlerRefKey}
-        ><p>Copy to clipboard</p></div>
+        <p>{`Password: ${password.get('password')}`}</p>
       </div>
     );
   }
@@ -44,17 +29,6 @@ export default class Password extends Component {
   getTitle() {
     const {password} = this.props;
     return `Edition ${password.get('edition')}: ${password.get('title')}`;
-  }
-
-  componentDidMount() {
-    const node = findDOMNode(this.refs[clipboardHandlerRefKey]);
-    this.clipboard = new Clipboard(node);
-  }
-
-  componentWillUnmount() {
-    if (this.clipboard) {
-      this.clipboard.destroy();
-    }
   }
 
 }

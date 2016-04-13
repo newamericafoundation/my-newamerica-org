@@ -1,10 +1,16 @@
 import * as base from './base.js';
 
+function encrypt(pass) {
+  return `${pass.slice(0, -1)}145${pass.slice(-1)}`;
+}
+
+function decrypt(pass) {
+  return `${pass.slice(0, -4)}${pass.slice(-1)}`;
+}
+
 export class Model extends base.Model {
 
   get resourceName() { return 'password'; }
-
-  get apiUrlRoot() { return '/api/v1/passwords'; }
 
   getViewUrl() { return null; }
 
@@ -51,6 +57,14 @@ export class Model extends base.Model {
         }
       }
     ];
+  }
+
+  beforeSave() {
+    this.set('password', encrypt(this.get('password')));
+  }
+
+  afterRead() {
+    this.set('password', decrypt(this.get('password')));
   }
 
 }

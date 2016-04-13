@@ -47,13 +47,8 @@ export class Model extends base.Model {
     ];
   }
 
-
-  /*
-   * Make sure the edition is a number.
-   *
-   */
   beforeSave() {
-    var ed = this.get('edition');
+    const ed = this.get('edition');
     if (!_.isNumber(ed)) { this.set('edition', Number(ed)); }
   }
 

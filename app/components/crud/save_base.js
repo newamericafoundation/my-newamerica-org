@@ -12,19 +12,10 @@ import BaseStatusModal from './base_status_modal.js';
 
 class SaveBaseModal extends BaseStatusModal {
 
-	/*
-	 *
-	 *
-	 */
 	constructor(props) {
 		super(props);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderSuccessContent() {
 		var resourceName = this.props.model.name
 		return (
@@ -37,11 +28,6 @@ class SaveBaseModal extends BaseStatusModal {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderFailureContent() {
 		return (
 			<div>
@@ -53,11 +39,6 @@ class SaveBaseModal extends BaseStatusModal {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderPendingContent() {
 		return (
 			<div>
@@ -69,17 +50,8 @@ class SaveBaseModal extends BaseStatusModal {
 }
 
 
-
-/*
- *
- *
- */
 class SaveBase extends Base {
 
-	/*
-	 *
-	 *
-	 */
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -88,10 +60,6 @@ class SaveBase extends Base {
 		};
 	}
 
-	/*
-	 *
-	 *
-	 */
 	render() {
 		var style = { 'overflowY': 'scroll' }
 		return (
@@ -105,11 +73,6 @@ class SaveBase extends Base {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderModal() {
 		if (this.state.saveResponseStatus) {
 			return (
@@ -122,11 +85,6 @@ class SaveBase extends Base {
 		}
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderTitleBarContent() {
 		return (
 			<div className="atl__title-bar__content">
@@ -136,11 +94,6 @@ class SaveBase extends Base {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderLinks() {
 		var model = this.state.model;
 		if (!model) { return; }
@@ -154,11 +107,6 @@ class SaveBase extends Base {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderPageNavContent() {
 		return (
 			<div>
@@ -167,11 +115,6 @@ class SaveBase extends Base {
 		);
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderPageContent() {
 		var isFormEnabled = (this.state.saveResponseStatus == null);
 		if (!this.state.model) { return (<Loader />); }
@@ -187,7 +130,6 @@ class SaveBase extends Base {
 			</div>
 		);
 	}
-
 
 	// Define on subclass.
 	componentWillMount() {
@@ -220,7 +162,7 @@ class SaveBase extends Base {
 			res = JSON.parse(res);
 			model.set('id', res.id);
 			this.setState({ saveResponseStatus: res.status });
-		}, (err) => { this.setState({ saveResponseStatus: 'error' }); 
+		}, (err) => { this.setState({ saveResponseStatus: 'error' });
 		});
 
 	}

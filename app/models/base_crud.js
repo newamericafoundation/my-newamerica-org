@@ -47,6 +47,9 @@ export class Model extends Backbone.Model {
         type: 'get',
         success: (datum) => {
           this.set(datum);
+          if (this.afterRead) {
+            this.afterRead();
+          }
           resolve(this);
         },
         error: (err) => {
@@ -59,6 +62,12 @@ export class Model extends Backbone.Model {
   }
 
   getClientSavePromise() {
+
+    if (this.beforeSave) {
+			this.beforeSave();
+		}
+
+    this.set('created_at', new Date().toISOString());
 
     return new Promise((resolve, reject) => {
 
@@ -83,6 +92,14 @@ export class Model extends Backbone.Model {
 
   getClientUpdatePromise() {
 
+    const model = this.clone();
+
+    if (model.beforeSave) {
+			model.beforeSave();
+		}
+
+    model.set('updated_at', new Date().toISOString());
+
     return new Promise((resolve, reject) => {
 
       const url = `${this.apiUrlRoot}/${this.get('id')}/edit`;
@@ -91,7 +108,7 @@ export class Model extends Backbone.Model {
         url: url,
         type: 'post',
         dataType: 'text',
-        data: {jsonString: JSON.stringify(this.toJSON())},
+        data: {jsonString: JSON.stringify(model.toJSON())},
         success: (datum) => {
           resolve(datum);
         },
@@ -125,10 +142,6 @@ export class Model extends Backbone.Model {
 }
 
 
-/*
- * Collection handling crud operations using promises.
- *
- */
 export class Collection extends Backbone.Collection {
 
   get model() { return Model; }
@@ -206,6 +219,11 @@ export class Collection extends Backbone.Collection {
           // Set database cache.
           if (!isCompleteQuery) { this.dbCache = data; }
           this.reset(data);
+          this.models.forEach((model) => {
+            if (model.afterRead) {
+              model.afterRead();
+            }
+          })
           resolve(this);
         },
         error: (err) => {

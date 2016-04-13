@@ -4,26 +4,13 @@ import classNames from 'classnames';
 
 import SaveBase from './save_base.js';
 
-/*
- *
- *
- */
 class NewBase extends SaveBase {
 
-	/*
-	 *
-	 *
-	 */
 	constructor(props) {
 		super(props)
 		this.state = {}
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	componentWillMount() {
 		var Model = this.getResourceConstructor()
 		if (!this.state.model) {
@@ -31,38 +18,18 @@ class NewBase extends SaveBase {
 		}
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	getCrudMethodName() { return 'new' }
 
-
-	/*
-	 *
-	 *
-	 */
 	getSubmitButtonText() {
 		return `Create ${this.getResourceName()}`
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	saveModel(formData) {
 
 		var { model } = this.state
 
 		// Set status to pending.
 		this.setState({ saveResponseStatus: 'pending' })
-
-		// Call before save method on the model.
-		if (model.beforeSave) { model.beforeSave() }
-
-		model.set('created_at', new Date().toISOString())
 
 		// While pending, save form data using the instance method on the model.
 		model.getClientSavePromise().then((res) => {
