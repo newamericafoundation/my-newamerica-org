@@ -44044,7 +44044,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.Collection = exports.Model = undefined;
 	
@@ -44067,119 +44067,117 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Model = exports.Model = function (_base$Model) {
-		_inherits(Model, _base$Model);
+	  _inherits(Model, _base$Model);
 	
-		function Model() {
-			_classCallCheck(this, Model);
+	  function Model() {
+	    _classCallCheck(this, Model);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
+	  }
 	
-		_createClass(Model, [{
-			key: 'getIndexUrl',
-			value: function getIndexUrl() {
-				return '/staff-directory';
-			}
-		}, {
-			key: 'getViewUrl',
-			value: function getViewUrl() {
-				return null;
-			}
-		}, {
-			key: 'parse',
-			value: function parse(resp) {
-				resp.room_id = String(resp.room_id);
-				return resp;
-			}
-		}, {
-			key: 'resourceName',
-			get: function get() {
-				return 'staff_member';
-			}
-		}, {
-			key: 'fields',
-			get: function get() {
-				return [{
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'name',
-						labelText: 'Name',
-						hint: '',
-						placeholder: 'Enter staff member name.'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'title',
-						labelText: 'Title',
-						hint: '',
-						placeholder: 'Enter title.'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'url',
-						labelText: 'Bio url',
-						hint: '',
-						placeholder: 'Enter bio url.'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'dept',
-						labelText: 'Department (OBSOLETE)',
-						hint: '',
-						placeholder: 'Enter Department.'
-					}
-				}, {
-					formComponentName: 'ForeignCollectionCheckBox',
+	  _createClass(Model, [{
+	    key: 'getIndexUrl',
+	    value: function getIndexUrl() {
+	      return '/staff-directory';
+	    }
+	  }, {
+	    key: 'getViewUrl',
+	    value: function getViewUrl() {
+	      return null;
+	    }
+	  }, {
+	    key: 'parse',
+	    value: function parse(resp) {
+	      resp.room_id = String(resp.room_id);
+	      return resp;
+	    }
+	  }, {
+	    key: 'resourceName',
+	    get: function get() {
+	      return 'staff_member';
+	    }
+	  }, {
+	    key: 'fields',
+	    get: function get() {
+	      return [{
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'name',
+	          labelText: 'Name',
+	          hint: '',
+	          placeholder: 'Enter staff member name.'
+	        }
+	      }, {
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'title',
+	          labelText: 'Title',
+	          hint: '',
+	          placeholder: 'Enter title.'
+	        }
+	      }, {
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'url',
+	          labelText: 'Bio url',
+	          hint: '',
+	          placeholder: 'Enter bio url.'
+	        }
+	      }, {
+	        formComponentName: 'ForeignCollectionCheckBox',
+	        formComponentProps: {
+	          id: 'department_ids',
+	          labelText: 'Department',
+	          foreignCollectionConstructor: department.Collection,
+	          hint: 'choose'
+	        }
+	      }, {
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'phone',
+	          labelText: 'Phone number',
+	          hint: '',
+	          placeholder: 'Enter phone number.'
+	        }
+	      }, {
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'room_id',
+	          labelText: 'Room number',
+	          hint: 'Use official numbering, e.g. 940 for main events space, 827A for a cubicle section.',
+	          placeholder: 'Enter room number.'
+	        }
+	      }, {
+	        formComponentName: 'ImageFile',
+	        formComponentProps: {
+	          id: 'image',
+	          labelText: 'Image',
+	          hint: 'Max size: ...'
+	        }
+	      }];
+	    }
+	  }]);
 	
-					formComponentProps: {
-						id: 'department_ids',
-						labelText: 'Department (NEW)',
-						foreignCollectionConstructor: department.Collection,
-						hint: 'choose'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'phone',
-						labelText: 'Phone number',
-						hint: '',
-						placeholder: 'Enter phone number.'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'room_id',
-						labelText: 'Room number',
-						hint: 'Use official numbering, e.g. 940 for main events space, 827A for a cubicle section.',
-						placeholder: 'Enter room number.'
-					}
-				}];
-			}
-		}]);
-	
-		return Model;
+	  return Model;
 	}(base.Model);
 	
 	var Collection = exports.Collection = function (_base$Collection) {
-		_inherits(Collection, _base$Collection);
+	  _inherits(Collection, _base$Collection);
 	
-		function Collection() {
-			_classCallCheck(this, Collection);
+	  function Collection() {
+	    _classCallCheck(this, Collection);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
+	  }
 	
-		_createClass(Collection, [{
-			key: 'model',
-			get: function get() {
-				return Model;
-			}
-		}]);
+	  _createClass(Collection, [{
+	    key: 'model',
+	    get: function get() {
+	      return Model;
+	    }
+	  }]);
 	
-		return Collection;
+	  return Collection;
 	}(base.Collection);
 
 /***/ },
@@ -47185,7 +47183,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -47214,122 +47212,89 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Form component backed by a Backbone model.
 	
-	/*
-	 *
-	 *
-	 */
 	
 	var Form = function (_React$Component) {
-		_inherits(Form, _React$Component);
+	  _inherits(Form, _React$Component);
 	
-		/*
-	  *
-	  *
-	  */
+	  function Form(props) {
+	    _classCallCheck(this, Form);
 	
-		function Form(props) {
-			_classCallCheck(this, Form);
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Form).call(this, props));
 	
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Form).call(this, props));
+	    _this.state = {};
+	    return _this;
+	  }
 	
-			_this.state = {};
-			return _this;
-		}
+	  _createClass(Form, [{
+	    key: 'render',
+	    value: function render() {
+	      var style = this.props.isEnabled ? {} : { opacity: 0.5 };
+	      return _react2.default.createElement(
+	        'form',
+	        {
+	          onSubmit: this.sendFormDataToParent.bind(this),
+	          style: style
+	        },
+	        this.renderFormComponents(),
+	        _react2.default.createElement('input', {
+	          type: 'submit',
+	          disabled: !this.props.isEnabled,
+	          value: this.props.submitButtonText || 'Submit Form'
+	        })
+	      );
+	    }
+	  }, {
+	    key: 'renderFormComponents',
+	    value: function renderFormComponents() {
+	      var _this2 = this;
 	
-		/*
-	  *
-	  *
-	  */
+	      return this.props.model.fields.map(function (field, i) {
+	        var FormComp = Subcomponents[field.formComponentName] || Subcomponents.Text;
+	        var id = field.formComponentProps.id;
+	        var props = field.formComponentProps || {};
+	        return _react2.default.createElement(FormComp, _extends({}, props, {
+	          history: _this2.props.history,
+	          key: i,
+	          isEnabled: _this2.props.isEnabled,
+	          saveDataOnParent: _this2.saveDataFromChild.bind(_this2),
+	          initialValue: _this2.props.model.get(id)
+	        }));
+	      });
+	    }
+	  }, {
+	    key: 'saveDataFromChild',
+	    value: function saveDataFromChild(childData) {
+	      var model = this.props.model;
 	
+	      var key = childData.id;
+	      var currentValue = this.props.model.get(key);
+	      var incomingValue = childData.value;
 	
-		_createClass(Form, [{
-			key: 'render',
-			value: function render() {
-				var style = this.props.isEnabled ? {} : { opacity: 0.5 };
-				return _react2.default.createElement(
-					'form',
-					{
-						onSubmit: this.sendFormDataToParent.bind(this),
-						style: style
-					},
-					this.renderFormComponents(),
-					_react2.default.createElement('input', {
-						type: 'submit',
-						disabled: !this.props.isEnabled,
-						value: this.props.submitButtonText || 'Submit Form'
-					})
-				);
-			}
+	      // If the data field is an array, add the incoming value if the array does not contain it but remove it if it does.
+	      // This behavior is specific to the ForeignCollectionCheckBox subcomponent.
+	      if (_underscore2.default.isArray(currentValue)) {
+	        var index = currentValue.indexOf(incomingValue);
+	        if (index < 0) {
+	          currentValue.push(incomingValue);
+	        } else {
+	          currentValue.splice(index, 1);
+	        }
+	        model.set(key, currentValue);
+	      } else {
+	        model.set(key, incomingValue);
+	      }
 	
-			/*
-	   *
-	   *
-	   */
+	      this.forceUpdate();
+	    }
+	  }, {
+	    key: 'sendFormDataToParent',
+	    value: function sendFormDataToParent(e) {
+	      e.preventDefault();
+	      this.props.onSubmit(this.props.model);
+	    }
+	  }]);
 	
-		}, {
-			key: 'renderFormComponents',
-			value: function renderFormComponents() {
-				var _this2 = this;
-	
-				return this.props.model.fields.map(function (field, i) {
-					var FormComp = Subcomponents[field.formComponentName] || Subcomponents.Text,
-					    id = field.formComponentProps.id,
-					    props = field.formComponentProps || {};
-					return _react2.default.createElement(FormComp, _extends({}, props, {
-						history: _this2.props.history,
-						key: i,
-						isEnabled: _this2.props.isEnabled,
-						saveDataOnParent: _this2.saveDataFromChild.bind(_this2),
-						initialValue: _this2.props.model.get(id)
-					}));
-				});
-			}
-	
-			/*
-	   *
-	   *
-	   */
-	
-		}, {
-			key: 'saveDataFromChild',
-			value: function saveDataFromChild(childData) {
-				var model = this.props.model;
-	
-				var key = childData.id;
-				var currentValue = this.props.model.get(key);
-				var incomingValue = childData.value;
-	
-				// If the data field is an array, add the incoming value if the array does not contain it but remove it if it does.
-				// This behavior is specific to the ForeignCollectionCheckBox subcomponent.
-				if (_underscore2.default.isArray(currentValue)) {
-					var index = currentValue.indexOf(incomingValue);
-					if (index < 0) {
-						currentValue.push(incomingValue);
-					} else {
-						currentValue.splice(index, 1);
-					}
-					model.set(key, currentValue);
-				} else {
-					model.set(key, incomingValue);
-				}
-	
-				this.forceUpdate();
-			}
-	
-			/*
-	   * Run method passed down from parent.
-	   *
-	   */
-	
-		}, {
-			key: 'sendFormDataToParent',
-			value: function sendFormDataToParent(e) {
-				e.preventDefault();
-				this.props.onSubmit(this.props.model);
-			}
-		}]);
-	
-		return Form;
+	  return Form;
 	}(_react2.default.Component);
 	
 	exports.default = Form;
@@ -48025,7 +47990,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -48047,76 +48012,75 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var ImageFile = function (_Base) {
-		_inherits(ImageFile, _Base);
+	  _inherits(ImageFile, _Base);
 	
-		function ImageFile() {
-			_classCallCheck(this, ImageFile);
+	  function ImageFile() {
+	    _classCallCheck(this, ImageFile);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(ImageFile).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ImageFile).apply(this, arguments));
+	  }
 	
-		_createClass(ImageFile, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'form__wrapper' },
-					_react2.default.createElement(
-						'label',
-						{ htmlFor: this.props.id },
-						this.props.labelText
-					),
-					this.renderThumbnail(),
-					_react2.default.createElement(
-						'p',
-						{ className: 'form__hint' },
-						this.props.hint
-					),
-					_react2.default.createElement('input', {
-						ref: 'input',
-						onChange: this.saveDataOnParent.bind(this),
-						type: 'file',
-						disabled: !this.props.isEnabled,
-						name: this.props.id,
-						id: this.props.id,
-						placeholder: this.props.placeholder
-					})
-				);
-			}
-		}, {
-			key: 'renderThumbnail',
-			value: function renderThumbnail() {
-				var encoded = this.props.initialValue;
-				if (encoded) {
-					encoded = encoded.replace(/(\r\n|\n|\r)/gm, '');
-					return _react2.default.createElement('div', { style: { width: '100%', paddingTop: '75%', backgroundSize: 'cover', backgroundImage: "url('data:image/png;base64," + encoded + "')" } });
-				}
-			}
-		}, {
-			key: 'saveDataOnParent',
-			value: function saveDataOnParent(e) {
-				var _this2 = this;
+	  _createClass(ImageFile, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'form__wrapper' },
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: this.props.id },
+	          this.props.labelText
+	        ),
+	        this.renderThumbnail(),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'form__hint' },
+	          this.props.hint
+	        ),
+	        _react2.default.createElement('input', {
+	          ref: 'input',
+	          onChange: this.saveDataOnParent.bind(this),
+	          type: 'file',
+	          disabled: !this.props.isEnabled,
+	          name: this.props.id,
+	          id: this.props.id,
+	          placeholder: this.props.placeholder
+	        })
+	      );
+	    }
+	  }, {
+	    key: 'renderThumbnail',
+	    value: function renderThumbnail() {
+	      var encoded = this.props.initialValue;
+	      if (encoded) {
+	        encoded = encoded.replace(/(\r\n|\n|\r)/gm, '');
+	        return _react2.default.createElement('div', { style: {
+	            width: '100%',
+	            paddingTop: '75%',
+	            backgroundSize: 'cover',
+	            backgroundImage: 'url(' + encoded + ')'
+	          } });
+	      }
+	    }
+	  }, {
+	    key: 'saveDataOnParent',
+	    value: function saveDataOnParent(e) {
+	      var _this2 = this;
 	
-				var file = e.target.files[0];
-				var reader = new FileReader();
+	      var file = e.target.files[0];
+	      var reader = new FileReader();
+	      reader.onload = function () {
+	        var b64 = reader.result;
+	        _this2.props.saveDataOnParent({
+	          id: _this2.props.id,
+	          value: b64
+	        });
+	      };
+	      reader.readAsDataURL(file);
+	    }
+	  }]);
 	
-				var removeBase64Header = function removeBase64Header(s) {
-					return s.slice(s.indexOf('base64') + 7);
-				};
-	
-				reader.onload = function () {
-					var b64 = removeBase64Header(reader.result);
-					_this2.props.saveDataOnParent({
-						id: _this2.props.id,
-						value: b64
-					});
-				};
-	
-				reader.readAsDataURL(file);
-			}
-		}]);
-	
-		return ImageFile;
+	  return ImageFile;
 	}(_base2.default);
 	
 	exports.default = ImageFile;
