@@ -1,4 +1,5 @@
 .DS_Store
 public/assets/scripts
 .env
+npm-debug.log
 node_modules

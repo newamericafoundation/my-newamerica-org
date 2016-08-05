@@ -1,6 +1,8 @@
-import webpack from 'webpack';
-import path from 'path';
-import CompressionPlugin from 'compression-webpack-plugin';
+'use strict';
+
+const webpack = require('webpack');
+const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const productionPlugins = [
   new webpack.optimize.UglifyJsPlugin({
@@ -11,15 +13,13 @@ const productionPlugins = [
   new CompressionPlugin()
 ];
 
-const {NODE_ENV} = process.env;
-
-export default {
+module.exports = {
 
   entry: './app/assets/scripts/bundle.js',
 
   output: {
     path: path.resolve('./public/assets/scripts'),
-    publicPath: 'http://localhost:3000/',
+    publicPath: '',
     filename: 'bundle.js'
   },
 
@@ -44,8 +44,8 @@ export default {
     ]
   },
 
-  devtool: NODE_ENV === 'development' ? 'source-map' : null,
+  devtool: process.env.NODE_ENV === 'development' ? 'source-map' : null,
 
-  plugins: NODE_ENV === 'production' ? productionPlugins : []
+  plugins: process.env.NODE_ENV === 'production' ? productionPlugins : []
 
 };
