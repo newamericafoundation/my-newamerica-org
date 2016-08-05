@@ -19789,7 +19789,7 @@
 	  );
 	}
 	
-	var routes = _react2.default.createElement(
+	exports.default = _react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },
 	  _react2.default.createElement(
@@ -19812,8 +19812,6 @@
 	    (0, _resource_route_generator2.default)(_index2.default.password.Model)
 	  )
 	);
-	
-	exports.default = routes;
 
 /***/ },
 /* 160 */
@@ -37549,7 +37547,8 @@
 	
 	      new floor.Collection().getClientFetchPromise().then(function (coll) {
 	        _this3.setState({
-	          floors: coll });
+	          floors: coll
+	        });
 	      }).catch(function (err) {
 	        console.log(err.stack);
 	      });
@@ -37618,13 +37617,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	/*
-	 * Displays a single staff member.
-	 *
-	 */
-	
-	var StaffMember = function (_React$Component) {
-	  _inherits(StaffMember, _React$Component);
+	var StaffMember = function (_Component) {
+	  _inherits(StaffMember, _Component);
 	
 	  function StaffMember(props) {
 	    _classCallCheck(this, StaffMember);
@@ -37691,15 +37685,15 @@
 	  }, {
 	    key: 'renderEditButton',
 	    value: function renderEditButton() {
-	      if (!window.user) {
-	        return;
-	      }
-	      if (!window.user.isAdmin) {
+	      if (!window.user || !window.user.isAdmin) {
 	        return;
 	      }
 	      return _react2.default.createElement(
 	        'p',
-	        { className: 'page__button', onClick: this.navigateToEdit },
+	        {
+	          className: 'page__button',
+	          onClick: this.navigateToEdit
+	        },
 	        _react2.default.createElement(_icons.Build, null)
 	      );
 	    }
@@ -37711,10 +37705,7 @@
 	      var floors = _props.floors;
 	      var isActive = this.state.isActive;
 	
-	      if (!isActive) {
-	        return;
-	      }
-	      if (!floors) {
+	      if (!isActive || !floors) {
 	        return;
 	      }
 	      var roomId = String(staffMember.get('room_id'));
@@ -37734,14 +37725,7 @@
 	  }, {
 	    key: 'getImageSource',
 	    value: function getImageSource() {
-	      var fullSource = this.props.staffMember.get('image');
-	      // strip off https://static.newamerica.org
-	      // TODO: do a little better :)
-	      if (!fullSource || !fullSource.slice) {
-	        return '/assets/images/profile.png';
-	      }
-	      var partialSource = fullSource.slice(29);
-	      return '/assets/images/staff_members' + partialSource;
+	      return this.props.staffMember.get('image') || '/assets/images/profile.png';
 	    }
 	  }, {
 	    key: 'handleClick',
@@ -37791,8 +37775,8 @@
 	  }]);
 	
 	  return StaffMember;
-	}(_react2.default.Component);
-	
+	}(_react.Component);
+
 	exports.default = StaffMember;
 
 /***/ },
@@ -38493,6 +38477,7 @@
 	              _this7.dbCache = data;
 	            }
 	            _this7.reset(data);
+	            _this7.sort();
 	            _this7.models.forEach(function (model) {
 	              if (model.afterRead) {
 	                model.afterRead();
@@ -43668,7 +43653,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.Collection = exports.Model = undefined;
 	
@@ -43686,64 +43671,47 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	/*
-	 *
-	 *
-	 */
-	
 	var Model = exports.Model = function (_base$Model) {
-		_inherits(Model, _base$Model);
+	  _inherits(Model, _base$Model);
 	
-		function Model() {
-			_classCallCheck(this, Model);
+	  function Model() {
+	    _classCallCheck(this, Model);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
+	  }
 	
-		_createClass(Model, [{
-			key: 'isPublic',
+	  _createClass(Model, [{
+	    key: 'isPublic',
+	    value: function isPublic() {
+	      return this.get('capacity') != null;
+	    }
+	  }, {
+	    key: 'resourceName',
+	    get: function get() {
+	      return 'room';
+	    }
+	  }]);
 	
-	
-			/*
-	   * Returns whether the room is a public space.
-	   *
-	   */
-			value: function isPublic() {
-				return this.get('capacity') != null;
-			}
-		}, {
-			key: 'resourceName',
-			get: function get() {
-				return 'room';
-			}
-		}]);
-	
-		return Model;
+	  return Model;
 	}(base.Model);
 	
-	/*
-	 *
-	 *
-	 */
-	
-	
 	var Collection = exports.Collection = function (_base$Collection) {
-		_inherits(Collection, _base$Collection);
+	  _inherits(Collection, _base$Collection);
 	
-		function Collection() {
-			_classCallCheck(this, Collection);
+	  function Collection() {
+	    _classCallCheck(this, Collection);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
+	  }
 	
-		_createClass(Collection, [{
-			key: 'model',
-			get: function get() {
-				return Model;
-			}
-		}]);
+	  _createClass(Collection, [{
+	    key: 'model',
+	    get: function get() {
+	      return Model;
+	    }
+	  }]);
 	
-		return Collection;
+	  return Collection;
 	}(base.Collection);
 
 /***/ },
@@ -44171,6 +44139,11 @@
 	  }
 	
 	  _createClass(Collection, [{
+	    key: 'comparator',
+	    value: function comparator(m1, m2) {
+	      return m1.get('name') - m2.get('name');
+	    }
+	  }, {
 	    key: 'model',
 	    get: function get() {
 	      return Model;
@@ -44492,23 +44465,23 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.Collection = exports.Model = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _base = __webpack_require__(331);
-	
-	var base = _interopRequireWildcard(_base);
-	
 	var _underscore = __webpack_require__(334);
 	
 	var _underscore2 = _interopRequireDefault(_underscore);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _base = __webpack_require__(331);
+	
+	var base = _interopRequireWildcard(_base);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -44516,112 +44489,101 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	/*
-	 *
-	 *
-	 */
-	
 	var Model = exports.Model = function (_base$Model) {
-		_inherits(Model, _base$Model);
+	  _inherits(Model, _base$Model);
 	
-		function Model() {
-			_classCallCheck(this, Model);
+	  function Model() {
+	    _classCallCheck(this, Model);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
+	  }
 	
-		_createClass(Model, [{
-			key: 'getIndexUrl',
-			value: function getIndexUrl() {
-				return '/weekly-wins';
-			}
-		}, {
-			key: 'getViewUrl',
-			value: function getViewUrl() {
-				return null;
-			}
-		}, {
-			key: 'beforeSave',
+	  _createClass(Model, [{
+	    key: 'getIndexUrl',
+	    value: function getIndexUrl() {
+	      return '/weekly-wins';
+	    }
+	  }, {
+	    key: 'getViewUrl',
+	    value: function getViewUrl() {
+	      return null;
+	    }
+	  }, {
+	    key: 'beforeSave',
+	    value: function beforeSave() {
+	      var ed = this.get('edition');
+	      if (!_underscore2.default.isNumber(ed)) {
+	        this.set('edition', Number(ed));
+	      }
+	    }
+	  }, {
+	    key: 'resourceName',
+	    get: function get() {
+	      return 'weekly_win';
+	    }
+	  }, {
+	    key: 'defaults',
+	    get: function get() {
+	      return {
+	        html: '<p>Content should arrive shortly.</p>'
+	      };
+	    }
+	  }, {
+	    key: 'fields',
+	    get: function get() {
+	      return [{
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'edition',
+	          labelText: 'Edition',
+	          hint: 'Edition number only (e.g. 80), without hash character.',
+	          placeholder: 'Enter readme edition.'
+	        }
+	      }, {
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'title',
+	          labelText: 'Title',
+	          hint: 'Same as weekly wins e-mail title.',
+	          placeholder: 'Enter readme title.'
+	        }
+	      }, {
+	        formComponentName: 'TextArea',
+	        formComponentProps: {
+	          id: 'html',
+	          labelText: 'Body',
+	          hint: 'Enter HTML. Remove inline styling using (TBA) tool.',
+	          placeholder: 'Enter readme body.'
+	        }
+	      }];
+	    }
+	  }]);
 	
-	
-			/*
-	   * Convert edition to number before saving to database.
-	   *
-	   */
-			value: function beforeSave() {
-				var ed = this.get('edition');
-				if (!_underscore2.default.isNumber(ed)) {
-					this.set('edition', Number(ed));
-				}
-			}
-		}, {
-			key: 'resourceName',
-			get: function get() {
-				return 'weekly_win';
-			}
-		}, {
-			key: 'defaults',
-			get: function get() {
-				return {
-					html: '<p>Content should arrive shortly.</p>'
-				};
-			}
-		}, {
-			key: 'fields',
-			get: function get() {
-				return [{
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'edition',
-						labelText: 'Edition',
-						hint: 'Edition number only (e.g. 80), without hash character.',
-						placeholder: 'Enter readme edition.'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'title',
-						labelText: 'Title',
-						hint: 'Same as weekly wins e-mail title.',
-						placeholder: 'Enter readme title.'
-					}
-				}, {
-					formComponentName: 'TextArea',
-					formComponentProps: {
-						id: 'html',
-						labelText: 'Body',
-						hint: 'Enter HTML. Remove inline styling using (TBA) tool.',
-						placeholder: 'Enter readme body.'
-					}
-				}];
-			}
-		}]);
-	
-		return Model;
+	  return Model;
 	}(base.Model);
 	
 	var Collection = exports.Collection = function (_base$Collection) {
-		_inherits(Collection, _base$Collection);
+	  _inherits(Collection, _base$Collection);
 	
-		function Collection() {
-			_classCallCheck(this, Collection);
+	  function Collection() {
+	    _classCallCheck(this, Collection);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
+	  }
 	
-		_createClass(Collection, [{
-			key: 'comparator',
-			value: function comparator(m1, m2) {
-				return m1.get('edition') - m2.get('edition');
-			}
-		}, {
-			key: 'model',
-			get: function get() {
-				return Model;
-			}
-		}]);
+	  _createClass(Collection, [{
+	    key: 'comparator',
+	    value: function comparator(m1, m2) {
+	      return m1.get('edition') - m2.get('edition');
+	    }
+	  }, {
+	    key: 'model',
+	    get: function get() {
+	      return Model;
+	    }
+	  }]);
 	
-		return Collection;
+	  return Collection;
 	}(base.Collection);
 
 /***/ },
@@ -44880,7 +44842,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.Collection = exports.Model = undefined;
 	
@@ -44899,107 +44861,107 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Model = exports.Model = function (_base$Model) {
-		_inherits(Model, _base$Model);
+	  _inherits(Model, _base$Model);
 	
-		function Model() {
-			_classCallCheck(this, Model);
+	  function Model() {
+	    _classCallCheck(this, Model);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Model).apply(this, arguments));
+	  }
 	
-		_createClass(Model, [{
-			key: 'getViewUrl',
-			value: function getViewUrl() {
-				return null;
-			}
-		}, {
-			key: 'matchesSearchTerm',
-			value: function matchesSearchTerm(searchTerm) {
-				var matches = false;
-				if (String(this.get('name')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-					matches = true;
-				}
-				if (String(this.get('icon')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-					matches = true;
-				}
-				return matches;
-			}
-		}, {
-			key: 'getGroupName',
-			value: function getGroupName() {
-				return this.get('section');
-			}
-		}, {
-			key: 'resourceName',
-			get: function get() {
-				return 'resource';
-			}
-		}, {
-			key: 'searchableFields',
-			get: function get() {
-				return ['name', 'url', 'icon'];
-			}
-		}, {
-			key: 'fields',
-			get: function get() {
-				return [{
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'name',
-						labelText: 'Resource name',
-						hint: '',
-						placeholder: 'Enter resource name. This appears as title in the list.'
-					}
-				}, {
-					formComponentName: 'Radio',
-					formComponentProps: {
-						id: 'section',
-						labelText: 'Section',
-						hint: '',
-						options: ['General Policies', 'Development', 'IT', 'Finance', 'TDM', 'Payroll & Taxes', 'Organization Information', 'Other'],
-						placeholder: 'Enter resource section. Content is organized under these group headings.'
-					}
-				}, {
-					formComponentName: 'Radio',
-					formComponentProps: {
-						id: 'icon',
-						labelText: 'Display icon',
-						hint: '',
-						options: ['naf', 'weather', 'shipping', 'pages', 'building', 'calendar', 'envelope', 'page', 'wifi', 'credit-card', 'food', 'help', 'adp', 'calendar', 'jazz'],
-						placeholder: 'Choose icon.'
-					}
-				}, {
-					formComponentName: 'Text',
-					formComponentProps: {
-						id: 'url',
-						labelText: 'Url',
-						hint: '',
-						placeholder: 'Enter url.'
-					}
-				}];
-			}
-		}]);
+	  _createClass(Model, [{
+	    key: 'getViewUrl',
+	    value: function getViewUrl() {
+	      return null;
+	    }
+	  }, {
+	    key: 'matchesSearchTerm',
+	    value: function matchesSearchTerm(searchTerm) {
+	      var matches = false;
+	      if (String(this.get('name')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+	        matches = true;
+	      }
+	      if (String(this.get('icon')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+	        matches = true;
+	      }
+	      return matches;
+	    }
+	  }, {
+	    key: 'getGroupName',
+	    value: function getGroupName() {
+	      return this.get('section');
+	    }
+	  }, {
+	    key: 'resourceName',
+	    get: function get() {
+	      return 'resource';
+	    }
+	  }, {
+	    key: 'searchableFields',
+	    get: function get() {
+	      return ['name', 'url', 'icon'];
+	    }
+	  }, {
+	    key: 'fields',
+	    get: function get() {
+	      return [{
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'name',
+	          labelText: 'Resource name',
+	          hint: '',
+	          placeholder: 'Enter resource name. This appears as title in the list.'
+	        }
+	      }, {
+	        formComponentName: 'Radio',
+	        formComponentProps: {
+	          id: 'section',
+	          labelText: 'Section',
+	          hint: '',
+	          options: ['General Policies', 'Development', 'IT', 'Finance', 'TDM', 'Payroll & Taxes', 'Organization Information', 'Other'],
+	          placeholder: 'Enter resource section. Content is organized under these group headings.'
+	        }
+	      }, {
+	        formComponentName: 'Radio',
+	        formComponentProps: {
+	          id: 'icon',
+	          labelText: 'Display icon',
+	          hint: '',
+	          options: ['naf', 'weather', 'shipping', 'pages', 'building', 'calendar', 'envelope', 'page', 'wifi', 'credit-card', 'food', 'help', 'adp', 'calendar', 'jazz'],
+	          placeholder: 'Choose icon.'
+	        }
+	      }, {
+	        formComponentName: 'Text',
+	        formComponentProps: {
+	          id: 'url',
+	          labelText: 'Url',
+	          hint: '',
+	          placeholder: 'Enter url.'
+	        }
+	      }];
+	    }
+	  }]);
 	
-		return Model;
+	  return Model;
 	}(base.Model);
 	
 	var Collection = exports.Collection = function (_base$Collection) {
-		_inherits(Collection, _base$Collection);
+	  _inherits(Collection, _base$Collection);
 	
-		function Collection() {
-			_classCallCheck(this, Collection);
+	  function Collection() {
+	    _classCallCheck(this, Collection);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Collection).apply(this, arguments));
+	  }
 	
-		_createClass(Collection, [{
-			key: 'model',
-			get: function get() {
-				return Model;
-			}
-		}]);
+	  _createClass(Collection, [{
+	    key: 'model',
+	    get: function get() {
+	      return Model;
+	    }
+	  }]);
 	
-		return Collection;
+	  return Collection;
 	}(base.Collection);
 
 /***/ },

@@ -64,10 +64,10 @@ export class Model extends Backbone.Model {
   getClientSavePromise() {
 
     if (this.beforeSave) {
-			this.beforeSave();
+			this.beforeSave()
 		}
 
-    this.set('created_at', new Date().toISOString());
+    this.set('created_at', new Date().toISOString())
 
     return new Promise((resolve, reject) => {
 
@@ -79,10 +79,10 @@ export class Model extends Backbone.Model {
         dataType: 'text',
         data: {jsonString: JSON.stringify(this.toJSON())},
         success: (datum) => {
-          resolve(datum);
+          resolve(datum)
         },
         error: (err) => {
-          reject(err);
+          reject(err)
         }
       });
 
@@ -95,14 +95,14 @@ export class Model extends Backbone.Model {
     const model = this.clone();
 
     if (model.beforeSave) {
-			model.beforeSave();
+			model.beforeSave()
 		}
 
-    model.set('updated_at', new Date().toISOString());
+    model.set('updated_at', new Date().toISOString())
 
     return new Promise((resolve, reject) => {
 
-      const url = `${this.apiUrlRoot}/${this.get('id')}/edit`;
+      const url = `${this.apiUrlRoot}/${this.get('id')}/edit`
 
       $.ajax({
         url: url,
@@ -110,14 +110,14 @@ export class Model extends Backbone.Model {
         dataType: 'text',
         data: {jsonString: JSON.stringify(model.toJSON())},
         success: (datum) => {
-          resolve(datum);
+          resolve(datum)
         },
         error: (err) => {
-          reject(err);
+          reject(err)
         }
-      });
+      })
 
-    });
+    })
 
   }
 
@@ -217,17 +217,18 @@ export class Collection extends Backbone.Collection {
         type: 'get',
         success: (data) => {
           // Set database cache.
-          if (!isCompleteQuery) { this.dbCache = data; }
-          this.reset(data);
+          if (!isCompleteQuery) { this.dbCache = data }
+          this.reset(data)
+          this.sort()
           this.models.forEach((model) => {
             if (model.afterRead) {
-              model.afterRead();
+              model.afterRead()
             }
           })
-          resolve(this);
+          resolve(this)
         },
         error: (err) => {
-          reject(err);
+          reject(err)
         }
       });
 
