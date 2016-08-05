@@ -1,28 +1,21 @@
-import React from 'react';
-import classNames from 'classnames';
+import React, { Component } from 'react'
+import classNames from 'classnames'
 
-import {Build} from './../../general/icons.jsx';
+import {Build} from '../../general/icons.jsx'
+import Modal from '../../general/modal.jsx'
+import FloorPlans from '../../floor_plans/root.jsx'
 
-import Modal from './../../general/modal.jsx';
-
-import FloorPlans from './../../floor_plans/root.jsx';
-
-
-/*
- * Displays a single staff member.
- *
- */
-export default class StaffMember extends React.Component {
+export default class StaffMember extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isActive: false
-    };
-    this.navigateToEdit = this.navigateToEdit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleModalClick = this.handleModalClick.bind(this);
-    this.handleModalContentClick = this.handleModalContentClick.bind(this);
+    }
+    this.navigateToEdit = this.navigateToEdit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleModalClick = this.handleModalClick.bind(this)
+    this.handleModalContentClick = this.handleModalContentClick.bind(this)
   }
 
   render() {
@@ -52,25 +45,28 @@ export default class StaffMember extends React.Component {
   }
 
   renderEditButton() {
-    if (!window.user) { return; }
-    if (!window.user.isAdmin) { return; }
+    if (!window.user || !window.user.isAdmin) { return }
     return (
-      <p className='page__button' onClick={this.navigateToEdit}><Build /></p>
+      <p
+        className="page__button"
+        onClick={this.navigateToEdit}
+      >
+        <Build/>
+      </p>
     );
   }
 
   renderModal() {
-    const {staffMember, floors} = this.props;
-    const {isActive} = this.state;
-    if (!isActive) { return; }
-    if (!floors) { return; }
+    const { staffMember, floors } = this.props
+    const { isActive } = this.state
+    if (!isActive || !floors) { return }
     const roomId = String(staffMember.get('room_id'));
     const floor = floors.findByRoom(roomId);
     const activeRoom = floor ? floor.get('rooms').findWhere({id: roomId}) : null;
     return (
       <Modal
-        width='1000px'
-        height='600px'
+        width="1000px"
+        height="600px"
         handleClick={this.handleModalClick}
         handleContentClick={this.handleModalContentClick}
       >
@@ -80,12 +76,7 @@ export default class StaffMember extends React.Component {
   }
 
   getImageSource() {
-    const fullSource = this.props.staffMember.get('image');
-    // strip off https://static.newamerica.org
-    // TODO: do a little better :)
-    if (!fullSource || !fullSource.slice) { return '/assets/images/profile.png'; }
-    const partialSource = fullSource.slice(29);
-    return `/assets/images/staff_members${partialSource}`;
+    return this.props.staffMember.get('image') || '/assets/images/profile.png'
   }
 
   handleClick() {
@@ -98,27 +89,27 @@ export default class StaffMember extends React.Component {
    *
    */
   handleModalClick(e) {
-    e.stopPropagation();
-    this.setState({ isActive: false });
+    e.stopPropagation()
+    this.setState({ isActive: false })
   }
 
   handleModalContentClick(e) {
-    e.stopPropagation();
+    e.stopPropagation()
   }
 
   isVisible() {
-    let name;
-    const {searchTerm, staffMember} = this.props;
-    if (!searchTerm) { return true; }
-    name = staffMember.get('name');
-    return (name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+    let name
+    const { searchTerm, staffMember } = this.props
+    if (!searchTerm) { return true }
+    name = staffMember.get('name')
+    return (name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
   }
 
   navigateToEdit(e) {
-    e.stopPropagation();
-    const {staffMember} = this.props;
-    const url = staffMember ? staffMember.getEditUrl() : '/';
-    this.props.history.pushState(null, url);
+    e.stopPropagation()
+    const {staffMember} = this.props
+    const url = staffMember ? staffMember.getEditUrl() : '/'
+    this.props.history.pushState(null, url)
   }
 
 }
