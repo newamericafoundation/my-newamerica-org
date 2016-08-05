@@ -1,0 +1,4 @@
+.DS_Store
+public/assets/scripts
+.env
+node_modules

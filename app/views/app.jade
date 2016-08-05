@@ -1,0 +1,10 @@
+extends layout
+
+block content
+
+	div(class="fill-parent", id="main")
+
+	script.
+		window.user = !{ user ? JSON.stringify(user) : 'null' };
+
+	script(src="/assets/scripts/bundle.js")
