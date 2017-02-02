@@ -219,7 +219,9 @@ export class Collection extends Backbone.Collection {
           // Set database cache.
           if (!isCompleteQuery) { this.dbCache = data }
           this.reset(data)
-          this.sort()
+          if (this.comparator) {
+            this.sort()
+          }
           this.models.forEach((model) => {
             if (model.afterRead) {
               model.afterRead()

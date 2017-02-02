@@ -3,26 +3,8 @@
 import React from 'react'
 import Modal from './../general/modal.jsx'
 
-
-/*
- *
- *
- */
 class BaseStatusModal extends React.Component {
 
-	/*
-	 *
-	 *
-	 */
-	constructor(props) {
-		super(props)
-	}
-
-
-	/*
-	 *
-	 *
-	 */
 	render() {
 		return (
 			<Modal>
@@ -31,14 +13,9 @@ class BaseStatusModal extends React.Component {
 		)
 	}
 
-
-	/*
-	 *
-	 *
-	 */
 	renderContent() {
-		if(this.props.status === 'success') { return this.renderSuccessContent() }
-		if(this.props.status === 'failure') { return this.renderFailureContent() }
+		if (this.props.status === 'success') { return this.renderSuccessContent() }
+		if (this.props.status === 'failure') { return this.renderFailureContent() }
 		return this.renderPendingContent()
 	}
 
@@ -65,9 +42,9 @@ class BaseStatusModal extends React.Component {
 	 *
 	 */
 	renderLinks() {
-		var urls = [ 
-			{ name: 'edit', url: this.props.model.getEditUrl() }, 
-			{ name: 'view', url: this.props.model.getViewUrl() } 
+		var urls = [
+			{ name: 'edit', url: this.props.model.getEditUrl() },
+			{ name: 'view', url: this.props.model.getViewUrl() }
 		];
 		return urls.map((url, i) => {
 			if (!url.url) { return }
