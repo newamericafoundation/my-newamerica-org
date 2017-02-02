@@ -1,7 +1,7 @@
-import express from 'express';
-import passport from 'passport';
+import express from 'express'
+import passport from 'passport'
 
-const router = express.Router();
+const router = express.Router()
 
 // GET /auth/google
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -15,7 +15,7 @@ router.get('/google',
   (req, res) => {
         // The request will be redirected to Google for authentication, so this
         // function will not be called.
-  });
+  })
 
 // GET /auth/google/callback
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -28,9 +28,9 @@ router.get('/google/callback',
     failureFlash: 'Authentication failed.'
   }),
   (req, res) => {
-    req.session.accessToken = req.user.accessToken;
-    res.redirect('/');
+    req.session.accessToken = req.user.accessToken
+    res.redirect('/')
   }
-);
+)
 
-export default router;
+export default router

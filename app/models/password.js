@@ -1,24 +1,24 @@
-import * as base from './base.js';
+import * as base from './base.js'
 
-function encrypt(pass) {
-  return `${pass.slice(0, -1)}145${pass.slice(-1)}`;
+function encrypt (pass) {
+  return `${pass.slice(0, -1)}145${pass.slice(-1)}`
 }
 
-function decrypt(pass) {
-  return `${pass.slice(0, -4)}${pass.slice(-1)}`;
+function decrypt (pass) {
+  return `${pass.slice(0, -4)}${pass.slice(-1)}`
 }
 
 export class Model extends base.Model {
 
-  get resourceName() { return 'password'; }
+  get resourceName () { return 'password' }
 
-  getViewUrl() { return null; }
+  getViewUrl () { return null }
 
-  get defaults() {
-    return {};
+  get defaults () {
+    return {}
   }
 
-  get fields() {
+  get fields () {
     return [
       {
         formComponentName: 'Text',
@@ -56,25 +56,25 @@ export class Model extends base.Model {
           placeholder: 'Enter password.'
         }
       }
-    ];
+    ]
   }
 
-  beforeSave() {
-    this.set('password', encrypt(this.get('password')));
+  beforeSave () {
+    this.set('password', encrypt(this.get('password')))
   }
 
-  afterRead() {
-    this.set('password', decrypt(this.get('password')));
+  afterRead () {
+    this.set('password', decrypt(this.get('password')))
   }
 
 }
 
 export class Collection extends base.Collection {
 
-  get model() { return Model; }
+  get model () { return Model }
 
-  comparator(m1, m2) {
-    return m1.get('user').length - m2.get('user').length;
+  comparator (m1, m2) {
+    return m1.get('user').length - m2.get('user').length
   }
 
 }

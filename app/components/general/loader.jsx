@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-export default function Loader(props) {
+export default function Loader (props) {
   return (
     <div className='loader'>
-      <img src='/assets/images/spinner.gif'/>
+      <img src='/assets/images/spinner.gif' />
     </div>
-  );
+  )
 }

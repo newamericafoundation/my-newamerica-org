@@ -35,8 +35,7 @@ app.use(express.static('public'))
 app.use(methodOverride())
 app.use(cookieParser())
 
-dbConnector.then(function(db) {
-
+dbConnector.then(function (db) {
   // Initialize session with database storage.
   app.use(session({
     secret: 'Super_Big_Secret',
@@ -57,7 +56,7 @@ dbConnector.then(function(db) {
     saveUninitialized: false
   }))
 
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     req.db = db
     next()
   })
@@ -66,13 +65,12 @@ dbConnector.then(function(db) {
   app.use(router)
 
   // Start server.
-  app.listen(PORT, function(err) {
-    if(err) {
+  app.listen(PORT, function (err) {
+    if (err) {
       return console.log(err)
     }
     console.log(`Listening on port ${PORT}.`)
   })
-
 }).catch((err) => {
   console.log(err)
 })

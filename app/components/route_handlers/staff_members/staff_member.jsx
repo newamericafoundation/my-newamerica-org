@@ -7,7 +7,7 @@ import FloorPlans from '../../floor_plans/root.jsx'
 
 export default class StaffMember extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       isActive: false
@@ -18,86 +18,85 @@ export default class StaffMember extends Component {
     this.handleModalContentClick = this.handleModalContentClick.bind(this)
   }
 
-  render() {
+  render () {
     const cls = classNames({
       'feature-box': true,
       'hidden': !this.isVisible(),
       'feature-box--active': this.state.isActive
-    });
+    })
     return (
       <li
         className={cls}
         onClick={this.handleClick}
       >
-        <div className="feature-box__image">
-          <img src={ this.getImageSource() } />
+        <div className='feature-box__image'>
+          <img src={this.getImageSource()} />
         </div>
-        <div className="feature-box__bottom-content">
+        <div className='feature-box__bottom-content'>
           <h1>{ this.props.staffMember.get('name') }</h1>
-          <p> { this.props.staffMember.get('title') } <br/>
-          { this.props.staffMember.get('dept') }</p>
+          <p> { this.props.staffMember.get('title') } <br />
+            { this.props.staffMember.get('dept') }</p>
           <p> { this.props.staffMember.get('phone') }</p>
         </div>
         { this.renderEditButton() }
         { this.renderModal() }
       </li>
-    );
+    )
   }
 
-  renderEditButton() {
+  renderEditButton () {
     if (!window.user || !window.user.isAdmin) { return }
     return (
       <p
-        className="page__button"
+        className='page__button'
         onClick={this.navigateToEdit}
       >
-        <Build/>
+        <Build />
       </p>
-    );
+    )
   }
 
-  renderModal() {
+  renderModal () {
     const { staffMember, floors } = this.props
     const { isActive } = this.state
     if (!isActive || !floors) { return }
-    const roomId = String(staffMember.get('room_id'));
-    const floor = floors.findByRoom(roomId);
-    const activeRoom = floor ? floor.get('rooms').findWhere({id: roomId}) : null;
+    const roomId = String(staffMember.get('room_id'))
+    const floor = floors.findByRoom(roomId)
+    const activeRoom = floor ? floor.get('rooms').findWhere({id: roomId}) : null
     return (
       <Modal
-        width="1000px"
-        height="600px"
+        width='1000px'
+        height='600px'
         handleClick={this.handleModalClick}
         handleContentClick={this.handleModalContentClick}
       >
-        <FloorPlans floors={floors} activeRoom={activeRoom}/>
+        <FloorPlans floors={floors} activeRoom={activeRoom} />
       </Modal>
-    );
+    )
   }
 
-  getImageSource() {
+  getImageSource () {
     return this.props.staffMember.get('image') || '/assets/images/profile.png'
   }
 
-  handleClick() {
-    this.setState({ isActive: true });
+  handleClick () {
+    this.setState({ isActive: true })
   }
-
 
   /*
    * Since modal content click stops propagation, this is only called when the modal overlay region is clicked.
    *
    */
-  handleModalClick(e) {
+  handleModalClick (e) {
     e.stopPropagation()
     this.setState({ isActive: false })
   }
 
-  handleModalContentClick(e) {
+  handleModalContentClick (e) {
     e.stopPropagation()
   }
 
-  isVisible() {
+  isVisible () {
     let name
     const { searchTerm, staffMember } = this.props
     if (!searchTerm) { return true }
@@ -105,7 +104,7 @@ export default class StaffMember extends Component {
     return (name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
   }
 
-  navigateToEdit(e) {
+  navigateToEdit (e) {
     e.stopPropagation()
     const {staffMember} = this.props
     const url = staffMember ? staffMember.getEditUrl() : '/'

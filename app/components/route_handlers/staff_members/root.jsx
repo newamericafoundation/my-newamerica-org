@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import StaffMember from './staff_member.jsx'
 
@@ -12,34 +12,34 @@ import Base from './../base/index.jsx'
 
 export default class StaffMembers extends Base {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {}
     this.logScroll = this.logScroll.bind(this)
     this.setSearchTerm = this.setSearchTerm.bind(this)
   }
 
-  render() {
+  render () {
     return (
-      <div className="page page--staff-registry" onScroll={this.logScroll}>
-        <div className="page__content">
-          <div className="page__content__logo">
-            <People/>
+      <div className='page page--staff-registry' onScroll={this.logScroll}>
+        <div className='page__content'>
+          <div className='page__content__logo'>
+            <People />
           </div>
-          <h1 className="title">Staff Directory</h1>
+          <h1 className='title'>Staff Directory</h1>
           {this.renderAddButton()}
-          <input placeholder="Search" onChange={this.setSearchTerm}/>
+          <input placeholder='Search' onChange={this.setSearchTerm} />
           <ul>
             { this.renderMembers() }
           </ul>
         </div>
       </div>
-    );
+    )
   }
 
-  renderMembers() {
+  renderMembers () {
     const { staffMembers, floors } = this.state
-    if (!staffMembers) { return <Loader/> }
+    if (!staffMembers) { return <Loader /> }
     return staffMembers.map((staffMember, i) => {
       return <StaffMember
         history={this.props.history}
@@ -51,7 +51,7 @@ export default class StaffMembers extends Base {
     })
   }
 
-  componentDidMount() {
+  componentDidMount () {
     new staffMember.Collection().getClientFetchPromise().then((coll) => {
       this.setState({
         staffMembers: coll
@@ -65,25 +65,24 @@ export default class StaffMembers extends Base {
         floors: coll
       })
     }).catch((err) => {
-      console.log(err.stack);
-    });
-
+      console.log(err.stack)
+    })
   }
 
-  navigateToAdd() {
+  navigateToAdd () {
     this.props.history.pushState(null, staffMember.Model.prototype.getNewUrl())
   }
 
-  logScroll(e) {
+  logScroll (e) {
     this.setState({
       scrollTop: e.target.scrollTop
-    });
+    })
   }
 
-  setSearchTerm(e) {
+  setSearchTerm (e) {
     this.setState({
       searchTerm: e.target.value
-    });
+    })
   }
 
 }

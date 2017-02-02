@@ -1,30 +1,30 @@
-import React from 'react';
+import React from 'react'
 
-import * as floor from './../../../models/floor.js';
-import * as staffMember from './../../../models/staff_member.js';
+import * as floor from './../../../models/floor.js'
+import * as staffMember from './../../../models/staff_member.js'
 
-import Loader from './../../general/loader.jsx';
+import Loader from './../../general/loader.jsx'
 
-import {Key} from './../../general/icons.jsx';
+import {Key} from './../../general/icons.jsx'
 
-import FloorPlans from './../../floor_plans/root.jsx';
+import FloorPlans from './../../floor_plans/root.jsx'
 
 export default class FloorPlansPage extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-		this.handleRoomClick = this.handleRoomClick.bind(this);
-		this.handleRoomMouseEnter = this.handleRoomMouseEnter.bind(this);
-		this.handleRoomMouseLeave = this.handleRoomMouseLeave.bind(this);
+  constructor (props) {
+    super(props)
+    this.state = {}
+    this.handleRoomClick = this.handleRoomClick.bind(this)
+    this.handleRoomMouseEnter = this.handleRoomMouseEnter.bind(this)
+    this.handleRoomMouseLeave = this.handleRoomMouseLeave.bind(this)
   }
 
-  render() {
+  render () {
     return (
       <div className='page page--room-booking'>
         <div className='page__content'>
           <div className='page__content__logo'>
-            <Key/>
+            <Key />
           </div>
           <h1 className='title'>Floor Plans</h1>
           <p>Please select floor:</p>
@@ -33,32 +33,32 @@ export default class FloorPlansPage extends React.Component {
           {this.renderActiveRoomStaffMember()}
         </div>
       </div>
-    );
+    )
   }
 
-  renderFloorOptions() {
-    const {floors} = this.state;
-    if (!floors) { return; }
+  renderFloorOptions () {
+    const {floors} = this.state
+    if (!floors) { return }
     return floors.map((floor, i) => {
       return (
-        <option key={i} value={ floor.get('id') }>{ floor.get('name') }</option>
-      );
-    });
+        <option key={i} value={floor.get('id')}>{ floor.get('name') }</option>
+      )
+    })
   }
 
-  renderFloorForm() {
+  renderFloorForm () {
     return (
       <select onChange={this.changeActiveFloor.bind(this)}>
         { this.renderFloorOptions() }
       </select>
-    );
+    )
   }
 
-  renderFloors() {
-    const {floors, activeRoom} = this.state;
+  renderFloors () {
+    const {floors, activeRoom} = this.state
     if (!floors) {
-			return;
-		}
+      return
+    }
     return (
       <FloorPlans
         floors={floors}
@@ -67,47 +67,47 @@ export default class FloorPlansPage extends React.Component {
         handleRoomMouseEnter={this.handleRoomMouseEnter}
         handleRoomMouseLeave={this.handleRoomMouseLeave}
       />
-		);
+    )
   }
 
-  componentWillMount() {
-    const floors = new floor.Collection();
+  componentWillMount () {
+    const floors = new floor.Collection()
     floors.getClientFetchPromise().then((floors) => {
       this.setState({
         floors: floors,
         activeRoom: floors.models[0].get('rooms').models[0]
       })
-    }).catch((err) => { console.log(err.stack); })
+    }).catch((err) => { console.log(err.stack) })
 
-    const staffMembers = new staffMember.Collection();
+    const staffMembers = new staffMember.Collection()
     staffMembers.getClientFetchPromise().then((staffMembers) => {
-      this.setState({staffMembers});
+      this.setState({staffMembers})
     })
   }
 
-  handleRoomClick(room) {
-    this.setState({activeRoom: room});
+  handleRoomClick (room) {
+    this.setState({activeRoom: room})
   }
 
-  handleRoomMouseEnter(room) {
-    this.setState({activeRoom: room});
+  handleRoomMouseEnter (room) {
+    this.setState({activeRoom: room})
   }
 
-	handleRoomMouseLeave(room) {
-    return;
+  handleRoomMouseLeave (room) {
+    return
   }
 
-  renderActiveRoomStaffMember() {
-    const {activeRoom, staffMembers} = this.state;
-    if (!activeRoom || !staffMembers) { return; }
+  renderActiveRoomStaffMember () {
+    const {activeRoom, staffMembers} = this.state
+    if (!activeRoom || !staffMembers) { return }
     const activeRoomId = activeRoom.get('id')
     const activeStaffMembers = staffMembers.where({
-			'room_id': Number(activeRoomId)
-		});
-    if (activeStaffMembers.length === 0) { return; }
+      'room_id': Number(activeRoomId)
+    })
+    if (activeStaffMembers.length === 0) { return }
     const activeStaffMembersSummary = activeStaffMembers.map((staffMember, i) => {
-      return <p>{staffMember.get('name')}</p>;
-    });
+      return <p>{staffMember.get('name')}</p>
+    })
     return (
       <div>
         {activeStaffMembersSummary}
@@ -115,15 +115,15 @@ export default class FloorPlansPage extends React.Component {
     )
   }
 
-  changeActiveFloor(e) {
-    const activeFloorId = e.target.value;
-    const {floors} = this.state;
+  changeActiveFloor (e) {
+    const activeFloorId = e.target.value
+    const {floors} = this.state
     const activeFloor = floors.findWhere({
-			id: activeFloorId
-		});
+      id: activeFloorId
+    })
     this.setState({
-			activeRoom: activeFloor.get('rooms').models[0]
-		});
+      activeRoom: activeFloor.get('rooms').models[0]
+    })
   }
 
 }

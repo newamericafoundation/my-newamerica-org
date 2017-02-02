@@ -16,10 +16,10 @@ import models from '../models/index.js'
 import resourceRouteGenerator from '../components/route_handlers/helpers/resource_route_generator.jsx'
 
 // Main app component.
-function App(props) {
+function App (props) {
   return (
-    <div className="wrapper">
-      <Header user={window.user}/>
+    <div className='wrapper'>
+      <Header user={window.user} />
       {props.children}
     </div>
   )
@@ -27,17 +27,17 @@ function App(props) {
 
 export default (
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
+    <Route path='/' component={App}>
 
       <IndexRoute component={Dashboard} />
 
-      <Route path="staff-directory" component={StaffMembers}/>
-      <Route path="weekly-wins" component={WeeklyWins}/>
-      <Route path="readmes" component={Readmes}/>
-      <Route path="resources" component={Resources}/>
-      <Route path="floor-plans" component={FloorPlansPage}/>
-      <Route path="frontdesk" component={FrontDesk}/>
-      <Route path="passwords" component={Passwords}/>
+      <Route path='staff-directory' component={StaffMembers} />
+      <Route path='weekly-wins' component={WeeklyWins} />
+      <Route path='readmes' component={Readmes} />
+      <Route path='resources' component={Resources} />
+      <Route path='floor-plans' component={FloorPlansPage} />
+      <Route path='frontdesk' component={FrontDesk} />
+      <Route path='passwords' component={Passwords} />
 
       { resourceRouteGenerator(models.readme.Model) }
       { resourceRouteGenerator(models.faq.Model) }

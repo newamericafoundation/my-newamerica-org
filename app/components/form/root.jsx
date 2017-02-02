@@ -6,12 +6,12 @@ import * as Subcomponents from './subcomponents/index.js'
 
 class Form extends React.Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {}
   }
 
-  render() {
+  render () {
     const style = this.props.isEnabled ? {} : { opacity: 0.5 }
     return (
       <form
@@ -22,13 +22,13 @@ class Form extends React.Component {
         <input
           type='submit'
           disabled={!this.props.isEnabled}
-          value={ this.props.submitButtonText || 'Submit Form' }
+          value={this.props.submitButtonText || 'Submit Form'}
         />
       </form>
-    );
+    )
   }
 
-  renderFormComponents() {
+  renderFormComponents () {
     return this.props.model.fields.map((field, i) => {
       const FormComp = Subcomponents[field.formComponentName] || Subcomponents.Text
       const id = field.formComponentProps.id
@@ -46,7 +46,7 @@ class Form extends React.Component {
     })
   }
 
-  saveDataFromChild(childData) {
+  saveDataFromChild (childData) {
     const { model } = this.props
     const key = childData.id
     const currentValue = this.props.model.get(key)
@@ -69,7 +69,7 @@ class Form extends React.Component {
     this.forceUpdate()
   }
 
-  sendFormDataToParent(e) {
+  sendFormDataToParent (e) {
     e.preventDefault()
     this.props.onSubmit(this.props.model)
   }

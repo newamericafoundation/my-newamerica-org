@@ -1,25 +1,25 @@
-import * as base from './base.js';
+import * as base from './base.js'
 
 export class Model extends base.Model {
 
-  get resourceName() { return 'faq'; }
+  get resourceName () { return 'faq' }
 
-  get searchableFields() { return [ 'question', 'answer' ]; }
+  get searchableFields () { return [ 'question', 'answer' ] }
 
-  getViewUrl() { return null; }
+  getViewUrl () { return null }
 
-  matchesSearchTerm(searchTerm) {
-    let matches = false;
-    if (this.get('question').toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true; }
-    if (this.get('answer').toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true; }
-    return matches;
+  matchesSearchTerm (searchTerm) {
+    let matches = false
+    if (this.get('question').toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true }
+    if (this.get('answer').toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true }
+    return matches
   }
 
-  getGroupName() {
-    return this.get('section');
+  getGroupName () {
+    return this.get('section')
   }
 
-  get fields() {
+  get fields () {
     return [
       {
         formComponentName: 'Text',
@@ -60,11 +60,11 @@ export class Model extends base.Model {
           hint: ''
         }
       }
-    ];
+    ]
   }
 
 }
 
 export class Collection extends base.Collection {
-  get model() { return Model; }
+  get model () { return Model }
 }

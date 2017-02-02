@@ -1,9 +1,9 @@
-import React from 'react';
-import moment from 'moment';
-import classNames from 'classnames';
+import React from 'react'
+import moment from 'moment'
+import classNames from 'classnames'
 
-import Loader from './../../general/loader.jsx';
-import {Jazz, Salesforce, Adp} from './../../general/icons.jsx';
+import Loader from './../../general/loader.jsx'
+import {Jazz, Salesforce, Adp} from './../../general/icons.jsx'
 
 const quickLinks = [
   {
@@ -21,31 +21,30 @@ const quickLinks = [
     icon: Salesforce,
     url: 'https://login.salesforce.com'
   }
-];
-
+]
 
 export default class Dashboard extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       isImageLoaded: false
-    };
+    }
   }
 
-  render() {
-    this.getTimeOfDay();
+  render () {
+    this.getTimeOfDay()
     var cls = classNames({
       'dashboard': true,
       'dashboard--waiting-for-image': !this.state.isImageLoaded
-    });
+    })
     return (
-      <div className={ cls }>
+      <div className={cls}>
         <div className='dashboard__background'>
-          <img src="/assets/images/shutterstock_268077389_1500.jpg" alt="Washington DC Background" onLoad={ this.setImageLoadedState.bind(this) } />
+          <img src='/assets/images/shutterstock_268077389_1500.jpg' alt='Washington DC Background' onLoad={this.setImageLoadedState.bind(this)} />
         </div>
         <div className='dashboard__welcome'>
-          <h1 onClick={ this.testLog }>{ this.getTime() }</h1>
+          <h1 onClick={this.testLog}>{ this.getTime() }</h1>
           <p>{ this.getGreeting() }</p>
         </div>
         <div className='dashboard__quick-links'>
@@ -54,16 +53,16 @@ export default class Dashboard extends React.Component {
           </ul>
         </div>
       </div>
-    );
+    )
   }
 
-  renderQuickLinks() {
+  renderQuickLinks () {
     return quickLinks.map((item, i) => {
       return (
         <a
           className='icon-button'
           href={item.url}
-          target="_blank"
+          target='_blank'
           key={i}
         >
           <div className='icon-button__icon'>
@@ -73,32 +72,32 @@ export default class Dashboard extends React.Component {
             { item.name }
           </p>
         </a>
-      );
-    });
+      )
+    })
   }
 
-  getTime() {
-    return moment(new Date().toISOString()).format('h:mm');
+  getTime () {
+    return moment(new Date().toISOString()).format('h:mm')
   }
 
-  getTimeOfDay() {
-    var H = moment(new Date().toISOString()).format('H');
-    if (H < 12) { return 'morning'; }
-    if (H < 18) { return 'afternoon'; }
-    return 'evening';
+  getTimeOfDay () {
+    var H = moment(new Date().toISOString()).format('H')
+    if (H < 12) { return 'morning' }
+    if (H < 18) { return 'afternoon' }
+    return 'evening'
   }
 
-  getGreeting() {
-    return `Good ${this.getTimeOfDay()}, ${this.getDisplayName()}!`;
+  getGreeting () {
+    return `Good ${this.getTimeOfDay()}, ${this.getDisplayName()}!`
   }
 
-  setImageLoadedState() {
-    this.setState({ isImageLoaded: true });
+  setImageLoadedState () {
+    this.setState({ isImageLoaded: true })
   }
 
-  getDisplayName() {
-    if (window.user == null) return 'Anne-Marie';
-    return window.user.name.givenName;
+  getDisplayName () {
+    if (window.user == null) return 'Anne-Marie'
+    return window.user.name.givenName
   }
 
 }

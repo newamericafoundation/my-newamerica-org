@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-const webpack = require('webpack');
-const path = require('path');
-const CompressionPlugin = require('compression-webpack-plugin');
+const webpack = require('webpack')
+const path = require('path')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const productionPlugins = [
   new webpack.optimize.UglifyJsPlugin({
@@ -11,7 +11,7 @@ const productionPlugins = [
     }
   }),
   new CompressionPlugin()
-];
+]
 
 module.exports = {
 
@@ -48,4 +48,4 @@ module.exports = {
 
   plugins: process.env.NODE_ENV === 'production' ? productionPlugins : []
 
-};
+}

@@ -1,30 +1,30 @@
-import React from 'react';
+import React from 'react'
 
-import Loader from './../../general/loader.jsx';
-import {Trophy} from './../../general/icons.jsx';
-import {Model, Collection} from './../../../models/weekly_win.js';
+import Loader from './../../general/loader.jsx'
+import {Trophy} from './../../general/icons.jsx'
+import {Model, Collection} from './../../../models/weekly_win.js'
 
-import Base from './../base/index.jsx';
+import Base from './../base/index.jsx'
 
-import Win from './win.jsx';
+import Win from './win.jsx'
 
 export default class WeeklyWins extends Base {
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       activeEdition: ''
-    };
+    }
   }
 
-  render() {
+  render () {
     return (
       <div className='page page--weekly-wins'>
         <div className='page__content'>
           <div className='page__content__logo'>
-            <Trophy/>
+            <Trophy />
           </div>
-          <h1 className="title">Weekly Wins</h1>
+          <h1 className='title'>Weekly Wins</h1>
           { this.renderAddButton() }
           <select value={this.state.activeEdition} onChange={this.setActiveEdition.bind(this)}>
             { this.renderWinOptions() }
@@ -32,12 +32,12 @@ export default class WeeklyWins extends Base {
           { this.renderWins() }
         </div>
       </div>
-    );
+    )
   }
 
-  renderWins() {
-		const {weeklyWins} = this.state;
-    if (!weeklyWins) { return (<Loader />); }
+  renderWins () {
+    const {weeklyWins} = this.state
+    if (!weeklyWins) { return (<Loader />) }
     return weeklyWins.map((win, i) => {
       return (
         <Win
@@ -46,43 +46,42 @@ export default class WeeklyWins extends Base {
           activeEdition={this.state.activeEdition}
           key={i}
         />
-      );
-    });
+      )
+    })
   }
-
 
   /*
    *
    *
    */
-  renderWinOptions() {
-		const {weeklyWins} = this.state;
-    if (!weeklyWins) { return; }
+  renderWinOptions () {
+    const {weeklyWins} = this.state
+    if (!weeklyWins) { return }
     return weeklyWins.map((win, i) => {
-      var val = `Edition ${win.get('edition')}: ${win.get('title')}`;
+      var val = `Edition ${win.get('edition')}: ${win.get('title')}`
       return (
         <option value={win.get('edition')} key={i}>{ val }</option>
-      );
-    });
+      )
+    })
   }
 
-  navigateToAdd() {
-    this.props.history.pushState(null, Model.prototype.getNewUrl());
+  navigateToAdd () {
+    this.props.history.pushState(null, Model.prototype.getNewUrl())
   }
 
-  componentDidMount() {
+  componentDidMount () {
     new Collection().getClientFetchPromise().then((coll) => {
       var lastModel = coll.models[coll.models.length - 1],
-        activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined;
+        activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined
       this.setState({
         weeklyWins: coll,
         activeEdition: activeEdition
-      });
-    });
+      })
+    })
   }
 
-  setActiveEdition(e) {
-    this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) });
+  setActiveEdition (e) {
+    this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) })
   }
 
 }

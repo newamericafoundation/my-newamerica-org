@@ -1,8 +1,8 @@
-require('babel/register');
+require('babel/register')
 
 var MongoClient = require('mongodb').MongoClient,
-	UpdateTracker = require('./tracker.js').UpdateTracker,
-	updateFunctions = require('./update_functions.js');
+  UpdateTracker = require('./tracker.js').UpdateTracker,
+  updateFunctions = require('./update_functions.js')
 
 /*
  * Batch update a collection.
@@ -10,52 +10,45 @@ var MongoClient = require('mongodb').MongoClient,
  * @param {string} collectionName - Name of collection.
  * @param {function} updateFunction - The function used to update an entry. Takes entry data as argument.
  */
-var batchUpdate = function(url, collectionName, updateFunction) {
+var batchUpdate = function (url, collectionName, updateFunction) {
+  MongoClient.connect('mongodb://' + url + ':27017/mongoid', function (err, db) {
+    if (err) { return console.log(err) }
 
-	MongoClient.connect('mongodb://' + url + ':27017/mongoid', function(err, db) {
+    var collection = db.collection(collectionName)
 
-		if (err) { return console.log(err); }
+    var tracker = new UpdateTracker()
 
-		var collection = db.collection(collectionName);
+    tracker.on('done', function () {
+      console.log('Closing the database connection.')
+      db.close()
+    })
 
-		var tracker = new UpdateTracker();
+    collection.find({}).each(function (err, item) {
+      if (err) { return console.log(err) }
 
-		tracker.on('done', function() {
-			console.log('Closing the database connection.');
-			db.close();
-		});
+      if (item == null) { return tracker.logCursorEnd() }
 
-		collection.find({}).each(function(err, item) {
+      tracker.logFound()
 
-			if (err) { return console.log(err); }
+      var query,
+        update = updateFunction(item)
 
-			if (item == null) { return tracker.logCursorEnd(); }
+      if (item['_id']) {
+        query = { '_id': item['_id'] }
+      } else {
+        query = { id: item['id'] }
+      }
 
-			tracker.logFound();
-
-			var query,
-				update = updateFunction(item);
-
-			if (item['_id']) {
-				query = { '_id': item['_id'] };
-			} else {
-				query = { id: item['id'] }
-			}
-
-			collection.update(query, update, function(err) { 
-				if (err) { console.log(err); }
-				tracker.logUpdated();
-			});
-
-
-		});
-
-	});
-
-};
+      collection.update(query, update, function (err) {
+        if (err) { console.log(err) }
+        tracker.logUpdated()
+      })
+    })
+  })
+}
 
 batchUpdate(
-	'localhost', 
-	'projects', 
+	'localhost',
+	'projects',
 	updateFunctions.unsetInfoBoxVariables
-);
+)

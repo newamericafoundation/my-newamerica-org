@@ -4,19 +4,19 @@ import * as base from './base.js'
 
 export class Model extends base.Model {
 
-  get resourceName() { return 'weekly_win' }
+  get resourceName () { return 'weekly_win' }
 
-  getIndexUrl() { return '/weekly-wins' }
+  getIndexUrl () { return '/weekly-wins' }
 
-  getViewUrl() { return null }
+  getViewUrl () { return null }
 
-  get defaults() {
+  get defaults () {
     return {
       html: '<p>Content should arrive shortly.</p>'
-    };
+    }
   }
 
-  get fields() {
+  get fields () {
     return [
       {
         formComponentName: 'Text',
@@ -45,10 +45,10 @@ export class Model extends base.Model {
           placeholder: 'Enter readme body.'
         }
       }
-    ];
+    ]
   }
 
-  beforeSave() {
+  beforeSave () {
     const ed = this.get('edition')
     if (!_.isNumber(ed)) { this.set('edition', Number(ed)) }
   }
@@ -57,9 +57,9 @@ export class Model extends base.Model {
 
 export class Collection extends base.Collection {
 
-  get model() { return Model }
+  get model () { return Model }
 
-  comparator(m1, m2) {
+  comparator (m1, m2) {
     return (m1.get('edition') - m2.get('edition'))
   }
 

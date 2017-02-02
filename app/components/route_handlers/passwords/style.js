@@ -12,4 +12,4 @@ export default {
     fontFamily: 'Platform Web',
     textTransform: 'uppercase'
   }
-};
+}

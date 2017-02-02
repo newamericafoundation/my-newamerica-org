@@ -5,21 +5,21 @@
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
-export function ensureAuthenticated(req, res, next) {
+export function ensureAuthenticated (req, res, next) {
   if (req.isAuthenticated()) {
-    return next();
+    return next()
   }
-  res.redirect('/login');
+  res.redirect('/login')
 }
 
-export function ensureAdminAuthenticated(req, res, next) {
+export function ensureAdminAuthenticated (req, res, next) {
   if (req.isAuthenticated && req.user && req.user.isAdmin) {
-    return next();
+    return next()
   }
-  res.redirect('/login');
+  res.redirect('/login')
 }
 
 // Neutral placeholder middleware.
-export function ensureNothing(req, res, next) {
-  return next();
+export function ensureNothing (req, res, next) {
+  return next()
 }

@@ -2,24 +2,24 @@ import * as base from './base.js'
 
 export class Model extends base.Model {
 
-  get resourceName() { return 'resource'; }
+  get resourceName () { return 'resource' }
 
-  get searchableFields() { return [ 'name', 'url', 'icon' ] }
+  get searchableFields () { return [ 'name', 'url', 'icon' ] }
 
-  getViewUrl() { return null }
+  getViewUrl () { return null }
 
-  matchesSearchTerm(searchTerm) {
-    var matches = false;
-    if (String(this.get('name')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true; }
-    if (String(this.get('icon')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true; }
-    return matches;
+  matchesSearchTerm (searchTerm) {
+    var matches = false
+    if (String(this.get('name')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true }
+    if (String(this.get('icon')).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) { matches = true }
+    return matches
   }
 
-  getGroupName() {
-    return this.get('section');
+  getGroupName () {
+    return this.get('section')
   }
 
-  get fields() {
+  get fields () {
     return [
       {
         formComponentName: 'Text',
@@ -59,11 +59,11 @@ export class Model extends base.Model {
           placeholder: 'Enter url.'
         }
       }
-    ];
+    ]
   }
 
 }
 
 export class Collection extends base.Collection {
-  get model() { return Model }
+  get model () { return Model }
 }

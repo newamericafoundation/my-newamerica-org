@@ -4,7 +4,7 @@ import Base from './base.jsx'
 
 class ImageFile extends Base {
 
-  render() {
+  render () {
     return (
       <div className='form__wrapper'>
         <label htmlFor={this.props.id}>{ this.props.labelText }</label>
@@ -23,24 +23,22 @@ class ImageFile extends Base {
     )
   }
 
-  renderThumbnail() {
+  renderThumbnail () {
     let encoded = this.props.initialValue
     if (encoded) {
-      encoded = encoded.replace(/(\r\n|\n|\r)/gm, '');
+      encoded = encoded.replace(/(\r\n|\n|\r)/gm, '')
       return (
-        <div style={
-          {
-            width: '100%',
-            paddingTop: '75%',
-            backgroundSize: 'cover',
-            backgroundImage: (`url(${encoded})`)
-          }
-        }/>
-      );
+        <div style={{
+          width: '100%',
+          paddingTop: '75%',
+          backgroundSize: 'cover',
+          backgroundImage: (`url(${encoded})`)
+        }} />
+      )
     }
   }
 
-  saveDataOnParent(e) {
+  saveDataOnParent (e) {
     const file = e.target.files[0]
     const reader = new FileReader()
     reader.onload = () => {

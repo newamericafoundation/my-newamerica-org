@@ -3,18 +3,18 @@ import * as department from './department.js'
 
 export class Model extends base.Model {
 
-  get resourceName() { return 'staff_member' }
+  get resourceName () { return 'staff_member' }
 
-  getIndexUrl() { return '/staff-directory' }
+  getIndexUrl () { return '/staff-directory' }
 
-  getViewUrl() { return null }
+  getViewUrl () { return null }
 
-  parse(resp) {
+  parse (resp) {
     resp.room_id = String(resp.room_id)
     return resp
   }
 
-  get fields() {
+  get fields () {
     return [
       {
         formComponentName: 'Text',
@@ -78,16 +78,16 @@ export class Model extends base.Model {
           hint: 'Max size: ...'
         }
       }
-    ];
+    ]
   }
 
 }
 
 export class Collection extends base.Collection {
 
-  get model() { return Model }
+  get model () { return Model }
 
-  comparator(m1, m2) {
+  comparator (m1, m2) {
     return (m1.get('name') - m2.get('name'))
   }
 

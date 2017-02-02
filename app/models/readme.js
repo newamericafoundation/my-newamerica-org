@@ -1,21 +1,21 @@
-import * as base from './base.js';
-import _ from 'underscore';
+import * as base from './base.js'
+import _ from 'underscore'
 
 export class Model extends base.Model {
 
-  get resourceName() { return 'readme'; }
+  get resourceName () { return 'readme' }
 
-  get apiUrlRoot() { return '/api/v1/readmes'; }
+  get apiUrlRoot () { return '/api/v1/readmes' }
 
-  getViewUrl() { return null; }
+  getViewUrl () { return null }
 
-  get defaults() {
+  get defaults () {
     return {
       html: '<p>Content should arrive shortly.</p>'
-    };
+    }
   }
 
-  get fields() {
+  get fields () {
     return [
       {
         formComponentName: 'Text',
@@ -44,22 +44,22 @@ export class Model extends base.Model {
           placeholder: 'Enter main body text.'
         }
       }
-    ];
+    ]
   }
 
-  beforeSave() {
-    const ed = this.get('edition');
-    if (!_.isNumber(ed)) { this.set('edition', Number(ed)); }
+  beforeSave () {
+    const ed = this.get('edition')
+    if (!_.isNumber(ed)) { this.set('edition', Number(ed)) }
   }
 
 }
 
 export class Collection extends base.Collection {
 
-  get model() { return Model; }
+  get model () { return Model }
 
-  comparator(m1, m2) {
-    return m1.get('edition') - m2.get('edition');
+  comparator (m1, m2) {
+    return m1.get('edition') - m2.get('edition')
   }
 
 }
