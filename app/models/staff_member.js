@@ -88,7 +88,7 @@ export class Collection extends base.Collection {
   get model () { return Model }
 
   comparator (m1, m2) {
-    return (m1.get('name') - m2.get('name'))
+    return (m1.get('name') < m2.get('name') ? -1 : +1)
   }
 
 }
