@@ -1,8 +1,8 @@
 require('babel/register')
 
-var MongoClient = require('mongodb').MongoClient,
-  UpdateTracker = require('./tracker.js').UpdateTracker,
-  updateFunctions = require('./update_functions.js')
+const MongoClient = require('mongodb').MongoClient
+const UpdateTracker = require('./tracker.js').UpdateTracker
+const updateFunctions = require('./update_functions.js')
 
 /*
  * Batch update a collection.
@@ -10,7 +10,7 @@ var MongoClient = require('mongodb').MongoClient,
  * @param {string} collectionName - Name of collection.
  * @param {function} updateFunction - The function used to update an entry. Takes entry data as argument.
  */
-var batchUpdate = function (url, collectionName, updateFunction) {
+function batchUpdate(url, collectionName, updateFunction) {
   MongoClient.connect('mongodb://' + url + ':27017/mongoid', function (err, db) {
     if (err) { return console.log(err) }
 

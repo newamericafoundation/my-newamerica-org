@@ -3,13 +3,10 @@ import React from 'react'
 import Loader from './../../general/loader.jsx'
 import {Trophy} from './../../general/icons.jsx'
 import {Model, Collection} from './../../../models/weekly_win.js'
-
 import Base from './../base/index.jsx'
-
 import Win from './win.jsx'
 
 export default class WeeklyWins extends Base {
-
   constructor (props) {
     super(props)
     this.state = {
@@ -50,15 +47,11 @@ export default class WeeklyWins extends Base {
     })
   }
 
-  /*
-   *
-   *
-   */
   renderWinOptions () {
-    const {weeklyWins} = this.state
+    const { weeklyWins } = this.state
     if (!weeklyWins) { return }
     return weeklyWins.map((win, i) => {
-      var val = `Edition ${win.get('edition')}: ${win.get('title')}`
+      const val = `Edition ${win.get('edition')}: ${win.get('title')}`
       return (
         <option value={win.get('edition')} key={i}>{ val }</option>
       )
@@ -71,8 +64,8 @@ export default class WeeklyWins extends Base {
 
   componentDidMount () {
     new Collection().getClientFetchPromise().then((coll) => {
-      var lastModel = coll.models[coll.models.length - 1],
-        activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined
+      const lastModel = coll.models[coll.models.length - 1]
+      const activeEdition = lastModel ? parseInt(lastModel.get('edition'), 10) : undefined
       this.setState({
         weeklyWins: coll,
         activeEdition: activeEdition
@@ -83,5 +76,4 @@ export default class WeeklyWins extends Base {
   setActiveEdition (e) {
     this.setState({ activeEdition: parseInt(e.nativeEvent.target.value, 10) })
   }
-
 }

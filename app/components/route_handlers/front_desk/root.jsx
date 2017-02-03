@@ -60,19 +60,21 @@ export default class FrontDesk extends Component {
               />
             </div>
 
-            <input style={{backgroundColor: '#2dbbb3', color: '#fffaef', borderRadius: '4px'}} type='submit' name='submit' value='Submit' />
+            <input
+              style={{
+                backgroundColor: '#2dbbb3',
+                color: '#fffaef',
+                borderRadius: '4px'
+              }}
+              type='submit'
+              name='submit'
+              value='Submit'
+            />
 
           </form>
         </div>
       </div>
     )
-  }
-
-  renderDebuggingFields () {
-    return [
-      <input type='hidden' name='debug' value='1' />,
-      <input type='hidden' name='debugEmail' value='mccarthyl@newamerica.org' />
-    ]
   }
 
   toggleChecked () {

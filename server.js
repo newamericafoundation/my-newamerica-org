@@ -5,22 +5,20 @@ import cookieParser from 'cookie-parser'
 import methodOverride from 'method-override'
 import session from 'express-session'
 import connectMongo from 'connect-mongo'
+import path from 'path'
 
 import serveGzipMiddleware from './app/middleware/serve_gzip.js'
-
 import router from './app/routes/index.js'
-
 import dbConnector from './db/connector.js'
-
 // Configure passport. Must run before initializing passport on the app instance.
-require('./config/passport_config.js')
+import './config/passport_config.js'
 
 const app = express()
 const MongoStore = connectMongo(session)
 
 const { PORT } = process.env
 
-app.set('views', __dirname + '/app/views')
+app.set('views', path.join(__dirname, 'app', 'views'))
 app.set('view engine', 'jade')
 
 // Basic configuration.

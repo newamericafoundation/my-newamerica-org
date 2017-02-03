@@ -7,14 +7,12 @@ import helpers from './helpers/index.js'
 var indexMiddleware = (options, req, res, next) => {
   var isAuthenticated = helpers.isReqAuthenticated(req)
 
-  var db = req.db,
-    dbCollection = db.collection(options.dbCollectionName)
+  var db = req.db
+  var dbCollection = db.collection(options.dbCollectionName)
 
-  var id = req.params.id
-
-  var query = req.query || {},
-    queryFields,
-    fields = {}
+  var query = req.query || {}
+  var queryFields
+  var fields = {}
 
 	// If there is a fields query parameter, parse into MongoDB fields object and remove from query.
   if (query.fields) {
@@ -41,28 +39,21 @@ var indexMiddleware = (options, req, res, next) => {
 	// The route calling this middleware will use req.special_query to filter results before sending to client.
   if (query.special_query_params) {
     req.special_query = {}
-
     query.special_query_params.split(',').forEach((pm) => {
       req.special_query[pm] = query[pm]
       delete query[pm]
     })
-
     delete query.special_query_params
   }
-
   var cursor = dbCollection.find(query, fields)
-
   cursor.toArray((err, data) => {
     if (err) {
       console.dir(err)
       req.dbResponse = {}
       return next()
     }
-
     helpers.replaceMongoId(data)
-
     req.dbResponse = data
-
     return next()
   })
 }

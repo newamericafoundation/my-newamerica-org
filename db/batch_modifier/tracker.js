@@ -17,29 +17,29 @@ class UpdateTracker extends EventEmitter {
     this._hasCursorEnded = 0
   }
 
-	// Log when a new item is found and its update operation is being initiated.
+  // Log when a new item is found and its update operation is being initiated.
   logFound () {
     this._found += 1
   }
 
-	// Log when an update operation ended.
+  // Log when an update operation ended.
   logUpdated () {
     this._updated += 1
     this._emitEndEventIfDone()
   }
 
-	// Log when the find cursor has ended.
+  // Log when the find cursor has ended.
   logCursorEnd () {
     this._hasCursorEnded = true
     this._emitEndEventIfDone()
   }
 
-	// Is the update operation done.
+  // Is the update operation done.
   _isDone () {
     return (this._hasCursorEnded && (this._found === this._updated))
   }
 
-	// Emit end event if the operation is complete.
+  // Emit end event if the operation is complete.
   _emitEndEventIfDone () {
     if (this._isDone()) {
       console.log('Update operation complete.')

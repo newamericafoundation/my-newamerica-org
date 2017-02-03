@@ -1,13 +1,9 @@
 import React from 'react'
+import $ from 'jquery'
 import Base from './base.jsx'
 import Loader from './../../general/loader.jsx'
 
 class SpreadsheetFile extends Base {
-
-	/*
-	 *
-	 *
-	 */
   constructor (props) {
     super(props)
     this.state = {
@@ -15,10 +11,6 @@ class SpreadsheetFile extends Base {
     }
   }
 
-	/*
-	 *
-	 *
-	 */
   render () {
     if (!this.state.isParserLoaded) { return (<Loader />) }
     return (
@@ -39,10 +31,6 @@ class SpreadsheetFile extends Base {
     )
   }
 
-	/*
-	 *
-	 *
-	 */
   renderSummary () {
     if (this.props.initialValue) {
       return (
@@ -51,20 +39,12 @@ class SpreadsheetFile extends Base {
     }
   }
 
-	/*
-	 *
-	 *
-	 */
   componentDidMount () {
     $().ensureScript('XLSX', '/assets/vendor/js-xlsx-standalone.js', () => {
       this.setState({ isParserLoaded: true })
     })
   }
 
-	/*
-	 *
-	 *
-	 */
   parseWorkBook (workbook) {
     var obj = {}
     for (let sheetName in workbook.Sheets) {
@@ -81,12 +61,13 @@ class SpreadsheetFile extends Base {
 	 *
 	 */
   saveDataOnParent (e) {
-    var file = e.target.files[0]
-    var reader = new FileReader()
+		const { FileReader } = global
+    const file = e.target.files[0]
+    const reader = new FileReader()
 
     reader.onload = () => {
-      var bstr = reader.result
-      var workbook = XLSX.read(bstr, { type: 'binary' })
+      const bstr = reader.result
+      const workbook = XLSX.read(bstr, { type: 'binary' })
       this.props.saveDataOnParent({
         id: this.props.id,
         value: this.parseWorkBook(workbook)

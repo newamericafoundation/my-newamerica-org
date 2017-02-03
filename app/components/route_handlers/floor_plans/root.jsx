@@ -2,15 +2,11 @@ import React from 'react'
 
 import * as floor from './../../../models/floor.js'
 import * as staffMember from './../../../models/staff_member.js'
-
 import Loader from './../../general/loader.jsx'
-
 import {Key} from './../../general/icons.jsx'
-
 import FloorPlans from './../../floor_plans/root.jsx'
 
 export default class FloorPlansPage extends React.Component {
-
   constructor (props) {
     super(props)
     this.state = {}
@@ -125,5 +121,4 @@ export default class FloorPlansPage extends React.Component {
       activeRoom: activeFloor.get('rooms').models[0]
     })
   }
-
 }

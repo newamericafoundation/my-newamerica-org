@@ -25,33 +25,19 @@ export default class Faqs extends Base {
           { this.renderAddButton() }
           <input placeholder='Search' onChange={this.setSearchTerm.bind(this)} />
 
-          { this.renderFaqGroups() }
+          { this.renderFaqs() }
 
         </div>
       </div>
     )
   }
 
-  renderFaqGroups () {
+  renderFaqs () {
     if (this.state.faqs == null) { return (<Loader />) }
 
     var grps = this.state.faqs.group()
 
-    return this.state.faqs.map((faq, index) => <Faq history={this.props.history} key={index} faq={faq} searchTerm={this.state.searchTerm}/>)
-
-    return Object.keys(grps).map((grpKey, i) => {
-      var grp = grps[grpKey]
-      if (!grp.containsSearchTermMatch(this.state.searchTerm)) { return }
-      return (
-        <FaqGroup
-          history={this.props.history}
-          searchTerm={this.state.searchTerm}
-          section={grpKey}
-          faqs={grp}
-          key={i}
-        />
-      )
-    })
+    return this.state.faqs.map((faq, index) => <Faq history={this.props.history} key={index} faq={faq} searchTerm={this.state.searchTerm} />)
   }
 
   componentDidMount () {
