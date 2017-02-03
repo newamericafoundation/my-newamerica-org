@@ -33,5 +33,10 @@ export default [
     'title': 'Passwords',
     'url': '/passwords',
     'reactIconName': 'clipboard'
+  },
+  {
+    'title': 'Questions and answers',
+    'url': '/faqs',
+    'reactIconName': 'info'
   }
 ]

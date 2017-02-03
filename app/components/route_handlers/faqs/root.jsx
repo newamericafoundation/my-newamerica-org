@@ -1,16 +1,12 @@
 import React from 'react'
 
-import {Building} from './../../general/icons.jsx'
+import {Info} from './../../general/icons.jsx'
 import Loader from './../../general/loader.jsx'
-
 import {Model, Collection} from './../../../models/faq.js'
-
 import Base from './../base/index.jsx'
+import Faq from './faq_item.jsx'
 
-import FaqGroup from './faq_group.jsx'
-
-export default class Faq extends Base {
-
+export default class Faqs extends Base {
   constructor (props) {
     super(props)
     this.state = {
@@ -23,9 +19,9 @@ export default class Faq extends Base {
       <div className='page page--resources'>
         <div className='page__content'>
           <div className='page__content__logo'>
-            <Building />
+            <Info />
           </div>
-          <h1 className='title'>Moving FAQ</h1>
+          <h1 className='title'>Questions and Answers</h1>
           { this.renderAddButton() }
           <input placeholder='Search' onChange={this.setSearchTerm.bind(this)} />
 
@@ -40,6 +36,8 @@ export default class Faq extends Base {
     if (this.state.faqs == null) { return (<Loader />) }
 
     var grps = this.state.faqs.group()
+
+    return this.state.faqs.map((faq, index) => <Faq history={this.props.history} key={index} faq={faq} searchTerm={this.state.searchTerm}/>)
 
     return Object.keys(grps).map((grpKey, i) => {
       var grp = grps[grpKey]
@@ -69,5 +67,4 @@ export default class Faq extends Base {
   setSearchTerm (e) {
     this.setState({searchTerm: e.target.value})
   }
-
 }

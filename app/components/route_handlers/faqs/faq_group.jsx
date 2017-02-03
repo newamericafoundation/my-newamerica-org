@@ -2,16 +2,8 @@ import React from 'react'
 
 import FaqItem from './faq_item.jsx'
 
-/*
- *
- *
- */
-class FaqGroup extends React.Component {
+export default class FaqGroup extends React.Component {
 
-	/*
-	 *
-	 *
-	 */
   render () {
     return (
       <div>
@@ -21,10 +13,6 @@ class FaqGroup extends React.Component {
     )
   }
 
-	/*
-	 *
-	 *
-	 */
   renderFaqs () {
     return this.props.faqs.map((faq, i) => {
       return (
@@ -38,5 +26,3 @@ class FaqGroup extends React.Component {
   }
 
 }
-
-export default FaqGroup

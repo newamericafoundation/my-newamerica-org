@@ -11,6 +11,7 @@ import Readmes from '../components/route_handlers/readmes/root.jsx'
 import FloorPlansPage from '../components/route_handlers/floor_plans/root.jsx'
 import FrontDesk from '../components/route_handlers/front_desk/root.jsx'
 import Passwords from '../components/route_handlers/passwords/root.jsx'
+import Faqs from '../components/route_handlers/faqs/root.jsx'
 
 import models from '../models/index.js'
 import resourceRouteGenerator from '../components/route_handlers/helpers/resource_route_generator.jsx'
@@ -25,6 +26,8 @@ function App (props) {
   )
 }
 
+console.log(Faqs)
+
 export default (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
@@ -38,6 +41,7 @@ export default (
       <Route path='floor-plans' component={FloorPlansPage} />
       <Route path='frontdesk' component={FrontDesk} />
       <Route path='passwords' component={Passwords} />
+      <Route path='faqs' component={Faqs} />
 
       { resourceRouteGenerator(models.readme.Model) }
       { resourceRouteGenerator(models.faq.Model) }
