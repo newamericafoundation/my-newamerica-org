@@ -14,18 +14,10 @@ class Base extends Static {
     return (<div />)
   }
 
-	/*
-	 * Customize on subclass.
-	 *
-	 */
   getResourceConstructor () {
     return Backbone.Model
   }
 
-	/*
-	 *
-	 *
-	 */
   getResourceName () {
     var Model = this.getResourceConstructor()
     return Model.prototype.resourceName

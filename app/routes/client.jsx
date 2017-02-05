@@ -26,8 +26,6 @@ function App (props) {
   )
 }
 
-console.log(Faqs)
-
 export default (
   <Router history={browserHistory}>
     <Route path='/' component={App}>
@@ -41,7 +39,7 @@ export default (
       <Route path='floor-plans' component={FloorPlansPage} />
       <Route path='frontdesk' component={FrontDesk} />
       <Route path='passwords' component={Passwords} />
-      <Route path='faqs' component={Faqs} />
+      <Route path='questions' component={Faqs} />
 
       { resourceRouteGenerator(models.readme.Model) }
       { resourceRouteGenerator(models.faq.Model) }

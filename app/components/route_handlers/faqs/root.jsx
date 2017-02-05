@@ -23,6 +23,9 @@ export default class Faqs extends Base {
           </div>
           <h1 className='title'>Questions and Answers</h1>
           { this.renderAddButton() }
+          <div>
+            <a className="link" target="_blank" href="https://docs.google.com/a/newamerica.org/forms/d/e/1FAIpQLSc1Tnigy-OBwZLZ9TfSgxDAqqQkp7KePfRVVn6-7ACcjsIlkg/viewform">Submit a question</a>
+          </div>
           <input placeholder='Search' onChange={this.setSearchTerm.bind(this)} />
 
           { this.renderFaqs() }

@@ -35,8 +35,8 @@ export default [
     'reactIconName': 'clipboard'
   },
   {
-    'title': 'Questions and answers',
-    'url': '/faqs',
-    'reactIconName': 'info'
+    'title': 'Questions',
+    'url': '/questions',
+    'reactIconName': 'question'
   }
 ]

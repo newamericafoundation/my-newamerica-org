@@ -6,6 +6,8 @@ export class Model extends base.Model {
 
   get searchableFields () { return [ 'question', 'answer' ] }
 
+  getIndexUrl() { return '/questions' }
+
   getViewUrl () { return null }
 
   matchesSearchTerm (searchTerm) {
@@ -37,27 +39,6 @@ export class Model extends base.Model {
           labelText: 'Answer',
           hint: '',
           placeholder: 'Enter answer.'
-        }
-      },
-      {
-        formComponentName: 'Radio',
-        formComponentProps: {
-          id: 'section',
-          labelText: 'Section',
-          options: [
-            'Key Information',
-            'Computers',
-            'Telephones',
-            'Printers',
-            'Mail',
-            'Moving My Stuff',
-            'Scheduling Events and Booking Conference Rooms',
-            'New Office Facilities',
-            'Supplies, and Access',
-            'Transport',
-            "My Question Wasn't Answered Here"
-          ],
-          hint: ''
         }
       }
     ]
