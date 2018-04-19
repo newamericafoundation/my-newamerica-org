@@ -20,6 +20,11 @@ const quickLinks = [
     name: 'Salesforce',
     icon: Salesforce,
     url: 'https://login.salesforce.com'
+  },
+  {
+    name: 'Proposal Wizard',
+    icon: Salesforce,
+    url: 'https://newamerica--c.na43.visual.force.com/apex/Pr0px2?sfdc.tabName=01r0G000000ovbg'
   }
 ]
 
